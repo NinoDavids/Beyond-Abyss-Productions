@@ -20,3 +20,6 @@ shape = SubResource("ConvexPolygonShape3D_bh01c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
+
+[node name="Holder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
