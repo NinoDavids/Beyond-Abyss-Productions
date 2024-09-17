@@ -53,7 +53,6 @@ func interact() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if result and result.collider:
-		print_debug(result.collider.name)
 		if result.collider.name == "Object":
 			if not objectHeld:
 				heldObject = result.collider
@@ -62,6 +61,14 @@ func interact() -> void:
 				heldObject.set_position(Vector3(0, 0, 0))
 				print_debug(heldObject.position)
 				objectHeld = true
+		elif result.collider.name == "PlaceHere":
+			if objectHeld:
+					$Holder.remove_child(heldObject)
+					result.collider.add_child(heldObject) 
+					heldObject.set_position(Vector3(0,  0.75,  0))
+
+					objectHeld = false
+					heldObject = null
 
 func _physics_process(delta: float) -> void:
 	# Add gravity.

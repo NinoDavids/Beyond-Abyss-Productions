@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=14 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
 [ext_resource type="Script" path="res://src/world/object.gd" id="2_7skn4"]
+[ext_resource type="Script" path="res://src/world/place_here.gd" id="3_86vn5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdccv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,6 +30,11 @@ points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
 [sub_resource type="BoxMesh" id="BoxMesh_m4cqp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sk80x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_etiev"]
+top_radius = 0.6
+bottom_radius = 1.0
+height = 1.0
 
 [node name="World" type="Node3D"]
 
@@ -58,6 +64,18 @@ mesh = SubResource("BoxMesh_m4cqp")
 surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_sk80x")
+
+[node name="PlaceHere" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+script = ExtResource("3_86vn5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlaceHere"]
+mesh = SubResource("CylinderMesh_etiev")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceHere"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_sk80x")
 
