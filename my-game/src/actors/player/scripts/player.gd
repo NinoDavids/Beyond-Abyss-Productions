@@ -6,7 +6,7 @@ class_name Player
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
-var objectHeld = false
+var objectHeld: bool = false
 var heldObject: Node3D = null
 
 @export var mouse_sens: float = 0.25
@@ -53,13 +53,13 @@ func interact() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if result and result.collider:
-		if result.collider.name == "Object":
+		if result.collider.get_script():
+			print_debug(result.collider.get_script().get_path())
 			if not objectHeld:
 				heldObject = result.collider
 				result.collider.get_parent().remove_child(heldObject)
 				$Holder.add_child(heldObject)
 				heldObject.set_position(Vector3(0, 0, 0))
-				print_debug(heldObject.position)
 				objectHeld = true
 		elif result.collider.name == "PlaceHere":
 			if objectHeld:
