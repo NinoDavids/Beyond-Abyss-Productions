@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=10 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
+[ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdccv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,8 +23,8 @@ size = Vector2(20, 20)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgvl7"]
 albedo_texture = ExtResource("1_uvfgh")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rkrsj"]
-points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k3ha8"]
+points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
 
 [node name="World" type="Node3D"]
 
@@ -41,7 +42,10 @@ mesh = SubResource("PlaneMesh_858m7")
 surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("ConvexPolygonShape3D_rkrsj")
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
 [node name="Player" parent="." instance=ExtResource("1_33dwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Hookable" parent="." instance=ExtResource("3_t1atl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12107, 1.43571, 0.239702)
