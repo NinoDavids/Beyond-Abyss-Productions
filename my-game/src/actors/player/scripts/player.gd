@@ -32,7 +32,6 @@ func _input(event: InputEvent) -> void:
 func dropItem() -> void:
 	if objectHeld and heldObject:		
 		heldObject.reparent(get_parent())
-		heldObject.set_position(Vector3($Head/PlayerCamera.position.x,  $Head/PlayerCamera.position.y,  $Head/PlayerCamera.position.z))
 		heldObject.freeze = false;
 		objectHeld = false
 		heldObject = null
