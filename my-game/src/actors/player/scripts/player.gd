@@ -2,11 +2,17 @@ extends CharacterBody3D
 class_name Player
 
 @onready var head: Node3D = $Head
+const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/Bobber.tscn")
+@onready var player_camera: Camera3D = $Head/PlayerCamera
+@onready var fishing_rod: FishingRod = $Head/FishingRod
 
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
 @export var mouse_sens: float = 0.25
+@export var cast_strength: float = 5.5
+
+var current_bobber: Bobber
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -19,6 +25,23 @@ func _input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+	
+	if event.is_action_pressed("cast_hook") and !current_bobber:
+		cast_bobber()
+	
+	if event.is_action_pressed("cancel_hook"):
+		fishing_rod.set_active(false)
+
+func cast_bobber() -> void:
+	fishing_rod.set_active(true)
+	
+	var clone: Bobber = BOBBER.instantiate()
+	current_bobber = clone
+	get_tree().current_scene.add_child(clone)
+	clone.global_position = fishing_rod.global_position ## Get the position of the rod
+	var direction: Vector3 = -player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
+	direction.y += 1 ## Moves the aim a bit more upwards
+	clone.apply_impulse(direction * cast_strength)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
