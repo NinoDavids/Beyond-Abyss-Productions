@@ -15,7 +15,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("quitEditor")):
+	if(event.is_action_pressed("quitEditor")): #remove for final build!
 		get_tree().quit()
 		
 	if(event.is_action_pressed("interact")):
@@ -31,9 +31,8 @@ func _input(event: InputEvent) -> void:
 
 func dropItem() -> void:
 	if objectHeld and heldObject:		
-		$Holder.remove_child(heldObject)
-		get_parent().add_child(heldObject) 
-		heldObject.set_position(Vector3(position.x + 1,  position.y,  position.z))
+		heldObject.reparent(get_parent())
+		heldObject.set_position(Vector3($Head/PlayerCamera.position.x,  $Head/PlayerCamera.position.y,  $Head/PlayerCamera.position.z))
 		heldObject.freeze = false;
 		objectHeld = false
 		heldObject = null
@@ -53,22 +52,18 @@ func interact() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if result and result.collider:
-		if result.collider.name.contains("PickUp"):
-			if not objectHeld:
-				heldObject = result.collider
-				result.collider.get_parent().remove_child(heldObject)
-				$Holder.add_child(heldObject)
-				heldObject.freeze = true
-				heldObject.set_position(Vector3(0, 0, 0))
-				objectHeld = true
-		elif result.collider.name == "PlaceHere":
-			if objectHeld:
-					$Holder.remove_child(heldObject)
-					result.collider.add_child(heldObject) 
-					heldObject.set_position(Vector3(0,  0.75,  0))
-					heldObject.freeze = false;
-					objectHeld = false
-					heldObject = null
+		if result.collider.name.contains("PickUp") && not objectHeld:
+			heldObject = result.collider
+			heldObject.reparent($Holder)
+			heldObject.set_position(Vector3(position.x, position.y, position.z + 1))
+			heldObject.freeze = true
+			objectHeld = true
+		elif result.collider.name == "PlaceHere" && objectHeld:
+			heldObject.reparent(result.collider)
+			heldObject.set_position(Vector3(result.collider.position.x,  result.collider.position.y + 0.75,  result.collider.position.z))
+			heldObject.freeze = false;
+			objectHeld = false
+			heldObject = null
 
 func _physics_process(delta: float) -> void:
 	# Add gravity.
