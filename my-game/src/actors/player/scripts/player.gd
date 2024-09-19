@@ -2,6 +2,8 @@ extends CharacterBody3D
 class_name Player
 
 @onready var head: Node3D = $Head
+@onready var player_camera: Camera3D = $Head/PlayerCamera  # Reference to the player's camera
+@onready var holder: Node3D = $Holder  # Node that holds the object in front of the player
 
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
@@ -15,13 +17,13 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("quitEditor")): #remove for final build!
+	if event.is_action_pressed("quitEditor"):  # Remove for final build!
 		get_tree().quit()
 		
-	if(event.is_action_pressed("interact")):
+	if event.is_action_pressed("interact"):
 		interact()
 		
-	if(event.is_action_pressed("dropItem")):
+	if event.is_action_pressed("dropItem"):
 		dropItem()
 		
 	if event is InputEventMouseMotion:
@@ -30,15 +32,15 @@ func _input(event: InputEvent) -> void:
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func dropItem() -> void:
-	if objectHeld and heldObject:		
+	if objectHeld and heldObject:
 		heldObject.reparent(get_parent())
-		heldObject.freeze = false;
+		heldObject.freeze = false
 		objectHeld = false
 		heldObject = null
 
 func interact() -> void:
 	var space_state = get_world_3d().direct_space_state
-	var cam = $Head/PlayerCamera
+	var cam = player_camera
 	var mousepos = get_viewport().get_mouse_position()
 
 	var origin = cam.project_ray_origin(mousepos)
@@ -51,16 +53,16 @@ func interact() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if result and result.collider:
-		if result.collider.name.contains("PickUp") && not objectHeld:
+		if result.collider.name.contains("PickUp") and not objectHeld:
 			heldObject = result.collider
-			heldObject.reparent($Holder)
-			heldObject.set_position(Vector3(position.x, position.y, position.z + 1))
+			heldObject.reparent(holder)
+			heldObject.position += Vector3(0,0.75,-0.5)
 			heldObject.freeze = true
 			objectHeld = true
-		elif result.collider.name == "PlaceHere" && objectHeld:
-			heldObject.reparent(result.collider)
-			heldObject.set_position(Vector3(result.collider.position.x,  result.collider.position.y + 0.75,  result.collider.position.z))
-			heldObject.freeze = false;
+		elif result.collider.name == "PlaceHere" and objectHeld:
+			heldObject.reparent(result.collider.get_node("ItemHolder"))
+			heldObject.global_position = result.collider.get_node("ItemHolder").global_position
+			heldObject.freeze = true
 			objectHeld = false
 			heldObject = null
 

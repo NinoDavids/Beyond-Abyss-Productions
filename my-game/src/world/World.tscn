@@ -93,5 +93,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_sk80x")
 
+[node name="ItemHolder" type="Node3D" parent="PlaceHere"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+
 [node name="Player" parent="." instance=ExtResource("1_33dwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
