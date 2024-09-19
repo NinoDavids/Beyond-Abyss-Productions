@@ -7,7 +7,7 @@ const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
 var objectHeld: bool = false
-var heldObject: Node3D = null
+var heldObject: RigidBody3D = null
 
 @export var mouse_sens: float = 0.25
 
@@ -34,7 +34,7 @@ func dropItem() -> void:
 		$Holder.remove_child(heldObject)
 		get_parent().add_child(heldObject) 
 		heldObject.set_position(Vector3(position.x + 1,  position.y,  position.z))
-
+		heldObject.freeze = false;
 		objectHeld = false
 		heldObject = null
 
@@ -53,12 +53,12 @@ func interact() -> void:
 	var result = space_state.intersect_ray(query)
 	
 	if result and result.collider:
-		if result.collider.get_script():
-			print_debug(result.collider.get_script().get_path())
+		if result.collider.name.contains("PickUp"):
 			if not objectHeld:
 				heldObject = result.collider
 				result.collider.get_parent().remove_child(heldObject)
 				$Holder.add_child(heldObject)
+				heldObject.freeze = true
 				heldObject.set_position(Vector3(0, 0, 0))
 				objectHeld = true
 		elif result.collider.name == "PlaceHere":
@@ -66,7 +66,7 @@ func interact() -> void:
 					$Holder.remove_child(heldObject)
 					result.collider.add_child(heldObject) 
 					heldObject.set_position(Vector3(0,  0.75,  0))
-
+					heldObject.freeze = false;
 					objectHeld = false
 					heldObject = null
 
