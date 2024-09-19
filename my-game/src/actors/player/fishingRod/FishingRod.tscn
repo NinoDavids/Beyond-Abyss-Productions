@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dop37yjdupvy5"]
+[gd_scene load_steps=4 format=3 uid="uid://dop37yjdupvy5"]
 
 [ext_resource type="Script" path="res://src/actors/player/fishingRod/fishing_rod.gd" id="1_nk6eq"]
 
@@ -10,8 +10,6 @@ bottom_radius = 0.005
 radius = 0.063
 height = 0.125
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_2rkjf"]
-
 [node name="FishingRod" type="Node3D"]
 script = ExtResource("1_nk6eq")
 
@@ -21,11 +19,3 @@ mesh = SubResource("CylinderMesh_no2wm")
 [node name="BobberMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725415, 0)
 mesh = SubResource("SphereMesh_2oo2i")
-
-[node name="RopePoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105351, 0)
-
-[node name="RopeMesh" type="MeshInstance3D" parent="RopePoint"]
-visible = false
-mesh = SubResource("ImmediateMesh_2rkjf")
-skeleton = NodePath("../..")

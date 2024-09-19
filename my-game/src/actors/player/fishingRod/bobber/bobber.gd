@@ -8,6 +8,3 @@ func _input(event: InputEvent) -> void:
 func set_hooked(pos: Vector3) -> void:
 	global_position = pos
 	freeze = true
-
-func _ready() -> void:
-	pass

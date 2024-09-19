@@ -34,6 +34,7 @@ func _input(event: InputEvent) -> void:
 
 func cast_bobber() -> void:
 	fishing_rod.set_active(true)
+	
 	var clone: Bobber = BOBBER.instantiate()
 	current_bobber = clone
 	get_tree().current_scene.add_child(clone)
@@ -41,8 +42,6 @@ func cast_bobber() -> void:
 	var direction: Vector3 = -player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
 	direction.y += 1 ## Moves the aim a bit more upwards
 	clone.apply_impulse(direction * cast_strength)
-	
-	fishing_rod.bobber = clone
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
