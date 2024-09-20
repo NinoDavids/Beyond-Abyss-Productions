@@ -14,6 +14,13 @@ const JUMP_VELOCITY: float = 4.5
 
 var current_bobber: Bobber
 
+var held_Item: RigidBody3D
+
+@onready var camera := $Head/PlayerCamera
+@onready var raycast := camera.get_node("RayCast3D")
+@onready var itemHolder := $Head/ItemHolder
+
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -25,6 +32,24 @@ func _input(event: InputEvent) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+	
+	if event.is_action_pressed("Drop"):
+		if held_Item:
+			held_Item.freeze = false
+			held_Item.collision_mask = 1
+			held_Item = null
+	
+	if event.is_action_pressed("Pickup"):
+		if held_Item == null:
+			if raycast.get_collider():
+				held_Item = raycast.get_collider()
+				held_Item.freeze = true
+				held_Item.collision_mask = 2
+		else:
+			print_debug("place item")
+			
+	if held_Item:
+		held_Item.global_transform.origin = itemHolder.global_transform.origin
 	
 	if event.is_action_pressed("cast_hook") and !current_bobber:
 		cast_bobber()
@@ -51,9 +76,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+		
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
