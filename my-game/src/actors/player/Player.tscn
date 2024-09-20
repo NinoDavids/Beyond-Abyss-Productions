@@ -22,5 +22,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
 
+[node name="RayCast3D" type="RayCast3D" parent="Head/PlayerCamera"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, -0.5)
+collision_mask = 2
+
 [node name="FishingRod" parent="Head" instance=ExtResource("2_qyi4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491751, -0.509509, -0.704506)
+
+[node name="ItemHolder" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
