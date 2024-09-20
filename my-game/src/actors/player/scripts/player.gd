@@ -41,12 +41,10 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Pickup"):
 		if held_Item == null:
-			if raycast.get_collider():
+			if raycast.get_collider() && raycast.get_collider().name.contains("Object"):
 				held_Item = raycast.get_collider()
 				held_Item.freeze = true
 				held_Item.collision_mask = 2
-		else:
-			print_debug("place item")
 			
 	if held_Item:
 		held_Item.global_transform.origin = itemHolder.global_transform.origin
