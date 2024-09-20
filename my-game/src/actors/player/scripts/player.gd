@@ -44,7 +44,7 @@ func interact() -> void:
 	var mousepos = get_viewport().get_mouse_position()
 
 	var origin = cam.project_ray_origin(mousepos)
-	var end = origin + cam.project_ray_normal(mousepos) * 20
+	var end = origin + cam.project_ray_normal(mousepos) * 2
 	var query = PhysicsRayQueryParameters3D.new()
 	query.from = origin
 	query.to = end
@@ -56,12 +56,13 @@ func interact() -> void:
 		if result.collider.name.contains("PickUp") and not objectHeld:
 			heldObject = result.collider
 			heldObject.reparent(holder)
-			heldObject.position += Vector3(0,0.75,-0.5)
+			heldObject.rotation = rotation
+			heldObject.position += Vector3(0,0.25,0)
 			heldObject.freeze = true
 			objectHeld = true
 		elif result.collider.name == "PlaceHere" and objectHeld:
 			heldObject.reparent(result.collider.get_node("ItemHolder"))
-			heldObject.global_position = result.collider.get_node("ItemHolder").global_position
+			heldObject.position += Vector3(0,0.75,-0.5)
 			heldObject.freeze = true
 			objectHeld = false
 			heldObject = null
