@@ -80,3 +80,10 @@ shape = SubResource("ConvexPolygonShape3D_ymhtv")
 
 [node name="Spring" parent="." instance=ExtResource("4_olw6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12758, 1.2413, -6.77733)
+lenght = 30
+spring_constant = 100.0
+damping_constant = 0.1
+max_distance = 0.2
+
+[editable path="Player"]
+[editable path="Player/Head/FishingRod"]

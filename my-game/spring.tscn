@@ -10,8 +10,10 @@
 script = ExtResource("1_5hivc")
 
 [node name="NodeTemplate" type="RigidBody3D" parent="."]
+collision_layer = 0
 freeze = true
-metadata/_edit_group_ = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NodeTemplate"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -19,3 +21,6 @@ shape = SubResource("SphereShape3D_v2xsx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NodeTemplate/CollisionShape3D"]
 mesh = SubResource("SphereMesh_47vn6")
+
+[connection signal="body_entered" from="NodeTemplate" to="." method="_on_node_template_body_entered"]
+[connection signal="body_exited" from="NodeTemplate" to="." method="_on_node_template_body_exited"]

@@ -7,17 +7,20 @@ var spring_constant: float = 100.0
 var damping_constant: float = 1.0
 var max_distance: float = 0.1
 
-
-func _init(point_one: RigidBody3D, point_two: RigidBody3D) -> void:
+func _init(point_one: RigidBody3D, point_two: RigidBody3D, spring_constant: float, damping_constant: float, max_distance: float) -> void:
 	self.point_one = point_one
 	self.point_two = point_two
-	
+	self.damping_constant = damping_constant
+	self.spring_constant = spring_constant
+	self.max_distance = max_distance
 
+#Applies spring forces to the nodes 
 func move() -> void:
 	var distance_between: float = point_one.global_position.distance_to(point_two.global_position)
 	var displacement: Vector3 = point_two.global_position - point_one.global_position
 	var spring_force: Vector3 = displacement.normalized() * (distance_between - max_distance) * spring_constant
 	var damping_force: Vector3 = -point_one.linear_velocity * damping_constant
+
 
 	point_one.apply_central_force(spring_force + damping_force)
 	point_two.apply_central_force(-spring_force + damping_force)
