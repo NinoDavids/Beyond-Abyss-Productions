@@ -1,0 +1,33 @@
+class_name Spring
+
+var point_one: RigidBody3D
+var point_two: RigidBody3D
+
+var spring_constant: float = 100.0
+var damping_constant: float = 1.0
+var max_distance: float = 0.1
+
+
+func _init(point_one: RigidBody3D, point_two: RigidBody3D) -> void:
+	self.point_one = point_one
+	self.point_two = point_two
+	
+
+func move() -> void:
+	var distance_between: float = point_one.global_position.distance_to(point_two.global_position)
+	var displacement: Vector3 = point_two.global_position - point_one.global_position
+	var spring_force: Vector3 = displacement.normalized() * (distance_between - max_distance) * spring_constant
+	var damping_force: Vector3 = -point_one.linear_velocity * damping_constant
+
+	point_one.apply_central_force(spring_force + damping_force)
+	point_two.apply_central_force(-spring_force + damping_force)
+		
+func tp():
+	if Input.is_action_just_pressed("move_block"):
+		point_one.global_position += Vector3(0,2,2)
+	if Input.is_action_just_pressed("move_block2"):
+		point_one.global_position += Vector3(0,0,-2)
+		
+
+func _to_string() -> String:
+	return "One: %s, Two: %s" % [point_one, point_two]

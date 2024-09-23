@@ -5,3 +5,4 @@ class_name FishingRod
 
 func set_active(active: bool) -> void:
 	bobber_mesh.visible = !active
+	

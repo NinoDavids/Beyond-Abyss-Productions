@@ -1,5 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://0kjricgib33x"]
+[gd_scene load_steps=13 format=3 uid="uid://n12y1hxagm7"]
 
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
+[ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="1_uvfgh"]
+[ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
+[ext_resource type="PackedScene" uid="uid://cm13issun3nwf" path="res://spring.tscn" id="4_olw6s"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="2_w3y7u"]
 
@@ -35,6 +39,34 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y3247")]
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/MeshInstance3D"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
+[node name="Ground2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6421, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2/MeshInstance3D"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
+[node name="Player" parent="." instance=ExtResource("1_33dwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -45,3 +77,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
+
+[node name="Spring" parent="." instance=ExtResource("4_olw6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12758, 1.2413, -6.77733)
