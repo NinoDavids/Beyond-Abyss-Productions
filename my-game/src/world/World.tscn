@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=19 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
 [ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
+[ext_resource type="Script" path="res://src/world/object.gd" id="4_818hs"]
 [ext_resource type="Script" path="res://src/world/Dropoff.gd" id="5_7pcu5"]
 [ext_resource type="Material" uid="uid://qr5b417tj2ix" path="res://src/world/Object/Dropoff.tres" id="5_30s6j"]
 
@@ -74,9 +75,10 @@ shape = SubResource("ConvexPolygonShape3D_npoy1")
 [node name="Hookable" parent="RigidBody3D" instance=ExtResource("3_t1atl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="Object" type="RigidBody3D" parent="."]
+[node name="Object" type="RigidBody3D" parent="." groups=["Pickups"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4208, 0.876005, 0)
 collision_layer = 2
+script = ExtResource("4_818hs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Object"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
