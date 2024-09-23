@@ -41,10 +41,13 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Pickup"):
 		if held_Item == null:
-			if raycast.get_collider() && raycast.get_collider().name.contains("Object"):
-				held_Item = raycast.get_collider()
-				held_Item.freeze = true
-				held_Item.collision_mask = 2
+			if raycast.get_collider():
+				var pickups = get_tree().get_nodes_in_group("Pickups")
+				for pickup in pickups:
+					if(raycast.get_collider() == pickup):
+						held_Item = raycast.get_collider()
+						held_Item.freeze = true
+						held_Item.collision_mask = 2
 			
 	if held_Item:
 		held_Item.global_transform.origin = itemHolder.global_transform.origin
