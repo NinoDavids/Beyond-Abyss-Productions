@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=15 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="1_uvfgh"]
@@ -35,7 +35,7 @@ points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10
 environment = SubResource("Environment_paunv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.551386, 0.207174, -0.808117, 0.530553, 0.660462, 0.531322, 0.643806, -0.721713, 0.254253, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y3247")]
@@ -66,6 +66,34 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
 shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
+[node name="Ground3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.015)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground3"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground3/MeshInstance3D"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
+[node name="Ground4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6421, 0, 20.015)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground4"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground4/MeshInstance3D"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground4"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
 [node name="Player" parent="." instance=ExtResource("1_33dwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
@@ -79,11 +107,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
 
 [node name="Spring" parent="." instance=ExtResource("4_olw6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12758, 1.2413, -6.77733)
-lenght = 30
-spring_constant = 100.0
-damping_constant = 0.1
-max_distance = 0.2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12758, 1.2413, -9.09543)
+lenght = 50
+spring_constant = 50.0
+max_distance = 1.0
+
+[node name="Tree" parent="." instance=ExtResource("5_2cail")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5674, 0, 0)
+
+[node name="Tree2" parent="." instance=ExtResource("5_2cail")]
+transform = Transform3D(-0.985957, -0.00153626, -0.166991, -0.00170813, 0.999998, 0.000885764, 0.16699, 0.00115857, -0.985958, 23.5674, 0, 5.75733)
+
+[node name="tree4" parent="." instance=ExtResource("6_hvoms")]
+transform = Transform3D(0.246599, 0, 0, 0, 0.246599, 0, 0, 0, 0.246599, 16.9058, 0.158669, 14.9679)
 
 [editable path="Player"]
 [editable path="Player/Head/FishingRod"]

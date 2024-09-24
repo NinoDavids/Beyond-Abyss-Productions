@@ -10,17 +10,17 @@ extends Node
 var nodes: Array[RigidBody3D]
 var springs: Array[Spring]
 
-@export var lenght: int = 20
+@export var lenght: int = 20 ## The number of nodes 
 @export_range(0, 100) var spring_constant: float = 10.0
 @export_range(0, 100) var damping_constant: float = 1
 @export_range(0, 10) var max_distance: float = 0.1
 
-var frozen: bool = false
-var last_update: float = Time.get_unix_time_from_system()
+
+var frozen: bool = false ## boolean to set if the nodes are frozen
+var last_update: float = Time.get_unix_time_from_system() ## Time since the nodes got interacted with a colission object
 
 var actions: Array[String] = ["forward", "backward", "left", "right"]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_nodes()
 	connect_nodes()
@@ -28,8 +28,6 @@ func _ready() -> void:
 		print(spring.to_string())
 	
 
-	
-	
 func _physics_process(delta: float) -> void:
 	for spring in springs:
 		spring.point_one.sleeping = frozen
@@ -37,22 +35,26 @@ func _physics_process(delta: float) -> void:
 		spring.move()
 		
 	set_frozen()
-	springs[springs.size()-1].point_two.global_position =bobber_mesh.global_position
+	springs[springs.size()-1].point_two.freeze = true #global_position =bobber_mesh.global_position
 			
 	if(hookable.is_hooked):
 		springs[0].point_one.global_position = hookable.global_position
 	springs[0].tp()
 		
+## Spawns the nodes using the [param lenght] as the number of nodes spawned
 func spawn_nodes():
 	for l in range(lenght):
 		var new_point: RigidBody3D = point.duplicate()
 		new_point.freeze = false
 		new_point.name = "node %s" % (l+1)
-		new_point.global_position += Vector3(l, l,l)
+		new_point.global_position += Vector3(l/2, 0,l/2)
 		nodes.append(new_point)
 		add_child(new_point, true)
-	
 		
+		
+	
+##Will set all the nodes to frozen to reduce processing time.
+##This is based on the movement of the player or the time since another collision object collided with the rope
 func set_frozen():
 	if Time.get_unix_time_from_system() - last_update > 5:
 		frozen = true
@@ -64,7 +66,7 @@ func set_frozen():
 			last_update = Time.get_unix_time_from_system()
 			frozen = false
 	
-	
+## Will make new springs using the [param nodes] array. 
 func connect_nodes():
 	for i in range(nodes.size()):
 		if(i+1 != nodes.size()):

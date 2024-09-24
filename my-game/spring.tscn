@@ -8,9 +8,13 @@
 
 [node name="Spring" type="Node3D"]
 script = ExtResource("1_5hivc")
+spring_constant = 100.0
 
 [node name="NodeTemplate" type="RigidBody3D" parent="."]
 collision_layer = 0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1
