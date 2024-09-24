@@ -37,6 +37,7 @@ func cast_bobber() -> void:
 	
 	var clone: Bobber = BOBBER.instantiate()
 	current_bobber = clone
+	current_bobber.player = self
 	get_tree().current_scene.add_child(clone)
 	clone.global_position = fishing_rod.global_position ## Get the position of the rod
 	var direction: Vector3 = -player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing

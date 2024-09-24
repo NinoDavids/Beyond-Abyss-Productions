@@ -2,18 +2,11 @@ extends Area3D
 class_name Hookable
 
 var is_hooked: bool = false
-var parent: RigidBody3D
 var bobber: Bobber
 
-func _ready() -> void:
-	if get_parent() is RigidBody3D:
-		parent = get_parent()
-
+## A function that gets called as soon as the [Hookable] [member is_hooked] AND the [Player] [kbd]scroll wheel down[/kbd].
 func reel_in() -> void:
-	if parent:
-		pull_parent()
-	else:
-		print("Reeling in just the hook")
+	pass
 
 func _physics_process(_delta: float) -> void:
 	if bobber:
@@ -30,13 +23,11 @@ func _on_body_entered(body: Node3D) -> void:
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
 
+## Places the [member bobber] in the center of the [Hookable].
 func place_bobber() -> void:
 	bobber.set_hooked(global_position)
 
+## Removes the [member bobber] from the [Hookable].
 func remove_bobber() -> void:
 	is_hooked = false
 	bobber = null
-
-func pull_parent() -> void:
-	var direction: Vector3 = parent.global_transform.origin.direction_to(global_transform.origin)
-	parent.apply_central_impulse(direction)
