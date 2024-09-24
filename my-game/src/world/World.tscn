@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=20 format=3 uid="uid://n12y1hxagm7"]
 
-[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
-[ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
-[ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
+[ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_0qp5g"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="2_nisuo"]
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="3_pxdn0"]
 [ext_resource type="Script" path="res://src/world/object.gd" id="4_818hs"]
+[ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="4_cobki"]
 [ext_resource type="Script" path="res://src/world/Dropoff.gd" id="5_7pcu5"]
 [ext_resource type="Material" uid="uid://qr5b417tj2ix" path="res://src/world/Object/Dropoff.tres" id="5_30s6j"]
 
@@ -24,7 +25,7 @@ glow_enabled = true
 size = Vector2(20, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgvl7"]
-albedo_texture = ExtResource("1_uvfgh")
+albedo_texture = ExtResource("1_0qp5g")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k3ha8"]
 points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
@@ -60,11 +61,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
-[node name="Player" parent="." instance=ExtResource("1_33dwo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Player" parent="." instance=ExtResource("2_nisuo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -7)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 1, -7)
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_5igqw")
@@ -72,8 +75,13 @@ mesh = SubResource("BoxMesh_5igqw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("ConvexPolygonShape3D_npoy1")
 
-[node name="Hookable" parent="RigidBody3D" instance=ExtResource("3_t1atl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="RigidHookable" parent="RigidBody3D" node_paths=PackedStringArray("body") instance=ExtResource("3_pxdn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.00123)
+body = NodePath("..")
+to_player = true
+
+[node name="Bridge" parent="." instance=ExtResource("4_cobki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12.8231)
 
 [node name="Object" type="RigidBody3D" parent="." groups=["Pickups"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4208, 0.876005, 0)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cynpwlkdynuk0"]
+
+[ext_resource type="Script" path="res://src/world/Hookables/AnimationHookables/AnimationHookable.gd" id="1_bxi80"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_neuqq"]
+outer_radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uumtt"]
+radius = 0.75
+
+[node name="AnimHookable" type="Area3D"]
+collision_mask = 64
+script = ExtResource("1_bxi80")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_neuqq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_uumtt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
