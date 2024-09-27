@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1m5l4s2ek260"]
+
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="1_qybp3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_knnm6"]
+rough = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5igqw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npoy1"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_knnm6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5igqw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_npoy1")
+
+[node name="RigidHookable" parent="." node_paths=PackedStringArray("body") instance=ExtResource("1_qybp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+body = NodePath("..")
