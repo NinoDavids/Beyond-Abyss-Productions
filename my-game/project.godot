@@ -53,6 +53,7 @@ folder_colors={
 [global_group]
 
 enemies=""
+Pickups=""
 
 [input]
 
