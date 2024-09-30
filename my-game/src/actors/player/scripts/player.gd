@@ -5,6 +5,8 @@ class_name Player
 const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/Bobber.tscn")
 @onready var player_camera: Camera3D = $Head/PlayerCamera
 @onready var fishing_rod: FishingRod = $Head/FishingRod
+@onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
+@onready var itemHolder: Node3D = $Head/ItemHolder
 
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
@@ -13,7 +15,6 @@ const JUMP_VELOCITY: float = 4.5
 @export var cast_strength: float = 5.5
 
 var current_bobber: Bobber
-
 var held_Item: RigidBody3D
 
 @onready var camera: Camera3D = $Head/PlayerCamera
