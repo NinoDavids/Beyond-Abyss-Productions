@@ -17,9 +17,6 @@ const JUMP_VELOCITY: float = 4.5
 var current_bobber: Bobber
 var held_Item: RigidBody3D
 
-@onready var camera: Camera3D = $Head/PlayerCamera
-@onready var raycast: RayCast3D = camera.get_node("RayCast3D")
-@onready var itemHolder: Node3D = $Head/ItemHolder
 
 
 func _ready() -> void:
