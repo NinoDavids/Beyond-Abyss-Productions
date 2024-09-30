@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=23 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://src/world/object.gd" id="4_818hs"]
 [ext_resource type="Script" path="res://src/world/Dropoff.gd" id="5_7pcu5"]
 [ext_resource type="Material" uid="uid://qr5b417tj2ix" path="res://src/world/Object/Dropoff.tres" id="5_30s6j"]
+[ext_resource type="Material" uid="uid://dcwt3ox838jq6" path="res://src/world/Object/1x1.tres" id="5_cfqu6"]
+[ext_resource type="Material" uid="uid://m6svy6ibsbwf" path="res://src/world/Object/1x2.tres" id="6_r7hbl"]
+[ext_resource type="Material" uid="uid://bn745tsvu0igh" path="res://src/world/Object/2x1.tres" id="7_jwiup"]
+[ext_resource type="Material" uid="uid://f1muwtsei821" path="res://src/world/Object/2x2.tres" id="8_saon2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdccv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -60,6 +64,36 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
+[node name="Ground2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground2"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
+[node name="Ground3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground3"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground3"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
+[node name="Ground4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground4"]
+mesh = SubResource("PlaneMesh_858m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground4"]
+shape = SubResource("ConvexPolygonShape3D_k3ha8")
+
 [node name="Player" parent="." instance=ExtResource("1_33dwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
@@ -86,6 +120,205 @@ shape = SubResource("BoxShape3D_7ig1d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Object"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="Puzzle" type="Node" parent="."]
+
+[node name="1x1 (1)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 20)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/1x1 (1)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/1x1 (1)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("5_cfqu6")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="1x1 (2)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 18)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/1x1 (2)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/1x1 (2)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("5_cfqu6")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="1x1 (3)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 16)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/1x1 (3)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/1x1 (3)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("5_cfqu6")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="1x1 (4)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 22)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/1x1 (4)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/1x1 (4)"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("5_cfqu6")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="1x2" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, 19)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/1x2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/1x2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 4, 0, 0, 0)
+material_override = ExtResource("6_r7hbl")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="2x1 (1)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, 16)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/2x1 (1)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/2x1 (1)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("7_jwiup")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="2x1 (2)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, 22)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/2x1 (2)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/2x1 (2)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("7_jwiup")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="2x1 (3)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 16)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/2x1 (3)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/2x1 (3)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("7_jwiup")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="2x1 (4)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 22)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/2x1 (4)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/2x1 (4)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("7_jwiup")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="2x2 (goal)" type="RigidBody3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 19)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/2x2 (goal)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/2x2 (goal)"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0, 0, 0)
+material_override = ExtResource("8_saon2")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="Walls" type="Node" parent="Puzzle"]
+
+[node name="Wall" type="RigidBody3D" parent="Puzzle/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.003, 1, 23.25)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/Walls/Wall"]
+transform = Transform3D(12, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/Walls/Wall"]
+transform = Transform3D(12, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("5_30s6j")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="Wall3" type="RigidBody3D" parent="Puzzle/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.25, 1, 19)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/Walls/Wall3"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/Walls/Wall3"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("5_30s6j")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="Wall4" type="RigidBody3D" parent="Puzzle/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 1, 22)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/Walls/Wall4"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/Walls/Wall4"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("5_30s6j")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="Wall5" type="RigidBody3D" parent="Puzzle/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 1, 16)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/Walls/Wall5"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/Walls/Wall5"]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("5_30s6j")
+mesh = SubResource("BoxMesh_agql7")
+
+[node name="Wall2" type="RigidBody3D" parent="Puzzle/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.003, 1, 14.75)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/Walls/Wall2"]
+transform = Transform3D(12, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_7ig1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puzzle/Walls/Wall2"]
+transform = Transform3D(12, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("5_30s6j")
 mesh = SubResource("BoxMesh_agql7")
 
 [node name="Dropoff" type="Area3D" parent="."]
