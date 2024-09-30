@@ -46,7 +46,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
 [node name="Player" parent="." instance=ExtResource("2_nisuo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Box" parent="." instance=ExtResource("3_a7euu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, 0)
