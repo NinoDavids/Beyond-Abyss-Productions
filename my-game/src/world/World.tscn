@@ -1,106 +1,47 @@
-[gd_scene load_steps=19 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=9 format=3 uid="uid://0kjricgib33x"]
 
-[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
-[ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
-[ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
-[ext_resource type="Script" path="res://src/world/object.gd" id="4_818hs"]
-[ext_resource type="Script" path="res://src/world/Dropoff.gd" id="5_7pcu5"]
-[ext_resource type="Material" uid="uid://qr5b417tj2ix" path="res://src/world/Object/Dropoff.tres" id="5_30s6j"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
+[ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="2_w3y7u"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdccv"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1s30d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_dx6o5"]
-sky_material = SubResource("ProceduralSkyMaterial_xdccv")
+[sub_resource type="Sky" id="Sky_jau47"]
+sky_material = SubResource("ProceduralSkyMaterial_1s30d")
 
-[sub_resource type="Environment" id="Environment_dsn5s"]
+[sub_resource type="Environment" id="Environment_paunv"]
 background_mode = 2
-sky = SubResource("Sky_dx6o5")
+sky = SubResource("Sky_jau47")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_858m7"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_nayhv"]
 size = Vector2(20, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgvl7"]
-albedo_texture = ExtResource("1_uvfgh")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjdnq"]
+albedo_texture = ExtResource("2_w3y7u")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k3ha8"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ymhtv"]
 points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5igqw"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npoy1"]
-points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7ig1d"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_agql7"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ev31j"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_e3yo4"]
 
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dsn5s")
+environment = SubResource("Environment_paunv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_858m7")
-surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-shape = SubResource("ConvexPolygonShape3D_k3ha8")
-
-[node name="Player" parent="." instance=ExtResource("1_33dwo")]
+[node name="Player" parent="." instance=ExtResource("1_y3247")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -7)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("BoxMesh_5igqw")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_nayhv")
+surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("ConvexPolygonShape3D_npoy1")
-
-[node name="Hookable" parent="RigidBody3D" instance=ExtResource("3_t1atl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="Object" type="RigidBody3D" parent="." groups=["Pickups"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4208, 0.876005, 0)
-collision_layer = 2
-script = ExtResource("4_818hs")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Object"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-shape = SubResource("BoxShape3D_7ig1d")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Object"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("BoxMesh_agql7")
-
-[node name="Dropoff" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24887, -0.782737, 3.90971)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("5_7pcu5")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Dropoff"]
-shape = SubResource("CylinderShape3D_ev31j")
-
-[node name="DropOffMesh" type="MeshInstance3D" parent="Dropoff"]
-material_override = ExtResource("5_30s6j")
-mesh = SubResource("CylinderMesh_e3yo4")
-skeleton = NodePath("")
-
-[connection signal="body_entered" from="Dropoff" to="Dropoff" method="_on_body_entered"]
-[connection signal="body_exited" from="Dropoff" to="Dropoff" method="_on_body_exited"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ymhtv")
