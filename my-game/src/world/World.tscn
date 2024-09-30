@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=12 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
 [ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
-[ext_resource type="PackedScene" uid="uid://b0nxxy4syxh5o" path="res://src/world/Water/Water.tscn" id="4_lgpy1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdccv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -64,6 +63,3 @@ shape = SubResource("ConvexPolygonShape3D_npoy1")
 
 [node name="Hookable" parent="RigidBody3D" instance=ExtResource("3_t1atl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="Water" parent="." instance=ExtResource("4_lgpy1")]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 52.52, 9.53674e-07, -0.86062)

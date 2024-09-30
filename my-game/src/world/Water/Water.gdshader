@@ -32,10 +32,12 @@ void vertex() {
 	VERTEX.y += height * height_scale;
 }
 
-float fresnel(float amount, vec3 normal, vec3 view)
-{
+float fresnel(float amount, vec3 normal, vec3 view) {
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
-
+}
+float edge(float depth) {
+	depth = 2.0 * depth - 1.0;
+	return near * far / (far + depth * (near - far));
 }
 
 void fragment() {
@@ -53,13 +55,19 @@ vec3 screen_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, depth_blend_power * 2.
 vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend_power);
 vec3 color = mix(screen_color * depth_color, depth_color * 0.25, depth_blend_power * 0.5);
 
+float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
+float z_pos = edge(FRAGCOORD.z);
+float z_dif = z_depth - z_pos;
+
 // Blend normal maps into one
 vec3 normal_blend = mix(texture(texture_normal,UV + time).rgb, texture(texture_normal2,UV + time2).rgb, 0.5);
 // Calculate Fresnel
 float fresnel = fresnel(5.0, NORMAL, VIEW);
 vec3 surface_color = mix(albedo, albedo2, fresnel); // Interpolate albedo values by frensel
 
-ALBEDO = mix(surface_color, color, 0.75);
+vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
+	
+ALBEDO = clamp(surface_color + depth_color_adj,vec3(0.0),vec3(1.0));
 METALLIC = metallic;
 ROUGHNESS = roughness;
 NORMAL_MAP = normal_blend;
