@@ -5,6 +5,8 @@ class_name Player
 const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/Bobber.tscn")
 @onready var player_camera: Camera3D = $Head/PlayerCamera
 @onready var fishing_rod: FishingRod = $Head/FishingRod
+@onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
+@onready var itemHolder: Node3D = $Head/ItemHolder
 
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
@@ -13,12 +15,8 @@ const JUMP_VELOCITY: float = 4.5
 @export var cast_strength: float = 5.5
 
 var current_bobber: Bobber
-
 var held_Item: RigidBody3D
 
-@onready var camera := $Head/PlayerCamera
-@onready var raycast := camera.get_node("RayCast3D")
-@onready var itemHolder := $Head/ItemHolder
 
 
 func _ready() -> void:
@@ -42,8 +40,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pickup"):
 		if held_Item == null:
 			if raycast.get_collider():
-				var pickups = get_tree().get_nodes_in_group("Pickups")
-				for pickup in pickups:
+				var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickups")
+				for pickup: Node in pickups:
 					if(raycast.get_collider() == pickup):
 						held_Item = raycast.get_collider()
 						held_Item.freeze = true

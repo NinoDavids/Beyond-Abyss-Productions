@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlrt4tl6q6sux"]
+
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_6klv2"]
+[ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_44ae0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_sgs07"]
+sky_material = SubResource("ProceduralSkyMaterial_hpxfd")
+
+[sub_resource type="Environment" id="Environment_ah44y"]
+background_mode = 2
+sky = SubResource("Sky_sgs07")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ti3f"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyijx"]
+albedo_color = Color(0.0994864, 0.308012, 0.0456467, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14ltj"]
+points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
+
+[node name="Level" type="Node3D"]
+
+[node name="Globals" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Globals"]
+environment = SubResource("Environment_ah44y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Globals"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Env" type="Node" parent="."]
+
+[node name="Area1" type="StaticBody3D" parent="Env"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area1"]
+mesh = SubResource("PlaneMesh_2ti3f")
+surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area1"]
+shape = SubResource("ConvexPolygonShape3D_14ltj")
+
+[node name="Area2" type="StaticBody3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.376)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area2"]
+mesh = SubResource("PlaneMesh_2ti3f")
+surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area2"]
+shape = SubResource("ConvexPolygonShape3D_14ltj")
+
+[node name="Bridge" parent="Env/Area2" instance=ExtResource("1_44ae0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.222404, 0, 9.70644)
+
+[node name="Actors" type="Node" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource("1_6klv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 6
+cast_strength = 7.5
