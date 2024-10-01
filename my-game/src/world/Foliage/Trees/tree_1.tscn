@@ -1,30 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://nhjpo48qdmbk"]
+[gd_scene load_steps=2 format=3 uid="uid://nhjpo48qdmbk"]
 
-[ext_resource type="PackedScene" uid="uid://rwmfgu5plhi" path="res://src/world/Foliage/Trees/Tree.fbx" id="1_m5ky8"]
-[ext_resource type="Shader" path="res://src/world/Foliage/Shaders/FoliageCode.gdshader" id="2_jvieu"]
-[ext_resource type="Texture2D" uid="uid://pyra7sx8mo2b" path="res://src/world/Foliage/Shaders/Leave_alpha_2 copy.png" id="3_hsbyd"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_45d0y"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e320i"]
-width = 256
-height = 256
-in_3d_space = true
-seamless = true
-seamless_blend_skirt = 0.184
-noise = SubResource("FastNoiseLite_45d0y")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yt4r"]
-render_priority = 0
-shader = ExtResource("2_jvieu")
-shader_parameter/color = Color(0.223, 0.6, 0.21, 1)
-shader_parameter/color2 = Color(0.769632, 0.62156, 0.147039, 1)
-shader_parameter/noiseScale = 25.3
-shader_parameter/alpha = ExtResource("3_hsbyd")
-shader_parameter/noise = SubResource("NoiseTexture2D_e320i")
+[ext_resource type="PackedScene" uid="uid://rwmfgu5plhi" path="res://src/world/Foliage/Trees/tree.fbx" id="1_m5ky8"]
 
 [node name="Tree" instance=ExtResource("1_m5ky8")]
-
-[node name="LeavesZbrush_002" parent="." index="1"]
-transform = Transform3D(0.0675754, 0.000678073, -0.997714, -0.00227563, 0.999997, 0.000525496, 0.997712, 0.00223492, 0.0675768, 1.02872, 2.62676, 0.839491)
-material_override = SubResource("ShaderMaterial_1yt4r")

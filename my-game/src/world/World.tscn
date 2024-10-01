@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=21 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="1_uvfgh"]
@@ -29,13 +29,34 @@ albedo_texture = ExtResource("2_w3y7u")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ymhtv"]
 points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
 
+[sub_resource type="BoxMesh" id="BoxMesh_5igqw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npoy1"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4c45"]
+render_priority = 0
+shader = ExtResource("7_phkm0")
+shader_parameter/Color = Color(0.585062, 0.585062, 0.585062, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tunpq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_44bg2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tia4e"]
+render_priority = 0
+shader = ExtResource("7_phkm0")
+shader_parameter/Color = Color(0.585062, 0.585062, 0.585062, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_aqlil"]
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_paunv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.551386, 0.207174, -0.808117, 0.530553, 0.660462, 0.531322, 0.643806, -0.721713, 0.254253, 0, 0, 0)
+transform = Transform3D(0.61467, 0.775913, 0.141916, -0.173362, -0.0426292, 0.983936, 0.769497, -0.629399, 0.108311, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y3247")]
@@ -95,7 +116,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sgvl7")
 shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
 [node name="Player" parent="." instance=ExtResource("1_33dwo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74042, 1, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -107,19 +128,34 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
 
 [node name="Spring" parent="." instance=ExtResource("4_olw6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12758, 1.2413, -9.09543)
-lenght = 50
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56416, 0)
+mat = SubResource("ShaderMaterial_i4c45")
+cylSize = 0.2
+height = 4.0
+mesh = SubResource("ArrayMesh_tunpq")
 spring_constant = 50.0
 max_distance = 1.0
 
-[node name="Tree" parent="." instance=ExtResource("5_2cail")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5674, 0, 0)
-
-[node name="Tree2" parent="." instance=ExtResource("5_2cail")]
-transform = Transform3D(-0.985957, -0.00153626, -0.166991, -0.00170813, 0.999998, 0.000885764, 0.16699, 0.00115857, -0.985958, 23.5674, 0, 5.75733)
-
 [node name="tree4" parent="." instance=ExtResource("6_hvoms")]
-transform = Transform3D(0.246599, 0, 0, 0, 0.246599, 0, 0, 0, 0.246599, 16.9058, 0.158669, 14.9679)
+transform = Transform3D(0.246599, 0, 0, 0, 0.246599, 0, 0, 0, 0.246599, 16.9058, 0.158669, 24.7968)
+
+[node name="tree5" parent="." instance=ExtResource("6_hvoms")]
+transform = Transform3D(0.246599, 0, 0, 0, 0.246599, 0, 0, 0, 0.246599, 1.66012, 0.158669, 24.7968)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16557, 2.63082)
+script = ExtResource("6_xxn11")
+mesh = SubResource("ArrayMesh_44bg2")
+mat = SubResource("ShaderMaterial_tia4e")
+length = 4
+radial_segments = 4
+cylSize = 0.5
+height = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.129789, 0, 0, 0, 0.129789, 0, 0, 0, 0.129789, 0, -1.26015, 0)
+mesh = SubResource("SphereMesh_aqlil")
+skeleton = NodePath("../..")
 
 [editable path="Player"]
 [editable path="Player/Head/FishingRod"]
