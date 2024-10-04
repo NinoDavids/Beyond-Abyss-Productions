@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=14 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_33dwo"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="1_uvfgh"]
 [ext_resource type="PackedScene" uid="uid://r4iom8iou2hh" path="res://src/world/Hookables/Hookable.tscn" id="3_t1atl"]
+[ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="4_162ay"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdccv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,6 +32,8 @@ points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_npoy1"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
+[sub_resource type="SphereMesh" id="SphereMesh_kbx51"]
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -41,6 +44,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_858m7")
@@ -51,9 +55,11 @@ shape = SubResource("ConvexPolygonShape3D_k3ha8")
 
 [node name="Player" parent="." instance=ExtResource("1_33dwo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -7)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_5igqw")
@@ -63,3 +69,11 @@ shape = SubResource("ConvexPolygonShape3D_npoy1")
 
 [node name="Hookable" parent="RigidBody3D" instance=ExtResource("3_t1atl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="WaterPlane" parent="." instance=ExtResource("4_162ay")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 10.4199, -0.205495, 0.931389)
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.989942, 0, 0.141471, 0, 1, 0, -0.141471, 0, 0.989942, 10.1284, -0.178509, 4.13556)
+mesh = SubResource("SphereMesh_kbx51")
+skeleton = NodePath("../RigidBody3D")
