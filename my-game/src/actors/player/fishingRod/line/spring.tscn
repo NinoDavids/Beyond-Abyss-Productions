@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cm13issun3nwf"]
 
-[ext_resource type="Script" path="res://src/actors/player/fishingRod/line/rope.gd" id="1_5hivc"]
+[ext_resource type="Script" path="res://src/actors/player/fishingRod/line/line.gd" id="1_5hivc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2pu1"]
 rough = true

@@ -1,4 +1,4 @@
-extends Node3D
+﻿extends Node3D
 
 @onready var point: RigidBody3D = $NodeTemplate
 @onready var hookable: Hookable = $"../RigidBody3D/Hookable"
