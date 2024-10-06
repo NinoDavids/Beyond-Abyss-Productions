@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://xr68c0vspwrp"]
+
+[ext_resource type="PackedScene" uid="uid://dju870v0cu7l0" path="res://src/world/Object/Rocks/Rock1.glb" id="1_5afaw"]
+
+[node name="Rock1" instance=ExtResource("1_5afaw")]
+
+[node name="Cube_003" parent="." index="0"]
+transform = Transform3D(1.86044, 0, 0, 0, 3.10073, 0, 0, 0, 1.86044, 0.454788, 2.28001, -0.226616)

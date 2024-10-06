@@ -1,20 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://0kjricgib33x"]
+[gd_scene load_steps=11 format=3 uid="uid://0kjricgib33x"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="2_w3y7u"]
+[ext_resource type="PackedScene" uid="uid://chy0evk1oibqa" path="res://src/world/Visual.tscn" id="3_tms62"]
+[ext_resource type="PackedScene" uid="uid://docixiltnordx" path="res://little_scene.tscn" id="4_7rupu"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1s30d"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3wxr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_jau47"]
-sky_material = SubResource("ProceduralSkyMaterial_1s30d")
+[sub_resource type="Sky" id="Sky_kj1m0"]
+sky_material = SubResource("ProceduralSkyMaterial_r3wxr")
 
-[sub_resource type="Environment" id="Environment_paunv"]
+[sub_resource type="Environment" id="Environment_87xrx"]
 background_mode = 2
-sky = SubResource("Sky_jau47")
+sky = SubResource("Sky_kj1m0")
 tonemap_mode = 2
-glow_enabled = true
+fog_mode = 1
+fog_density = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0237
+volumetric_fog_albedo = Color(0.67, 1, 0.9395, 1)
+volumetric_fog_emission = Color(0.190762, 0.190762, 0.190762, 1)
+volumetric_fog_ambient_inject = 0.2
+volumetric_fog_sky_affect = 0.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nayhv"]
 size = Vector2(20, 20)
@@ -27,17 +36,19 @@ points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10
 
 [node name="World" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_paunv")
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_87xrx")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.768235, -0.153318, 0.621537, 0.399764, 0.643425, 0.652836, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y3247")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-0.56706, 0, 4.9574e-08, 0, 0.56706, 0, -4.9574e-08, 0, -0.56706, 0, 1.76541, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182869, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_nayhv")
@@ -45,3 +56,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
+
+[node name="Node3D" parent="." instance=ExtResource("3_tms62")]
+visible = false
+
+[node name="LittleScene" parent="." instance=ExtResource("4_7rupu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.40561, 136.43)
