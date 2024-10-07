@@ -16,9 +16,9 @@ var current_bobber: Bobber
 
 var held_Item: RigidBody3D
 
-@onready var camera := $Head/PlayerCamera
-@onready var raycast := camera.get_node("RayCast3D")
-@onready var itemHolder := $Head/ItemHolder
+@onready var camera: Camera3D = $Head/PlayerCamera
+@onready var raycast: RayCast3D = camera.get_node("RayCast3D")
+@onready var itemHolder: Node3D = $Head/ItemHolder
 
 
 func _ready() -> void:
@@ -27,40 +27,39 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("quitEditor")):
 		get_tree().quit();
-		
+
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	
 	if event.is_action_pressed("Drop"):
-		if held_Item:
-			held_Item.freeze = false
-			held_Item.collision_mask = 1
-			held_Item = null
-	
+			if held_Item:
+				held_Item.freeze = false
+				held_Item.collision_mask = 1
+				held_Item = null
+
 	if event.is_action_pressed("Pickup"):
 		if held_Item == null:
 			if raycast.get_collider():
-				var pickups = get_tree().get_nodes_in_group("Pickups")
-				for pickup in pickups:
+				var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickups")
+				for pickup: RigidBody3D in pickups:
 					if(raycast.get_collider() == pickup):
 						held_Item = raycast.get_collider()
 						held_Item.freeze = true
 						held_Item.collision_mask = 2
-			
+
 	if held_Item:
 		held_Item.global_transform.origin = itemHolder.global_transform.origin
-	
+
 	if event.is_action_pressed("cast_hook") and !current_bobber:
 		cast_bobber()
-	
+
 	if event.is_action_pressed("cancel_hook"):
 		fishing_rod.set_active(false)
 
 func cast_bobber() -> void:
 	fishing_rod.set_active(true)
-	
+
 	var clone: Bobber = BOBBER.instantiate()
 	current_bobber = clone
 	current_bobber.player = self
@@ -78,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		
+
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:

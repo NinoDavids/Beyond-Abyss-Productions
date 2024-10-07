@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm13issun3nwf"]
+
+[ext_resource type="Script" path="res://src/actors/player/fishingRod/line/rope.gd" id="1_d3dej"]
+[ext_resource type="Shader" path="res://src/actors/player/fishingRod/line/spring.gdshader" id="2_ueblg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhw0v"]
+render_priority = 0
+shader = ExtResource("2_ueblg")
+shader_parameter/Color = Color(0.114897, 0.114897, 0.114897, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2pu1"]
+rough = true
+absorbent = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1ogr5"]
+height = 0.494209
+
+[node name="Rope" type="Node3D"]
+script = ExtResource("1_d3dej")
+width = 0.02
+material = SubResource("ShaderMaterial_vhw0v")
+
+[node name="NodeTemplate" type="RigidBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_e2pu1")
+freeze = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NodeTemplate"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1ogr5")
+
+[connection signal="body_entered" from="NodeTemplate" to="." method="_on_node_template_body_entered"]

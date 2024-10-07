@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm13issun3nwf"]
+
+[ext_resource type="Script" path="res://src/actors/player/scripts/rope.gd" id="1_5hivc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v2xsx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_47vn6"]
+
+[node name="Spring" type="Node3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.617266, 1.2413, -6.77733)
+script = ExtResource("1_5hivc")
+
+[node name="NodeTemplate" type="RigidBody3D" parent="."]
+transform = Transform3D(0.996537, 0.0831561, 3.02784e-10, -0.0831561, 0.996537, 7.26974e-09, 3.02784e-10, -7.26974e-09, 1, -0.359811, 0.809421, 0)
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NodeTemplate"]
+shape = SubResource("SphereShape3D_v2xsx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NodeTemplate/CollisionShape3D"]
+mesh = SubResource("SphereMesh_47vn6")
