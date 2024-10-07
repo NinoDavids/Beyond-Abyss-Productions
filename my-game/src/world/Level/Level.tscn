@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlrt4tl6q6sux"]
+[gd_scene load_steps=18 format=3 uid="uid://dlrt4tl6q6sux"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_6klv2"]
 [ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_44ae0"]
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_7rywk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,6 +25,29 @@ albedo_color = Color(0.0994864, 0.308012, 0.0456467, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14ltj"]
 points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ut8px"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k35bo"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bci2x"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m2xao"]
+points = PackedVector3Array(-0.499921, -0.985089, -0.5, 0.499978, 0.954305, 0.5, 0.5, 0.954347, -0.484149, -0.499921, 0.985089, -0.5, -0.484049, -0.954305, 0.5, 0.5, -0.954347, -0.484149, -0.484049, 0.954305, 0.5, 0.499978, -0.954305, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rs83v"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_euwdq"]
+points = PackedVector3Array(0.5, 1.45426, 0.5, -0.5, -1.45426, -0.5, -0.5, -1.45426, 0.5, -0.5, 1.45426, -0.5, 0.5, -1.45426, -0.5, 0.5, -1.45426, 0.5, -0.5, 1.45426, 0.5, 0.5, 1.45426, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1m7fk"]
+size = Vector3(20, 20, 20)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wbguo"]
+points = PackedVector3Array(-10, -9.99804, -9.99804, 10, 9.99804, 9.99804, 10, -9.99804, 9.99804, 10, 9.99804, -9.99804, -10, 9.99804, 9.99804, 10, -9.99804, -9.99804, -10, -9.99804, 9.99804, -10, 9.99804, -9.99804)
 
 [node name="Level" type="Node3D"]
 
@@ -64,9 +88,75 @@ shape = SubResource("ConvexPolygonShape3D_14ltj")
 [node name="Bridge" parent="Env/Area2" instance=ExtResource("1_44ae0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.222404, 0, 9.70644)
 
+[node name="SmallRock" type="RigidBody3D" parent="Env/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9396, 0.41439, -5.34026)
+collision_layer = 4
+collision_mask = 4
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area2/SmallRock"]
+mesh = SubResource("BoxMesh_ut8px")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area2/SmallRock"]
+shape = SubResource("ConvexPolygonShape3D_k35bo")
+
+[node name="RigidHookable" parent="Env/Area2/SmallRock" node_paths=PackedStringArray("body") instance=ExtResource("2_7rywk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+body = NodePath("..")
+
+[node name="TallRock" type="StaticBody3D" parent="Env/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.89236)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area2/TallRock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_bci2x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area2/TallRock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_m2xao")
+
+[node name="VTallRock" type="RigidBody3D" parent="Env/Area2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01531, 1.43858, -9.2551)
+collision_layer = 4
+collision_mask = 4
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area2/VTallRock"]
+mesh = SubResource("BoxMesh_rs83v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area2/VTallRock"]
+shape = SubResource("ConvexPolygonShape3D_euwdq")
+
+[node name="RigidHookable" parent="Env/Area2/VTallRock" node_paths=PackedStringArray("body") instance=ExtResource("2_7rywk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+body = NodePath("..")
+
+[node name="Area3" type="StaticBody3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.89844, -47.376)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.197848, 0)
+mesh = SubResource("BoxMesh_1m7fk")
+surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area3"]
+shape = SubResource("ConvexPolygonShape3D_wbguo")
+
 [node name="Actors" type="Node" parent="."]
 
 [node name="Player" parent="Actors" instance=ExtResource("1_6klv2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
 collision_mask = 6
 cast_strength = 7.5
