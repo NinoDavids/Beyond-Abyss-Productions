@@ -1,4 +1,4 @@
-﻿extends Node3D
+extends Node3D
 
 @onready var point: RigidBody3D = $NodeTemplate
 @onready var hookable: Hookable = $"../RigidBody3D/Hookable"
@@ -17,7 +17,7 @@ var length: int = 4
 var mesh: SurfaceTool = SurfaceTool.new()
 var meshInstance: MeshInstance3D = MeshInstance3D.new()
 
-
+@export var hook: MeshInstance3D
 @export_category("Rope physics")
 @export_range(50, 1000, 10, "or_greater") var spring_constant: float = 400
 @export_range(0, 100, 1.0) var damping_constant: float = 10
@@ -32,7 +32,7 @@ func _ready() -> void:
 	connect_nodes()
 
 	for spring: Spring in springs:
-		print_debug(spring._to_string())
+		print(spring._to_string())
 
 func _physics_process(_delta: float) -> void:
 	for spring: Spring in springs:
@@ -46,6 +46,8 @@ func _physics_process(_delta: float) -> void:
 	#if(hookable.is_hooked):
 		#springs[0].point_one.global_position = hookable.global_position
 		#springs[0].point_one.sleeping = true
+	springs[0].point_one.global_position = hook.global_position
+	springs[0].point_one.sleeping = true
 
 	create_rope_mesh()
 
