@@ -37,4 +37,3 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("CylinderShape3D_1ogr5")
 
 [connection signal="body_entered" from="NodeTemplate" to="." method="_on_node_template_body_entered"]
-[connection signal="body_exited" from="NodeTemplate" to="." method="_on_node_template_body_exited"]

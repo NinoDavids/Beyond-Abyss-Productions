@@ -11,12 +11,12 @@ var damping_constant: float = 1.0
 ## The maximum distance between [member point_one] and [member point_two]
 var max_distance: float = 0.1
 
-func _init(point_one: RigidBody3D, point_two: RigidBody3D, spring_constant: float, damping_constant: float, max_distance: float) -> void:
-	self.point_one = point_one
-	self.point_two = point_two
-	self.damping_constant = damping_constant
-	self.spring_constant = spring_constant
-	self.max_distance = max_distance
+func _init(point_1: RigidBody3D, point_2: RigidBody3D, spring_const: float, damping_const: float, max_dist: float) -> void:
+	self.point_one = point_1
+	self.point_two = point_2
+	self.damping_constant = damping_const
+	self.spring_constant = spring_const
+	self.max_distance = max_dist
 
 ## Applies the forces to the nodes
 func move() -> void:

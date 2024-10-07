@@ -1,13 +1,13 @@
 extends Node3D
 
 @onready var point: RigidBody3D = $NodeTemplate
-@onready var hookable: Hookable = $"../RigidBody3D/Hookable"
+#@onready var hookable: Hookable = $"../RigidBody3D/Hookable"
 @onready var bobber_mesh: MeshInstance3D = $"../Player/Head/FishingRod/BobberMesh"
 
 var nodes: Array[RigidBody3D]
 var springs: Array[Spring]
 
-@onready var cube: MeshInstance3D = $MeshInstance3D
+@export var cube: MeshInstance3D
 
 var length: int = 4
 @export_category("Mesh")
@@ -31,8 +31,8 @@ func _ready() -> void:
 	spawn_nodes()
 	connect_nodes()
 
-	for spring: Spring in springs:
-		print(spring._to_string())
+	#for spring: Spring in springs:
+		#print(spring._to_string())
 
 func _physics_process(_delta: float) -> void:
 	for spring: Spring in springs:
@@ -61,7 +61,6 @@ func spawn_nodes() -> void:
 		var new_point: RigidBody3D = point.duplicate()
 		new_point.freeze = false
 		new_point.name = "node %s" % (l+1)
-		new_point.global_position += Vector3(l/5, 10, l/5)
 		nodes.append(new_point)
 		add_child(new_point, true)
 
@@ -92,7 +91,7 @@ func connect_nodes() -> void:
 
 ## @experimental: This might not be needed i implemented this for performance benefits while nothing happens to the rope
 ## This will check if anything interacts with the balls inside the line. If it does it will update the value that checks if the line should be frozen or not
-func _on_node_template_body_entered() -> void:
+func _on_node_template_body_entered(_body: Node) -> void:
 	last_update = Time.get_unix_time_from_system()
 
 ## This function will create the mesh for the rope.
@@ -105,18 +104,22 @@ func create_rope_mesh() -> void:
 		var point_one: Vector3 = spring.point_one.position
 		var point_two: Vector3 = spring.point_two.position
 
-		var dir = (point_one - point_two).normalized()
-		var perpendicular = dir.cross(Vector3.DOWN).normalized() * width
+		var dir: Vector3 = (point_one - point_two).normalized()
+		var perpendicular: Vector3 = dir.cross(Vector3.DOWN).normalized() * width
 
 		mesh.add_vertex(point_one + perpendicular)
 		mesh.add_vertex(point_one - perpendicular)
 		mesh.add_vertex(point_two + perpendicular)
 		mesh.add_vertex(point_two - perpendicular)
 
-	mesh.generate_normals(true)
-	mesh.generate_tangents()
+	#mesh.generate_normals(true)
+	#mesh.generate_tangents()
 	mesh.set_material(material)
 	meshInstance.mesh = mesh.commit()
-
-
-	add_child(meshInstance)
+	
+	if meshInstance.get_parent():
+		meshInstance.reparent(self)
+	else:
+		add_child(meshInstance)
+	#meshInstance.reparent(self)
+	#add_child(meshInstance)

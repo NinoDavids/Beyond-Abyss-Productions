@@ -16,9 +16,9 @@ var current_bobber: Bobber
 
 var held_Item: RigidBody3D
 
-@onready var camera := $Head/PlayerCamera
-@onready var raycast := camera.get_node("RayCast3D")
-@onready var itemHolder := $Head/ItemHolder
+@onready var camera: Camera3D = $Head/PlayerCamera
+@onready var raycast: RayCast3D = camera.get_node("RayCast3D")
+@onready var itemHolder: Node3D = $Head/ItemHolder
 
 
 func _ready() -> void:
@@ -41,8 +41,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pickup"):
 		if held_Item == null:
 			if raycast.get_collider():
-				var pickups = get_tree().get_nodes_in_group("Pickups")
-				for pickup in pickups:
+				var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickups")
+				for pickup: RigidBody3D in pickups:
 					if(raycast.get_collider() == pickup):
 						held_Item = raycast.get_collider()
 						held_Item.freeze = true
