@@ -1,10 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=11 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
-[ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_jnjqe"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
-[ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/RigidHookables/Lilypad/Lilypad.tscn" id="5_q7nig"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1s30d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -59,14 +57,6 @@ transform = Transform3D(0.590101, 0, 0, 0, 0.590101, 0, 0, 0, 0.590101, 6.84769,
 mesh = SubResource("SphereMesh_4gqku")
 
 [node name="SpawnPoint" type="Node3D" parent="."]
-
-[node name="Water" parent="." instance=ExtResource("4_jnjqe")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 15, -1, 0)
-
-[node name="Lilypad" parent="." instance=ExtResource("5_q7nig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6574, -0.690825, -0.690504)
-disable_mode = 1
-collision_mask = 10
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_8mvip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
