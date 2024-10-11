@@ -2,15 +2,18 @@ extends Node3D
 
 var AppID = "2719760"
 
+@onready var player = $Player
+var time_elapsed: float
+
 func _init() -> void:
 	OS.set_environment("SteamAppID", AppID)
 	OS.set_environment("SteamGameID", AppID)
 	
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Steam.steamInit()
 	var isRunning = Steam.isSteamRunning()
 	setAchievement("ACH_STARTGAME")
+  get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
 
 func setAchievement(ach):
 	var status = Steam.getAchievement(ach)
@@ -19,6 +22,10 @@ func setAchievement(ach):
 	Steam.setAchievement(ach)
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(delta):
+	time_elapsed += delta
+	var time_to_int = int(time_elapsed)
+
+	if time_to_int >= 3:
+		get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
+		time_elapsed = 0.0

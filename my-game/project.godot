@@ -35,12 +35,20 @@ window/size/viewport_height=1080
 
 project/assembly_name="My Game"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Productions/my-game/movie.png"
+
 [file_customization]
 
 folder_colors={
 "res://src/actors/enemies/": "red",
 "res://src/actors/player/": "purple"
 }
+
+[global_group]
+
+enemies=""
 
 [input]
 
@@ -104,3 +112,4 @@ Drop={
 3d_physics/layer_1="everything else"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Spring"
+3d_physics/layer_4="Water"
