@@ -1,11 +1,26 @@
 extends Node3D
 
-@onready var player = $Player
+var AppID = "2719760"
 
+@onready var player = $Player
 var time_elapsed: float
 
+func _init() -> void:
+	OS.set_environment("SteamAppID", AppID)
+	OS.set_environment("SteamGameID", AppID)
+	
 func _ready() -> void:
+	Steam.steamInit()
+	var isRunning = Steam.isSteamRunning()
+	setAchievement("ACH_STARTGAME")
 	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
+
+func setAchievement(ach):
+	var status = Steam.getAchievement(ach)
+	if status["achieved"]:
+		return
+	Steam.setAchievement(ach)
+	
 
 func _process(delta):
 	time_elapsed += delta
