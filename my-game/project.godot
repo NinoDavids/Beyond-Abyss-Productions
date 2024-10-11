@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="My Game"
+config/name="Lucky Tabi"
 run/main_scene="res://src/world/World.tscn"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -18,7 +18,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://misc/Logo/Banner.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://misc/Logo/Logo.png"
 boot_splash/minimum_display_time=100
 
 [debug]
@@ -45,6 +45,10 @@ folder_colors={
 "res://src/actors/enemies/": "red",
 "res://src/actors/player/": "purple"
 }
+
+[global_group]
+
+enemies=""
 
 [input]
 
