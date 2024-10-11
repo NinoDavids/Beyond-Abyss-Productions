@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://0kjricgib33x"]
+[gd_scene load_steps=10 format=3 uid="uid://0kjricgib33x"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b64bg6rxpjxrr" path="res://icon.svg" id="2_w3y7u"]
-[ext_resource type="PackedScene" uid="uid://chy0evk1oibqa" path="res://src/world/Visual.tscn" id="3_tms62"]
 [ext_resource type="PackedScene" uid="uid://docixiltnordx" path="res://little_scene.tscn" id="4_7rupu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3wxr"]
@@ -56,9 +55,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
-
-[node name="Node3D" parent="." instance=ExtResource("3_tms62")]
-visible = false
 
 [node name="LittleScene" parent="." instance=ExtResource("4_7rupu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.40561, 136.43)

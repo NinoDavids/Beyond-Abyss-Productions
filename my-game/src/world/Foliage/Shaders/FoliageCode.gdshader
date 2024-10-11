@@ -1,6 +1,7 @@
 shader_type spatial;
-render_mode  cull_disabled,diffuse_burley, depth_prepass_alpha, shadows_disabled,alpha_to_coverage_and_one, depth_draw_always, specular_toon, ensure_correct_normals ;
+render_mode diffuse_burley, depth_prepass_alpha, shadows_disabled,  specular_toon, ensure_correct_normals,fog_disabled ;
 
+ uniform bool far = false;
 
 group_uniforms color;
 uniform sampler2D alpha;
@@ -23,23 +24,26 @@ void vertex() {
 		NORMAL = -NORMAL;
 	}
 	
-	worldPos = (MODEL_MATRIX * vec4(VERTEX, 0.0)).xyz;
+			
+		worldPos = (MODEL_MATRIX * vec4(VERTEX, 0.0)).xyz;
 
-	vec3 beshToBillBoard = (vec4(vec3(UV, 0.0), 0.0) * VIEW_MATRIX).xyz;
-	vec3  billBoardToCamera = (vec4(beshToBillBoard, .0) * MODEL_MATRIX).xyz;
+		vec3 beshToBillBoard = (vec4(vec3(UV, 0.0), 0.0) * VIEW_MATRIX).xyz;
+		vec3  billBoardToCamera = (vec4(beshToBillBoard, .0) * MODEL_MATRIX).xyz;
+		
+		float offset = TIME * windSpeed;
+		float noise_tex = texture(WindNoise, vec2(worldPos.x-offset)).r;
+		noise_tex -= .5;
+		noise_tex *= windStrenght;
+		VERTEX += billBoardToCamera + noise_tex * length(VERTEX.y) * length(VERTEX.xz) * windDirection;
 	
-	float offset = TIME * windSpeed;
-	float noise_tex = texture(WindNoise, vec2(worldPos.x-offset)).r;
-	noise_tex -= .5;
-	noise_tex *= windStrenght;
-	VERTEX += billBoardToCamera + noise_tex * length(VERTEX.y) * length(VERTEX.xz) * windDirection;
+
 	
 
 }
 
 void fragment() {
    	ALPHA = texture(alpha, UV).r;
-   	ALPHA = step(0.1, ALPHA);
+   	ALPHA = step(.1, ALPHA);
 
 	vec3 noiseLevel = texture(noise, worldPos.xz / noiseScale).rgb;
 
