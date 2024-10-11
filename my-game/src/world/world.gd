@@ -13,7 +13,7 @@ func _ready() -> void:
 	Steam.steamInit()
 	var isRunning = Steam.isSteamRunning()
 	setAchievement("ACH_STARTGAME")
-  get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
+	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
 
 func setAchievement(ach):
 	var status = Steam.getAchievement(ach)
