@@ -7,7 +7,7 @@
 size = Vector3(1, 0.0466003, 1)
 
 [node name="Water" type="Area3D"]
-collision_layer = 8
+collision_layer = 16
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_scf8i")
