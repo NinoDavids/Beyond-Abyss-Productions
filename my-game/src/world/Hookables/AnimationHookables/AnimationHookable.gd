@@ -7,9 +7,10 @@ signal is_completed()
 @export var animation_name: StringName
 
 func _ready() -> void:
-	animation_player.play(animation_name)
-	animation_player.pause()
-
+	#animation_player.play(animation_name)
+	#animation_player.pause()
+	pass
+	
 func reel_in() -> void:
 	animation_player.play(animation_name)
 
