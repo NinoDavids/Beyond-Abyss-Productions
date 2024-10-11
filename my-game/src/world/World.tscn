@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
+[ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
+
 [ext_resource type="PackedScene" uid="uid://cm13issun3nwf" path="res://src/actors/player/fishingRod/line/spring.tscn" id="4_olw6s"]
 [ext_resource type="PackedScene" uid="uid://eavcmkkb2idj" path="res://src/actors/Enemy/Enemy.tscn" id="5_0ptj6"]
 
@@ -60,7 +62,18 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y3247")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_strength = 5.5
 
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.950815, 0)
+mesh = SubResource("PlaneMesh_nayhv")
+surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08141, 0)
+shape = SubResource("ConvexPolygonShape3D_ymhtv")
 [node name="Rope" parent="." node_paths=PackedStringArray("cube", "hook") instance=ExtResource("4_olw6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59364, -4.99016)
 cube = NodePath("../MeshInstance3D")
@@ -73,5 +86,9 @@ max_distance = 0.1
 transform = Transform3D(0.590101, 0, 0, 0, 0.590101, 0, 0, 0, 0.590101, 6.84769, 0.472408, -5.4801)
 mesh = SubResource("SphereMesh_4gqku")
 
+[node name="SpawnPoint" type="Node3D" parent="."]
+
+[node name="RigidBody3D" parent="." instance=ExtResource("5_8mvip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
 [node name="Enemy" parent="." instance=ExtResource("5_0ptj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92013, 0.359142, 6.08446)
