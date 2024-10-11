@@ -22,3 +22,4 @@ shape = SubResource("CylinderShape3D_0i6ni")
 [node name="RigidHookable" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_t6f3o")]
 transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0)
 body = NodePath("..")
+to_player = true
