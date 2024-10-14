@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Area3D
 
 @export var plane_size: Vector2 = Vector2(1,1)
@@ -7,9 +7,6 @@ var collision_size: Vector3
 @onready var water_plane: MeshInstance3D = $WaterPlane
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 func _process(_delta: float) -> void:
 	collision_size = Vector3(plane_size.x, 0.1, plane_size.y)
@@ -18,7 +15,7 @@ func _process(_delta: float) -> void:
 			water_plane.mesh.size = plane_size
 		if collision_shape_3d.shape.size != collision_size:
 			collision_shape_3d.shape.size = collision_size
-
+	
 func player_hits_water(player: CharacterBody3D) -> void:
 	if player.find_child("Hitbox"):
 		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox
