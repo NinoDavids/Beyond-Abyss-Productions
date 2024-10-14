@@ -1,13 +1,17 @@
 extends MeshInstance3D
 
+@export var player: Player
+
 var material: ShaderMaterial
 var noise: Image
 
 var noise_scale: float
 var wave_speed: float
 var height_scale: float
+var time: float 
 
-var time: float
+
+const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,3 +33,24 @@ func get_height(world_position: Vector3) -> float:
 
 	var pixel_pos: Vector2 = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
 	return (global_position.y + 0.13  ) + noise.get_pixelv(pixel_pos).r * height_scale
+
+
+func _on_timer_timeout() -> void:
+	var plane: PlaneMesh = self.mesh
+
+	var rand = RandomNumberGenerator.new()
+	rand.randomize()
+
+	var random_x = rand.randf_range(-plane.size.x / 2, plane.size.x / 2)
+	var random_z =  rand.randf_range(-plane.size.y / 2, plane.size.y / 2)
+
+	var new_fish: Flying_fish = FLYING_FISH.instantiate() as RigidBody3D
+	new_fish.position = Vector3(random_x, 0, random_z)
+	
+	
+	print(random_x)
+	if (random_x > 0):
+		new_fish.apply_force_direction(Vector3(randf_range(-4, -7),7,0), player)
+	else:
+		new_fish.apply_force_direction(Vector3(randf_range(4, 7),7,0), player)
+	add_child(new_fish)

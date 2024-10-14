@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b32a5de413xw6"]
+[gd_scene load_steps=4 format=3 uid="uid://b32a5de413xw6"]
+
+[ext_resource type="Script" path="res://src/actors/Fish/flying_fish.gd" id="1_opvsi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e1mxm"]
 
@@ -8,9 +10,14 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [node name="Flying Fish" type="RigidBody3D"]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_opvsi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0705003, 0, 0, 0, 0.054789, -0.0443673, 0, 0.0443673, 0.054789, -0.001342, -0.160093, 0.0977771)
+mesh = SubResource("CapsuleMesh_e1mxm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.265519, 0, 0, 0, 0.265519, -1.77636e-15, 0, 1.77636e-15, 0.265519, 0, 0, -1.19209e-07)
+transform = Transform3D(5.07323e-16, -1.16062e-08, 0.265519, -0.265519, -1.16062e-08, 0, 1.16062e-08, -0.265519, -1.16062e-08, 0, 0, -1.19209e-07)
 mesh = SubResource("CapsuleMesh_e1mxm")
 skeleton = NodePath("../..")
 
