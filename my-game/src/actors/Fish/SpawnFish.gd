@@ -2,7 +2,7 @@ extends MeshInstance3D
 
 var mesh_data: MeshDataTool = MeshDataTool.new()
 
-@onready var fish: RigidBody3D = $RigidBody3D
+const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn")
 @onready var timer: Timer = $Timer
 
 
@@ -29,7 +29,7 @@ func _on_timer_timeout() -> void:
 	var random_x = rand.randf_range(-plane.size.x / 2, plane.size.x / 2)
 	var random_z =  rand.randf_range(-plane.size.y / 2, plane.size.y / 2)
 
-	var new_fish: RigidBody3D = fish.duplicate()
+	var new_fish: RigidBody3D = FLYING_FISH.instantiate() as RigidBody3D
 	new_fish.position = Vector3(random_x, 0, random_z)
 	
 	
