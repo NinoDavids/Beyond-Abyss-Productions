@@ -116,7 +116,7 @@ func create_rope_mesh() -> void:
 	#mesh.generate_tangents()
 	mesh.set_material(material)
 	meshInstance.mesh = mesh.commit()
-	
+
 	if meshInstance.get_parent():
 		meshInstance.reparent(self)
 	else:
