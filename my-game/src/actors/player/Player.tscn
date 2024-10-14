@@ -12,7 +12,10 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6730j"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("1_v30fi")
+cast_strength = 5.985
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_7lrbt")
