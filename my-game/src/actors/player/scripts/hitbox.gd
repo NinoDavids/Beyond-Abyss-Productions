@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var regen_timer: Timer = $RegenTimer
 
-@export var max_health: float = 100.0
+@export var max_health: float = 3
 var current_health: float
 
 func _ready() -> void:
@@ -13,9 +13,14 @@ func _on_body_entered(_body: Node3D) -> void:
 	regen_timer.start()
 
 func take_damage() -> void:
-	current_health -= 10
-	print_debug(current_health)
+	current_health -= 1
+	EventManager.player_damaged.emit()
 
 
 func _on_regen_timer_timeout() -> void:
-	print("Timer ended.")
+	EventManager.player_regenerating.emit()
+
+
+func _on_area_entered(_area: Area3D) -> void:
+	take_damage()
+	regen_timer.start()

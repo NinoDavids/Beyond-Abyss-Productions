@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b217evb28eyvu"]
+
+[ext_resource type="Shader" path="res://src/shaders/HealthShader/playerhealth.gdshader" id="1_dbtl7"]
+[ext_resource type="Script" path="res://src/shaders/HealthShader/health_shader_rect.gd" id="2_b20j4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_et2ul"]
+shader = ExtResource("1_dbtl7")
+shader_parameter/brightness = 3.0
+shader_parameter/alpha = 0.0
+
+[node name="HealthShaderRect" type="ColorRect"]
+material = SubResource("ShaderMaterial_et2ul")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_b20j4")
