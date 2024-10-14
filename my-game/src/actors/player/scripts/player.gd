@@ -21,6 +21,8 @@ var held_Item: RigidBody3D
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	EventManager.anim_hookable_finished.connect(cancel_hook)
+	EventManager.player_respawned.connect(respawn)
 
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("quitEditor")):
@@ -53,7 +55,10 @@ func _input(event: InputEvent) -> void:
 		cast_bobber()
 
 	if event.is_action_pressed("cancel_hook"):
-		fishing_rod.set_active(false)
+		cancel_hook()
+
+func cancel_hook() -> void:
+	fishing_rod.set_active(false)
 
 func cast_bobber() -> void:
 	fishing_rod.set_active(true)
