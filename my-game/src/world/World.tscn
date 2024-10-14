@@ -83,4 +83,4 @@ mesh = SubResource("SphereMesh_4gqku")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
 
 [node name="Node3D" parent="." instance=ExtResource("7_p80hx")]
-transform = Transform3D(12.2438, 0, 0, 0, 12.2438, 0, 0, 0, 12.2438, 0, -0.850997, 26.3482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.850997, 26.3482)
