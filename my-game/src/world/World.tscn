@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=16 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
+[ext_resource type="PackedScene" uid="uid://cink7dlm6dmg5" path="res://src/world/Object/Lillypad.tscn" id="6_0rvkr"]
 [ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="7_p80hx"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
@@ -33,6 +34,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_4gqku"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xr0n"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_08khl")
@@ -82,5 +85,13 @@ mesh = SubResource("SphereMesh_4gqku")
 [node name="RigidBody3D" parent="." instance=ExtResource("5_8mvip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
 
-[node name="Node3D" parent="." instance=ExtResource("7_p80hx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.850997, 26.3482)
+[node name="FishSpawn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_p80hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0230026, -0.815658, 20.5758)
+player = NodePath("../Player")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.07248, 16.8816)
+mesh = SubResource("BoxMesh_5xr0n")
+
+[node name="Lilypad" parent="." instance=ExtResource("6_0rvkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46357, -0.73975, 14.4429)
