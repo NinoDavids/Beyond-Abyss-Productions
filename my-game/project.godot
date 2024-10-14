@@ -54,6 +54,7 @@ folder_colors={
 
 enemies=""
 Pickups=""
+bobber=""
 
 [input]
 

@@ -8,7 +8,7 @@ var time_elapsed: float
 func _init() -> void:
 	OS.set_environment("SteamAppID", AppID)
 	OS.set_environment("SteamGameID", AppID)
-	
+
 func _ready() -> void:
 	Steam.steamInit()
 	var isRunning = Steam.isSteamRunning()
@@ -20,7 +20,7 @@ func setAchievement(ach):
 	if status["achieved"]:
 		return
 	Steam.setAchievement(ach)
-	
+
 
 func _process(delta):
 	time_elapsed += delta

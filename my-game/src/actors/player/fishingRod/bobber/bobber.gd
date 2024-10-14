@@ -12,7 +12,7 @@ func _input(event: InputEvent) -> void:
 
 func set_hooked(pos: Vector3) -> void:
 	global_position = pos
-	
+
 
 func handleAnimHookableFinished() -> void:
 	queue_free()

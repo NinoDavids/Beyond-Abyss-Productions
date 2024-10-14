@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 			water_plane.mesh.size = plane_size
 		if collision_shape_3d.shape.size != collision_size:
 			collision_shape_3d.shape.size = collision_size
-	
+
 func player_hits_water(player: CharacterBody3D) -> void:
 	if player.find_child("Hitbox"):
 		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox

@@ -3,6 +3,8 @@ class_name Player
 
 @onready var head: Node3D = $Head
 const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/Bobber.tscn")
+const SPRING: PackedScene = preload("res://src/actors/player/fishingRod/line/spring.tscn")
+var spring
 @onready var player_camera: Camera3D = $Head/PlayerCamera
 @onready var fishing_rod: FishingRod = $Head/FishingRod
 @onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
@@ -57,20 +59,28 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cancel_hook"):
 		cancel_hook()
 
+
 func cancel_hook() -> void:
 	fishing_rod.set_active(false)
+	if spring != null:
+		spring.queue_free()
 
 func cast_bobber() -> void:
 	fishing_rod.set_active(true)
-
 	var clone: Bobber = BOBBER.instantiate()
 	current_bobber = clone
 	current_bobber.player = self
 	get_tree().current_scene.add_child(clone)
+	clone.lock_rotation
+	clone.add_to_group("bobber")
 	clone.global_position = fishing_rod.global_position ## Get the position of the rod
 	var direction: Vector3 = -player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
 	direction.y += 1 ## Moves the aim a bit more upwards
 	clone.apply_impulse(direction * cast_strength)
+	spring = SPRING.instantiate()
+	spring.global_position = clone.global_position
+	add_sibling(spring)
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
