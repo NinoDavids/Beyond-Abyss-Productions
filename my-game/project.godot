@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Lucky Tabi"
-run/main_scene="res://src/world/World.tscn"
+run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
