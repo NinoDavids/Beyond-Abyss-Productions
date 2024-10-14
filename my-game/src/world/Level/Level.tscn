@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlrt4tl6q6sux"]
+[gd_scene load_steps=20 format=3 uid="uid://dlrt4tl6q6sux"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_6klv2"]
 [ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_44ae0"]
 [ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_7rywk"]
+[ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_sd25o"]
+[ext_resource type="PackedScene" uid="uid://bkpu5ql8s1t40" path="res://src/world/Foliage/Trees/tree_4.tscn" id="5_qnkq1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -154,9 +156,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area3"]
 shape = SubResource("ConvexPolygonShape3D_wbguo")
 
+[node name="Water" parent="Env" instance=ExtResource("4_sd25o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -13.377)
+plane_size = Vector2(20, 10)
+
 [node name="Actors" type="Node" parent="."]
 
 [node name="Player" parent="Actors" instance=ExtResource("1_6klv2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
 collision_mask = 6
 cast_strength = 7.5
+
+[node name="tree4" parent="." instance=ExtResource("5_qnkq1")]
+transform = Transform3D(0.220598, 0, 0, 0, 0.220598, 0, 0, 0, 0.220598, -8.33062, 0, -19.9656)
+
+[node name="tree5" parent="." instance=ExtResource("5_qnkq1")]
+transform = Transform3D(0.220598, 0, 0, 0, 0.220598, 0, 0, 0, 0.220598, 6.4184, 4.76837e-07, 4.89444)
