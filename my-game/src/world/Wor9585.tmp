@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://n12y1hxagm7"]
+
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
+[ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
+[ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_jnjqe"]
+[ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/RigidHookables/Lilypad/Lilypad.tscn" id="5_q7nig"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1s30d"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jau47"]
+sky_material = SubResource("ProceduralSkyMaterial_1s30d")
+
+[sub_resource type="Environment" id="Environment_paunv"]
+background_mode = 2
+sky = SubResource("Sky_jau47")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nayhv"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjdnq"]
+albedo_texture = ExtResource("2_w3y7u")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ymhtv"]
+points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4gqku"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_paunv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_y3247")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+cast_strength = 5.5
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.950815, 0)
+mesh = SubResource("PlaneMesh_nayhv")
+surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08141, 0)
+shape = SubResource("ConvexPolygonShape3D_ymhtv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.590101, 0, 0, 0, 0.590101, 0, 0, 0, 0.590101, 6.84769, 0.472408, -5.4801)
+mesh = SubResource("SphereMesh_4gqku")
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+
+[node name="Water" parent="." instance=ExtResource("4_jnjqe")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 15, -1, 0)
+
+[node name="Lilypad" parent="." instance=ExtResource("5_q7nig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6574, -0.690825, -0.690504)
