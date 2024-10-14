@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=14 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
+[ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_jnjqe"]
 [ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/PhysicsBodyHookables/Sewer/Sewer.tscn" id="4_mqvjp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
@@ -79,4 +80,7 @@ mesh = SubResource("SphereMesh_4gqku")
 [node name="SpawnPoint" type="Node3D" parent="."]
 
 [node name="Sewer" parent="." instance=ExtResource("4_mqvjp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83568, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05763, 0, 0)
+
+[node name="Water" parent="." instance=ExtResource("4_jnjqe")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 16.16, 0, 0)
