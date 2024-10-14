@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=14 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
-[ext_resource type="PackedScene" uid="uid://eavcmkkb2idj" path="res://src/actors/Enemy/Enemy.tscn" id="5_0ptj6"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
+[ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="7_p80hx"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
