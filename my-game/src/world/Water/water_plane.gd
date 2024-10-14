@@ -2,6 +2,8 @@ extends MeshInstance3D
 
 @export var player: Player
 
+@export var player: Player
+
 var material: ShaderMaterial
 var noise: Image
 
