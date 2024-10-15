@@ -1,8 +1,6 @@
 @tool
 extends Area3D
 
-class_name Water
-
 @export var plane_size: Vector2 = Vector2(1,1)
 var collision_size: Vector3
 
@@ -29,3 +27,6 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 		print ('player in water')
 	if body.is_class('Player'):
 		player_hits_water(body)
+
+func raise_water() -> void:
+	print('raise water')
