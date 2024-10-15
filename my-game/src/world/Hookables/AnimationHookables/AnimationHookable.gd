@@ -1,8 +1,6 @@
 extends Hookable
 class_name AnimationHookable
 
-signal is_completed()
-
 @export var animation_player: AnimationPlayer
 @export var animation_name: StringName
 
@@ -17,4 +15,4 @@ func pause_animation() -> void:
 	animation_player.pause()
 
 func animation_finished() -> void:
-	is_completed.emit()
+	EventManager.anim_hookable_finished.emit()

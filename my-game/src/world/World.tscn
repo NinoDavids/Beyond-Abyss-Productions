@@ -82,13 +82,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08141, 0)
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
 
-[node name="Rope" parent="." node_paths=PackedStringArray("cube", "hook") instance=ExtResource("4_olw6s")]
+[node name="Rope" parent="." instance=ExtResource("4_olw6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59364, -4.99016)
-cube = NodePath("../MeshInstance3D")
 lenght = 11
-hook = NodePath("../MeshInstance3D")
 spring_constant = 500.0
-max_distance = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.590101, 0, 0, 0, 0.590101, 0, 0, 0, 0.590101, 6.84769, 0.472408, -5.4801)
@@ -103,5 +100,4 @@ collision_mask = 0
 
 [node name="Enemy" parent="." instance=ExtResource("5_0ptj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92013, 0.359142, 6.08446)
-collision_layer = 256
 collision_mask = 4

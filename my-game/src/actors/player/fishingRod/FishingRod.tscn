@@ -19,3 +19,6 @@ mesh = SubResource("CylinderMesh_no2wm")
 [node name="BobberMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725415, 0)
 mesh = SubResource("SphereMesh_2oo2i")
+
+[node name="lineHolder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725415, 0)
