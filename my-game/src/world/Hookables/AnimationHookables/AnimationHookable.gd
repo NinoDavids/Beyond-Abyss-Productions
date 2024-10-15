@@ -16,3 +16,4 @@ func pause_animation() -> void:
 
 func animation_finished() -> void:
 	EventManager.anim_hookable_finished.emit()
+	queue_free()
