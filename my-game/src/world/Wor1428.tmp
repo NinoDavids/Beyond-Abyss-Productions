@@ -87,7 +87,6 @@ mesh = SubResource("SphereMesh_4gqku")
 
 [node name="SpawnPoint" type="Node3D" parent="."]
 
-[node name="Sewer" parent="." node_paths=PackedStringArray("water") instance=ExtResource("4_6affp")]
-water = NodePath("../Water")
+[node name="Sewer" parent="." instance=ExtResource("4_6affp")]
 
 [node name="Water" parent="." instance=ExtResource("5_qitxk")]

@@ -55,6 +55,10 @@ folder_colors={
 "res://src/actors/player/": "purple"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 enemies=""
