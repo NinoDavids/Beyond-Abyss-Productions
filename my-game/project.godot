@@ -14,6 +14,7 @@ config/name="Lucky Tabi"
 run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=120
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://misc/Logo/Banner.png"
 boot_splash/fullsize=false
@@ -42,6 +43,10 @@ project/assembly_name="My Game"
 [editor]
 
 movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Productions/my-game/movie.png"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
 
 [file_customization]
 
