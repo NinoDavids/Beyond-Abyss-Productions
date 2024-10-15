@@ -113,8 +113,12 @@ Drop={
 
 [layer_names]
 
-3d_physics/layer_1="everything else"
+3d_physics/layer_1="Faulty Layer"
 3d_physics/layer_2="Player"
-3d_physics/layer_3="Spring"
-3d_physics/layer_4="Water"
-3d_physics/layer_6="Damaging"
+3d_physics/layer_3="Env"
+3d_physics/layer_4="Hookable"
+3d_physics/layer_5="Water"
+3d_physics/layer_6="Damage"
+3d_physics/layer_7="Checkpoint"
+3d_physics/layer_8="Bobber"
+3d_physics/layer_9="Enemy"
