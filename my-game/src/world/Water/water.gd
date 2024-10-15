@@ -1,4 +1,4 @@
-#@tool
+@tool
 extends Area3D
 
 @export var plane_size: Vector2 = Vector2(1,1)
