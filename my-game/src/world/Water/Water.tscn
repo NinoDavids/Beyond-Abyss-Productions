@@ -1,10 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://fei8w454cc0l"]
+[gd_scene load_steps=6 format=3 uid="uid://fei8w454cc0l"]
 
 [ext_resource type="Script" path="res://src/world/Water/water.gd" id="1_scf8i"]
 [ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="2_hiosk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpupn"]
 size = Vector3(1, 0.1, 1)
+
+[sub_resource type="Animation" id="Animation_dvd5t"]
+resource_name = "Rise"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterPlane")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqbal"]
+_data = {
+"Rise": SubResource("Animation_dvd5t")
+}
 
 [node name="Water" type="Area3D"]
 collision_layer = 16
@@ -19,5 +34,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545878, 0)
 shape = SubResource("BoxShape3D_lpupn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jqbal")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
