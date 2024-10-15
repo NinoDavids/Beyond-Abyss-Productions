@@ -4,18 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="2_hiosk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpupn"]
-size = Vector3(20, 0.1, 10)
+size = Vector3(1, 0.1, 1)
 
 [node name="Water" type="Area3D"]
 collision_layer = 16
-collision_mask = 130
+collision_mask = 2
 monitorable = false
 script = ExtResource("1_scf8i")
 
 [node name="WaterPlane" parent="." instance=ExtResource("2_hiosk")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545878, 0)
 shape = SubResource("BoxShape3D_lpupn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

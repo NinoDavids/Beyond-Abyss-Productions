@@ -1,18 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfwqmhqif4lkq"]
+[gd_scene load_steps=7 format=3 uid="uid://bfwqmhqif4lkq"]
 
 [ext_resource type="PackedScene" uid="uid://cynpwlkdynuk0" path="res://src/world/Hookables/AnimationHookables/AnimationHookable.tscn" id="1_2yxvd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xb28v"]
 size = Vector3(2, 8, 0.25)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0jjg"]
-albedo_color = Color(0.52549, 0.215686, 0.105882, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yxdqp"]
-size = Vector3(0.2, 8, 0.75)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfpcc"]
-albedo_color = Color(0.387991, 0.150887, 0.0667023, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vy2ip"]
 points = PackedVector3Array(1.09524, 4.06349, 0.192423, -1.06349, -4.06349, -0.188455, -1.06349, -4.06349, 0.192423, -1.06349, 4.06349, -0.188455, 1.09524, -4.06349, -0.188455, 1.09524, -4.06349, 0.192423, -1.06349, 4.06349, 0.192423, 1.09524, 4.06349, -0.188455)
@@ -74,32 +65,13 @@ _data = {
 "RESET": SubResource("Animation_2mb0w")
 }
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qcqtk"]
-points = PackedVector3Array(-0.13252, -4.03252, -0.40752, 0.127642, 4.03252, 0.438008, -0.13252, 4.03252, 0.438008, 0.127642, -4.03252, 0.438008, 0.127642, 4.03252, -0.40752, -0.13252, 4.03252, -0.40752, -0.13252, -4.03252, 0.438008, 0.127642, -4.03252, -0.40752)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8pnjb"]
-points = PackedVector3Array(-0.13252, -4.03252, -0.40752, 0.127642, 4.03252, 0.438008, -0.13252, 4.03252, 0.438008, 0.127642, -4.03252, 0.438008, 0.127642, 4.03252, -0.40752, -0.13252, 4.03252, -0.40752, -0.13252, -4.03252, 0.438008, 0.127642, -4.03252, -0.40752)
-
 [node name="Bridge" type="AnimatableBody3D"]
-collision_layer = 4
-collision_mask = 0
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 mesh = SubResource("BoxMesh_xb28v")
-surface_material_override/0 = SubResource("StandardMaterial3D_o0jjg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.5)
-mesh = SubResource("BoxMesh_yxdqp")
-surface_material_override/0 = SubResource("StandardMaterial3D_dfpcc")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -0.5)
-mesh = SubResource("BoxMesh_yxdqp")
-surface_material_override/0 = SubResource("StandardMaterial3D_dfpcc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -112,13 +84,5 @@ libraries = {
 
 [node name="AnimHookable" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("1_2yxvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.87483, 0.402907)
-animation_player = NodePath("../AnimationPlayer")
 animation_name = &"Fall"
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 4, -0.5)
-shape = SubResource("ConvexPolygonShape3D_qcqtk")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 4, -0.5)
-shape = SubResource("ConvexPolygonShape3D_8pnjb")
+animation_player = NodePath("../AnimationPlayer")

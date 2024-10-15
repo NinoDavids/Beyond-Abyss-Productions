@@ -14,5 +14,5 @@ func _process(delta: float) -> void:
 	if !hookable.is_hooked && sewer_cover.rotation.x == 0:
 		animation_player.play_backwards("Open")
 		
-	if hookable.is_hooked && sewer_cover.rotation.x < 90:
-		water.raise_water()
+	if hookable.is_hooked && sewer_cover.rotation.x == 0:
+		EventManager.anim_hookable_finished.emit()

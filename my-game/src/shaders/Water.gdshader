@@ -91,7 +91,6 @@ void fragment() {
 	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
 	
 	ALBEDO = clamp(surface_color + depth_color_adj, vec3(0.0), vec3(1.0));
-	ALPHA = 0.9;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	NORMAL_MAP = normal_blend;
