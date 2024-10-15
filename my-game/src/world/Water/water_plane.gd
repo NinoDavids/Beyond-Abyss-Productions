@@ -1,5 +1,7 @@
 extends MeshInstance3D
 
+class_name WaterPlane
+
 var material: ShaderMaterial
 var noise: Image
 
