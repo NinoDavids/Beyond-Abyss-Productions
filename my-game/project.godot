@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Production
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
@@ -54,6 +54,10 @@ folder_colors={
 "res://src/actors/enemies/": "red",
 "res://src/actors/player/": "purple"
 }
+
+[filesystem]
+
+import/blender/enabled=false
 
 [global_group]
 

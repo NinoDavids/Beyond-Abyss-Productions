@@ -5,7 +5,7 @@ extends RigidBody3D
 @export var water_angular_drag := 0.05
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var water = get_node('/root/World/Water/WaterPlane')
+@onready var water = $".."
 
 var submerged := false
 
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	submerged = false
-	var depth = water.get_height(global_position) - global_position.y
+	var depth = water.water_plane.get_height(global_position) - global_position.y
 	if depth > 0:
 		submerged = true
 		apply_central_force(Vector3.UP * float_force * 100 * depth)
