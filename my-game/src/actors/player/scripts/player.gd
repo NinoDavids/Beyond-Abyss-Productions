@@ -19,17 +19,12 @@ const JUMP_VELOCITY: float = 4.5
 var current_bobber: Bobber
 var held_Item: RigidBody3D
 
-
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	EventManager.anim_hookable_finished.connect(cancel_hook)
 	EventManager.player_respawned.connect(respawn)
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("quitEditor")):
-		get_tree().quit();
-
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
@@ -59,7 +54,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cancel_hook"):
 		cancel_hook()
 
-
 func cancel_hook() -> void:
 	fishing_rod.set_active(false)
 	if spring != null:
@@ -80,7 +74,6 @@ func cast_bobber() -> void:
 	spring = SPRING.instantiate()
 	spring.global_position = clone.global_position
 	add_sibling(spring)
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

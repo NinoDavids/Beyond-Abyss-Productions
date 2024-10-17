@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=15 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
-[ext_resource type="PackedScene" uid="uid://cm13issun3nwf" path="res://src/actors/player/fishingRod/line/spring.tscn" id="4_olw6s"]
 [ext_resource type="PackedScene" uid="uid://eavcmkkb2idj" path="res://src/actors/Enemy/Enemy.tscn" id="5_0ptj6"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
 
@@ -81,11 +80,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08141, 0)
 shape = SubResource("ConvexPolygonShape3D_ymhtv")
-
-[node name="Rope" parent="." instance=ExtResource("4_olw6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59364, -4.99016)
-lenght = 11
-spring_constant = 500.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.590101, 0, 0, 0, 0.590101, 0, 0, 0, 0.590101, 6.84769, 0.472408, -5.4801)
