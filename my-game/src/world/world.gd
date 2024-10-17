@@ -1,8 +1,8 @@
 extends Node3D
 
-var AppID = "2719760"
+var AppID: String = "2719760"
 
-@onready var player = $Player
+@onready var player: Player = $Player
 var time_elapsed: float
 
 func _init() -> void:

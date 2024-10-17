@@ -4,7 +4,7 @@ class_name Player
 @onready var head: Node3D = $Head
 const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/Bobber.tscn")
 const SPRING: PackedScene = preload("res://src/actors/player/fishingRod/line/spring.tscn")
-var spring
+var spring: Node
 @onready var player_camera: Camera3D = $Head/PlayerCamera
 @onready var fishing_rod: FishingRod = $Head/FishingRod
 @onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")

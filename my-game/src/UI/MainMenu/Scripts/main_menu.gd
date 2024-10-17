@@ -8,7 +8,6 @@ extends Control
 @onready var margin_container: MarginContainer = $MarginContainer
 @export var start_level: PackedScene = preload("res://src/world/Level/Level.tscn") 
 
-
 func _ready() -> void :
 	handeling_signals()
 
