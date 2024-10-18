@@ -11,8 +11,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !hookable.is_hooked && sewer_cover.rotation.x == 0:
+	if !hookable.is_hooked && sewer_cover.rotation_degrees.x == 0:
 		animation_player.play_backwards("Open")
 		
-	if hookable.is_hooked && sewer_cover.rotation.x < 90:
-		water.raise_water()
+	
+	if hookable.is_hooked && sewer_cover.rotation_degrees.x == 0:
+		water.raise_water(10)

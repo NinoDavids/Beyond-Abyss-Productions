@@ -4,6 +4,7 @@ extends Area3D
 class_name Water
 
 @export var plane_size: Vector2 = Vector2(1,1)
+@export var animation_player: AnimationPlayer
 var collision_size: Vector3
 
 @onready var water_plane: MeshInstance3D = $WaterPlane
@@ -30,5 +31,6 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 	if body.is_class('Player'):
 		player_hits_water(body)
 
-func raise_water() -> void:
-	water_plane.
+func raise_water(height: float) -> void:
+	var tween := get_tree().create_tween()
+	tween.tween_property(water_plane, "global_position", Vector3(water_plane.global_position.x, height, water_plane.global_position.z), 1)
