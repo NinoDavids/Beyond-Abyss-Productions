@@ -11,6 +11,7 @@ height = 0.05
 
 [node name="Lilypad" type="RigidBody3D"]
 collision_mask = 11
+lock_rotation = true
 script = ExtResource("1_h04dt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

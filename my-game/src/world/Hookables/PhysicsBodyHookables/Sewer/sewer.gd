@@ -16,4 +16,4 @@ func _process(delta: float) -> void:
 		
 	
 	if hookable.is_hooked && sewer_cover.rotation_degrees.x == 0:
-		water.raise_water(10)
+		water.raise_water(2)
