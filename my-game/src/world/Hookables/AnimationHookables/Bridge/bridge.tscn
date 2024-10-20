@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfwqmhqif4lkq"]
+[gd_scene load_steps=13 format=3 uid="uid://bfwqmhqif4lkq"]
 
 [ext_resource type="PackedScene" uid="uid://cynpwlkdynuk0" path="res://src/world/Hookables/AnimationHookables/AnimationHookable.tscn" id="1_2yxvd"]
+[ext_resource type="PackedScene" uid="uid://b3rs7rxo07v35" path="res://src/util/CheckpointHandler/checkpoint_handler.tscn" id="2_bpatf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xb28v"]
 size = Vector3(2, 8, 0.25)
@@ -122,3 +123,5 @@ shape = SubResource("ConvexPolygonShape3D_qcqtk")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 4, -0.5)
 shape = SubResource("ConvexPolygonShape3D_8pnjb")
+
+[node name="CheckpointHandler" parent="." instance=ExtResource("2_bpatf")]
