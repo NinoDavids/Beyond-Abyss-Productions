@@ -7,12 +7,18 @@ extends RigidBody3D
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var water = get_node('/root/World/Water/WaterPlane')
 
+@export_group("Checkpoint Handling")
+@export var checkpoint: Checkpoint
+
+@onready var checkpoint_handler: CheckpointHandler = $CheckpointHandler
+
 var submerged := false
 
 const water_height := -2.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.lock_rotation = true
+	checkpoint_handler.checkpoint = checkpoint
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

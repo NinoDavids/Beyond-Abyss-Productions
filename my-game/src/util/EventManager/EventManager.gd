@@ -1,4 +1,6 @@
 extends Node
+## [EventManager] handles all signals.
+
 
 @warning_ignore("unused_signal")
 signal player_damaged()
