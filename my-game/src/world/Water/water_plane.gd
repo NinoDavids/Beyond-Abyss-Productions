@@ -7,7 +7,7 @@ var noise_scale: float
 var wave_speed: float
 var height_scale: float
 
-var time: float 
+var time: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +24,8 @@ func _process(delta: float) -> void:
 	material.set_shader_parameter("wave_time", time)
 
 func get_height(world_position: Vector3) -> float:
-	var uv_x = wrapf(world_position.x / noise_scale + time * wave_speed, 0, 1)
-	var uv_y = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
-	
-	var pixel_pos = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
+	var uv_x: float = wrapf(world_position.x / noise_scale + time * wave_speed, 0, 1)
+	var uv_y: float = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
+
+	var pixel_pos: Vector2 = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
 	return (global_position.y + 0.13  ) + noise.get_pixelv(pixel_pos).r * height_scale

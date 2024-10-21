@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=8 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
 [ext_resource type="PackedScene" uid="uid://dop37yjdupvy5" path="res://src/actors/player/fishingRod/FishingRod.tscn" id="2_qyi4v"]
 [ext_resource type="Script" path="res://src/actors/player/scripts/hitbox.gd" id="3_2636m"]
+[ext_resource type="PackedScene" uid="uid://b217evb28eyvu" path="res://src/shaders/HealthShader/health_shader_rect.tscn" id="4_hena1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
@@ -13,7 +14,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 269
 script = ExtResource("1_v30fi")
 cast_strength = 5.985
 
@@ -51,6 +52,15 @@ shape = SubResource("CapsuleShape3D_6730j")
 wait_time = 2.0
 one_shot = true
 
+[node name="RespawnTimer" type="Timer" parent="Hitbox"]
+wait_time = 2.5
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthShaderRect" parent="CanvasLayer" instance=ExtResource("4_hena1")]
+
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Hitbox/RegenTimer" to="Hitbox" method="_on_regen_timer_timeout"]
+[connection signal="timeout" from="Hitbox/RespawnTimer" to="Hitbox" method="_on_respawn_timer_timeout"]

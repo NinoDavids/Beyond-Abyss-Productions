@@ -23,11 +23,11 @@ func move() -> void:
 	var distance_between: float = point_one.global_position.distance_to(point_two.global_position)
 	var displacement: Vector3 = point_two.global_position - point_one.global_position
 	var correction_force: Vector3 = displacement.normalized() * (distance_between - max_distance) * spring_constant
-	var damping_force: Vector3 = -point_two.linear_velocity * damping_constant
+	var damping_force_point_one: Vector3 = -point_one.linear_velocity * damping_constant
+	var damping_force_point_two: Vector3 = -point_two.linear_velocity * damping_constant
 
-
-	point_one.apply_central_force(correction_force)
-	point_two.apply_central_force(-correction_force + damping_force)
+	point_one.apply_central_force(correction_force + damping_force_point_one)
+	point_two.apply_central_force(-correction_force + damping_force_point_two)
 
 func _to_string() -> String:
 	return "One: %s, Two: %s" % [point_one, point_two]

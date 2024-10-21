@@ -14,6 +14,7 @@ radius = 0.0638513
 
 [node name="Bobber" type="RigidBody3D"]
 collision_layer = 64
+collision_mask = 12
 physics_material_override = SubResource("PhysicsMaterial_s6swa")
 script = ExtResource("1_uhxrq")
 

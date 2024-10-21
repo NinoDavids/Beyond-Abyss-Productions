@@ -1,15 +1,15 @@
 extends RigidBody3D
 
-@export var float_force := 1.0
-@export var water_drag := 0.05
-@export var water_angular_drag := 0.05
+@export var float_force: float = 1.0
+@export var water_drag: float = 0.05
+@export var water_angular_drag: float = 0.05
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-@onready var water = get_node('/root/World/Water/WaterPlane')
+@onready var water: Node = get_node('/root/World/Water/WaterPlane')
 
-var submerged := false
+var submerged : bool = false
+const water_height: float = -2.0
 
-const water_height := -2.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.lock_rotation = true

@@ -9,7 +9,8 @@ outer_radius = 0.3
 radius = 0.75
 
 [node name="AnimHookable" type="Area3D"]
-collision_mask = 64
+collision_layer = 0
+collision_mask = 72
 script = ExtResource("1_bxi80")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

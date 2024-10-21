@@ -6,8 +6,7 @@ extends Control
 @onready var options_button: Button = %Options_button 
 @onready var options_menu: OptionsMenu = %OptionsMenu
 @onready var margin_container: MarginContainer = $MarginContainer
-@export var start_level: PackedScene = preload("res://src/world/World.tscn") 
-
+@export var start_level: PackedScene = preload("res://src/world/Level/Level.tscn") 
 
 func _ready() -> void :
 	handeling_signals()
