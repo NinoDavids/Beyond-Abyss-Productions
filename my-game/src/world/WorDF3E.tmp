@@ -91,10 +91,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482
 [node name="FishSpawn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_p80hx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7466, 0.0167845, -0.250741)
 player = NodePath("../Player")
-shoot_height = 5
+shoot_height = 10
 
 [node name="Timer" parent="FishSpawn" index="0"]
-wait_time = 0.5
+wait_time = 0.1
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="FishSpawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0230026, -0.256822, -3.6942)

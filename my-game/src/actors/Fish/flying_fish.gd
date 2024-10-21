@@ -2,6 +2,8 @@ class_name Flying_fish
 extends RigidBody3D
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -15,20 +17,28 @@ func _physics_process(delta: float) -> void:
 	if global_position.y < -1:
 		queue_free()
 	
-func apply_force_direction(direction: Vector3, player: Player):
+func apply_force_direction(direction: Vector3, player: Player, plane: MeshInstance3D, height: int):
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	
-	if randi_range(0, 1) == 1:
-		var target_position: Vector3 = player.global_position
-
-		direction = (target_position + global_position).normalized()
-		direction.x = -direction.x
-		
-		linear_velocity = -direction * 2 * global_position.distance_to(target_position)
-		apply_impulse(Vector3(0,10,0))
-		pass
-	#apply_impulse(direction * 2 * global_position.distance_to(target_position))
-		
+	if random.randi_range(0,10) == 1:
+		linear_velocity = Vector3(0,0,0)
+		linear_velocity = calculateLaunchVelocity(player, height, plane)
+	else:
+		linear_velocity = Vector3(0,0,0)
+		linear_velocity = direction
 	
-	apply_impulse(direction)
+
+
+func calculateLaunchVelocity(player: Player, height: float, plane:MeshInstance3D)-> Vector3:
+	
+	
+	var displacementY: float = player.global_position.y - global_position.y + height/2
+	var displacementXZ: Vector3 = Vector3(player.global_position.x - (plane.global_position.x + position.x), 0, player.global_position.z - (plane.global_position.z + position.z))
+	var gravity:float = -9.8
+	var time: float = sqrt(-2*height/gravity) + sqrt(2*(displacementY -height)/gravity)
+	var velocityY: Vector3 = Vector3.UP * sqrt(-2 * gravity * height)
+	var velocityXZ: Vector3 = displacementXZ / time
+
+
+	return velocityXZ + velocityY
