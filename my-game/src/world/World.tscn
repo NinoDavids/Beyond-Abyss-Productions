@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=16 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cm13issun3nwf" path="res://src/actors/player/fishingRod/line/spring.tscn" id="4_olw6s"]
 [ext_resource type="PackedScene" uid="uid://eavcmkkb2idj" path="res://src/actors/Enemy/Enemy.tscn" id="5_0ptj6"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
+[ext_resource type="PackedScene" uid="uid://cfokuuvoqwig5" path="res://src/util/Audio/audio_system.tscn" id="7_mou0l"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
@@ -93,3 +94,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482
 
 [node name="Enemy" parent="." instance=ExtResource("5_0ptj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92013, 0.359142, 6.08446)
+
+[node name="AudioSystem" parent="." instance=ExtResource("7_mou0l")]

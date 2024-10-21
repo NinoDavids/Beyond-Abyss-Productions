@@ -18,14 +18,17 @@ func _input(event: InputEvent) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Bobber:
+		EventManager.play_sound("SuccessHook")
 		is_hooked = true
 		bobber = body
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
 
+
 ## Places the [member bobber] in the center of the [Hookable].
 func place_bobber() -> void:
 	bobber.set_hooked(global_position)
+
 
 ## Removes the [member bobber] from the [Hookable].
 func remove_bobber() -> void:
