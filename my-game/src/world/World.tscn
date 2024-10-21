@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
-[ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/PhysicsBodyHookables/Sewer/Sewer.tscn" id="4_6affp"]
+[ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/AnimationHookables/Sewer/Sewer.tscn" id="4_6affp"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="5_qitxk"]
 [ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/RigidHookables/Lilypad/Lilypad.tscn" id="6_jjtln"]
 

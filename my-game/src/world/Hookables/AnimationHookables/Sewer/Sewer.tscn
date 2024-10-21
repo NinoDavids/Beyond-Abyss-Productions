@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://4c4afbkvlh1t"]
 
 [ext_resource type="PackedScene" uid="uid://cynpwlkdynuk0" path="res://src/world/Hookables/AnimationHookables/AnimationHookable.tscn" id="1_5c6gr"]
-[ext_resource type="Script" path="res://src/world/Hookables/PhysicsBodyHookables/Sewer/sewer.gd" id="1_exob5"]
+[ext_resource type="Script" path="res://src/world/Hookables/AnimationHookables/Sewer/sewer.gd" id="1_exob5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_13wqr"]
 height = 0.1
