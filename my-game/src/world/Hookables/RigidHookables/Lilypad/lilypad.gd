@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+class_name Lilypad
+
 @export var float_force := 1.0
 @export var water_drag := 0.05
 @export var water_angular_drag := 0.05
@@ -7,16 +9,26 @@ extends RigidBody3D
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var water = $".."
 
+var startValue: Vector3
+
 var submerged := false
 
 const water_height := -2.0
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	self.lock_rotation = true
+	startValue = position
+	
+func resetLilypads() -> void:
+	transform.origin = startValue
+	print_debug(startValue)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _input(event: InputEvent) -> void:
+	if(event.is_action_pressed("quitEditor")):
+		resetLilypads()
 
 func _physics_process(delta: float) -> void:
 	submerged = false
@@ -27,4 +39,4 @@ func _physics_process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if submerged:
-		state.linear_velocity  *= 1 - water_drag
+		state.linear_velocity *= 1 - water_drag

@@ -27,6 +27,7 @@ mesh = SubResource("CapsuleMesh_wkcom")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_0i6ni")
 
-[node name="RigidHookable" parent="." instance=ExtResource("2_2xnye")]
+[node name="RigidHookable" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_2xnye")]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0)
+body = NodePath("..")
 to_player = true
