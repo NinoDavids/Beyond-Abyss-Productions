@@ -15,14 +15,8 @@ func _process(_delta: float) -> void:
 		if collision_shape_3d.shape.size != collision_size:
 			collision_shape_3d.shape.size = collision_size
 
-func player_hits_water(player: CharacterBody3D) -> void:
+func _on_body_entered(player: CharacterBody3D) -> void:
+	player.respawn()
 	if player.find_child("Hitbox"):
 		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox
 		hitbox.take_damage(3)
-
-func _on_body_entered(body: CharacterBody3D) -> void:
-	print('object in water')
-	body.respawn()
-	if body is Player:
-		print ('player in water')
-		player_hits_water(body)
