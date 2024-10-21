@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfwqmhqif4lkq"]
+[gd_scene load_steps=14 format=3 uid="uid://bfwqmhqif4lkq"]
 
 [ext_resource type="PackedScene" uid="uid://cynpwlkdynuk0" path="res://src/world/Hookables/AnimationHookables/AnimationHookable.tscn" id="1_2yxvd"]
+[ext_resource type="Script" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.gd" id="1_jkwtu"]
+[ext_resource type="PackedScene" uid="uid://b3rs7rxo07v35" path="res://src/util/CheckpointHandler/checkpoint_handler.tscn" id="2_bpatf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xb28v"]
 size = Vector3(2, 8, 0.25)
@@ -85,23 +87,24 @@ collision_layer = 4
 collision_mask = 0
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+script = ExtResource("1_jkwtu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 mesh = SubResource("BoxMesh_xb28v")
 surface_material_override/0 = SubResource("StandardMaterial3D_o0jjg")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, -0.5)
 mesh = SubResource("BoxMesh_yxdqp")
 surface_material_override/0 = SubResource("StandardMaterial3D_dfpcc")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -0.5)
 mesh = SubResource("BoxMesh_yxdqp")
 surface_material_override/0 = SubResource("StandardMaterial3D_dfpcc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BaseCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 shape = SubResource("ConvexPolygonShape3D_vy2ip")
 
@@ -115,10 +118,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.87483, 0.402907)
 animation_player = NodePath("../AnimationPlayer")
 animation_name = &"Fall"
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="LeftCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 4, -0.5)
 shape = SubResource("ConvexPolygonShape3D_qcqtk")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+[node name="RightCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 4, -0.5)
 shape = SubResource("ConvexPolygonShape3D_8pnjb")
+
+[node name="CheckpointHandler" parent="." instance=ExtResource("2_bpatf")]
