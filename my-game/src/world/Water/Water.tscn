@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="2_hiosk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpupn"]
-size = Vector3(20, 0.1, 10)
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="Animation" id="Animation_1x38f"]
 length = 0.001

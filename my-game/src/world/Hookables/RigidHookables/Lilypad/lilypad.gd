@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	submerged = false
 	water_height = water.global_position.y
-	var depth = water_height - global_position.y
+	var depth = water.get_height(global_position) - global_position.y
 	if depth > 0:
 		submerged = true
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
