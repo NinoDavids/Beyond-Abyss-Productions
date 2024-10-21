@@ -27,8 +27,8 @@ func _ready() -> void:
 	if parent != null:
 		set_parent_properties()
 	
-	EventManager.checkpoint_touched.connect(save_object)
-	EventManager.checkpoint_respawn.connect(load_object)
+	EventManager.checkpoint_touched.connect(handle_checkpoint_touched)
+	EventManager.checkpoint_respawn.connect(handle_checkpoint_respawn)
 
 ## Sets [member CheckpointHandler.parent] according to the parent node. [br]
 ## If the parent is [b]NOT[/b] of type [Node3D], it pushes an [b]Error[/b]
@@ -48,15 +48,22 @@ func set_parent_properties() -> void:
 	if parent.find_child("AnimHookable"):
 		anim_hookable = parent.find_child("AnimHookable")
 
+
 ## Gets called when [signal EventManager.checkpoint_touched] gets emitted.
-func save_object(point: Checkpoint) -> void:
+func handle_checkpoint_touched(point: Checkpoint) -> void:
 	if point == checkpoint : return
-	parent_original_transform = parent.global_transform
+	save_object()
 
 ## Gets called when [signal EventManager.checkpoint_respawn] gets emitted.
 ## Returns the [member CheckpointHandler.parent] transform to [member CheckpointHandler.parent_original_transform].
-func load_object(point: Checkpoint) -> void:
+func handle_checkpoint_respawn(point: Checkpoint) -> void:
 	if point != checkpoint : return
+	load_object()
+
+func save_object() -> void:
+	parent_original_transform = parent.global_transform
+
+func load_object() -> void:
 	parent.global_transform = parent_original_transform
 	
 	if anim_hookable != null:

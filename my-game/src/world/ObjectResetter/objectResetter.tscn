@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dip725d2oj7vd"]
+
+[ext_resource type="Script" path="res://src/world/ObjectResetter/object_resetter.gd" id="1_6saut"]
+
+[node name="ObjectResetter" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_6saut")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

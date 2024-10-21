@@ -95,4 +95,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn() -> void:
-	print('respawn')
+	print_debug("%s respawned." %name)
