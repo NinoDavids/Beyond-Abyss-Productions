@@ -9,7 +9,8 @@ var noise_scale: float
 var wave_speed: float
 var height_scale: float
 var time: float 
-
+@export var shoot_height:int
+@onready var mesh_instance_3d_2: MeshInstance3D = $"../MeshInstance3D2"
 
 const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn")
 
@@ -45,12 +46,10 @@ func _on_timer_timeout() -> void:
 	var random_z =  rand.randf_range(-plane.size.y / 2, plane.size.y / 2)
 
 	var new_fish: Flying_fish = FLYING_FISH.instantiate() as RigidBody3D
-	new_fish.position = Vector3(random_x, 0, random_z)
-	
-	
-	print(random_x)
-	if (random_x > 0):
-		new_fish.apply_force_direction(Vector3(randf_range(-4, -7),7,0), player)
-	else:
-		new_fish.apply_force_direction(Vector3(randf_range(4, 7),7,0), player)
+	new_fish.global_position = Vector3(random_x, 0, random_z)
 	add_child(new_fish)
+	
+	if (random_x > 0):
+		new_fish.apply_force_direction(Vector3(randf_range(-4, -7),7,0), player, self, shoot_height)
+	else:
+		new_fish.apply_force_direction(Vector3(randf_range(4, 7),7,0), player, self, shoot_height)
