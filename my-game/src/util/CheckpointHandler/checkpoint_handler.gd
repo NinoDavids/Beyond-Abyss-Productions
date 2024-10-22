@@ -66,6 +66,17 @@ func save_object() -> void:
 func load_object() -> void:
 	parent.global_transform = parent_original_transform
 	
+	if parent is RigidBody3D:
+		parent.linear_velocity = Vector3.ZERO
+		parent.angular_velocity = Vector3.ZERO
+	
 	if anim_hookable != null:
+		anim_hookable.is_finished = false
 		anim_hookable.animation_player.play("RESET")
 		anim_hookable._ready()
+	
+	for child: Node in parent.get_children():
+		if child is Hookable:
+			if child.bobber != null:
+				child.remove_bobber()
+				EventManager.anim_hookable_finished.emit()

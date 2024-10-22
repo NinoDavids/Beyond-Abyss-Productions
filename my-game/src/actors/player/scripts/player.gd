@@ -71,8 +71,8 @@ func cast_bobber() -> void:
 	direction.y += 1 ## Moves the aim a bit more upwards
 	clone.apply_impulse(direction * cast_strength)
 	spring = SPRING.instantiate()
-	spring.global_position = clone.global_position
 	add_sibling(spring)
+	spring.global_position = clone.global_position
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

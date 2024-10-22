@@ -4,3 +4,5 @@
 
 [node name="CheckpointHandler" type="Node"]
 script = ExtResource("1_7q44l")
+
+[node name="EffectTimer" type="Timer" parent="."]

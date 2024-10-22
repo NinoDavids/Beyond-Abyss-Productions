@@ -25,8 +25,3 @@ func _on_body_entered(body: Node3D) -> void:
 		print_debug("%s hit " %body.name, "%s." %name)
 		player_hits_water(body)
 		return
-	
-	if body.find_child("CheckpointHandler"):
-		var handler: CheckpointHandler = body.find_child("CheckpointHandler") as CheckpointHandler
-		if handler.anim_hookable == null:
-			handler.load_object()
