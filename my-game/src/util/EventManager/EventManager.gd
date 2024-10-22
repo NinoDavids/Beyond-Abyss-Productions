@@ -1,4 +1,6 @@
 extends Node
+## [EventManager] handles all signals.
+
 
 @warning_ignore("unused_signal")
 signal player_damaged()
@@ -10,6 +12,10 @@ signal anim_hookable_finished()
 signal player_died()
 @warning_ignore("unused_signal")
 signal player_respawned()
+@warning_ignore("unused_signal")
+signal checkpoint_touched(point: Checkpoint)
+@warning_ignore("unused_signal")
+signal checkpoint_respawn(point: Checkpoint)
 
 signal audio_playsound(sound_name: String)
 signal audio_stopsound(sound_name: String)
