@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfokuuvoqwig5"]
+
+[ext_resource type="Script" path="res://src/util/Audio/AudioSystem.gd" id="1_y3cuv"]
+[ext_resource type="Script" path="res://src/util/Audio/SoundObject.gd" id="2_fmtxm"]
+[ext_resource type="Resource" uid="uid://p2p4i2ucgxc0" path="res://src/world/Sounds/SoundTrack.tres" id="3_6qsl7"]
+[ext_resource type="Resource" uid="uid://ce3k73kvyde2q" path="res://src/world/Sounds/SuccessHook.tres" id="4_kki8p"]
+
+[node name="AudioSystem" type="Node3D"]
+script = ExtResource("1_y3cuv")
+Sounds = Array[ExtResource("2_fmtxm")]([ExtResource("3_6qsl7"), ExtResource("4_kki8p")])
