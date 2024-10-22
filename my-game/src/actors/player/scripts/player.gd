@@ -27,8 +27,8 @@ func _ready() -> void:
 	EventManager.player_respawned.connect(respawn)
 
 func _input(event: InputEvent) -> void:
-	#if(event.is_action_pressed("quitEditor")):
-		#get_tree().quit();
+	if(event.is_action_pressed("quitEditor")):
+		get_tree().quit();
 
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))

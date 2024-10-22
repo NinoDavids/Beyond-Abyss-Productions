@@ -19,16 +19,8 @@ func _ready() -> void:
 	self.lock_rotation = true
 	startValue = position
 	
-func resetLilypads() -> void:
-	transform.origin = startValue
-	print_debug(startValue)
-
 func _process(delta: float) -> void:
 	pass
-
-func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("quitEditor")):
-		resetLilypads()
 
 func _physics_process(delta: float) -> void:
 	submerged = false

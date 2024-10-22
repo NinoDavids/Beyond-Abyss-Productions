@@ -84,6 +84,9 @@ collision_layer = 255
 collision_mask = 255
 plane_size = Vector2(125, 100)
 
+[node name="WaterPlane" parent="Env/Water2" index="0"]
+height_scale = 0.25
+
 [node name="Lilypad13" parent="Env/Water2" instance=ExtResource("5_wyke7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130101, 0.13618, 48.4945)
 
@@ -185,5 +188,7 @@ collision_layer = 4
 collision_mask = 4
 cast_strength = 7.5
 
+[editable path="Env/Water2"]
+[editable path="Env/Water2/WaterPlane"]
 [editable path="Actors/Player"]
 [editable path="Actors/Player/Head/FishingRod"]

@@ -6,17 +6,15 @@ var collision_size: Vector3
 
 @onready var water_plane: MeshInstance3D = $WaterPlane
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@export var respawnWater: bool = false : set = set_button
 
-func _process(_delta: float) -> void:
+func set_button(new_value: bool) -> void:
+	loadWater()
+				
+func loadWater() -> void:
 	collision_size = Vector3(plane_size.x, 0.1, plane_size.y)
-	if water_plane and collision_shape_3d:
-		if water_plane.mesh.size != plane_size:
-			water_plane.mesh.size = plane_size
-		if collision_shape_3d.shape.size != collision_size:
-			collision_shape_3d.shape.size = collision_size
-
-func _on_body_entered(player: CharacterBody3D) -> void:
-	player.respawn()
-	if player.find_child("Hitbox"):
-		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox
-		hitbox.take_damage(3)
+	water_plane.mesh.size = plane_size
+	collision_shape_3d.shape.size = collision_size
+		
+func _ready() -> void:
+	loadWater()
