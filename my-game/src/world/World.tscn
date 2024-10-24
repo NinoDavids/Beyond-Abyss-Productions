@@ -100,7 +100,8 @@ plane_size = Vector2(10, 10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5773, 0, 0)
 water = NodePath("../Water/WaterPlane")
 
-[node name="Drain" parent="." instance=ExtResource("7_en704")]
+[node name="Drain" parent="." node_paths=PackedStringArray("water") instance=ExtResource("7_en704")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.22816, -0.731561, 1.02952)
+water = NodePath("../Water")
 
 [editable path="Water"]
