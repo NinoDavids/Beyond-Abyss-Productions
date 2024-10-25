@@ -9,7 +9,7 @@ var is_finished: bool = false
 func _ready() -> void:
 	animation_player.play(animation_name)
 	animation_player.pause()
-	
+
 func reel_in() -> void:
 	if !is_finished:
 		animation_player.play(animation_name)
