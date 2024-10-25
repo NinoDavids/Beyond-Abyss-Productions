@@ -10,7 +10,6 @@ var collision_size: Vector3
 @onready var water_plane: MeshInstance3D = $WaterPlane
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
-
 func _process(_delta: float) -> void:
 	collision_size = Vector3(plane_size.x, 0.1, plane_size.y)
 	if water_plane and collision_shape_3d:

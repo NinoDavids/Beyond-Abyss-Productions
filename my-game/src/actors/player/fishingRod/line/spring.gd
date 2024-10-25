@@ -26,11 +26,8 @@ func move() -> void:
 	var damping_force_point_one: Vector3 = -point_one.linear_velocity * damping_constant
 	var damping_force_point_two: Vector3 = -point_two.linear_velocity * damping_constant
 
-
-
 	point_one.apply_central_force(correction_force + damping_force_point_one)
 	point_two.apply_central_force(-correction_force + damping_force_point_two)
-
 
 func _to_string() -> String:
 	return "One: %s, Two: %s" % [point_one, point_two]
