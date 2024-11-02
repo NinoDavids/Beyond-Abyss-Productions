@@ -8,6 +8,10 @@ class_name CheckpointHandler
 ## This is the [Checkpoint] that this class listens to.
 @export var checkpoint: Checkpoint
 
+@export var despawnParticles: PackedScene
+@export var respawnParticles: PackedScene
+@onready var effect_timer: Timer = $EffectTimer
+
 ## The parent of the [CheckpointHandler]. [br]
 ## Automatically gets set in the [method CheckpointHandler.set_parent] function. [br]
 ## [color=red][b] Must be of type [Node3D] in order to work. [/b][/color]
@@ -80,3 +84,32 @@ func load_object() -> void:
 			if child.bobber != null:
 				child.remove_bobber()
 				EventManager.anim_hookable_finished.emit()
+
+func despawn_effect(body: Node3D) -> void:
+	var effect: CPUParticles3D = despawnParticles.instantiate() as CPUParticles3D
+	effect.finished.connect(destroy_effect)
+	body.visible = false
+	add_child(effect)
+	effect.global_position = body.global_position
+	effect.emitting = true
+
+func respawn_effect(body: Node3D) -> void:
+	var effect: CPUParticles3D = respawnParticles.instantiate() as CPUParticles3D
+	effect.finished.connect(destroy_effect)
+	add_child(effect)
+	effect.global_position = body.global_position
+	effect_timer.wait_time = effect.lifetime
+	effect.emitting = true
+	effect_timer.start()
+
+func destroy_effect() -> void:
+	for child: Node in get_children():
+		if child is CPUParticles3D:
+			child.queue_free()
+
+func respawn_with_effect() -> void:
+	despawn_effect(parent)
+	load_object()
+	respawn_effect(parent)
+	await effect_timer.timeout
+	parent.visible = true
