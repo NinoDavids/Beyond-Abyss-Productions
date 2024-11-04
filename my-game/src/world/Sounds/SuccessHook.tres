@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundObject" load_steps=3 format=3 uid="uid://ce3k73kvyde2q"]
+[gd_resource type="Resource" script_class="SoundObject" load_steps=3 format=3 uid="uid://0kuedgtkcq3o"]
 
 [ext_resource type="AudioStream" uid="uid://bxhckgm2hjcxl" path="res://src/world/Sounds/Successfully_hooked_demo.mp3" id="1_q1r6b"]
 [ext_resource type="Script" path="res://src/util/Audio/SoundObject.gd" id="2_fw7jw"]
@@ -10,5 +10,4 @@ clip = ExtResource("1_q1r6b")
 audio_bus = 2
 volume_db = 0.0
 pitch_scale = 1.0
-loop = false
 autoplay = false

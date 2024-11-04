@@ -1,10 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfokuuvoqwig5"]
+[gd_scene load_steps=7 format=3 uid="uid://cfokuuvoqwig5"]
 
 [ext_resource type="Script" path="res://src/util/Audio/AudioSystem.gd" id="1_y3cuv"]
 [ext_resource type="Script" path="res://src/util/Audio/SoundObject.gd" id="2_fmtxm"]
-[ext_resource type="Resource" uid="uid://p2p4i2ucgxc0" path="res://src/world/Sounds/SoundTrack.tres" id="3_6qsl7"]
-[ext_resource type="Resource" uid="uid://ce3k73kvyde2q" path="res://src/world/Sounds/SuccessHook.tres" id="4_kki8p"]
+[ext_resource type="AudioStream" uid="uid://b6srdy87a5o32" path="res://src/world/Sounds/Boss_Theme_V1.mp3" id="3_i5j5f"]
+[ext_resource type="AudioStream" uid="uid://bxhckgm2hjcxl" path="res://src/world/Sounds/Successfully_hooked_demo.mp3" id="4_jbu2v"]
+
+[sub_resource type="Resource" id="Resource_7lni1"]
+script = ExtResource("2_fmtxm")
+clip_name = "ThemeSong"
+clip = ExtResource("3_i5j5f")
+audio_bus = 1
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+
+[sub_resource type="Resource" id="Resource_nk0to"]
+script = ExtResource("2_fmtxm")
+clip_name = "SuccessHook"
+clip = ExtResource("4_jbu2v")
+audio_bus = 2
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
 
 [node name="AudioSystem" type="Node3D"]
 script = ExtResource("1_y3cuv")
-Sounds = Array[ExtResource("2_fmtxm")]([ExtResource("3_6qsl7"), ExtResource("4_kki8p")])
+Sounds = Array[ExtResource("2_fmtxm")]([SubResource("Resource_7lni1"), SubResource("Resource_nk0to")])

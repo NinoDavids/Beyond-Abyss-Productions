@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=9 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
 [ext_resource type="PackedScene" uid="uid://dop37yjdupvy5" path="res://src/actors/player/fishingRod/FishingRod.tscn" id="2_qyi4v"]
 [ext_resource type="Script" path="res://src/actors/player/scripts/hitbox.gd" id="3_2636m"]
 [ext_resource type="PackedScene" uid="uid://b217evb28eyvu" path="res://src/shaders/HealthShader/health_shader_rect.tscn" id="4_hena1"]
+[ext_resource type="PackedScene" uid="uid://cfokuuvoqwig5" path="res://src/util/Audio/audio_system.tscn" id="5_ianld"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
@@ -59,6 +60,8 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthShaderRect" parent="CanvasLayer" instance=ExtResource("4_hena1")]
+
+[node name="AudioSystem" parent="." instance=ExtResource("5_ianld")]
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
