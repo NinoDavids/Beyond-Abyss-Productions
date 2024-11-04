@@ -8,6 +8,5 @@ class_name CheckPoint
 func _ready() -> void:
 	EventManager.player_respawned.connect(handle_player_respawn)
 
-
 func handle_player_respawn() -> void:
 	player.global_position = global_position

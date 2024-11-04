@@ -3,11 +3,8 @@ extends Node3D
 @onready var point: RigidBody3D = $NodeTemplate
 @onready var bobber_mesh: MeshInstance3D = $"../Player/Head/FishingRod/BobberMesh"
 
-
-
 var nodes: Array[RigidBody3D]
 var springs: Array[Spring]
-
 
 var length: int = 4
 @export_category("Mesh")
@@ -17,7 +14,6 @@ var length: int = 4
 var mesh: SurfaceTool = SurfaceTool.new()
 var meshInstance: MeshInstance3D = MeshInstance3D.new()
 
-
 @export_category("Rope physics")
 @export_range(50, 1000, 10, "or_greater") var spring_constant: float = 800
 @export_range(0, 100, 1.0) var damping_constant: float = 5
@@ -25,7 +21,6 @@ var meshInstance: MeshInstance3D = MeshInstance3D.new()
 
 var frozen: bool = false ## boolean to set if the nodes are frozen
 var last_update: float = Time.get_unix_time_from_system() ## Time since the nodes got interacted with a colission object
-
 
 func _ready() -> void:
 

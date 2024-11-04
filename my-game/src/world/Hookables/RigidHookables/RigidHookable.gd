@@ -19,6 +19,5 @@ func reel_in() -> void:
 		else:
 			direction = global_position - body.global_position
 			body.apply_central_impulse(direction * 2.5)
-		
 	else:
 		print_debug("No body has been connected to ", name)

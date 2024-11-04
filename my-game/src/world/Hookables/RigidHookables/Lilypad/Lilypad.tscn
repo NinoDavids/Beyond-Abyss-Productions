@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq0bc0gasd8u0"]
+[gd_scene load_steps=6 format=3 uid="uid://cq0bc0gasd8u0"]
 
 [ext_resource type="Script" path="res://src/world/Hookables/RigidHookables/Lilypad/lilypad.gd" id="1_h04dt"]
 [ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_t6f3o"]
+[ext_resource type="PackedScene" uid="uid://b3rs7rxo07v35" path="res://src/util/CheckpointHandler/checkpoint_handler.tscn" id="3_u1fhr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qxmx8"]
 height = 0.05
@@ -25,3 +26,5 @@ shape = SubResource("CylinderShape3D_0i6ni")
 transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0)
 body = NodePath("..")
 to_player = true
+
+[node name="CheckpointHandler" parent="." instance=ExtResource("3_u1fhr")]
