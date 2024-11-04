@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://4c4afbkvlh1t"]
+[gd_scene load_steps=10 format=3 uid="uid://4c4afbkvlh1t"]
 
 [ext_resource type="PackedScene" uid="uid://cynpwlkdynuk0" path="res://src/world/Hookables/AnimationHookables/AnimationHookable.tscn" id="1_5c6gr"]
 [ext_resource type="Script" path="res://src/world/Hookables/AnimationHookables/Sewer/sewer.gd" id="1_exob5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_13wqr"]
 height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gqvap"]
+height = 0.05
 
 [sub_resource type="Animation" id="Animation_20q01"]
 resource_name = "Open"
@@ -56,6 +59,8 @@ _data = {
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4schr"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_omfxb"]
+
 [node name="Sewer" type="Node3D" node_paths=PackedStringArray("animation_player", "hookable", "sewer_cover")]
 script = ExtResource("1_exob5")
 animation_player = NodePath("SewerCover/AnimationPlayer")
@@ -72,6 +77,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SewerCover"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("CylinderShape3D_gqvap")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SewerCover"]
 libraries = {
@@ -88,3 +94,7 @@ animation_name = &"Open"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SewerPipe"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, -1)
 mesh = SubResource("CylinderMesh_4schr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SewerPipe"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, -1)
+shape = SubResource("CylinderShape3D_omfxb")
