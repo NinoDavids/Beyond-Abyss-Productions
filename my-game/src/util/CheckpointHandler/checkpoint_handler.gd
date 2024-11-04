@@ -8,6 +8,10 @@ class_name CheckpointHandler
 ## This is the [Checkpoint] that this class listens to.
 @export var checkpoint: Checkpoint
 
+@export var despawnParticles: PackedScene
+@export var respawnParticles: PackedScene
+@onready var effect_timer: Timer = $EffectTimer
+
 ## The parent of the [CheckpointHandler]. [br]
 ## Automatically gets set in the [method CheckpointHandler.set_parent] function. [br]
 ## [color=red][b] Must be of type [Node3D] in order to work. [/b][/color]
@@ -27,8 +31,8 @@ func _ready() -> void:
 	if parent != null:
 		set_parent_properties()
 	
-	EventManager.checkpoint_touched.connect(save_object)
-	EventManager.checkpoint_respawn.connect(load_object)
+	EventManager.checkpoint_touched.connect(handle_checkpoint_touched)
+	EventManager.checkpoint_respawn.connect(handle_checkpoint_respawn)
 
 ## Sets [member CheckpointHandler.parent] according to the parent node. [br]
 ## If the parent is [b]NOT[/b] of type [Node3D], it pushes an [b]Error[/b]
@@ -48,17 +52,64 @@ func set_parent_properties() -> void:
 	if parent.find_child("AnimHookable"):
 		anim_hookable = parent.find_child("AnimHookable")
 
+
 ## Gets called when [signal EventManager.checkpoint_touched] gets emitted.
-func save_object(point: Checkpoint) -> void:
+func handle_checkpoint_touched(point: Checkpoint) -> void:
 	if point == checkpoint : return
-	parent_original_transform = parent.global_transform
+	save_object()
 
 ## Gets called when [signal EventManager.checkpoint_respawn] gets emitted.
 ## Returns the [member CheckpointHandler.parent] transform to [member CheckpointHandler.parent_original_transform].
-func load_object(point: Checkpoint) -> void:
+func handle_checkpoint_respawn(point: Checkpoint) -> void:
 	if point != checkpoint : return
+	load_object()
+
+func save_object() -> void:
+	parent_original_transform = parent.global_transform
+
+func load_object() -> void:
 	parent.global_transform = parent_original_transform
 	
+	if parent is RigidBody3D:
+		parent.linear_velocity = Vector3.ZERO
+		parent.angular_velocity = Vector3.ZERO
+	
 	if anim_hookable != null:
+		anim_hookable.is_finished = false
 		anim_hookable.animation_player.play("RESET")
 		anim_hookable._ready()
+	
+	for child: Node in parent.get_children():
+		if child is Hookable:
+			if child.bobber != null:
+				child.remove_bobber()
+				EventManager.anim_hookable_finished.emit()
+
+func despawn_effect(body: Node3D) -> void:
+	var effect: CPUParticles3D = despawnParticles.instantiate() as CPUParticles3D
+	effect.finished.connect(destroy_effect)
+	body.visible = false
+	add_child(effect)
+	effect.global_position = body.global_position
+	effect.emitting = true
+
+func respawn_effect(body: Node3D) -> void:
+	var effect: CPUParticles3D = respawnParticles.instantiate() as CPUParticles3D
+	effect.finished.connect(destroy_effect)
+	add_child(effect)
+	effect.global_position = body.global_position
+	effect_timer.wait_time = effect.lifetime
+	effect.emitting = true
+	effect_timer.start()
+
+func destroy_effect() -> void:
+	for child: Node in get_children():
+		if child is CPUParticles3D:
+			child.queue_free()
+
+func respawn_with_effect() -> void:
+	despawn_effect(parent)
+	load_object()
+	respawn_effect(parent)
+	await effect_timer.timeout
+	parent.visible = true

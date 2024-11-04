@@ -20,9 +20,8 @@ func player_hits_water(player: CharacterBody3D) -> void:
 		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox
 		hitbox.take_damage(3)
 
-func _on_body_entered(body: CharacterBody3D) -> void:
-	print('object in water')
-	body.respawn()
+func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
-		print ('player in water')
+		print_debug("%s hit " %body.name, "%s." %name)
 		player_hits_water(body)
+		return

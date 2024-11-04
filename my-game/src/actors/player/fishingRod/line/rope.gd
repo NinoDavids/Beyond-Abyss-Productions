@@ -28,8 +28,8 @@ func _ready() -> void:
 	spawn_nodes()
 	connect_nodes()
 
-	for spring: Spring in springs:
-		print(spring._to_string())
+	#for spring: Spring in springs:
+		#print_debug(spring._to_string())
 
 func _physics_process(_delta: float) -> void:
 	if bobber_mesh != null:
