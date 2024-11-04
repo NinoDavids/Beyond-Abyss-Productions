@@ -22,6 +22,6 @@ mesh = SubResource("CapsuleMesh_e1mxm")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.265519, 0, 0, 0, 0.265519, -1.77636e-15, 0, 1.77636e-15, 0.265519, 0, 0, -1.19209e-07)
+transform = Transform3D(0.265519, -0.000162683, 1.12111e-05, -1.06954e-05, 0.000836942, 0.265518, -0.000162718, -0.265518, 0.000836935, 0, 0, -1.19209e-07)
 shape = SubResource("ConvexPolygonShape3D_fkgkj")
 disabled = true

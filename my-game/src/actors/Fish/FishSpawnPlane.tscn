@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b862b5w60d5il"]
+[gd_scene load_steps=11 format=3 uid="uid://b862b5w60d5il"]
 
 [ext_resource type="Shader" path="res://src/shaders/Water.gdshader" id="1_xqulg"]
 [ext_resource type="Script" path="res://src/world/Water/water_plane.gd" id="2_2e477"]
@@ -60,21 +60,8 @@ shader_parameter/wave = SubResource("NoiseTexture2D_vqilf")
 shader_parameter/texture_normal = SubResource("NoiseTexture2D_derab")
 shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_ty156")
 
-[sub_resource type="BoxMesh" id="BoxMesh_4s8vn"]
-
 [node name="WaterPlane" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0649229, 0.0167845, -0.250741)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_a54h3")
 surface_material_override/0 = SubResource("ShaderMaterial_xwoxc")
 script = ExtResource("2_2e477")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.6361, 0, 0, 0, 1.6361, 0, 0, 0, 1.6361, 0, 0, 0)
-mesh = SubResource("BoxMesh_4s8vn")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

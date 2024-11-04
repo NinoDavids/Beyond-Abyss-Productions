@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dlrt4tl6q6sux"]
+[gd_scene load_steps=63 format=4 uid="uid://dlrt4tl6q6sux"]
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_6klv2"]
 [ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_44ae0"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="16_vvoqv"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="17_62uh2"]
 [ext_resource type="PackedScene" uid="uid://l76da1sleber" path="res://addons/godot_plush/godot_plush_sitting.glb" id="19_0xeua"]
-[ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="21_oxstu"]
+[ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="21_p1i2u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,8 +34,6 @@ background_mode = 2
 sky = SubResource("Sky_sgs07")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_fmaua"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2ti3f"]
 size = Vector2(20, 20)
@@ -124,7 +122,7 @@ shader_parameter/wind_speed = 0.02
 shader_parameter/wind_strength = 1.0
 shader_parameter/windNoise = SubResource("NoiseTexture2D_sd2qe")
 
-[sub_resource type="Resource" id="Resource_gxg0a"]
+[sub_resource type="Resource" id="Resource_6lydd"]
 script = ExtResource("9_pj3ba")
 amount = 5000
 enabled = true
@@ -133,7 +131,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_57uj4"]
+[sub_resource type="Resource" id="Resource_7n832"]
 script = ExtResource("14_5oobb")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -144,9 +142,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ai5vy"]
+[sub_resource type="Resource" id="Resource_lje5r"]
 script = ExtResource("7_7v6db")
-stack = Array[ExtResource("8_60smg")]([SubResource("Resource_gxg0a"), SubResource("Resource_57uj4")])
+stack = Array[ExtResource("8_60smg")]([SubResource("Resource_6lydd"), SubResource("Resource_7n832")])
 
 [sub_resource type="Resource" id="Resource_rkoi0"]
 script = ExtResource("12_km13y")
@@ -156,7 +154,7 @@ size = Vector3(19.4755, 1, 47.2973)
 script = ExtResource("12_km13y")
 size = Vector3(19.4755, 1, 8.03695)
 
-[sub_resource type="Resource" id="Resource_tqtff"]
+[sub_resource type="Resource" id="Resource_evplf"]
 script = ExtResource("15_hlpwf")
 radius = 4.0
 samples_before_rejection = 10
@@ -166,7 +164,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_ysox2"]
+[sub_resource type="Resource" id="Resource_a3cqy"]
 script = ExtResource("14_5oobb")
 position = Vector3(0, 0, 0)
 rotation = Vector3(5, 360, 5)
@@ -177,7 +175,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_3fnbp"]
+[sub_resource type="Resource" id="Resource_so4m0"]
 script = ExtResource("16_vvoqv")
 iterations = 3
 offset_step = 0.2
@@ -189,7 +187,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_10667"]
+[sub_resource type="Resource" id="Resource_qt70a"]
 script = ExtResource("17_62uh2")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -205,9 +203,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qaedm"]
+[sub_resource type="Resource" id="Resource_u0aht"]
 script = ExtResource("7_7v6db")
-stack = Array[ExtResource("8_60smg")]([SubResource("Resource_tqtff"), SubResource("Resource_ysox2"), SubResource("Resource_3fnbp"), SubResource("Resource_10667")])
+stack = Array[ExtResource("8_60smg")]([SubResource("Resource_evplf"), SubResource("Resource_a3cqy"), SubResource("Resource_so4m0"), SubResource("Resource_qt70a")])
 
 [sub_resource type="Resource" id="Resource_nqt41"]
 script = ExtResource("12_km13y")
@@ -217,7 +215,7 @@ size = Vector3(20.6904, 0.808576, 19.9699)
 script = ExtResource("12_km13y")
 size = Vector3(5.86883, 0.755167, 15.061)
 
-[sub_resource type="Resource" id="Resource_dukk6"]
+[sub_resource type="Resource" id="Resource_7t73g"]
 script = ExtResource("15_hlpwf")
 radius = 4.0
 samples_before_rejection = 15
@@ -227,7 +225,7 @@ custom_seed = 16
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_2vwcg"]
+[sub_resource type="Resource" id="Resource_1qof1"]
 script = ExtResource("14_5oobb")
 position = Vector3(0, 0, 0)
 rotation = Vector3(5, 360, 5)
@@ -238,7 +236,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_15tr7"]
+[sub_resource type="Resource" id="Resource_8ulxt"]
 script = ExtResource("16_vvoqv")
 iterations = 3
 offset_step = 0.2
@@ -250,7 +248,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_dxu63"]
+[sub_resource type="Resource" id="Resource_bpaoo"]
 script = ExtResource("17_62uh2")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -266,9 +264,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_x1j17"]
+[sub_resource type="Resource" id="Resource_nvevv"]
 script = ExtResource("7_7v6db")
-stack = Array[ExtResource("8_60smg")]([SubResource("Resource_dukk6"), SubResource("Resource_2vwcg"), SubResource("Resource_15tr7"), SubResource("Resource_dxu63")])
+stack = Array[ExtResource("8_60smg")]([SubResource("Resource_7t73g"), SubResource("Resource_1qof1"), SubResource("Resource_8ulxt"), SubResource("Resource_bpaoo")])
 
 [sub_resource type="Resource" id="Resource_lds8q"]
 script = ExtResource("12_km13y")
@@ -291,19 +289,16 @@ shadow_enabled = true
 
 [node name="Env" type="Node" parent="."]
 
-[node name="FishSpawn" parent="Env" node_paths=PackedStringArray("player") instance=ExtResource("21_oxstu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7466, 0.0167845, -0.250741)
+[node name="WaterPlane" parent="Env" node_paths=PackedStringArray("player", "timer") instance=ExtResource("21_p1i2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38.1031)
 skeleton = NodePath("../..")
 player = NodePath("../../Actors/Player")
 shoot_height = 5
+timer = NodePath("Timer")
+fish_spawn_time = 0.1
 
-[node name="Timer" parent="Env/FishSpawn" index="0"]
-wait_time = 0.5
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Env/FishSpawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0230026, -0.256822, -3.6942)
-mesh = SubResource("BoxMesh_fmaua")
-skeleton = NodePath("../../..")
+[node name="Timer" type="Timer" parent="Env/WaterPlane"]
+autostart = true
 
 [node name="Area1" type="StaticBody3D" parent="Env"]
 collision_layer = 4
@@ -429,11 +424,11 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_bqbyw")
 
 [node name="Tree2" parent="Env/Trees" instance=ExtResource("5_r67js")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851347, -12.3709, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851347, 18.8632, 0)
 
 [node name="ProtonScatter2" type="Node3D" parent="Env/Trees"]
 script = ExtResource("6_d0o62")
-modifier_stack = SubResource("Resource_ai5vy")
+modifier_stack = SubResource("Resource_lje5r")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -457,7 +452,7 @@ shape = SubResource("Resource_3wpwd")
 [node name="ProtonScatter" type="Node3D" parent="Env/Trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.576089, 0)
 script = ExtResource("6_d0o62")
-modifier_stack = SubResource("Resource_qaedm")
+modifier_stack = SubResource("Resource_u0aht")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -480,7 +475,7 @@ shape = SubResource("Resource_r34s3")
 [node name="ProtonScatter3" type="Node3D" parent="Env/Trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.576089, -28.3778)
 script = ExtResource("6_d0o62")
-modifier_stack = SubResource("Resource_x1j17")
+modifier_stack = SubResource("Resource_nvevv")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -512,6 +507,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6.88214)
 collision_mask = 4
 cast_strength = 7.5
 
-[editable path="Env/FishSpawn"]
+[connection signal="timeout" from="Env/WaterPlane/Timer" to="Env/WaterPlane" method="_on_timer_timeout"]
+
 [editable path="Actors/Player"]
 [editable path="Actors/Player/Head/FishingRod"]

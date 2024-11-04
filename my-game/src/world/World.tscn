@@ -1,12 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=15 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
+[ext_resource type="PackedScene" uid="uid://eavcmkkb2idj" path="res://src/actors/Enemy/Enemy.tscn" id="5_0ptj6"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
-[ext_resource type="PackedScene" uid="uid://cink7dlm6dmg5" path="res://src/world/Object/Lillypad.tscn" id="6_0rvkr"]
-[ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="7_p80hx"]
-[ext_resource type="Script" path="res://src/world/mesh_instance_3d_2.gd" id="7_pv4p4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
@@ -18,6 +16,8 @@ size = Vector2(20, 20)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjdnq"]
 albedo_texture = ExtResource("2_w3y7u")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1b0e2"]
+size = Vector3(20, 1, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1b0e2"]
 size = Vector3(20, 1, 20)
 
@@ -38,10 +38,6 @@ glow_enabled = true
 points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4gqku"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_5xr0n"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_menf2"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_08khl")
@@ -95,12 +91,7 @@ mesh = SubResource("SphereMesh_4gqku")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_8mvip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
-collision_layer = 4
-collision_mask = 0
 
-[node name="Enemy" parent="." instance=ExtResource("5_0ptj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92013, 0.359142, 6.08446)
-collision_mask = 4
 [node name="FishSpawn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_p80hx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7466, 0.0167845, -0.250741)
 player = NodePath("../Player")

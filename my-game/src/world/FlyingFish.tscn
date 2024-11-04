@@ -1,12 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://djtqv5u60sh6x"]
+[gd_scene load_steps=13 format=3 uid="uid://djtqv5u60sh6x"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_ae2vt"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_2tf2f"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="3_xgp3h"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="4_x7brj"]
-[ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="5_44kg2"]
-[ext_resource type="PackedScene" uid="uid://cink7dlm6dmg5" path="res://src/world/Object/Lillypad.tscn" id="6_0jgjj"]
-[ext_resource type="Script" path="res://src/world/mesh_instance_3d_2.gd" id="7_ag1mw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
@@ -35,10 +32,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_4gqku"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_5xr0n"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_menf2"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_ae2vt")
@@ -87,26 +80,3 @@ mesh = SubResource("SphereMesh_4gqku")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("4_x7brj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
-
-[node name="FishSpawn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_44kg2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7466, 0.0167845, -0.250741)
-player = NodePath("../Player")
-shoot_height = 5
-
-[node name="Timer" parent="FishSpawn" index="0"]
-wait_time = 0.5
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="FishSpawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0230026, -0.256822, -3.6942)
-mesh = SubResource("BoxMesh_5xr0n")
-skeleton = NodePath("../..")
-
-[node name="Lilypad" parent="." instance=ExtResource("6_0jgjj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46357, -0.73975, 14.4429)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1603, 4.42581, -33.2337)
-mesh = SubResource("SphereMesh_menf2")
-script = ExtResource("7_ag1mw")
-
-[editable path="FishSpawn"]
