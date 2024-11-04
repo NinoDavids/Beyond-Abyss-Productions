@@ -2,8 +2,6 @@ extends MeshInstance3D
 
 @export var player: Player
 
-@export var player: Player
-
 var material: ShaderMaterial
 var noise: Image
 
@@ -21,6 +19,8 @@ const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn
 func _ready() -> void:
 	
 	if timer != null:
+		timer.start()
+		timer.timeout.connect(_on_timer_timeout)
 		timer.wait_time = fish_spawn_time
 	
 	material = self.get_surface_override_material(0)
@@ -54,7 +54,7 @@ func _on_timer_timeout() -> void:
 
 	var new_fish: Flying_fish = FLYING_FISH.instantiate() as RigidBody3D
 	add_child(new_fish)
-	new_fish.global_position = Vector3(random_x, 0, random_z)
+	new_fish.position = Vector3(random_x, 0, random_z)
 	
 	if (random_x > 0):
 		new_fish.apply_force_direction(Vector3(randf_range(-4, -7),7,0), player, self, shoot_height)
