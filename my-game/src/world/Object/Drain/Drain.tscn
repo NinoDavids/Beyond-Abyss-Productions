@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yssqu3rr2s75"]
+[gd_scene load_steps=12 format=3 uid="uid://yssqu3rr2s75"]
 
 [ext_resource type="Script" path="res://src/world/Object/Drain/drain.gd" id="1_h4fqs"]
 
@@ -44,6 +44,9 @@ _data = {
 "in": SubResource("Animation_wkrlt")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1rym"]
+size = Vector3(0.191101, 0.115143, 0.0337524)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_biv02"]
 size = Vector3(0.251404, 0.623901, 0.0977783)
 
@@ -82,6 +85,10 @@ root_node = NodePath("../Area3D/ButtonShape")
 libraries = {
 "": SubResource("AnimationLibrary_q1ymy")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012973, 0.249619, 0.0534363)
+shape = SubResource("BoxShape3D_f1rym")
 
 [node name="HolderCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00088501, 0.0602417, 0.000671387)
