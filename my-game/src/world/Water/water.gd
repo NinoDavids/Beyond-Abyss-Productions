@@ -33,3 +33,8 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 func raise_water(height: float) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(water_plane, "global_position", Vector3(water_plane.global_position.x, height, water_plane.global_position.z), 5)
+
+
+func stop_raise_water(height: float) -> void:
+	var tween := get_tree().create_tween()
+	tween.stop()
