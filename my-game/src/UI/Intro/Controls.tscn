@@ -1,0 +1,176 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhmatrhdfw24q"]
+
+[ext_resource type="Texture2D" uid="uid://cmu1h0ps7eq5v" path="res://src/UI/MainMenu/Art/1000_F_529976955_ixAy1MO7eYm9R2ngP0XOYmzzXhO5sWW7.jpg" id="1_wu343"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wu343")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 250
+theme_override_constants/v_separation = 12
+columns = 4
+
+[node name="Movement" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Movement "
+
+[node name="Filler" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="FishingRod" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Fishing rod"
+
+[node name="Filler2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MoveForward" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Move forward"
+
+[node name="W" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "W"
+
+[node name="Cast" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Cast "
+
+[node name="LeftMouse" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Left mouse button (Hold)"
+
+[node name="MoveBackward" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Move backwards"
+
+[node name="S" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "S"
+
+[node name="Reel in" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reel in line"
+
+[node name="ScrollWheel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Scroll wheel (Down)"
+
+[node name="MoveLeft" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Move left"
+
+[node name="A" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "A"
+
+[node name="ReleaseHook" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Release hook
+"
+
+[node name="RightMouse" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Right mouse button"
+
+[node name="MoveRight" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Move right"
+
+[node name="D" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "D"
+
+[node name="Filler3" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Filler4" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Jump" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Jump
+"
+
+[node name="Space" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Spacebar
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Next "

@@ -23,6 +23,7 @@ func _on_body_entered(body: Node3D) -> void:
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
 
+
 ## Places the [member bobber] in the center of the [Hookable].
 func place_bobber() -> void:
 	bobber.set_hooked(global_position)
