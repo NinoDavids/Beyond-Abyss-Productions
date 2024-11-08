@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dop37yjdupvy5"]
+[gd_scene load_steps=9 format=3 uid="uid://dop37yjdupvy5"]
 
 [ext_resource type="Script" path="res://src/actors/player/fishingRod/fishing_rod.gd" id="1_nk6eq"]
+[ext_resource type="PackedScene" uid="uid://dkproegywdn33" path="res://src/actors/player/fishingRod/model/fishingRodMesh.tscn" id="2_fw1ao"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_no2wm"]
 top_radius = 0.005
@@ -9,60 +10,6 @@ bottom_radius = 0.005
 [sub_resource type="SphereMesh" id="SphereMesh_2oo2i"]
 radius = 0.063
 height = 0.125
-
-[sub_resource type="Animation" id="Animation_xhq8k"]
-resource_name = "HoldBack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RodMesh:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.649262, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:strenght_multiplier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 1.5]
-}
-
-[sub_resource type="Animation" id="Animation_1n8c7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RodMesh:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:strenght_multiplier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
 
 [sub_resource type="Animation" id="Animation_58tou"]
 resource_name = "Cast"
@@ -94,6 +41,133 @@ tracks/1/keys = {
 "method": &"cast_bobber"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fishingRodMesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(0.354302, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fishingRodMesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.143564, 0), Vector3(0, 0.0287017, -0.293562)]
+}
+
+[sub_resource type="Animation" id="Animation_xhq8k"]
+resource_name = "HoldBack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RodMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.649262, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:strenght_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fishingRodMesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(2.76809, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fishingRodMesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.143564, 0), Vector3(0, 0.344283, 0.30882)]
+}
+
+[sub_resource type="Animation" id="Animation_1n8c7"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RodMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:strenght_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fishingRodMesh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fishingRodMesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.143564, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hsknb"]
 _data = {
@@ -106,16 +180,20 @@ _data = {
 script = ExtResource("1_nk6eq")
 
 [node name="RodMesh" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_no2wm")
-
-[node name="BobberMesh" type="MeshInstance3D" parent="RodMesh"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725415, 0)
-mesh = SubResource("SphereMesh_2oo2i")
-skeleton = NodePath("../..")
 
 [node name="lineHolder" type="MeshInstance3D" parent="RodMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725415, 0)
+skeleton = NodePath("../..")
+
+[node name="fishingRodMesh" parent="." instance=ExtResource("2_fw1ao")]
+transform = Transform3D(0.5, 0, 0, 0, -1.81e-06, -0.5, 0, 0.5, -1.81e-06, 0, 0.143564, 0)
+
+[node name="BobberMesh" type="MeshInstance3D" parent="fishingRodMesh"]
+unique_name_in_owner = true
+transform = Transform3D(2, 0, 0, 0, -7.23998e-06, 2, 0, -2, -7.23998e-06, 0, -5.7133e-06, -1.57826)
+mesh = SubResource("SphereMesh_2oo2i")
 skeleton = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -123,3 +201,6 @@ libraries = {
 "": SubResource("AnimationLibrary_hsknb")
 }
 blend_times = [&"Cast", &"RESET", 1.0]
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
