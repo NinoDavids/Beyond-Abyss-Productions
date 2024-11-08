@@ -5,6 +5,7 @@ extends RigidBody3D
 @export var float_force: float = 1.0
 @export var water_drag: float = 0.05
 @export var water_angular_drag: float = 0.05
+
 @export var water: Water
 @export var checkpoint: Checkpoint
 
@@ -12,12 +13,12 @@ extends RigidBody3D
 @onready var water_height := water.water_plane.global_position.y
 @onready var checkpoint_handler: CheckpointHandler = $CheckpointHandler
 
+
 var submerged := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.lock_rotation = true
-	checkpoint_handler.checkpoint = checkpoint
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
