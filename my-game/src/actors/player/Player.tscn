@@ -8,11 +8,11 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5s7t8"]
-height = 1.6
+height = 1.83401
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6730j"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 6
 collision_mask = 271
 script = ExtResource("1_v30fi")

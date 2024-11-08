@@ -19,8 +19,6 @@ const JUMP_VELOCITY: float = 4.5
 var current_bobber: Bobber
 var held_Item: RigidBody3D
 
-
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	EventManager.anim_hookable_finished.connect(cancel_hook)

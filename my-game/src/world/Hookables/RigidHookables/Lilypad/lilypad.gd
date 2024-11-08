@@ -1,22 +1,18 @@
 extends RigidBody3D
 
-class_name Lilypad
+class_name LilypadDragable
 
 @export var float_force := 1.0
 @export var water_drag := 0.05
 @export var water_angular_drag := 0.05
-
+@export var hookable: RigidHookable
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var water = $".."
 
 var startValue: Vector3
-
 var submerged := false
-
 var playerOnThisLilly: bool
-var canMoveLilly: bool
 var timer: float
-
 const water_height := -2.0
 
 func _ready() -> void:
@@ -24,10 +20,14 @@ func _ready() -> void:
 	startValue = position
 
 func _physics_process(delta: float) -> void:
-	if timer > 0 and not playerOnThisLilly:
-		timer -= delta
+	if timer > 0:
+		if !playerOnThisLilly:
+			timer -= delta
+			print_debug(timer)
 	else:
-		canMoveLilly = true
+		if hookable and !hookable.canMove:
+			print_debug(hookable.canMove)
+			hookable.canMove = true
 		
 	submerged = false
 	var depth = water.water_plane.get_height(global_position) - global_position.y
@@ -39,14 +39,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if submerged:
 		state.linear_velocity *= 1 - water_drag
 
-
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
-		print_debug("test")
 		playerOnThisLilly = true
-		canMoveLilly = false
-		timer = 3.0
-
+		hookable.canMove = false
+		timer = 1.0
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Player:

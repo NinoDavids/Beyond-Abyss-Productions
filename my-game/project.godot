@@ -64,6 +64,7 @@ import/blender/enabled=false
 enemies=""
 Pickups=""
 bobber=""
+player=""
 
 [input]
 
