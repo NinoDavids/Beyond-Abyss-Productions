@@ -45,7 +45,7 @@ movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Production
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 
@@ -63,6 +63,7 @@ import/blender/enabled=false
 enemies=""
 Pickups=""
 bobber=""
+player=""
 
 [input]
 

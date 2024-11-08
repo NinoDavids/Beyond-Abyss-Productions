@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://fei8w454cc0l"]
+[gd_scene load_steps=5 format=3 uid="uid://fei8w454cc0l"]
 
 [ext_resource type="Script" path="res://src/world/Water/water.gd" id="1_scf8i"]
 [ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="2_hiosk"]
+[ext_resource type="Script" path="res://src/world/Water/Killplane.gd" id="3_rol2f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpupn"]
-size = Vector3(1, 0.1, 1)
+size = Vector3(125, 0.1, 100)
 
 [sub_resource type="Animation" id="Animation_1x38f"]
 length = 0.001
@@ -54,6 +55,7 @@ animation_player = NodePath("AnimationPlayer")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545878, 0)
 shape = SubResource("BoxShape3D_lpupn")
+script = ExtResource("3_rol2f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

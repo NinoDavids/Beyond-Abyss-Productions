@@ -1,3 +1,4 @@
+@tool
 extends MeshInstance3D
 
 class_name WaterPlane
@@ -7,9 +8,9 @@ class_name WaterPlane
 var material: ShaderMaterial
 var noise: Image
 
-var noise_scale: float
-var wave_speed: float
-var height_scale: float
+@export var noise_scale: float = 10.0
+@export var wave_speed: float = 0.025
+@export var height_scale: float = 0.15
 var time: float 
 @export var shoot_height:int
 
@@ -17,6 +18,12 @@ const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn
 @export var timer: Timer
 
 @export_range(0, 2, 0.1) var fish_spawn_time: float
+
+@export var calculateWavesButton: bool = false : set = set_button
+
+func set_button(new_value: bool) -> void:
+	calculateWaves()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -24,13 +31,17 @@ func _ready() -> void:
 		timer.start()
 		timer.timeout.connect(_on_timer_timeout)
 		timer.wait_time = fish_spawn_time
-	
+func calculateWaves() -> void:
 	material = self.get_surface_override_material(0)
 	noise = material.get_shader_parameter("wave").noise.get_seamless_image(512, 512)
-	noise_scale = material.get_shader_parameter("noise_scale")
-	wave_speed = material.get_shader_parameter("time_scale")
-	height_scale = material.get_shader_parameter("height_scale")
+	
+	material.set_shader_parameter("noise_scale", noise_scale) 
+	material.set_shader_parameter("time_scale", wave_speed) 
+	material.set_shader_parameter("height_scale", height_scale) 
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	calculateWaves()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
