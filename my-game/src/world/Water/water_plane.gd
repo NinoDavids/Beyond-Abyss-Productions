@@ -1,4 +1,3 @@
-@tool
 extends MeshInstance3D
 
 class_name WaterPlane
@@ -26,11 +25,12 @@ func set_button(new_value: bool) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	calculateWaves()
 	if timer != null:
 		timer.start()
 		timer.timeout.connect(_on_timer_timeout)
 		timer.wait_time = fish_spawn_time
+		
 func calculateWaves() -> void:
 	material = self.get_surface_override_material(0)
 	noise = material.get_shader_parameter("wave").noise.get_seamless_image(512, 512)
@@ -38,10 +38,6 @@ func calculateWaves() -> void:
 	material.set_shader_parameter("noise_scale", noise_scale) 
 	material.set_shader_parameter("time_scale", wave_speed) 
 	material.set_shader_parameter("height_scale", height_scale) 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	calculateWaves()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
