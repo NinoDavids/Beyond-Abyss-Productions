@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://e8618ik7qkgt"]
+
+[ext_resource type="Script" path="res://src/world/PuzzlePieceRespawner/puzzle_piece_respawner.gd" id="1_x6bvc"]
+
+[node name="PuzzlePieceRespawner" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_x6bvc")
+
+[node name="EffectTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -23,13 +23,6 @@ func player_hits_water(player: CharacterBody3D) -> void:
 		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox
 		hitbox.take_damage(3)
 
-func _on_body_entered(body: CharacterBody3D) -> void:
-	body.respawn()
-	if body is Player:
-		print ('player in water')
-	if body.is_class('Player'):
-		player_hits_water(body)
-
 func raise_water(height: float) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(water_plane, "global_position", Vector3(water_plane.global_position.x, height, water_plane.global_position.z), 5)
@@ -38,3 +31,9 @@ func raise_water(height: float) -> void:
 func stop_raise_water(height: float) -> void:
 	var tween := get_tree().create_tween()
 	tween.stop()
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is Player:
+		print_debug("%s hit " %body.name, "%s." %name)
+		player_hits_water(body)
+		return
