@@ -1,13 +1,12 @@
 extends ColorRect
 class_name HealthShaderRect
 ## Must be placed under a canvaslayer.
-
-
 var shader: ShaderMaterial
 var transparency: float = 0.25
 
 var regenerating: bool = false
 var player_died: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventManager.player_damaged.connect(handle_player_damaged)
@@ -15,7 +14,6 @@ func _ready() -> void:
 	EventManager.player_died.connect(handle_player_death)
 	EventManager.player_respawned.connect(handle_player_respawn)
 	shader = material
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

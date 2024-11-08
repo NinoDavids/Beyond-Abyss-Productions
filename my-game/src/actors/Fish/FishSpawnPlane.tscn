@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://blg18q0fywefe"]
+[gd_scene load_steps=11 format=3 uid="uid://b862b5w60d5il"]
 
-[ext_resource type="Shader" path="res://src/shaders/Water.gdshader" id="1_lph40"]
-[ext_resource type="Script" path="res://src/world/Water/water_plane.gd" id="2_u8ilq"]
+[ext_resource type="Shader" path="res://src/shaders/Water.gdshader" id="1_xqulg"]
+[ext_resource type="Script" path="res://src/world/Water/water_plane.gd" id="2_2e477"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_a54h3"]
+size = Vector2(20, 20)
 subdivide_width = 200
 subdivide_depth = 200
 orientation = 1
@@ -37,11 +38,11 @@ noise = SubResource("FastNoiseLite_kdg77")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwoxc"]
 render_priority = 0
-shader = ExtResource("1_lph40")
-shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
-shader_parameter/albedo2 = Color(0, 0.47451, 0.764706, 1)
-shader_parameter/metallic = 0.0
+shader = ExtResource("1_xqulg")
+shader_parameter/albedo = Color(0.0045, 0.323775, 0.45, 0.294118)
+shader_parameter/albedo2 = Color(0, 0.468667, 0.76, 0.215686)
 shader_parameter/roughness = 0.02
+shader_parameter/alpha = 0.9
 shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_direction2 = Vector2(0, 1)
 shader_parameter/time_scale = 0.025
@@ -63,4 +64,4 @@ shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_ty156")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_a54h3")
 surface_material_override/0 = SubResource("ShaderMaterial_xwoxc")
-script = ExtResource("2_u8ilq")
+script = ExtResource("2_2e477")

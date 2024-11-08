@@ -8,6 +8,10 @@ class_name LilypadDragable
 @export var hookable: RigidHookable
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var water = $".."
+@export_group("Checkpoint Handling")
+@export var checkpoint: Checkpoint
+@onready var water_height := water.water_plane.global_position.y
+@onready var checkpoint_handler: CheckpointHandler = $CheckpointHandler
 
 var startValue: Vector3
 var submerged := false
@@ -30,15 +34,17 @@ func _physics_process(delta: float) -> void:
 			hookable.canMove = true
 		
 	submerged = false
+	water_height = water.water_plane.global_position.y
 	var depth = water.water_plane.get_height(global_position) - global_position.y
 	if depth > 0:
 		submerged = true
-		apply_central_force(Vector3.UP * float_force * 100 * depth)
+		apply_central_force(Vector3.UP * float_force * gravity * depth)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if submerged:
 		state.linear_velocity *= 1 - water_drag
-
+    state.angular_velocity *= 1 - water_angular_drag
+    
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		playerOnThisLilly = true

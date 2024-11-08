@@ -34,11 +34,9 @@ func take_damage(damage: float = 1) -> void:
 	else:
 		EventManager.player_damaged.emit()
 
-
 func _on_regen_timer_timeout() -> void:
 	EventManager.player_regenerating.emit()
 	is_regenning = true
-
 
 func _on_area_entered(_area: Area3D) -> void:
 	take_damage()

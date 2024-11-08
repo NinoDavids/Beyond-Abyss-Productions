@@ -2,8 +2,8 @@ shader_type spatial;
 
 uniform vec3 albedo: source_color;
 uniform vec3 albedo2: source_color;
-uniform float metallic: hint_range(0.0, 1.0) = 0;
 uniform float roughness: hint_range(0.0, 1.0) = 0.02;
+uniform float alpha :hint_range(0.0, 1.0) = 0.9;
 
 uniform sampler2D wave;
 uniform sampler2D texture_normal;
@@ -28,6 +28,7 @@ uniform vec3 edge_color: source_color;
 
 uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
 uniform sampler2D SCREEN_TEXTURE: hint_depth_texture, filter_linear_mipmap;
+
 //varying variables
 varying float height;
 varying vec3 world_pos;
@@ -91,8 +92,7 @@ void fragment() {
 	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
 	
 	ALBEDO = clamp(surface_color + depth_color_adj, vec3(0.0), vec3(1.0));
-	ALPHA = 0.9;
-	METALLIC = metallic;
+	ALPHA = alpha;
 	ROUGHNESS = roughness;
 	NORMAL_MAP = normal_blend;
 }

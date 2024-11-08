@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv7gt455iww3t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ooq3"]
+albedo_color = Color(0, 0.694118, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.129412, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_3nmv0"]
+material = SubResource("StandardMaterial3D_1ooq3")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Curve" id="Curve_xrhwm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.264045, 0.857143), 0.441688, 0.441688, 0, 0, Vector2(1, 0.043956), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="ImplodeParticles" type="CPUParticles3D"]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_3nmv0")
+emission_shape = 2
+emission_sphere_radius = 2.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -5.0
+radial_accel_max = -5.0
+scale_amount_curve = SubResource("Curve_xrhwm")

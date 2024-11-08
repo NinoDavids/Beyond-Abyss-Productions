@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_6klv2"]
 [ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_44ae0"]
-[ext_resource type="Script" path="res://src/world/Level/CheckPoint.gd" id="1_y0x2m"]
+[ext_resource type="PackedScene" uid="uid://dymymkt8ujty8" path="res://src/world/Checkpoint/checkpoint.tscn" id="1_o1et8"]
 [ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_7rywk"]
+[ext_resource type="PackedScene" uid="uid://b3rs7rxo07v35" path="res://src/util/CheckpointHandler/checkpoint_handler.tscn" id="3_f1bhu"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_sd25o"]
 [ext_resource type="PackedScene" uid="uid://c3kck1vvbqqi0" path="res://src/world/Object/Lillypad.tscn" id="5_7plfq"]
 [ext_resource type="PackedScene" uid="uid://c1b42r3hlo8b7" path="res://src/world/Foliage/Trees/TreeMedium.tscn" id="5_r67js"]
@@ -21,6 +22,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="16_vvoqv"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="17_62uh2"]
 [ext_resource type="PackedScene" uid="uid://l76da1sleber" path="res://addons/godot_plush/godot_plush_sitting.glb" id="19_0xeua"]
+[ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="20_iierl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -300,12 +302,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area1"]
 shape = SubResource("ConvexPolygonShape3D_14ltj")
 
-[node name="Marker3D" type="Marker3D" parent="Env/Area1" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-gizmo_extents = 1.0
-script = ExtResource("1_y0x2m")
-is_active = true
-player = NodePath("../../../Actors/Player")
+[node name="Checkpoint" parent="Env/Area1" instance=ExtResource("1_o1et8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944695, 0)
 
 [node name="Area2" type="StaticBody3D" parent="Env"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.376)
@@ -319,8 +317,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area2"]
 shape = SubResource("ConvexPolygonShape3D_14ltj")
 
-[node name="Bridge" parent="Env/Area2" instance=ExtResource("1_44ae0")]
+[node name="Bridge" parent="Env/Area2" node_paths=PackedStringArray("checkpoint") instance=ExtResource("1_44ae0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.222404, 0, 9.70644)
+checkpoint = NodePath("../../Area1/Checkpoint")
 
 [node name="SmallRock" type="RigidBody3D" parent="Env/Area2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9396, 0.41439, -5.34026)
@@ -342,6 +341,9 @@ shape = SubResource("ConvexPolygonShape3D_k35bo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 body = NodePath("..")
 to_player = null
+
+[node name="CheckpointHandler" parent="Env/Area2/SmallRock" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_f1bhu")]
+checkpoint = NodePath("../../Checkpoint")
 
 [node name="TallRock" type="StaticBody3D" parent="Env/Area2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.89236)
@@ -377,6 +379,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 body = NodePath("..")
 to_player = null
 
+[node name="CheckpointHandler" parent="Env/Area2/VTallRock" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_f1bhu")]
+checkpoint = NodePath("../../Checkpoint")
+
+[node name="Checkpoint" parent="Env/Area2" instance=ExtResource("1_o1et8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.04975)
+
 [node name="Area3" type="StaticBody3D" parent="Env"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.89844, -47.376)
 collision_layer = 4
@@ -389,6 +397,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area3"]
 shape = SubResource("ConvexPolygonShape3D_wbguo")
+
+[node name="Checkpoint" parent="Env/Area3" instance=ExtResource("1_o1et8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.2012, 9.07226)
 
 [node name="Water" parent="Env" instance=ExtResource("4_sd25o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -13.377)
@@ -436,7 +447,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_bqbyw")
 
 [node name="Tree2" parent="Env/Trees" instance=ExtResource("5_r67js")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851347, -12.3709, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851347, 18.8632, 0)
 
 [node name="ProtonScatter2" type="Node3D" parent="Env/Trees"]
 script = ExtResource("6_d0o62")
@@ -512,11 +523,20 @@ shape = SubResource("Resource_eesx2")
 [node name="godot_plush_sitting" parent="Env" instance=ExtResource("19_0xeua")]
 transform = Transform3D(-22.1768, 0, -1.93876e-06, 0, 22.1768, 0, 1.93876e-06, 0, -22.1768, 3.04751, 4.0996, -46.8515)
 
+[node name="WaterPlane" parent="Env" node_paths=PackedStringArray("player", "timer") instance=ExtResource("20_iierl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.2923)
+skeleton = NodePath("../..")
+player = NodePath("../../Actors/Player")
+shoot_height = 5
+timer = NodePath("Timer")
+fish_spawn_time = 0.1
+
+[node name="Timer" type="Timer" parent="Env/WaterPlane"]
+
 [node name="Actors" type="Node" parent="."]
 
 [node name="Player" parent="Actors" instance=ExtResource("1_6klv2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
-collision_layer = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6.88214)
 collision_mask = 4
 cast_strength = 7.5
 

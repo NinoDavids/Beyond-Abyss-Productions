@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
-[ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="5_wgd62"]
-[ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/RigidHookables/Lilypad/Lilypad.tscn" id="6_qmamx"]
-[ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/AnimationHookables/Sewer/Sewer.tscn" id="7_erdry"]
-[ext_resource type="PackedScene" uid="uid://yssqu3rr2s75" path="res://src/world/Object/Drain/Drain.tscn" id="8_ogg5i"]
+[ext_resource type="PackedScene" uid="uid://cink7dlm6dmg5" path="res://src/world/Object/Lillypad.tscn" id="6_0rvkr"]
+[ext_resource type="PackedScene" uid="uid://b862b5w60d5il" path="res://src/actors/Fish/FishSpawnPlane.tscn" id="7_p80hx"]
+[ext_resource type="Script" path="res://src/world/mesh_instance_3d_2.gd" id="7_pv4p4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
@@ -19,8 +18,8 @@ size = Vector2(20, 20)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjdnq"]
 albedo_texture = ExtResource("2_w3y7u")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1b0e2"]
-size = Vector3(20, 1, 20)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ymhtv"]
+points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1s30d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,10 +34,11 @@ sky = SubResource("Sky_jau47")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ymhtv"]
-points = PackedVector3Array(10.1548, 0.158668, 10.1548, -10.1548, -0.158668, -10.1548, -10.1548, 0.158668, -10.1548, 10.1548, -0.158668, -10.1548, -10.1548, -0.158668, 10.1548, -10.1548, 0.158668, 10.1548, 10.1548, 0.158668, -10.1548, 10.1548, -0.158668, 10.1548)
-
 [sub_resource type="SphereMesh" id="SphereMesh_4gqku"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xr0n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_menf2"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_08khl")
@@ -47,8 +47,6 @@ script = ExtResource("1_08khl")
 navigation_mesh = SubResource("NavigationMesh_p4h3f")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
-collision_layer = 4
-collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.950815, 0)
@@ -57,7 +55,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gjdnq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08141, 0)
-shape = SubResource("BoxShape3D_1b0e2")
+shape = SubResource("ConvexPolygonShape3D_ymhtv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_paunv")
@@ -68,12 +66,9 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_y3247")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_mask = 116
 cast_strength = 5.5
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 4
-collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.950815, 0)
@@ -92,21 +87,26 @@ mesh = SubResource("SphereMesh_4gqku")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_8mvip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
-collision_layer = 4
-collision_mask = 0
 
-[node name="Water" parent="." instance=ExtResource("5_wgd62")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4695, -0.901081, -0.794859)
-plane_size = Vector2(20, 20)
+[node name="FishSpawn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_p80hx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7466, 0.0167845, -0.250741)
+player = NodePath("../Player")
+shoot_height = 10
 
-[node name="Lilypad" parent="." node_paths=PackedStringArray("water") instance=ExtResource("6_qmamx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5356, 0, 0)
-water = NodePath("../Water")
+[node name="Timer" parent="FishSpawn" index="0"]
+wait_time = 0.1
 
-[node name="Sewer" parent="." node_paths=PackedStringArray("water") instance=ExtResource("7_erdry")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.2605, 4.66434, 0)
-water = NodePath("../Water")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FishSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0230026, -0.256822, -3.6942)
+mesh = SubResource("BoxMesh_5xr0n")
+skeleton = NodePath("../..")
 
-[node name="Drain" parent="." node_paths=PackedStringArray("water") instance=ExtResource("8_ogg5i")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 9.59211, -0.475146, -2.42007)
-water = NodePath("../Water")
+[node name="Lilypad" parent="." instance=ExtResource("6_0rvkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46357, -0.73975, 14.4429)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1603, 4.42581, -33.2337)
+mesh = SubResource("SphereMesh_menf2")
+script = ExtResource("7_pv4p4")
+
+[editable path="FishSpawn"]
