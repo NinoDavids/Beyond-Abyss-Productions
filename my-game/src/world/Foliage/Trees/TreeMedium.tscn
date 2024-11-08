@@ -22,14 +22,14 @@ noise = SubResource("FastNoiseLite_0evpt")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkla7"]
 render_priority = 0
 shader = ExtResource("2_li1v3")
-shader_parameter/color = Color(0.309817, 0.785156, 0.116547, 1)
-shader_parameter/color2 = Color(0.0685883, 0.566406, 0.181375, 1)
+shader_parameter/color = Color(0.62067, 0.0708008, 0.625, 1)
+shader_parameter/color2 = Color(1, 0.8125, 0.988281, 1)
 shader_parameter/noiseScale = 7.8
 shader_parameter/flipNormal = false
 shader_parameter/alpha = ExtResource("3_jo3d5")
 shader_parameter/noise = SubResource("NoiseTexture2D_2eovo")
 shader_parameter/windSpeed = 0.1
-shader_parameter/windStrenght = 0.003
+shader_parameter/windStrenght = 0.005
 shader_parameter/windDirection = Vector3(1, 1, 1)
 shader_parameter/WindNoise = SubResource("NoiseTexture2D_c1g7g")
 

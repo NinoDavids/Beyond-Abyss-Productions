@@ -10,7 +10,7 @@ var spring: Node
 @onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
 @onready var itemHolder: Node3D = $Head/ItemHolder
 
-const SPEED: float = 5.0
+@export var SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
 @export var mouse_sens: float = 0.25

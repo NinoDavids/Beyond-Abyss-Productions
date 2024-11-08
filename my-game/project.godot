@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Production
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [file_customization]
 
