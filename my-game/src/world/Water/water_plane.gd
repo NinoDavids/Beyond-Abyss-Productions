@@ -1,5 +1,7 @@
 extends MeshInstance3D
 
+class_name WaterPlane
+
 @export var player: Player
 
 var material: ShaderMaterial
