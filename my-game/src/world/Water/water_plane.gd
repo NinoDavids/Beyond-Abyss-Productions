@@ -1,5 +1,7 @@
 extends MeshInstance3D
 
+class_name WaterPlane
+
 var material: ShaderMaterial
 var noise: Image
 
@@ -28,4 +30,4 @@ func get_height(world_position: Vector3) -> float:
 	var uv_y: float = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
 
 	var pixel_pos: Vector2 = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
-	return (global_position.y + 0.13  ) + noise.get_pixelv(pixel_pos).r * height_scale
+	return global_position.y + noise.get_pixelv(pixel_pos).r * height_scale 
