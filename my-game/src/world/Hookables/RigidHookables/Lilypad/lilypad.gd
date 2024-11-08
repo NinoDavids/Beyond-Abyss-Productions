@@ -13,16 +13,22 @@ var startValue: Vector3
 
 var submerged := false
 
+var playerOnThisLilly: bool
+var canMoveLilly: bool
+var timer: float
+
 const water_height := -2.0
 
 func _ready() -> void:
 	self.lock_rotation = true
 	startValue = position
-	
-func _process(delta: float) -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
+	if timer > 0 and not playerOnThisLilly:
+		timer -= delta
+	else:
+		canMoveLilly = true
+		
 	submerged = false
 	var depth = water.water_plane.get_height(global_position) - global_position.y
 	if depth > 0:
@@ -32,3 +38,16 @@ func _physics_process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if submerged:
 		state.linear_velocity *= 1 - water_drag
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is Player:
+		print_debug("test")
+		playerOnThisLilly = true
+		canMoveLilly = false
+		timer = 3.0
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body is Player:
+		playerOnThisLilly = false

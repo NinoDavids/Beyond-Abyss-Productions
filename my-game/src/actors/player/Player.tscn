@@ -13,8 +13,8 @@ height = 1.6
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6730j"]
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 269
+collision_layer = 6
+collision_mask = 271
 script = ExtResource("1_v30fi")
 cast_strength = 5.985
 
