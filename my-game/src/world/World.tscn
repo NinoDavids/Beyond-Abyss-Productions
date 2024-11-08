@@ -21,8 +21,6 @@ albedo_texture = ExtResource("2_w3y7u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1b0e2"]
 size = Vector3(20, 1, 20)
-[sub_resource type="BoxShape3D" id="BoxShape3D_1b0e2"]
-size = Vector3(20, 1, 20)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1s30d"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -94,26 +92,21 @@ mesh = SubResource("SphereMesh_4gqku")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("5_8mvip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482)
+collision_layer = 4
+collision_mask = 0
 
-[node name="FishSpawn" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_p80hx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7466, 0.0167845, -0.250741)
-player = NodePath("../Player")
-shoot_height = 5
+[node name="Water" parent="." instance=ExtResource("5_wgd62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4695, -0.901081, -0.794859)
+plane_size = Vector2(20, 20)
 
-[node name="Timer" parent="FishSpawn" index="0"]
-wait_time = 0.5
+[node name="Lilypad" parent="." node_paths=PackedStringArray("water") instance=ExtResource("6_qmamx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5356, 0, 0)
+water = NodePath("../Water")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="FishSpawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0230026, -0.256822, -3.6942)
-mesh = SubResource("BoxMesh_5xr0n")
-skeleton = NodePath("../..")
+[node name="Sewer" parent="." node_paths=PackedStringArray("water") instance=ExtResource("7_erdry")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.2605, 4.66434, 0)
+water = NodePath("../Water")
 
-[node name="Lilypad" parent="." instance=ExtResource("6_0rvkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46357, -0.73975, 14.4429)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1603, 4.42581, -33.2337)
-mesh = SubResource("SphereMesh_menf2")
-script = ExtResource("7_pv4p4")
-
-[editable path="FishSpawn"]
+[node name="Drain" parent="." node_paths=PackedStringArray("water") instance=ExtResource("8_ogg5i")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 9.59211, -0.475146, -2.42007)
+water = NodePath("../Water")
