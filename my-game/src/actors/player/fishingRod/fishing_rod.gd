@@ -35,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		animation_player.play("Cast")
 		is_charging = false
 	
-	if event.is_action_pressed("cancel_hook"):
+	if event.is_action_pressed("cancel_hook") and !is_charging:
 		cancel_hook()
 
 func cancel_hook() -> void:
@@ -81,14 +81,15 @@ func draw_aim() -> void:
 
 	var tstep: float = 0.05
 	var start_pos: Vector3 = spawn_point.global_position
-	var g: float = -ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
-	var drag: float = ProjectSettings.get_setting("physics/3d/default_linear_damp", 0.0)
+	var g: float = -15
+	var drag: float = 0.5
 	
 	var line_start: Vector3 = start_pos
 	var line_end: Vector3 = start_pos
-	var colors: Array[Color] = [Color.BLACK, Color.BLUE]
+	var color: Color = Color.BLUE
+	color.a = 0.5
 	
-	for i: int in range(1,151):
+	for i: int in range(1,25):
 		vel.y += g*tstep
 		line_end = line_start
 		line_end += vel*tstep
@@ -101,5 +102,5 @@ func draw_aim() -> void:
 		if not ray.is_empty():
 			break
 		
-		DebugDraw.draw_line_relative(line_start, line_end-line_start, colors[i%2])
+		DebugDraw.draw_line_relative_thickpointy(line_start, line_end-line_start, 5.0 ,color)
 		line_start = line_end

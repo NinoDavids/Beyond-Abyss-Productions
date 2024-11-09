@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dop37yjdupvy5"]
+[gd_scene load_steps=10 format=3 uid="uid://dop37yjdupvy5"]
 
 [ext_resource type="Script" path="res://src/actors/player/fishingRod/fishing_rod.gd" id="1_nk6eq"]
 [ext_resource type="PackedScene" uid="uid://cg3iam58uikjw" path="res://src/actors/player/fishingRod/finalModel/final_rod_mesh.tscn" id="3_14aso"]
@@ -6,6 +6,9 @@
 [sub_resource type="SphereMesh" id="SphereMesh_2oo2i"]
 radius = 0.063
 height = 0.125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5icob"]
+transparency = 1
 
 [sub_resource type="Animation" id="Animation_58tou"]
 resource_name = "Cast"
@@ -136,6 +139,8 @@ _data = {
 "RESET": SubResource("Animation_1n8c7")
 }
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_ix4im"]
+
 [node name="FishingRod" type="Node3D"]
 script = ExtResource("1_nk6eq")
 
@@ -147,6 +152,7 @@ unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, -7.23998e-06, 2, 0, -2, -7.23998e-06, 0, -5.71326e-06, -1.57739)
 mesh = SubResource("SphereMesh_2oo2i")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5icob")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -156,3 +162,6 @@ blend_times = [&"Cast", &"RESET", 1.0]
 
 [node name="SpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_ix4im")
