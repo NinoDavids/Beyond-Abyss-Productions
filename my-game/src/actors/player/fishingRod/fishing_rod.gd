@@ -96,8 +96,8 @@ func draw_aim() -> void:
 		vel *= clampf(1.0 - drag * tstep, 0, 1)
 		
 		var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(line_start, line_end)
-		var ray = space_state.intersect_ray(query)
+		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(line_start, line_end)
+		var ray: Dictionary = space_state.intersect_ray(query)
 		if not ray.is_empty():
 			break
 		
