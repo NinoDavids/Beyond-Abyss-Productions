@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var point: RigidBody3D = $NodeTemplate
-@onready var bobber_mesh: MeshInstance3D = $"../Player/Head/FishingRod/BobberMesh"
+var bobber_mesh: MeshInstance3D
 
 var nodes: Array[RigidBody3D]
 var springs: Array[Spring]

@@ -16,7 +16,6 @@ height = 1.83401
 collision_layer = 6
 collision_mask = 271
 script = ExtResource("1_v30fi")
-cast_strength = 5.985
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_7lrbt")
@@ -34,8 +33,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, -0.5)
 collision_mask = 2
 
-[node name="FishingRod" parent="Head" instance=ExtResource("2_qyi4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491751, -0.509509, -0.704506)
+[node name="FishingRod" parent="Head" node_paths=PackedStringArray("player") instance=ExtResource("2_qyi4v")]
+transform = Transform3D(0.999861, -0.0157161, 0.00549692, 0.0135107, 0.958803, 0.283751, -0.00972992, -0.283638, 0.958882, 0.433085, -0.168784, -0.7146)
+player = NodePath("../..")
 
 [node name="ItemHolder" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
