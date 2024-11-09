@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvg4q6iix7ctp"]
+
+[ext_resource type="PackedScene" uid="uid://css4p63iaeecr" path="res://src/world/Foliage/Trees/TreeLong.glb" id="1_0urqh"]
+[ext_resource type="Shader" path="res://src/world/Foliage/Shaders/FoliageCode.gdshader" id="2_ym53r"]
+[ext_resource type="Texture2D" uid="uid://wrwge0tr3k8a" path="res://src/world/Foliage/Shaders/sprite_0098.png" id="3_btv2l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iktvi"]
+frequency = 0.003
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xl1i0"]
+noise = SubResource("FastNoiseLite_iktvi")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dnfp3"]
+frequency = 0.0049
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y5m0w"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_dnfp3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0evjr"]
+render_priority = 0
+shader = ExtResource("2_ym53r")
+shader_parameter/color = Color(0.223239, 0.800781, 0.203323, 1)
+shader_parameter/color2 = Color(0.774, 0.683031, 0.49, 1)
+shader_parameter/noiseScale = 5.0
+shader_parameter/flipNormal = false
+shader_parameter/alpha = ExtResource("3_btv2l")
+shader_parameter/noise = SubResource("NoiseTexture2D_y5m0w")
+shader_parameter/windSpeed = 0.1
+shader_parameter/windStrenght = 0.002
+shader_parameter/windDirection = Vector3(1, 1, 1)
+shader_parameter/WindNoise = SubResource("NoiseTexture2D_xl1i0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxuix"]
+albedo_color = Color(0.34375, 0.28557, 0.217529, 1)
+
+[node name="TreeLong" instance=ExtResource("1_0urqh")]
+
+[node name="Mball_037" parent="." index="0"]
+transform = Transform3D(1.01932, 0, 0, 0, 1.01932, 0, 0, 0, 1.01932, -13.9642, 0.552502, -4.11)
+surface_material_override/0 = SubResource("ShaderMaterial_0evjr")
+surface_material_override/1 = SubResource("StandardMaterial3D_bxuix")
