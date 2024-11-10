@@ -32,7 +32,7 @@ func _on_body_entered(body: Node3D) -> void:
 		bobber = body
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
-	
+
 	if body is Player and is_hooked:
 		player_too_close = true
 		EventManager.anim_hookable_finished.emit()

@@ -23,7 +23,7 @@ void vertex() {
 	float noise_tex = texture(windNoise, vec2(worldPos.y-offset)).r;
 	noise_tex -= .5;
 	noise_tex *= wind_strength;
-	VERTEX.y += noise_tex * length(VERTEX.y) * length(VERTEX.xz);
+	VERTEX.z += noise_tex * length(VERTEX.y) * length(VERTEX.xz);
 	
 }
 

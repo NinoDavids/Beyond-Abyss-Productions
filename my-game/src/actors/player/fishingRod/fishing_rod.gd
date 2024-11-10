@@ -31,12 +31,12 @@ func _input(event: InputEvent) -> void:
 		animation_player.play("HoldBack")
 		toggle_aim()
 		is_charging = true
-	
+
 	if event.is_action_released("cast_hook") and !current_bobber and is_charging:
 		animation_player.play("Cast")
 		is_charging = false
 		is_casting = true
-	
+
 	if event.is_action_pressed("cancel_hook") and !is_charging:
 		cancel_hook()
 
@@ -88,24 +88,24 @@ func draw_aim() -> void:
 	var start_pos: Vector3 = spawn_point.global_position
 	var g: float = -15
 	var drag: float = 0.5
-	
+
 	var line_start: Vector3 = start_pos
 	var line_end: Vector3 = start_pos
 	var color: Color = Color.BLUE
 	color.a = 0.5
-	
+
 	for i: int in range(1,25):
 		vel.y += g*tstep
 		line_end = line_start
 		line_end += vel*tstep
-		
+
 		vel *= clampf(1.0 - drag * tstep, 0, 1)
-		
+
 		var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 		var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(line_start, line_end)
 		var ray: Dictionary = space_state.intersect_ray(query)
 		if not ray.is_empty():
 			break
-		
+
 		DebugDraw.draw_line_relative_thickpointy(line_start, line_end-line_start, 5.0 ,color)
 		line_start = line_end

@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		if hookable and !hookable.canMove:
 			print_debug(hookable.canMove)
 			hookable.canMove = true
-		
+
 	submerged = false
 	if water != null and water.water_plane != null:
 		water_height = water.water_plane.global_position.y
@@ -47,7 +47,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if submerged:
 		state.linear_velocity *= 1 - water_drag
 	state.angular_velocity *= 1 - water_angular_drag
-	
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		playerOnThisLilly = true
