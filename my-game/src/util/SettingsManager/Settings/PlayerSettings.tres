@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SettingsData" load_steps=2 format=3 uid="uid://bp873t6kfuecr"]
+
+[ext_resource type="Script" path="res://src/util/SettingsManager/Settings/SettingsData.gd" id="1_48xd4"]
+
+[resource]
+script = ExtResource("1_48xd4")
+inverted_y = false
+sensitivity = 0.25

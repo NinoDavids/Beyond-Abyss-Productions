@@ -26,6 +26,7 @@ boot_splash/minimum_display_time=100
 
 EventManager="*res://src/util/EventManager/EventManager.gd"
 DebugDraw="*res://src/util/DebugDraw/debug_draw.tscn"
+SettingsManager="*res://src/util/SettingsManager/SettingsManager.gd"
 
 [debug]
 
