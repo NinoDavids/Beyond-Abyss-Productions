@@ -31,7 +31,7 @@ void fragment() {
 	
 	
 	vec3 noiseLevel = texture((noise), worldPos.xz/ noiseScale).rgb;
-	ALBEDO = mix(colorDark, colorLight, UV.y) * mix(colorDark, colorLight, noiseLevel.r);
+	ALBEDO = mix(colorDark, colorLight, UV.y) * mix(colorLight, colorDark, noiseLevel.r);
 	
 	NORMAL = FRONT_FACING ? NORMAL : -NORMAL;
 }

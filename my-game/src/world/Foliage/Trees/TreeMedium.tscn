@@ -2,17 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://docuahtosofmh" path="res://src/world/Foliage/Trees/Tree2.glb" id="1_6l8em"]
 [ext_resource type="Shader" path="res://src/world/Foliage/Shaders/FoliageCode.gdshader" id="2_li1v3"]
-[ext_resource type="Texture2D" uid="uid://pyra7sx8mo2b" path="res://src/world/Foliage/Shaders/Leave_alpha_2 copy.png" id="3_jo3d5"]
+[ext_resource type="Texture2D" uid="uid://cs3fyvjhyps05" path="res://src/world/Foliage/Shaders/sprite_0048.png" id="3_m08j4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_02dwk"]
 frequency = 0.0109
 fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c1g7g"]
+in_3d_space = true
 noise = SubResource("FastNoiseLite_02dwk")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0evpt"]
-frequency = 0.0164
+frequency = 0.0189
+fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2eovo"]
 in_3d_space = true
@@ -22,14 +24,14 @@ noise = SubResource("FastNoiseLite_0evpt")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkla7"]
 render_priority = 0
 shader = ExtResource("2_li1v3")
-shader_parameter/color = Color(0.309817, 0.785156, 0.116547, 1)
-shader_parameter/color2 = Color(0.0685883, 0.566406, 0.181375, 1)
-shader_parameter/noiseScale = 7.8
+shader_parameter/color = Color(0.62067, 0.0708008, 0.625, 1)
+shader_parameter/color2 = Color(0.992188, 0.759644, 0.977654, 1)
+shader_parameter/noiseScale = 12.9
 shader_parameter/flipNormal = false
-shader_parameter/alpha = ExtResource("3_jo3d5")
+shader_parameter/alpha = ExtResource("3_m08j4")
 shader_parameter/noise = SubResource("NoiseTexture2D_2eovo")
 shader_parameter/windSpeed = 0.1
-shader_parameter/windStrenght = 0.003
+shader_parameter/windStrenght = 0.005
 shader_parameter/windDirection = Vector3(1, 1, 1)
 shader_parameter/WindNoise = SubResource("NoiseTexture2D_c1g7g")
 
