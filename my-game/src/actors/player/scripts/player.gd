@@ -64,4 +64,5 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn() -> void:
+	fishing_rod.cancel_hook()
 	print_debug("%s respawned." %name)

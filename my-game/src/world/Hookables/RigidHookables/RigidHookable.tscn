@@ -9,7 +9,7 @@ outer_radius = 0.3
 radius = 0.75
 
 [node name="RigidHookable" type="Area3D"]
-collision_mask = 72
+collision_mask = 74
 script = ExtResource("1_jip50")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -19,3 +19,4 @@ mesh = SubResource("TorusMesh_neuqq")
 shape = SubResource("SphereShape3D_uumtt")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

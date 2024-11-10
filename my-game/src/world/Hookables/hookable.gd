@@ -3,6 +3,7 @@ class_name Hookable
 
 var is_hooked: bool = false
 var bobber: Bobber
+var player_too_close: bool = false
 
 ## A function that gets called as soon as the [Hookable] [member is_hooked] AND the [Player] [kbd]scroll wheel down[/kbd].
 func reel_in() -> void:
@@ -17,11 +18,15 @@ func _input(event: InputEvent) -> void:
 		reel_in()
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is Bobber:
+	if body is Bobber and not player_too_close:
 		is_hooked = true
 		bobber = body
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
+	
+	if body is Player and is_hooked:
+		player_too_close = true
+		EventManager.anim_hookable_finished.emit()
 
 ## Places the [member bobber] in the center of the [Hookable].
 func place_bobber() -> void:
@@ -31,3 +36,7 @@ func place_bobber() -> void:
 func remove_bobber() -> void:
 	is_hooked = false
 	bobber = null
+
+func _on_body_exited(body: Node3D) -> void:
+	if body is Player:
+		player_too_close = false

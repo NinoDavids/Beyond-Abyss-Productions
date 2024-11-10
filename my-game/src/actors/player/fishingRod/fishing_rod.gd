@@ -18,6 +18,7 @@ var current_bobber: Bobber
 @onready var spawn_point: Node3D = $SpawnPoint
 
 var is_charging: bool = false
+var is_casting: bool = false
 
 func _ready() -> void:
 	EventManager.anim_hookable_finished.connect(cancel_hook)
@@ -26,7 +27,7 @@ func set_active(active: bool) -> void:
 	bobber_mesh.visible = !active
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("cast_hook") and !current_bobber:
+	if event.is_action_pressed("cast_hook") and !current_bobber and !is_casting:
 		animation_player.play("HoldBack")
 		toggle_aim()
 		is_charging = true
@@ -34,15 +35,19 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("cast_hook") and !current_bobber and is_charging:
 		animation_player.play("Cast")
 		is_charging = false
+		is_casting = true
 	
 	if event.is_action_pressed("cancel_hook") and !is_charging:
 		cancel_hook()
 
 func cancel_hook() -> void:
+	is_casting = false
 	set_active(false)
 	animation_player.play("RESET")
 	if spring != null:
 		spring.queue_free()
+	if current_bobber != null:
+		current_bobber.queue_free()
 
 func cast_bobber() -> void:
 	toggle_aim()

@@ -51,6 +51,7 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
+"res://src/Playtest 1/": "green",
 "res://src/actors/enemies/": "red",
 "res://src/actors/player/": "purple"
 }
