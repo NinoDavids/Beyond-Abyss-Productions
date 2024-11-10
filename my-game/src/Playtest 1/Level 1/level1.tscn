@@ -238,6 +238,9 @@ body = NodePath("..")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)
 body = NodePath("..")
 
+[node name="CheckpointHandler" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_lnec0")]
+checkpoint = NodePath("../../../../Checkpoints/Checkpoint3")
+
 [node name="Hint Text" type="Node" parent="Environment"]
 
 [node name="MoveHint" type="Label3D" parent="Environment/Hint Text"]
