@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://b4l7817cddtpo"]
+[gd_scene load_steps=56 format=3 uid="uid://b4l7817cddtpo"]
 
 [ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_cin3a"]
+[ext_resource type="PackedScene" uid="uid://l76da1sleber" path="res://addons/godot_plush/godot_plush_sitting.glb" id="1_g8xkx"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_l5li0"]
 [ext_resource type="PackedScene" uid="uid://dymymkt8ujty8" path="res://src/world/Checkpoint/checkpoint.tscn" id="2_ouy8t"]
 [ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_y0es2"]
@@ -49,13 +50,22 @@ albedo_color = Color(0.100155, 0.257359, 0.0772763, 1)
 size = Vector3(20, 5, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_eujuq"]
-size = Vector3(20, 10, 20)
+size = Vector3(15, 10, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjfqu"]
 albedo_color = Color(0.101961, 0.258824, 0.0784314, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2b8sl"]
-size = Vector3(20, 10, 20)
+size = Vector3(15, 10, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_65wia"]
+size = Vector3(2, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bobqv"]
+albedo_color = Color(0.101961, 0.258824, 0.0784314, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ltyl"]
+size = Vector3(2, 10, 10)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0ud6d"]
 height = 10.0
@@ -78,13 +88,67 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sd4hj"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_1l2s6"]
+[sub_resource type="BoxMesh" id="BoxMesh_0hldk"]
+size = Vector3(4, 6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x157r"]
+transparency = 1
+albedo_color = Color(0.65098, 0.180392, 0, 0.894118)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi5so"]
+size = Vector3(4, 6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v3rb7"]
+size = Vector3(4, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02s4h"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.65098, 0.180392, 0, 0.894118)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um1qd"]
+size = Vector3(4, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0tj6i"]
+size = Vector3(2, 20, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8gbe"]
+albedo_color = Color(0.400698, 0.400698, 0.400698, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsciy"]
+size = Vector3(2, 20, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kbrm3"]
+size = Vector3(5, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b04ww"]
+size = Vector3(5, 10, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_obwso"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_88ijb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0udat"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m6xwj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5tvge"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_liupt"]
+size = Vector3(2, 2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82xtj"]
+size = Vector3(2, 2, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i3rky"]
+size = Vector3(1, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sknvk"]
+size = Vector3(1, 5, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_l4kya"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ovwxo"]
 
 [node name="Level1" type="Node3D"]
 
@@ -138,7 +202,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_helfq")
 shape = SubResource("BoxShape3D_aakvf")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Environment/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.07916, -82.7645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2.07916, -82.7645)
 collision_layer = 4
 collision_mask = 0
 
@@ -148,6 +212,21 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kjfqu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D4"]
 shape = SubResource("BoxShape3D_2b8sl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.06869, -105.677)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground/StaticBody3D"]
+mesh = SubResource("BoxMesh_65wia")
+surface_material_override/0 = SubResource("StandardMaterial3D_bobqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_4ltyl")
+
+[node name="godot_plush_sitting" parent="Environment/Ground/StaticBody3D" instance=ExtResource("1_g8xkx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0819569, 5, -4.65089)
 
 [node name="Obstacles" type="Node" parent="Environment"]
 
@@ -217,26 +296,128 @@ shape = SubResource("BoxShape3D_sd4hj")
 [node name="Puzzle2" type="Node3D" parent="Environment/Obstacles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -83)
 
-[node name="TwoSidedRock" type="RigidBody3D" parent="Environment/Obstacles/Puzzle2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.11019, 0.0671005)
+[node name="Bridge" parent="Environment/Obstacles/Puzzle2" instance=ExtResource("1_cin3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.18136, -17.6695)
+
+[node name="CheckpointHandler2" parent="Environment/Obstacles/Puzzle2/Bridge" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_lnec0")]
+checkpoint = NodePath("../../../../Checkpoints/Checkpoint3")
+
+[node name="ObstacleInfront" type="RigidBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.702455, 3, -13)
+collision_layer = 4
+collision_mask = 4
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/ObstacleInfront"]
+mesh = SubResource("BoxMesh_0hldk")
+surface_material_override/0 = SubResource("StandardMaterial3D_x157r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/ObstacleInfront"]
+shape = SubResource("BoxShape3D_fi5so")
+
+[node name="RigidHookable" parent="Environment/Obstacles/Puzzle2/ObstacleInfront" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.488, 0, 0)
+body = NodePath("..")
+
+[node name="CheckpointHandler" parent="Environment/Obstacles/Puzzle2/ObstacleInfront" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_lnec0")]
+checkpoint = NodePath("../../../../Checkpoints/Checkpoint3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/ObstacleInfront"]
+transform = Transform3D(1, 0, 0, 0, 0.999965, -0.00830767, 0, 0.00830767, 0.999965, 0, 2.53488, -2.99095)
+mesh = SubResource("BoxMesh_v3rb7")
+surface_material_override/0 = SubResource("StandardMaterial3D_02s4h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/ObstacleInfront"]
+transform = Transform3D(1, 0, 0, 0, 0.999965, -0.00830767, 0, 0.00830767, 0.999965, 0, 2.53488, -2.99095)
+shape = SubResource("BoxShape3D_um1qd")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.485, -10.2666, -13)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D5"]
+mesh = SubResource("BoxMesh_0tj6i")
+surface_material_override/0 = SubResource("StandardMaterial3D_k8gbe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D5"]
+shape = SubResource("BoxShape3D_jsciy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.77127, 0, -11.978)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D"]
+mesh = SubResource("BoxMesh_kbrm3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D"]
+shape = SubResource("BoxShape3D_b04ww")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(0.838033, 0, 0.545619, 0, 1, 0, -0.545619, 0, 0.838033, 0.0266681, -2.35539, -0.735878)
+collision_layer = 4
+collision_mask = 4
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/RigidBody3D"]
+mesh = SubResource("BoxMesh_obwso")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/RigidBody3D"]
+shape = SubResource("BoxShape3D_0udat")
+
+[node name="RigidHookable" parent="Environment/Obstacles/Puzzle2/RigidBody3D" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+body = NodePath("..")
+to_player = true
+
+[node name="CheckpointHandler" parent="Environment/Obstacles/Puzzle2/RigidBody3D" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_lnec0")]
+checkpoint = NodePath("../../../../Checkpoints/Checkpoint3")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31529, -2.10563, 0.966515)
 collision_layer = 4
 collision_mask = 4
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/TwoSidedRock"]
-mesh = SubResource("BoxMesh_1l2s6")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/RigidBody3D2"]
+mesh = SubResource("BoxMesh_m6xwj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/TwoSidedRock"]
-shape = SubResource("BoxShape3D_88ijb")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/RigidBody3D2"]
+shape = SubResource("BoxShape3D_5tvge")
 
-[node name="RigidHookable" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+[node name="RigidHookable" parent="Environment/Obstacles/Puzzle2/RigidBody3D2" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 body = NodePath("..")
+to_player = true
 
-[node name="RigidHookable2" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)
-body = NodePath("..")
+[node name="CheckpointHandler" parent="Environment/Obstacles/Puzzle2/RigidBody3D2" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_lnec0")]
+checkpoint = NodePath("../../../../Checkpoints/Checkpoint3")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -17)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D2"]
+mesh = SubResource("BoxMesh_liupt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D2"]
+shape = SubResource("BoxShape3D_82xtj")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50697, -1.32724, -12.8954)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D3"]
+mesh = SubResource("BoxMesh_i3rky")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/StaticBody3D3"]
+shape = SubResource("BoxShape3D_sknvk")
 
 [node name="Hint Text" type="Node" parent="Environment"]
 
@@ -271,7 +452,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.04019)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.0254)
 
 [node name="Checkpoint3" parent="Environment/Checkpoints" instance=ExtResource("2_ouy8t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -74)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.43134, 8.29376, -74)
 
 [node name="Death" parent="Environment" instance=ExtResource("3_aoi4c")]
 
@@ -286,4 +467,8 @@ shape = SubResource("WorldBoundaryShape3D_l4kya")
 [node name="Player" parent="Actors" instance=ExtResource("1_l5li0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
 
+[node name="PlayerCollider" parent="Actors/Player" index="1"]
+shape = SubResource("CapsuleShape3D_ovwxo")
+
+[editable path="Environment/Checkpoints/Checkpoint3"]
 [editable path="Actors/Player"]
