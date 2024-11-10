@@ -24,7 +24,7 @@ func _ready() -> void:
 	startValue = position
 
 func _physics_process(delta: float) -> void:
-	if water.water_plane != null:
+	if water != null and water.water_plane != null:
 		water_height = water.water_plane.global_position.y
 	if timer > 0:
 		if !playerOnThisLilly:
@@ -36,11 +36,12 @@ func _physics_process(delta: float) -> void:
 			hookable.canMove = true
 		
 	submerged = false
-	water_height = water.water_plane.global_position.y
-	var depth = water.water_plane.get_height(global_position) - global_position.y
-	if depth > 0:
-		submerged = true
-		apply_central_force(Vector3.UP * float_force * gravity * depth)
+	if water != null and water.water_plane != null:
+		water_height = water.water_plane.global_position.y
+		var depth = water.water_plane.get_height(global_position) - global_position.y
+		if depth > 0:
+			submerged = true
+			apply_central_force(Vector3.UP * float_force * gravity * depth)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if submerged:

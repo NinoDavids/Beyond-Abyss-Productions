@@ -12,6 +12,11 @@ const JUMP_VELOCITY: float = 4.5
 
 @export var mouse_sens: float = 0.25
 
+@export_group("SFX")
+@export var audio_player: AudioStreamPlayer3D
+@export var footstep_SFX: Array[AudioStream] = []
+@export var foot_step_timer: Timer
+
 var current_bobber: Bobber
 var held_Item: RigidBody3D
 
@@ -57,6 +62,8 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if is_on_floor():
+			play_footstep()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -66,3 +73,9 @@ func _physics_process(delta: float) -> void:
 func respawn() -> void:
 	fishing_rod.cancel_hook()
 	print_debug("%s respawned." %name)
+
+func play_footstep() -> void:
+	if audio_player and footstep_SFX.size() > 0 and foot_step_timer.is_stopped():
+		audio_player.stream = footstep_SFX.pick_random()
+		audio_player.play()
+		foot_step_timer.start()

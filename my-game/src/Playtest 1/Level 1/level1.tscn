@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b4l7817cddtpo"]
+[gd_scene load_steps=34 format=3 uid="uid://b4l7817cddtpo"]
 
 [ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_cin3a"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_l5li0"]
@@ -78,6 +78,12 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sd4hj"]
 size = Vector3(1, 2, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_1l2s6"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_88ijb"]
+size = Vector3(1, 2, 1)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_l4kya"]
 
 [node name="Level1" type="Node3D"]
@@ -133,7 +139,7 @@ shape = SubResource("BoxShape3D_aakvf")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Environment/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.07916, -82.7645)
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground/StaticBody3D4"]
@@ -176,6 +182,7 @@ transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819
 collision_layer = 4
 collision_mask = 4
 axis_lock_angular_x = true
+axis_lock_angular_z = true
 gravity_scale = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle1/SmallStone"]
@@ -206,6 +213,30 @@ mesh = SubResource("BoxMesh_s8gpx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle1/StaticBody3D"]
 shape = SubResource("BoxShape3D_sd4hj")
+
+[node name="Puzzle2" type="Node3D" parent="Environment/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -83)
+
+[node name="TwoSidedRock" type="RigidBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.11019, 0.0671005)
+collision_layer = 4
+collision_mask = 4
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/TwoSidedRock"]
+mesh = SubResource("BoxMesh_1l2s6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/TwoSidedRock"]
+shape = SubResource("BoxShape3D_88ijb")
+
+[node name="RigidHookable" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+body = NodePath("..")
+
+[node name="RigidHookable2" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)
+body = NodePath("..")
 
 [node name="Hint Text" type="Node" parent="Environment"]
 
@@ -253,6 +284,6 @@ shape = SubResource("WorldBoundaryShape3D_l4kya")
 [node name="Actors" type="Node" parent="."]
 
 [node name="Player" parent="Actors" instance=ExtResource("1_l5li0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -48)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
 
 [editable path="Actors/Player"]

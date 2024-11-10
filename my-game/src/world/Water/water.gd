@@ -13,13 +13,14 @@ var collision_size: Vector3
 
 func set_button(new_value: bool) -> void:
 	loadWater()
-				
+
 func loadWater() -> void:
 	collision_size = Vector3(plane_size.x, 0.1, plane_size.y)
 	water_plane.mesh.size = plane_size
 	collision_shape_3d.shape.size = collision_size
-		
+
 func _ready() -> void:
+	print(water_plane)
 	loadWater()
 
 func _process(_delta: float) -> void:

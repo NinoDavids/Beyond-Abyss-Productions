@@ -16,10 +16,11 @@ func reel_in() -> void:
 		var direction: Vector3
 		if to_player:
 			direction = bobber.player.global_position
+			direction.y = 0
 			body.look_at(Vector3(direction.x, global_position.y, direction.z))
 			body.apply_impulse((direction - body.global_position))
 		else:
 			direction = global_position - body.global_position
-			body.apply_central_impulse(direction * 2.5)
+			body.apply_central_impulse(direction * 1.5)
 	else:
 		print_debug("No body has been connected to ", name)
