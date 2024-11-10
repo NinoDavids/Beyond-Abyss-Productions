@@ -2,9 +2,6 @@ extends CharacterBody3D
 class_name Player
 
 @onready var head: Node3D = $Head
-const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/Bobber.tscn")
-const SPRING: PackedScene = preload("res://src/actors/player/fishingRod/line/spring.tscn")
-var spring: Node
 @onready var player_camera: Camera3D = $Head/PlayerCamera
 @onready var fishing_rod: FishingRod = $Head/FishingRod
 @onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
@@ -14,14 +11,17 @@ var spring: Node
 const JUMP_VELOCITY: float = 4.5
 
 @export var mouse_sens: float = 0.25
-@export var cast_strength: float = 5.5
+
+@export_group("SFX")
+@export var audio_player: AudioStreamPlayer3D
+@export var footstep_SFX: Array[AudioStream] = []
+@export var foot_step_timer: Timer
 
 var current_bobber: Bobber
 var held_Item: RigidBody3D
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	EventManager.anim_hookable_finished.connect(cancel_hook)
 	EventManager.player_respawned.connect(respawn)
 
 func _input(event: InputEvent) -> void:
@@ -48,32 +48,6 @@ func _input(event: InputEvent) -> void:
 	if held_Item:
 		held_Item.global_transform.origin = itemHolder.global_transform.origin
 
-	if event.is_action_pressed("cast_hook") and !current_bobber:
-		cast_bobber()
-
-	if event.is_action_pressed("cancel_hook"):
-		cancel_hook()
-
-func cancel_hook() -> void:
-	fishing_rod.set_active(false)
-	if spring != null:
-		spring.queue_free()
-
-func cast_bobber() -> void:
-	fishing_rod.set_active(true)
-	var clone: Bobber = BOBBER.instantiate()
-	current_bobber = clone
-	current_bobber.player = self
-	get_tree().current_scene.add_child(clone)
-	clone.add_to_group("bobber")
-	clone.global_position = fishing_rod.global_position ## Get the position of the rod
-	var direction: Vector3 = -player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
-	direction.y += 1 ## Moves the aim a bit more upwards
-	clone.apply_impulse(direction * cast_strength)
-	spring = SPRING.instantiate()
-	add_sibling(spring)
-	spring.global_position = clone.global_position
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -88,6 +62,8 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if is_on_floor():
+			play_footstep()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -95,4 +71,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn() -> void:
+	fishing_rod.cancel_hook()
 	print_debug("%s respawned." %name)
+
+func play_footstep() -> void:
+	if audio_player and footstep_SFX.size() > 0 and foot_step_timer.is_stopped():
+		audio_player.stream = footstep_SFX.pick_random()
+		audio_player.play()
+		foot_step_timer.start()

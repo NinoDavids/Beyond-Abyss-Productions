@@ -1,0 +1,289 @@
+[gd_scene load_steps=34 format=3 uid="uid://b4l7817cddtpo"]
+
+[ext_resource type="PackedScene" uid="uid://bfwqmhqif4lkq" path="res://src/world/Hookables/AnimationHookables/Bridge/bridge.tscn" id="1_cin3a"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_l5li0"]
+[ext_resource type="PackedScene" uid="uid://dymymkt8ujty8" path="res://src/world/Checkpoint/checkpoint.tscn" id="2_ouy8t"]
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_y0es2"]
+[ext_resource type="PackedScene" uid="uid://cdp3p86qp25ty" path="res://src/Playtest 1/Death/death.tscn" id="3_aoi4c"]
+[ext_resource type="PackedScene" uid="uid://b3rs7rxo07v35" path="res://src/util/CheckpointHandler/checkpoint_handler.tscn" id="3_lnec0"]
+[ext_resource type="PackedScene" uid="uid://e8618ik7qkgt" path="res://src/world/PuzzlePieceRespawner/puzzle_piece_respawner.tscn" id="4_rkyvx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ohxj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pf13o"]
+sky_material = SubResource("ProceduralSkyMaterial_0ohxj")
+
+[sub_resource type="Environment" id="Environment_nlayw"]
+background_mode = 2
+sky = SubResource("Sky_pf13o")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ntlao"]
+size = Vector3(10, 5, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx2dp"]
+albedo_color = Color(0.100155, 0.257359, 0.0772763, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_484ui"]
+size = Vector3(10, 5, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewcrx"]
+size = Vector3(10, 5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21yxg"]
+albedo_color = Color(0.100155, 0.257359, 0.0772763, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wwnvo"]
+size = Vector3(10, 5, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8fp10"]
+size = Vector3(20, 5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_helfq"]
+albedo_color = Color(0.100155, 0.257359, 0.0772763, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aakvf"]
+size = Vector3(20, 5, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eujuq"]
+size = Vector3(20, 10, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjfqu"]
+albedo_color = Color(0.101961, 0.258824, 0.0784314, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2b8sl"]
+size = Vector3(20, 10, 20)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0ud6d"]
+height = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv2od"]
+albedo_color = Color(0.343142, 0.208119, 0.181152, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fld5c"]
+height = 10.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xnmh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plbtk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2dlpx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s8gpx"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sd4hj"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1l2s6"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_88ijb"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_l4kya"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="Globals" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Globals"]
+environment = SubResource("Environment_nlayw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Globals"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Ground" type="Node" parent="Environment"]
+
+[node name="StaticBody3D1" type="StaticBody3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -10)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground/StaticBody3D1"]
+mesh = SubResource("BoxMesh_ntlao")
+surface_material_override/0 = SubResource("StandardMaterial3D_rx2dp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D1"]
+shape = SubResource("BoxShape3D_484ui")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -43)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground/StaticBody3D2"]
+mesh = SubResource("BoxMesh_ewcrx")
+surface_material_override/0 = SubResource("StandardMaterial3D_21yxg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D2"]
+shape = SubResource("BoxShape3D_wwnvo")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -62.8355)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground/StaticBody3D3"]
+mesh = SubResource("BoxMesh_8fp10")
+surface_material_override/0 = SubResource("StandardMaterial3D_helfq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D3"]
+shape = SubResource("BoxShape3D_aakvf")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Environment/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.07916, -82.7645)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ground/StaticBody3D4"]
+mesh = SubResource("BoxMesh_eujuq")
+surface_material_override/0 = SubResource("StandardMaterial3D_kjfqu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D4"]
+shape = SubResource("BoxShape3D_2b8sl")
+
+[node name="Obstacles" type="Node" parent="Environment"]
+
+[node name="Branch" type="StaticBody3D" parent="Environment/Obstacles"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 1, -14)
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Branch"]
+mesh = SubResource("CylinderMesh_0ud6d")
+surface_material_override/0 = SubResource("StandardMaterial3D_fv2od")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Branch"]
+shape = SubResource("CylinderShape3D_fld5c")
+
+[node name="Bridge" parent="Environment/Obstacles" node_paths=PackedStringArray("checkpoint") instance=ExtResource("1_cin3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312562, -33)
+checkpoint = NodePath("../../Checkpoints/Checkpoint")
+
+[node name="ReelHint" type="Label3D" parent="Environment/Obstacles/Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 1)
+double_sided = false
+text = "Scroll Down
+to reel in"
+font_size = 48
+
+[node name="Puzzle1" type="Node3D" parent="Environment/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63)
+
+[node name="SmallStone" type="RigidBody3D" parent="Environment/Obstacles/Puzzle1"]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 5, 1, -2)
+collision_layer = 4
+collision_mask = 4
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 3.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle1/SmallStone"]
+mesh = SubResource("BoxMesh_7xnmh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle1/SmallStone"]
+shape = SubResource("BoxShape3D_plbtk")
+
+[node name="RigidHookable" parent="Environment/Obstacles/Puzzle1/SmallStone" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+body = NodePath("..")
+to_player = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle1/SmallStone/RigidHookable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+shape = SubResource("BoxShape3D_2dlpx")
+
+[node name="CheckpointHandler" parent="Environment/Obstacles/Puzzle1/SmallStone" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_lnec0")]
+checkpoint = NodePath("../../../../Checkpoints/Checkpoint2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Obstacles/Puzzle1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle1/StaticBody3D"]
+mesh = SubResource("BoxMesh_s8gpx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle1/StaticBody3D"]
+shape = SubResource("BoxShape3D_sd4hj")
+
+[node name="Puzzle2" type="Node3D" parent="Environment/Obstacles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -83)
+
+[node name="TwoSidedRock" type="RigidBody3D" parent="Environment/Obstacles/Puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.11019, 0.0671005)
+collision_layer = 4
+collision_mask = 4
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Obstacles/Puzzle2/TwoSidedRock"]
+mesh = SubResource("BoxMesh_1l2s6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Obstacles/Puzzle2/TwoSidedRock"]
+shape = SubResource("BoxShape3D_88ijb")
+
+[node name="RigidHookable" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+body = NodePath("..")
+
+[node name="RigidHookable2" parent="Environment/Obstacles/Puzzle2/TwoSidedRock" node_paths=PackedStringArray("body") instance=ExtResource("2_y0es2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1)
+body = NodePath("..")
+
+[node name="Hint Text" type="Node" parent="Environment"]
+
+[node name="MoveHint" type="Label3D" parent="Environment/Hint Text"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.2, 0)
+double_sided = false
+text = "WASD
+to move"
+
+[node name="JumpHint" type="Label3D" parent="Environment/Hint Text"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0177, -13.3008)
+double_sided = false
+text = "Spacebar
+to jump"
+
+[node name="CastCancelHint" type="Node3D" parent="Environment/Hint Text"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29)
+
+[node name="CastCancelHint" type="Label3D" parent="Environment/Hint Text/CastCancelHint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 4)
+double_sided = false
+text = "Hold [Left Click] to charge cast
+Release [Left Click] to cast
+[Right Click] to return your bobber."
+
+[node name="Checkpoints" type="Node" parent="Environment"]
+
+[node name="Checkpoint" parent="Environment/Checkpoints" instance=ExtResource("2_ouy8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.04019)
+
+[node name="Checkpoint2" parent="Environment/Checkpoints" instance=ExtResource("2_ouy8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.0254)
+
+[node name="Checkpoint3" parent="Environment/Checkpoints" instance=ExtResource("2_ouy8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -74)
+
+[node name="Death" parent="Environment" instance=ExtResource("3_aoi4c")]
+
+[node name="PuzzlePieceRespawner" parent="Environment/Death" instance=ExtResource("4_rkyvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Death/PuzzlePieceRespawner"]
+shape = SubResource("WorldBoundaryShape3D_l4kya")
+
+[node name="Actors" type="Node" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource("1_l5li0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
+
+[editable path="Actors/Player"]

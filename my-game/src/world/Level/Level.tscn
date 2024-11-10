@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_7rywk"]
 [ext_resource type="PackedScene" uid="uid://b3rs7rxo07v35" path="res://src/util/CheckpointHandler/checkpoint_handler.tscn" id="3_f1bhu"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_sd25o"]
+[ext_resource type="PackedScene" uid="uid://c3kck1vvbqqi0" path="res://src/world/Object/Lillypad.tscn" id="5_7plfq"]
 [ext_resource type="PackedScene" uid="uid://c1b42r3hlo8b7" path="res://src/world/Foliage/Trees/TreeMedium.tscn" id="5_r67js"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="6_d0o62"]
+[ext_resource type="PackedScene" uid="uid://u6jppeg2es0e" path="res://src/world/Object/LillypadDragable.tscn" id="6_gseg8"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="7_7v6db"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="8_60smg"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="9_pj3ba"]
@@ -146,11 +148,11 @@ reference_frame = 2
 script = ExtResource("7_7v6db")
 stack = Array[ExtResource("8_60smg")]([SubResource("Resource_ins6a"), SubResource("Resource_n0iws")])
 
-[sub_resource type="Resource" id="Resource_rkoi0"]
+[sub_resource type="Resource" id="Resource_c30ob"]
 script = ExtResource("12_km13y")
 size = Vector3(19.4755, 1, 47.2973)
 
-[sub_resource type="Resource" id="Resource_3wpwd"]
+[sub_resource type="Resource" id="Resource_c4khc"]
 script = ExtResource("12_km13y")
 size = Vector3(19.4755, 1, 8.03695)
 
@@ -207,11 +209,11 @@ reference_frame = 0
 script = ExtResource("7_7v6db")
 stack = Array[ExtResource("8_60smg")]([SubResource("Resource_abcn8"), SubResource("Resource_1vx46"), SubResource("Resource_oc456"), SubResource("Resource_q7q3e")])
 
-[sub_resource type="Resource" id="Resource_nqt41"]
+[sub_resource type="Resource" id="Resource_3ktha"]
 script = ExtResource("12_km13y")
 size = Vector3(20.6904, 0.808576, 19.9699)
 
-[sub_resource type="Resource" id="Resource_r34s3"]
+[sub_resource type="Resource" id="Resource_bvsb2"]
 script = ExtResource("12_km13y")
 size = Vector3(5.86883, 0.755167, 15.061)
 
@@ -268,11 +270,11 @@ reference_frame = 0
 script = ExtResource("7_7v6db")
 stack = Array[ExtResource("8_60smg")]([SubResource("Resource_8n6p2"), SubResource("Resource_vkuel"), SubResource("Resource_l7m2f"), SubResource("Resource_hihos")])
 
-[sub_resource type="Resource" id="Resource_lds8q"]
+[sub_resource type="Resource" id="Resource_bp81i"]
 script = ExtResource("12_km13y")
 size = Vector3(20.6904, 1.61713, 17.9887)
 
-[sub_resource type="Resource" id="Resource_yla0r"]
+[sub_resource type="Resource" id="Resource_eesx2"]
 script = ExtResource("12_km13y")
 size = Vector3(3.05446, 2.42521, 14.7524)
 
@@ -338,6 +340,7 @@ shape = SubResource("ConvexPolygonShape3D_k35bo")
 [node name="RigidHookable" parent="Env/Area2/SmallRock" node_paths=PackedStringArray("body") instance=ExtResource("2_7rywk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 body = NodePath("..")
+to_player = null
 
 [node name="CheckpointHandler" parent="Env/Area2/SmallRock" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_f1bhu")]
 checkpoint = NodePath("../../Checkpoint")
@@ -374,6 +377,7 @@ shape = SubResource("ConvexPolygonShape3D_euwdq")
 [node name="RigidHookable" parent="Env/Area2/VTallRock" node_paths=PackedStringArray("body") instance=ExtResource("2_7rywk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 body = NodePath("..")
+to_player = null
 
 [node name="CheckpointHandler" parent="Env/Area2/VTallRock" node_paths=PackedStringArray("checkpoint") instance=ExtResource("3_f1bhu")]
 checkpoint = NodePath("../../Checkpoint")
@@ -403,6 +407,45 @@ collision_layer = 255
 collision_mask = 255
 plane_size = Vector2(20, 10)
 
+[node name="Water2" parent="Env" instance=ExtResource("4_sd25o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 3.8, -77.5)
+collision_layer = 255
+collision_mask = 255
+plane_size = Vector2(20, 40)
+
+[node name="Lilypad" parent="Env/Water2" node_paths=PackedStringArray("water", "checkpoint") instance=ExtResource("5_7plfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.67843, 0.184151, 1.629)
+water = NodePath("..")
+checkpoint = NodePath("../../Area3/Checkpoint")
+
+[node name="Lilypad2" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_7plfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14141, 0.184151, -2.32883)
+water = NodePath("..")
+
+[node name="Lilypad3" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_gseg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76031, 0.0474424, 17.9717)
+water = NodePath("..")
+
+[node name="Lilypad4" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_gseg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79239, 0.0474424, 4.59153)
+water = NodePath("..")
+
+[node name="Lilypad5" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_gseg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78519, 0.0474424, 10.2537)
+water = NodePath("..")
+
+[node name="Lilypad6" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_gseg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3233, 0.0474424, -4.88282)
+water = NodePath("..")
+
+[node name="Lilypad7" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_gseg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388765, 0.0474424, 6.31167)
+water = NodePath("..")
+
+[node name="Lilypad8" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_gseg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17752, 0.0474424, 16.743)
+water = NodePath("..")
+
 [node name="Trees" type="Node" parent="Env"]
 
 [node name="Grass" type="MeshInstance3D" parent="Env/Trees"]
@@ -413,7 +456,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_bqbyw")
 
 [node name="Tree2" parent="Env/Trees" instance=ExtResource("5_r67js")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851347, -12.3709, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.851347, 18.8632, 0)
 
 [node name="ProtonScatter2" type="Node3D" parent="Env/Trees"]
 script = ExtResource("6_d0o62")
@@ -430,13 +473,13 @@ path = "../../Grass"
 [node name="ScatterShape" type="Node3D" parent="Env/Trees/ProtonScatter2"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, -14.04)
 script = ExtResource("11_nqwhp")
-shape = SubResource("Resource_rkoi0")
+shape = SubResource("Resource_c30ob")
 
 [node name="ScatterShape2" type="Node3D" parent="Env/Trees/ProtonScatter2"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, -13.8628)
 script = ExtResource("11_nqwhp")
 negative = true
-shape = SubResource("Resource_3wpwd")
+shape = SubResource("Resource_c4khc")
 
 [node name="ProtonScatter" type="Node3D" parent="Env/Trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.576089, 0)
@@ -453,13 +496,13 @@ path = "../../Tree2"
 [node name="ScatterShape3" type="Node3D" parent="Env/Trees/ProtonScatter"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, -0.489993, 0.332615)
 script = ExtResource("11_nqwhp")
-shape = SubResource("Resource_nqt41")
+shape = SubResource("Resource_3ktha")
 
 [node name="ScatterShape4" type="Node3D" parent="Env/Trees/ProtonScatter"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0.232983, -3.07458)
 script = ExtResource("11_nqwhp")
 negative = true
-shape = SubResource("Resource_r34s3")
+shape = SubResource("Resource_bvsb2")
 
 [node name="ScatterItem2" type="Node3D" parent="Env/Trees/ProtonScatter"]
 script = ExtResource("10_b8pnn")
@@ -481,13 +524,13 @@ path = "../../Tree2"
 [node name="ScatterShape3" type="Node3D" parent="Env/Trees/ProtonScatter3"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0.916977)
 script = ExtResource("11_nqwhp")
-shape = SubResource("Resource_lds8q")
+shape = SubResource("Resource_bp81i")
 
 [node name="ScatterShape4" type="Node3D" parent="Env/Trees/ProtonScatter3"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.249603, -0.530399, 3.3851)
 script = ExtResource("11_nqwhp")
 negative = true
-shape = SubResource("Resource_yla0r")
+shape = SubResource("Resource_eesx2")
 
 [node name="TreeLong" parent="Env/Trees" instance=ExtResource("19_j7uix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8211, 15.0278, 0)
@@ -496,6 +539,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8211, 15.0278, 0)
 
 [node name="godot_plush_sitting" parent="Env" instance=ExtResource("19_0xeua")]
 transform = Transform3D(-22.1768, 0, -1.93876e-06, 0, 22.1768, 0, 1.93876e-06, 0, -22.1768, 3.04751, 4.0996, -46.8515)
+
+[node name="WaterPlane" parent="Env" node_paths=PackedStringArray("player", "timer") instance=ExtResource("20_iierl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.2923)
+skeleton = NodePath("../..")
+player = NodePath("../../Actors/Player")
+shoot_height = 5
+timer = NodePath("Timer")
+fish_spawn_time = 0.1
+
+[node name="Timer" type="Timer" parent="Env/WaterPlane"]
+wait_time = 0.1
 
 [node name="Actors" type="Node" parent="."]
 
