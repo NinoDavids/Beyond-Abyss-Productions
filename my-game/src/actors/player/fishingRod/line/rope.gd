@@ -39,8 +39,8 @@ func _physics_process(_delta: float) -> void:
 			spring.move()
 
 		set_frozen()
-		springs[springs.size()-1].point_two.global_position = bobber_mesh.global_position
-		springs[springs.size()-1].point_two.sleeping = true
+		#springs[springs.size()-1].point_two.global_position = bobber_mesh.global_position
+		#springs[springs.size()-1].point_two.sleeping = true
 		#if(hookable.is_hooked):
 			#springs[0].point_one.global_position = hookable.global_position
 			#springs[0].point_one.sleeping = true
