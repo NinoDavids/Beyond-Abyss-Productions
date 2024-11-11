@@ -41,6 +41,7 @@ func _input(event: InputEvent) -> void:
 		cancel_hook()
 
 func cancel_hook() -> void:
+	show_aim = false
 	is_casting = false
 	set_active(false)
 	animation_player.play("RESET")
