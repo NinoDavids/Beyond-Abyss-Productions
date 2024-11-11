@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/world/Level/CheckPoint.gd" id="1_ptyva"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_2pt0b"]
 [ext_resource type="PackedScene" uid="uid://c3kck1vvbqqi0" path="res://src/world/Object/Lillypad.tscn" id="5_wyke7"]
-[ext_resource type="PackedScene" uid="uid://u6jppeg2es0e" path="res://src/world/Object/LillypadDragable.tscn" id="6_twtqi"]
+[ext_resource type="PackedScene" path="res://src/world/Object/LillypadDragable.tscn" id="6_twtqi"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="21_s2r2d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
