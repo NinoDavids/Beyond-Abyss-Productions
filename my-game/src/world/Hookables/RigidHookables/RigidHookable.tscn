@@ -21,7 +21,7 @@ outer_radius = 0.3
 radius = 0.75
 
 [node name="RigidHookable" type="Area3D" node_paths=PackedStringArray("audio_player")]
-collision_mask = 74
+collision_mask = 138
 script = ExtResource("1_jip50")
 hooked_SFX = Array[AudioStream]([ExtResource("2_ap1dd"), ExtResource("3_ed6ag"), ExtResource("4_nq7hr"), ExtResource("5_yrick"), ExtResource("6_pcggw"), ExtResource("7_oyx10"), ExtResource("8_rd21l"), ExtResource("9_oaxiy"), ExtResource("10_1isg6"), ExtResource("11_1488c"), ExtResource("12_yh4pn")])
 audio_player = NodePath("AudioStreamPlayer3D")

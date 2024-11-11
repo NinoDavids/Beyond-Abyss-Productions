@@ -22,7 +22,7 @@ radius = 0.75
 
 [node name="AnimHookable" type="Area3D" node_paths=PackedStringArray("audio_player")]
 collision_layer = 0
-collision_mask = 72
+collision_mask = 136
 script = ExtResource("1_bxi80")
 hooked_SFX = Array[AudioStream]([ExtResource("2_0w6qk"), ExtResource("3_5x1e4"), ExtResource("4_0iypw"), ExtResource("5_qkbqi"), ExtResource("6_pjm86"), ExtResource("7_t30ov"), ExtResource("8_7hasg"), ExtResource("9_ogoo7"), ExtResource("10_hf0dy"), ExtResource("11_6t8uq"), ExtResource("12_bqcfa")])
 audio_player = NodePath("AudioStreamPlayer3D")
