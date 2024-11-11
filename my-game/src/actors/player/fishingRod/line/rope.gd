@@ -39,18 +39,18 @@ func _physics_process(_delta: float) -> void:
 			spring.move()
 
 		set_frozen()
-		#springs[springs.size()-1].point_two.global_position = bobber_mesh.global_position
-		#springs[springs.size()-1].point_two.sleeping = true
+		springs[springs.size()-1].point_two.global_position = bobber_mesh.global_position
+		springs[springs.size()-1].point_two.sleeping = true
 		#if(hookable.is_hooked):
 			#springs[0].point_one.global_position = hookable.global_position
 			#springs[0].point_one.sleeping = true
-		var player: Bobber = get_tree().get_first_node_in_group("bobber")
-		if player != null:
-			springs[0].point_one.global_position = player.global_position
-			springs[0].point_one.sleeping = true
-		#if get_tree().current_scene.get_child_count() == 4:
-			#springs[0].point_one.global_position = get_tree().current_scene.get_child(3).global_position
+		var bobber: Bobber = get_tree().get_first_node_in_group("bobber")
+		#if bobber != null:
+			#springs[0].point_one.global_position = bobber.global_position
 			#springs[0].point_one.sleeping = true
+		if get_tree().current_scene.get_child_count() == 4:
+			springs[0].point_one.global_position = get_tree().current_scene.get_child(3).global_position
+			springs[0].point_one.sleeping = true
 
 		create_rope_mesh()
 

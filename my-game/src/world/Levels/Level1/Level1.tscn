@@ -240,7 +240,7 @@ shadow_mesh = SubResource("ArrayMesh_ysst8")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvud8"]
 albedo_color = Color(0.339844, 0.375, 0.304688, 1)
 
-[sub_resource type="Resource" id="Resource_q72x7"]
+[sub_resource type="Resource" id="Resource_vh2l8"]
 script = ExtResource("27_kpogs")
 amount = 40
 enabled = true
@@ -249,7 +249,7 @@ custom_seed = 3
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_eygly"]
+[sub_resource type="Resource" id="Resource_1uw32"]
 script = ExtResource("28_yx48j")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -260,7 +260,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_xcgdm"]
+[sub_resource type="Resource" id="Resource_roe8p"]
 script = ExtResource("30_q4kkh")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -276,9 +276,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_07mcr"]
+[sub_resource type="Resource" id="Resource_oc7hn"]
 script = ExtResource("25_uuqqm")
-stack = Array[ExtResource("26_f8jyg")]([SubResource("Resource_q72x7"), SubResource("Resource_eygly"), SubResource("Resource_xcgdm")])
+stack = Array[ExtResource("26_f8jyg")]([SubResource("Resource_vh2l8"), SubResource("Resource_1uw32"), SubResource("Resource_roe8p")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm1bf"]
 albedo_color = Color(0.414063, 0.414063, 0.414063, 1)
@@ -301,7 +301,7 @@ closed = true
 thickness = 0.0
 curve = SubResource("Curve3D_4m5yi")
 
-[sub_resource type="Resource" id="Resource_fyc4c"]
+[sub_resource type="Resource" id="Resource_kkvq2"]
 script = ExtResource("27_kpogs")
 amount = 100
 enabled = true
@@ -310,7 +310,7 @@ custom_seed = 7
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_gxy5o"]
+[sub_resource type="Resource" id="Resource_xmby6"]
 script = ExtResource("28_yx48j")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(20, 360, 20)
@@ -321,7 +321,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_6ej0h"]
+[sub_resource type="Resource" id="Resource_wmhtc"]
 script = ExtResource("29_aw27x")
 iterations = 3
 offset_step = 0.2
@@ -333,7 +333,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_6vwrk"]
+[sub_resource type="Resource" id="Resource_v3ojq"]
 script = ExtResource("30_q4kkh")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -349,9 +349,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_tglmn"]
+[sub_resource type="Resource" id="Resource_tmt2q"]
 script = ExtResource("25_uuqqm")
-stack = Array[ExtResource("26_f8jyg")]([SubResource("Resource_fyc4c"), SubResource("Resource_gxy5o"), SubResource("Resource_6ej0h"), SubResource("Resource_6vwrk")])
+stack = Array[ExtResource("26_f8jyg")]([SubResource("Resource_kkvq2"), SubResource("Resource_xmby6"), SubResource("Resource_wmhtc"), SubResource("Resource_v3ojq")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_732bv"]
 albedo_color = Color(0.378906, 0.378906, 0.378906, 1)
@@ -627,7 +627,7 @@ transform = Transform3D(0.289132, 0, 0.957289, 0, 1, 0, -0.957289, 0, 0.289132, 
 
 [node name="ProtonScatter" type="Node3D" parent="Env Objects"]
 script = ExtResource("24_rns3p")
-modifier_stack = SubResource("Resource_07mcr")
+modifier_stack = SubResource("Resource_oc7hn")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -651,7 +651,7 @@ shape = SubResource("Resource_yhfh3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.8307, 40.6118, 478.625)
 script = ExtResource("24_rns3p")
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_tglmn")
+modifier_stack = SubResource("Resource_tmt2q")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

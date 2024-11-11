@@ -52,10 +52,11 @@ func cancel_hook() -> void:
 func cast_bobber() -> void:
 	toggle_aim()
 	set_active(true)
-	current_bobber = BOBBER.instantiate()
+	current_bobber = BOBBER.instantiate() as Bobber
 	current_bobber.player = player
 	get_tree().current_scene.add_child(current_bobber)
 	current_bobber.add_to_group("bobber")
+	
 	current_bobber.global_position = bobber_mesh.global_position ## Get the position of the rod
 	var direction: Vector3 = -player.player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
 	direction.y += .75 ## Moves the aim a bit more upwards
