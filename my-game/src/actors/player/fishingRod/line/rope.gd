@@ -45,12 +45,12 @@ func _physics_process(_delta: float) -> void:
 			#springs[0].point_one.global_position = hookable.global_position
 			#springs[0].point_one.sleeping = true
 		var bobber: Bobber = get_tree().get_first_node_in_group("bobber")
-		#if bobber != null:
-			#springs[0].point_one.global_position = bobber.global_position
-			#springs[0].point_one.sleeping = true
-		if get_tree().current_scene.get_child_count() == 4:
-			springs[0].point_one.global_position = get_tree().current_scene.get_child(3).global_position
+		if bobber != null:
+			springs[0].point_one.global_position = bobber.global_position
 			springs[0].point_one.sleeping = true
+		#if get_tree().current_scene.get_child_count() == 4:
+			#springs[0].point_one.global_position = get_tree().current_scene.get_child(3).global_position
+			#springs[0].point_one.sleeping = true
 
 		create_rope_mesh()
 
