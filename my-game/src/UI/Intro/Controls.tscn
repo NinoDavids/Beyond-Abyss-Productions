@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhmatrhdfw24q"]
+[gd_scene load_steps=3 format=3 uid="uid://bhmatrhdfw24q"]
 
+[ext_resource type="Script" path="res://src/UI/Intro/ControlButton.gd" id="1_8e8aq"]
 [ext_resource type="Texture2D" uid="uid://cmu1h0ps7eq5v" path="res://src/UI/MainMenu/Art/1000_F_529976955_ixAy1MO7eYm9R2ngP0XOYmzzXhO5sWW7.jpg" id="1_wu343"]
 
-[node name="Control" type="Control"]
+[node name="Controls" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8e8aq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -57,7 +59,7 @@ size_flags_vertical = 4
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 250
+theme_override_constants/h_separation = 225
 theme_override_constants/v_separation = 12
 columns = 4
 
@@ -170,7 +172,9 @@ text = "Spacebar
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="NextButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Next "
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer2/NextButton" to="." method="_on_next_button_button_down"]
