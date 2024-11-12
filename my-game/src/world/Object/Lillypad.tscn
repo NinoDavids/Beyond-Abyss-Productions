@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cink7dlm6dmg5"]
+[gd_scene load_steps=4 format=3 uid="uid://c3kck1vvbqqi0"]
 
 [ext_resource type="Script" path="res://src/world/Hookables/RigidHookables/Lilypad/lilypad.gd" id="1_4ql5m"]
-[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_u5tj5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qxmx8"]
 height = 0.05
@@ -20,8 +19,3 @@ mesh = SubResource("CylinderMesh_qxmx8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_0i6ni")
-
-[node name="RigidHookable" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_u5tj5")]
-transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0)
-body = NodePath("..")
-to_player = true

@@ -23,7 +23,7 @@ void vertex() {
 	float noise_tex = texture(windNoise, vec2(worldPos.y-offset)).r;
 	noise_tex -= .5;
 	noise_tex *= wind_strength;
-	VERTEX.y += noise_tex * length(VERTEX.y) * length(VERTEX.xz);
+	VERTEX.z += noise_tex * length(VERTEX.y) * length(VERTEX.xz);
 	
 }
 
@@ -31,7 +31,7 @@ void fragment() {
 	
 	
 	vec3 noiseLevel = texture((noise), worldPos.xz/ noiseScale).rgb;
-	ALBEDO = mix(colorDark, colorLight, UV.y) * mix(colorDark, colorLight, noiseLevel.r);
+	ALBEDO = mix(colorDark, colorLight, UV.y) * mix(colorLight, colorDark, noiseLevel.r);
 	
 	NORMAL = FRONT_FACING ? NORMAL : -NORMAL;
 }
