@@ -1,0 +1,227 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpdfu6f224blp"]
+
+[ext_resource type="Script" path="res://src/world/Level/CheckPoint.gd" id="1_ptyva"]
+[ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_2pt0b"]
+[ext_resource type="PackedScene" uid="uid://c3kck1vvbqqi0" path="res://src/world/Object/Lillypad.tscn" id="5_wyke7"]
+[ext_resource type="PackedScene" path="res://src/world/Object/LillypadDragable.tscn" id="6_twtqi"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="21_s2r2d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_sgs07"]
+sky_material = SubResource("ProceduralSkyMaterial_hpxfd")
+
+[sub_resource type="Environment" id="Environment_ah44y"]
+background_mode = 2
+sky = SubResource("Sky_sgs07")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2ti3f"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyijx"]
+albedo_color = Color(0.0994864, 0.308012, 0.0456467, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14ltj"]
+points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
+
+[node name="Level" type="Node3D"]
+
+[node name="Globals" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Globals"]
+environment = SubResource("Environment_ah44y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Globals"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Env" type="Node" parent="."]
+
+[node name="Area1" type="StaticBody3D" parent="Env"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area1"]
+mesh = SubResource("PlaneMesh_2ti3f")
+surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area1"]
+shape = SubResource("ConvexPolygonShape3D_14ltj")
+
+[node name="Marker3D" type="Marker3D" parent="Env/Area1" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+gizmo_extents = 1.0
+script = ExtResource("1_ptyva")
+is_active = true
+player = NodePath("../../../Actors/Player")
+
+[node name="Area2" type="StaticBody3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4031, 0.0107079, -62.5762)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Area2"]
+mesh = SubResource("PlaneMesh_2ti3f")
+surface_material_override/0 = SubResource("StandardMaterial3D_oyijx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Area2"]
+shape = SubResource("ConvexPolygonShape3D_14ltj")
+
+[node name="Marker3D" type="Marker3D" parent="Env/Area2" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+gizmo_extents = 1.0
+script = ExtResource("1_ptyva")
+is_active = true
+player = NodePath("../../../Actors/Player")
+
+[node name="Water2" parent="Env" instance=ExtResource("4_2pt0b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.077925, -0.13618, -59.7946)
+collision_layer = 255
+collision_mask = 255
+plane_size = Vector2(125, 100)
+
+[node name="WaterPlane" parent="Env/Water2" index="0"]
+height_scale = 0.25
+
+[node name="Lilypad13" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130101, 0.13618, 48.4945)
+water = NodePath("..")
+
+[node name="Lilypad14" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34922, 0.13618, 46.3298)
+water = NodePath("..")
+
+[node name="Lilypad15" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84865, 0.13618, 46.4665)
+water = NodePath("..")
+
+[node name="Lilypad16" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24655, 0.13618, 44.4737)
+water = NodePath("..")
+
+[node name="Lilypad17" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66783, 0.13618, 42.6417)
+water = NodePath("..")
+
+[node name="Lilypad18" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66308, 0.13618, 38.7724)
+water = NodePath("..")
+
+[node name="Lilypad19" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.266596, 0.13618, 34.7114)
+water = NodePath("..")
+
+[node name="Lilypad20" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59417, 0.13618, 37.7118)
+water = NodePath("..")
+
+[node name="Lilypad21" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0785701, 0.13618, 32.102)
+water = NodePath("..")
+
+[node name="Lilypad22" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61494, 0.13618, 28.9318)
+water = NodePath("..")
+
+[node name="Lilypad23" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484407, 0.13618, 26.0531)
+water = NodePath("..")
+
+[node name="Lilypad24" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13966, 0.13618, 22.9374)
+water = NodePath("..")
+
+[node name="Lilypad" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19928, 0.13618, 16.6857)
+water = NodePath("..")
+
+[node name="Lilypad2" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27448, 0.13618, 18.8894)
+water = NodePath("..")
+
+[node name="Lilypad3" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.61841, 0.13618, 15.2973)
+water = NodePath("..")
+
+[node name="Lilypad4" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.02544, 0.13618, 10.7011)
+water = NodePath("..")
+
+[node name="Lilypad5" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7031, 0.13618, 10.1038)
+water = NodePath("..")
+
+[node name="Lilypad6" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8399, 0.13618, 13.1945)
+water = NodePath("..")
+
+[node name="Lilypad7" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0438, 0.13618, 17.2582)
+water = NodePath("..")
+
+[node name="Lilypad8" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.50616, 0.13618, 15.8163)
+water = NodePath("..")
+
+[node name="Lilypad9" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7608, 0.13618, 20.8985)
+water = NodePath("..")
+
+[node name="Lilypad10" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6113, 0.13618, 21.7428)
+water = NodePath("..")
+
+[node name="Lilypad11" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0807, 0.13618, 7.8728)
+water = NodePath("..")
+
+[node name="Lilypad12" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7989, 0.13618, 2.16264)
+water = NodePath("..")
+
+[node name="Lilypad25" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4435, 0.13618, 5.64472)
+water = NodePath("..")
+
+[node name="Lilypad26" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4394, 0.13618, 0.279373)
+water = NodePath("..")
+
+[node name="Lilypad27" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5492, 0.13618, 2.57125)
+water = NodePath("..")
+
+[node name="Lilypad28" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("6_twtqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.7236, 0.13618, 0.203075)
+water = NodePath("..")
+
+[node name="Lilypad29" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3947, 0.13618, -2.51086)
+water = NodePath("..")
+
+[node name="Lilypad30" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5566, 0.13618, -1.12392)
+water = NodePath("..")
+
+[node name="Lilypad31" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.1916, 0.13618, -0.641872)
+water = NodePath("..")
+
+[node name="Actors" type="Node" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource("21_s2r2d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40178, 1, -4.56002)
+collision_layer = 4
+collision_mask = 4
+
+[node name="finalRodMesh" parent="Actors/Player/Head/FishingRod" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, -1.81e-06, -0.5, 0, 0.5, -1.81e-06, 0, 0.144, 0)
+
+[editable path="Env/Water2"]
+[editable path="Env/Water2/WaterPlane"]
+[editable path="Actors/Player"]
+[editable path="Actors/Player/Head/FishingRod"]

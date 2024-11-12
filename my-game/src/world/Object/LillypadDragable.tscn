@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://u6jppeg2es0e"]
+
+[ext_resource type="Script" path="res://src/world/Hookables/RigidHookables/Lilypad/lilypad.gd" id="1_3y8jp"]
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_2xnye"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qxmx8"]
+height = 0.05
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wkcom"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0i6ni"]
+height = 0.05
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uphsm"]
+size = Vector3(1, 1.22864, 1)
+
+[node name="Lilypad" type="RigidBody3D" node_paths=PackedStringArray("hookable")]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_3y8jp")
+hookable = NodePath("RigidHookable")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_qxmx8")
+
+[node name="Flower" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_wkcom")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_0i6ni")
+
+[node name="RigidHookable" parent="." node_paths=PackedStringArray("body") instance=ExtResource("2_2xnye")]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0)
+body = NodePath("..")
+to_player = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 204
+priority = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114319, 0)
+shape = SubResource("BoxShape3D_uphsm")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
