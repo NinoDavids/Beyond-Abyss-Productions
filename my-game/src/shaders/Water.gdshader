@@ -3,7 +3,6 @@ shader_type spatial;
 uniform vec3 albedo: source_color;
 uniform vec3 albedo2: source_color;
 uniform float roughness: hint_range(0.0, 1.0) = 0.02;
-uniform float alpha :hint_range(0.0, 1.0) = 0.9;
 
 uniform sampler2D wave;
 uniform sampler2D texture_normal;
@@ -50,7 +49,7 @@ void vertex() {
 
 void fragment() {
 	//Depth variables and calculations
-	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r * -1.0 + 2.0;
+	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
 	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
 	
   	vec3 normalized_device_coordinates = vec3(SCREEN_UV * 2.0 - 1.0, depth);
