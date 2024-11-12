@@ -1,16 +1,22 @@
 extends CharacterBody3D
 class_name Player
 
+## TODO: Needs to be changed but it works for now i think.
+@onready var main_menu: PackedScene = preload("res://src/UI/MainMenu/MainMenu.tscn")
+
 @onready var head: Node3D = $Head
 @onready var player_camera: Camera3D = $Head/PlayerCamera
 @onready var fishing_rod: FishingRod = $Head/FishingRod
 @onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
 @onready var itemHolder: Node3D = $Head/ItemHolder
 
-const SPEED: float = 5.0
+@export var SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 
-@export var mouse_sens: float = 0.25
+@export_group("SFX")
+@export var audio_player: AudioStreamPlayer3D
+@export var footstep_SFX: Array[AudioStream] = []
+@export var foot_step_timer: Timer
 
 var current_bobber: Bobber
 var held_Item: RigidBody3D
@@ -20,9 +26,13 @@ func _ready() -> void:
 	EventManager.player_respawned.connect(respawn)
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("quitEditor"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().change_scene_to_packed(main_menu)
+	
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
-		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
+		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.get_sensitivity()))
+		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.get_sensitivity() * SettingsManager.get_inverted_y_float()))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event.is_action_pressed("Drop"):
 			if held_Item:
@@ -57,6 +67,8 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if is_on_floor():
+			play_footstep()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -64,4 +76,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn() -> void:
+	fishing_rod.cancel_hook()
 	print_debug("%s respawned." %name)
+
+func play_footstep() -> void:
+	if audio_player and footstep_SFX.size() > 0 and foot_step_timer.is_stopped():
+		audio_player.stream = footstep_SFX.pick_random()
+		audio_player.play()
+		foot_step_timer.start()

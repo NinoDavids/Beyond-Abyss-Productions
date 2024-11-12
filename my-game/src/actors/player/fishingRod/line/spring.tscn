@@ -13,7 +13,7 @@ rough = true
 absorbent = true
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1ogr5"]
-height = 0.494209
+height = 0.5
 
 [node name="Rope" type="Node3D"]
 script = ExtResource("1_d3dej")
@@ -21,7 +21,7 @@ width = 0.02
 material = SubResource("ShaderMaterial_vhw0v")
 
 [node name="NodeTemplate" type="RigidBody3D" parent="."]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 4
 axis_lock_angular_x = true
 axis_lock_angular_y = true

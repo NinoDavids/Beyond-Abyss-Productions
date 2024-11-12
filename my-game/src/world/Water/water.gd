@@ -1,4 +1,4 @@
-
+@tool
 extends Area3D
 
 class_name Water
@@ -13,22 +13,14 @@ var collision_size: Vector3
 
 func set_button(new_value: bool) -> void:
 	loadWater()
-				
+
 func loadWater() -> void:
 	collision_size = Vector3(plane_size.x, 0.1, plane_size.y)
 	water_plane.mesh.size = plane_size
 	collision_shape_3d.shape.size = collision_size
-		
+
 func _ready() -> void:
 	loadWater()
-
-func _process(_delta: float) -> void:
-	collision_size = Vector3(plane_size.x, 0.1, plane_size.y)
-	if water_plane and collision_shape_3d:
-		if water_plane.mesh.size != plane_size:
-			water_plane.mesh.size = plane_size
-		if collision_shape_3d.shape.size != collision_size:
-			collision_shape_3d.shape.size = collision_size
 
 func player_hits_water(player: CharacterBody3D) -> void:
 	if player.find_child("Hitbox"):
@@ -38,7 +30,6 @@ func player_hits_water(player: CharacterBody3D) -> void:
 func raise_water(height: float) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(water_plane, "global_position", Vector3(water_plane.global_position.x, height, water_plane.global_position.z), 5)
-
 
 func stop_raise_water(height: float) -> void:
 	var tween := get_tree().create_tween()

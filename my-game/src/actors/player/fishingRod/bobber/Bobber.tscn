@@ -12,8 +12,8 @@ height = 0.125
 [sub_resource type="SphereShape3D" id="SphereShape3D_euidn"]
 radius = 0.0638513
 
-[node name="Bobber" type="RigidBody3D"]
-collision_layer = 136
+[node name="Bobber" type="RigidBody3D" groups=["bobber"]]
+collision_layer = 128
 collision_mask = 12
 physics_material_override = SubResource("PhysicsMaterial_s6swa")
 script = ExtResource("1_uhxrq")
