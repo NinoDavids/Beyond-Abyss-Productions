@@ -50,7 +50,7 @@ void vertex() {
 
 void fragment() {
 	//Depth variables and calculations
-	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
+	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r * -1.0 + 2.0;
 	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
 	
   	vec3 normalized_device_coordinates = vec3(SCREEN_UV * 2.0 - 1.0, depth);
@@ -61,15 +61,14 @@ void fragment() {
 	float depth_blend = exp((linear_depth + VERTEX.z + depth_offset) * -beers_law);
 	depth_blend = clamp(1.0 - depth_blend, 0.0, 1.0);
 	//float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
-	float depth_blend_power = 1.0;
+	float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
 	
 	vec3 screen_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, depth_blend_power * 2.5).rgb;
 	vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend_power);
 	vec3 color = mix(screen_color * depth_color, depth_color * 0.25, depth_blend_power * 0.5);
 	
-  	float depth2 = texture(DEPTH_TEXTURE, SCREEN_UV).x;
+    float depth2 = texture(DEPTH_TEXTURE, SCREEN_UV).x;
 
-	
 	//vec4 world = INV_VIEW_MATRIX * INV_PROJECTION_MATRIX * vec4(normalized_device_coordinates, 1.0);
 	//vec3 world_position = world.xyz / world.w;
 	
@@ -92,7 +91,6 @@ void fragment() {
 	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
 	
 	ALBEDO = clamp(surface_color + depth_color_adj, vec3(0.0), vec3(1.0));
-	ALPHA = alpha;
 	ROUGHNESS = roughness;
 	NORMAL_MAP = normal_blend;
 }
