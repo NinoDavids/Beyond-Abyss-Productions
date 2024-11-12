@@ -14,7 +14,7 @@ config/name="Lucky Tabi"
 run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=120
+run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://misc/Logo/Banner.png"
 boot_splash/fullsize=false
@@ -26,6 +26,7 @@ boot_splash/minimum_display_time=100
 
 EventManager="*res://src/util/EventManager/EventManager.gd"
 DebugDraw="*res://src/util/DebugDraw/debug_draw.tscn"
+SettingsManager="*res://src/util/SettingsManager/SettingsManager.gd"
 
 [debug]
 
@@ -34,6 +35,8 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/initial_screen=2
 
 [dotnet]
@@ -46,11 +49,12 @@ movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Production
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
+"res://src/Playtest 1/": "green",
 "res://src/actors/enemies/": "red",
 "res://src/actors/player/": "purple"
 }

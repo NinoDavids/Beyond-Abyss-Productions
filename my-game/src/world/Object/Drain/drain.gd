@@ -17,5 +17,6 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Bobber:
 		animationPlayer.play('in')
-		water.raise_water(water_height)
+		if water != null:
+			water.raise_water(water_height)
 		

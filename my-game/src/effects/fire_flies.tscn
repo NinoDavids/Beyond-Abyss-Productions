@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhjt1qykkm8yw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxu3q"]
+emission_enabled = true
+emission = Color(0.776471, 0.768627, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="PointMesh" id="PointMesh_4ew7u"]
+material = SubResource("StandardMaterial3D_vxu3q")
+
+[node name="FireFlies" type="CPUParticles3D"]
+amount = 3
+mesh = SubResource("PointMesh_4ew7u")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdp3p86qp25ty"]
+
+[ext_resource type="Script" path="res://src/Playtest 1/Death/death.gd" id="1_k8nkh"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1pasb"]
+
+[node name="Death" type="Node"]
+script = ExtResource("1_k8nkh")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("WorldBoundaryShape3D_1pasb")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
