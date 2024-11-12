@@ -59,17 +59,12 @@ void fragment() {
 	
 	float depth_blend = exp((linear_depth + VERTEX.z + depth_offset) * -beers_law);
 	depth_blend = clamp(1.0 - depth_blend, 0.0, 1.0);
-	//float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
 	float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
 	
 	vec3 screen_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, depth_blend_power * 2.5).rgb;
 	vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend_power);
 	vec3 color = mix(screen_color * depth_color, depth_color * 0.25, depth_blend_power * 0.5);
-	
-    float depth2 = texture(DEPTH_TEXTURE, SCREEN_UV).x;
-
-	//vec4 world = INV_VIEW_MATRIX * INV_PROJECTION_MATRIX * vec4(normalized_device_coordinates, 1.0);
-	//vec3 world_position = world.xyz / world.w;
+	float depth2 = texture(DEPTH_TEXTURE, SCREEN_UV).x;
 	
 	//Getting edge depth calc 
 	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
