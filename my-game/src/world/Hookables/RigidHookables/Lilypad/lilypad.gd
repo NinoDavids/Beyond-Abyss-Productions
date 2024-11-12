@@ -16,7 +16,6 @@ var startValue: Vector3
 var submerged := false
 var playerOnThisLilly: bool
 var timer: float
-var isHooked: bool = false
 
 func _ready() -> void:
 	self.lock_rotation = true
@@ -37,6 +36,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				var mat: ShaderMaterial = lily.get_active_material(0).next_pass as ShaderMaterial
 				mat.set_shader_parameter("onoff", false)
+				hookable.canMove = true
 
 	submerged = false
 	if water != null and water.water_plane != null:
