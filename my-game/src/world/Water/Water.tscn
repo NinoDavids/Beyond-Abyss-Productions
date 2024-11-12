@@ -7,7 +7,6 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_a54h3"]
 resource_local_to_scene = true
-size = Vector2(5, 5)
 subdivide_width = 200
 subdivide_depth = 200
 orientation = 1
@@ -65,7 +64,7 @@ shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_ty156")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpupn"]
 resource_local_to_scene = true
-size = Vector3(5, 0.1, 5)
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="Animation" id="Animation_1x38f"]
 length = 0.001
