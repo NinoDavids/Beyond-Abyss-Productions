@@ -57,7 +57,7 @@ func cast_bobber() -> void:
 	current_bobber.player = player
 	get_tree().current_scene.add_child(current_bobber)
 	current_bobber.add_to_group("bobber")
-	
+
 	current_bobber.global_position = bobber_mesh.global_position ## Get the position of the rod
 	var direction: Vector3 = -player.player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
 	direction.y += .75 ## Moves the aim a bit more upwards
@@ -67,7 +67,9 @@ func cast_bobber() -> void:
 func create_rope() -> void:
 	spring = SPRING.instantiate()
 	spring.bobber_mesh = bobber_mesh
-	add_sibling(spring)
+	spring.lenght = spring.lenght * strenght_multiplier
+	spring.max_lenght = cast_strength * strenght_multiplier
+	get_tree().current_scene.add_child(spring)
 	spring.global_position = current_bobber.global_position
 
 func toggle_aim() -> void:

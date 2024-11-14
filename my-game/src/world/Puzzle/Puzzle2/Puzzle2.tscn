@@ -28,14 +28,14 @@ albedo_color = Color(0.0994864, 0.308012, 0.0456467, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14ltj"]
 points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
 
-[sub_resource type="QuadMesh" id="QuadMesh_3oauq"]
+[sub_resource type="QuadMesh" id="QuadMesh_3v05f"]
 resource_local_to_scene = true
 size = Vector2(125, 100)
 subdivide_width = 200
 subdivide_depth = 200
 orientation = 1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_30g8e"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_v4dyw"]
 resource_local_to_scene = true
 size = Vector3(125, 0.1, 100)
 
@@ -96,11 +96,11 @@ collision_mask = 255
 plane_size = Vector2(125, 100)
 
 [node name="WaterPlane" parent="Env/Water2" index="0"]
-mesh = SubResource("QuadMesh_3oauq")
+mesh = SubResource("QuadMesh_3v05f")
 height_scale = 0.25
 
 [node name="CollisionShape3D" parent="Env/Water2" index="1"]
-shape = SubResource("BoxShape3D_30g8e")
+shape = SubResource("BoxShape3D_v4dyw")
 
 [node name="Lilypad13" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130101, 0.13618, 48.4945)

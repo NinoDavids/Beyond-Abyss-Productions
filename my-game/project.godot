@@ -14,7 +14,7 @@ config/name="Lucky Tabi"
 run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=60
+run/max_fps=140
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://misc/Logo/Banner.png"
 boot_splash/fullsize=false
@@ -35,9 +35,8 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 window/size/initial_screen=2
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -138,3 +137,9 @@ Drop={
 3d_physics/layer_7="Checkpoint"
 3d_physics/layer_8="Bobber"
 3d_physics/layer_9="Enemy"
+3d_physics/layer_10="fishing line"
+
+[physics]
+
+3d/run_on_separate_thread=true
+3d/physics_engine="Rapier3D"

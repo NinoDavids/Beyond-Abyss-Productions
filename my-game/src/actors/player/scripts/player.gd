@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quitEditor"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_packed(main_menu)
-	
+
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.get_sensitivity()))
 		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.get_sensitivity() * SettingsManager.get_inverted_y_float()))
