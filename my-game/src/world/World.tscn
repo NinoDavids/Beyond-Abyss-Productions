@@ -94,9 +94,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21897, -0.0526476, 0.447482
 collision_layer = 4
 collision_mask = 0
 
-[node name="Water" parent="." instance=ExtResource("5_wgd62")]
+[node name="Water" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_wgd62")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4695, -0.901081, -0.794859)
 plane_size = Vector2(20, 20)
+player = NodePath("../Player")
+
+[node name="Timer" type="Timer" parent="Water"]
+wait_time = 0.15
+autostart = true
 
 [node name="Lilypad" parent="." node_paths=PackedStringArray("water") instance=ExtResource("6_qmamx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5356, 0, 0)
@@ -109,3 +114,5 @@ water = NodePath("../Water")
 [node name="Drain" parent="." node_paths=PackedStringArray("water") instance=ExtResource("8_ogg5i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 9.59211, -0.475146, -2.42007)
 water = NodePath("../Water")
+
+[connection signal="timeout" from="Water/Timer" to="Water" method="_on_timer_timeout"]
