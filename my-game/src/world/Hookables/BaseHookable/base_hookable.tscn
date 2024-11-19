@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dti3ukqyiwvjk"]
+
+[ext_resource type="Script" path="res://src/world/Hookables/BaseHookable/base_hookable.gd" id="1_ga5y0"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_qcvcx"]
+outer_radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hstys"]
+radius = 0.75
+
+[node name="BaseHookable" type="Area3D"]
+collision_layer = 0
+collision_mask = 130
+script = ExtResource("1_ga5y0")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_qcvcx")
+
+[node name="DetectionCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_hstys")
+
+[node name="NeighbourCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 3)
+collision_mask = 4
+collide_with_areas = true
+debug_shape_custom_color = Color(0.796078, 1, 0, 1)
+debug_shape_thickness = 5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
