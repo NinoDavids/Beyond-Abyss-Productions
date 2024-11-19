@@ -27,6 +27,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Bobber and not player_too_close:
+		if bobber.is_attached:
+			return
 		play_sfx()
 		is_hooked = true
 		bobber = body

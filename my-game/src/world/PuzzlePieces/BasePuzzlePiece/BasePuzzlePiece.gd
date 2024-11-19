@@ -13,8 +13,8 @@ func move(direction: Vector3) -> void:
 		tween.tween_property(self, "global_position", global_position + direction, transition_speed)
 		tween.tween_property(self, "is_moving", false, 0.0)
 
-func _physics_process(delta: float) -> void:
-	if !is_on_floor():
-		velocity.y -= .5
+func _physics_process(_delta: float) -> void:
+	if not is_on_floor() and not is_moving:
+		velocity.y -= fall_speed
 	
 	move_and_slide()

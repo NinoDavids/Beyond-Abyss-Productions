@@ -9,7 +9,7 @@
 
 [node name="BasePuzzlePiece" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 6
 script = ExtResource("1_s8ft7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
