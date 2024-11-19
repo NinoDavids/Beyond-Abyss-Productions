@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=19 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_w3y7u"]
-[ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="5_8mvip"]
+[ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/Legacy/RigidHookables/Box/Box.tscn" id="5_8mvip"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="5_wgd62"]
-[ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/RigidHookables/Lilypad/Lilypad.tscn" id="6_qmamx"]
-[ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/AnimationHookables/Sewer/Sewer.tscn" id="7_erdry"]
+[ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/Legacy/RigidHookables/Lilypad/Lilypad.tscn" id="6_qmamx"]
+[ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/Legacy/AnimationHookables/Sewer/Sewer.tscn" id="7_erdry"]
 [ext_resource type="PackedScene" uid="uid://yssqu3rr2s75" path="res://src/world/Object/Drain/Drain.tscn" id="8_ogg5i"]
+[ext_resource type="PackedScene" uid="uid://e76q6n4c3r01" path="res://src/world/Object/Portal/Portal.tscn" id="9_j1j30"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
@@ -109,3 +110,11 @@ water = NodePath("../Water")
 [node name="Drain" parent="." node_paths=PackedStringArray("water") instance=ExtResource("8_ogg5i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 9.59211, -0.475146, -2.42007)
 water = NodePath("../Water")
+
+[node name="Portal" parent="." node_paths=PackedStringArray("out_portal") instance=ExtResource("9_j1j30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+out_portal = NodePath("../Portal2")
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("out_portal") instance=ExtResource("9_j1j30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+out_portal = NodePath("../Portal")

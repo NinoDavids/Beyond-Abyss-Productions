@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ql7motejsfcy"]
+
+[ext_resource type="Shader" path="res://src/shaders/TeleportShader/teleport_shader.gdshader" id="1_6kino"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gax04"]
+shader = ExtResource("1_6kino")
+shader_parameter/frequency = 60.0
+
+[node name="TeleportShader" type="ColorRect"]
+visible = false
+material = SubResource("ShaderMaterial_gax04")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

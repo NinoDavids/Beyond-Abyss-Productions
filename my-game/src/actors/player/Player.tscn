@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=43 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
 [ext_resource type="PackedScene" uid="uid://dop37yjdupvy5" path="res://src/actors/player/fishingRod/FishingRod.tscn" id="2_qyi4v"]
@@ -38,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://dwmhty7hgqr6h" path="res://src/actors/player/SFX/footstep grass 32.wav" id="33_6nibb"]
 [ext_resource type="AudioStream" uid="uid://bj26o33bvn4na" path="res://src/actors/player/SFX/footstep grass 33.wav" id="34_fagc1"]
 [ext_resource type="AudioStream" uid="uid://cjm1u68i31bdp" path="res://src/actors/player/SFX/footstep grass 34.wav" id="35_q66f2"]
+[ext_resource type="PackedScene" uid="uid://ql7motejsfcy" path="res://src/shaders/TeleportShader/teleport_shader.tscn" id="39_4inh8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
@@ -97,6 +98,8 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthShaderRect" parent="CanvasLayer" instance=ExtResource("4_hena1")]
+
+[node name="TeleportShader" parent="CanvasLayer" instance=ExtResource("39_4inh8")]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
