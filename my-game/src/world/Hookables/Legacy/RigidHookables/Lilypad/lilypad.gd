@@ -1,5 +1,4 @@
 extends RigidBody3D
-
 class_name LilypadDragable
 
 @export var float_force: float = 1.0
@@ -8,16 +7,15 @@ class_name LilypadDragable
 @export var hookable: RigidHookable
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var water: Water
+@export var lily : MeshInstance3D
 @export_group("Checkpoint Handling")
 @export var checkpoint: Checkpoint
-#@onready var water_height := water.water_plane.global_position.y
-var water_height: float
 
+var water_height: float
 var startValue: Vector3
 var submerged: bool = false
 var playerOnThisLilly: bool
 var timer: float
-#const water_height := -2.0
 
 func _ready() -> void:
 	self.lock_rotation = true
@@ -26,14 +24,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if water != null and water.water_plane != null:
 		water_height = water.water_plane.global_position.y
+
 	if timer > 0:
-		if !playerOnThisLilly:
+		if not playerOnThisLilly:
 			timer -= delta
-			print_debug(timer)
 	else:
-		if hookable and !hookable.canMove:
-			print_debug(hookable.canMove)
-			hookable.canMove = true
+		if hookable:
+			if hookable.is_hooked:
+				var mat: ShaderMaterial = lily.get_active_material(0).next_pass as ShaderMaterial
+				mat.set_shader_parameter("onoff", true)
+			else:
+				var mat: ShaderMaterial = lily.get_active_material(0).next_pass as ShaderMaterial
+				mat.set_shader_parameter("onoff", false)
+				hookable.canMove = true
 
 	submerged = false
 	if water != null and water.water_plane != null:
@@ -51,7 +54,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		playerOnThisLilly = true
-		hookable.canMove = false
+		hookable.canMove = false  # Disable movement when player steps on
 		timer = 1.0
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
