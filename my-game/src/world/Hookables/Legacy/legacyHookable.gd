@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Bobber and not player_too_close:
-		if bobber.is_attached:
+		if body.is_attached:
 			return
 		play_sfx()
 		is_hooked = true
@@ -35,9 +35,10 @@ func _on_body_entered(body: Node3D) -> void:
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
 
-	if body is Player and is_hooked:
+	if body is Player:
 		player_too_close = true
-		EventManager.anim_hookable_finished.emit()
+		if is_hooked:
+			EventManager.anim_hookable_finished.emit()
 
 ## Places the [member bobber] in the center of the [LegacyHookable].
 func place_bobber() -> void:

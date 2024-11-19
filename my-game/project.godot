@@ -57,6 +57,7 @@ folder_colors={
 "res://src/Playtest 1/": "green",
 "res://src/actors/enemies/": "red",
 "res://src/actors/player/": "purple",
+"res://src/util/": "red",
 "res://src/world/Hookables/": "teal",
 "res://src/world/PuzzlePieces/": "teal"
 }
