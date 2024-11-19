@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3m3yxxg0wqtk"]
+[gd_scene load_steps=9 format=3 uid="uid://e76q6n4c3r01"]
 
 [ext_resource type="Script" path="res://src/world/Object/Portal/portal.gd" id="1_5gii6"]
-[ext_resource type="PackedScene" uid="uid://b7belfb4krdqc" path="res://src/world/Object/Portal/PortalShader.tscn" id="2_co3s1"]
+[ext_resource type="PackedScene" path="res://src/world/Object/Portal/PortalShader.tscn" id="2_co3s1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wb1vm"]
 height = 0.05
 radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o47av"]
+radius = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_72ttn"]
 top_radius = 0.25
@@ -36,6 +39,13 @@ collision_mask = 514
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_wb1vm")
 
+[node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("SphereShape3D_o47av")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -0.25, 0)
 collision_layer = 4
@@ -65,3 +75,5 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
