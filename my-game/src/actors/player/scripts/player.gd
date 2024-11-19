@@ -9,6 +9,7 @@ class_name Player
 @onready var fishing_rod: FishingRod = $Head/FishingRod
 @onready var raycast: RayCast3D = player_camera.get_node("RayCast3D")
 @onready var itemHolder: Node3D = $Head/ItemHolder
+@onready var teleport_shader: ColorRect = $CanvasLayer/TeleportShader
 
 @export var SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
