@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dup8ydmot42lk"]
+
+[ext_resource type="Script" path="res://src/world/Object/Notes.gd" id="1_k8the"]
+[ext_resource type="Texture2D" uid="uid://5t6kpnubarra" path="res://Temp/Placeholder letter.jpg" id="2_utrnx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qf5i"]
+albedo_texture = ExtResource("2_utrnx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jwux"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x35b2"]
+
+[node name="Note" type="RigidBody3D" node_paths=PackedStringArray("titleObject", "descriptionObject")]
+script = ExtResource("1_k8the")
+title = "test32"
+description = "sdfsdf asdada asdas ada sdads asdadaasda  asda sd asd "
+titleObject = NodePath("CollisionShape3D2/Title")
+descriptionObject = NodePath("CollisionShape3D2/Description")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7qf5i")
+mesh = SubResource("BoxMesh_6jwux")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_x35b2")
+
+[node name="Title" type="Label3D" parent="CollisionShape3D2"]
+transform = Transform3D(1.33333, -2.33127e-07, -1.39001e-15, -1.04251e-14, -1.19249e-07, 10, -1.74846e-07, -1, -1.19249e-08, 0, 0.75, -0.405924)
+text = "test32"
+font_size = 24
+
+[node name="Description" type="Label3D" parent="CollisionShape3D2"]
+transform = Transform3D(1.33333, -2.33127e-07, -1.01903e-14, 0, -4.37114e-07, 10, -1.74846e-07, -1, -4.37114e-08, 0, 0.75, -0.320042)
+double_sided = false
+text = "sdfsdf asdada asdas ada sdads asdadaasda  asda sd asd "
+font_size = 8
+outline_size = 6
+vertical_alignment = 0
+autowrap_mode = 2
+width = 150.0
