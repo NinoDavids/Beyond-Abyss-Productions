@@ -35,8 +35,6 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 window/size/initial_screen=2
 
 [dotnet]
@@ -142,3 +140,5 @@ Drop={
 3d_physics/layer_8="Bobber"
 3d_physics/layer_9="Enemy"
 3d_physics/layer_12="Projectiles"
+3d_physics/size/viewport_height=1080
+3d_physics/size/viewport_width=1920
