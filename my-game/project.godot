@@ -139,5 +139,6 @@ Drop={
 3d_physics/layer_7="Checkpoint"
 3d_physics/layer_8="Bobber"
 3d_physics/layer_9="Enemy"
+3d_physics/layer_12="Projectiles"
 3d_physics/size/viewport_height=1080
 3d_physics/size/viewport_width=1920
