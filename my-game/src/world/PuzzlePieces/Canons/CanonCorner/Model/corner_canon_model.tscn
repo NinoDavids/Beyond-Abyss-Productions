@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2gyotpedvmrd"]
+
+[ext_resource type="PackedScene" uid="uid://dobxbfpxr6104" path="res://src/world/PuzzlePieces/Canons/CanonCorner/Model/corner_canon_model.glb" id="1_866qt"]
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_model.gd" id="2_twtoe"]
+
+[node name="corner_canon_model" instance=ExtResource("1_866qt")]
+script = ExtResource("2_twtoe")
+animation_name = &"Shoot1"
+
+[node name="CannonBarrel" parent="." index="3"]
+transform = Transform3D(0.617805, 0, 0, 0, -2.70051e-08, -0.617805, 0, 0.617805, -2.70051e-08, 0, 1.97751, 0)
