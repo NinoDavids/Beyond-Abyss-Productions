@@ -1,6 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyefe0i2tres6"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_w7yt0"]
+radius = 0.25
+height = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wr0u4"]
 

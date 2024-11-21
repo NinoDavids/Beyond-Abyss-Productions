@@ -46,6 +46,7 @@ func _input(event: InputEvent) -> void:
 				var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickups")
 				for pickup: RigidBody3D in pickups:
 					if(raycast.get_collider() == pickup):
+						print("ello")
 						held_Item = raycast.get_collider()
 						held_Item.freeze = true
 						held_Item.collision_mask = 2

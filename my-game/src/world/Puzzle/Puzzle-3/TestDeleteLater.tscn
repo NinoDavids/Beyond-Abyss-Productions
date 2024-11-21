@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://euvh556cvtwk"]
+
+[ext_resource type="Texture2D" uid="uid://bd8xblat1qv7p" path="res://icon.jpg" id="1_l1n4x"]
+[ext_resource type="PackedScene" uid="uid://bo75r7h04i4nj" path="res://src/world/Puzzle/Puzzle-3/Backplane.tscn" id="2_620pa"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="3_krsuj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7171"]
+albedo_texture = ExtResource("1_l1n4x")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+collision_layer = 4
+collision_mask = 0
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_s7171")
+
+[node name="RigidBody3D" parent="." instance=ExtResource("2_620pa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.08693, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_krsuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46605, 3.86485)

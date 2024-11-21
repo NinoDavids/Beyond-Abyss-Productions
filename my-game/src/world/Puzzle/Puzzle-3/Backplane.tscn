@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo75r7h04i4nj"]
+
+[ext_resource type="PackedScene" uid="uid://bxoxktxxbh53o" path="res://src/world/Puzzle/Puzzle-3/Border.tscn" id="2_4ikjo"]
+[ext_resource type="PackedScene" uid="uid://cyefe0i2tres6" path="res://src/world/Puzzle/Puzzle-3/Ball.tscn" id="3_n3s0q"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsx2g"]
+size = Vector3(0.5, 5, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib1lm"]
+size = Vector3(0.5, 5, 2.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wje0v"]
+top_radius = 0.25
+bottom_radius = 0.25
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8cbd"]
+radius = 0.25
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bsx2g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ib1lm")
+
+[node name="RigidBody3D" parent="." instance=ExtResource("2_4ikjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.756649, 0, 1.36804)
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("2_4ikjo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.743404, 0, -1.34685)
+
+[node name="RigidBody3D3" parent="." instance=ExtResource("3_n3s0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.715626, 3.07831, 0)
+
+[node name="Obstacle" type="RigidBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.46461, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle"]
+mesh = SubResource("CylinderMesh_wje0v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+shape = SubResource("CylinderShape3D_x8cbd")
