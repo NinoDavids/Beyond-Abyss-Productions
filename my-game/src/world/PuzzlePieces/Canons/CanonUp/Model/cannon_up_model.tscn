@@ -16,7 +16,7 @@ transform = Transform3D(0.651335, 0, 0, 0, -3.10581e-07, -0.651336, 0, 0.651336,
 transform = Transform3D(0.651336, 0, 0, 0, -2.32936e-07, -0.651336, 0, 0.651336, -2.32936e-07, -7.07365e-09, 1.01663, -0.9343)
 
 [node name="Cannon" parent="." index="4"]
-transform = Transform3D(0.651334, 0, 0, 0, -2.32936e-07, -0.651335, 0, 0.651335, -2.32936e-07, -1.02419e-09, 1.18674, 0.0379247)
+transform = Transform3D(0.651334, 0, 0, 0, -2.32936e-07, -0.651335, 0, 0.651335, -2.32936e-07, -1.02419e-09, 1.20473, 0.0379247)
 
 [node name="AnimationPlayer" parent="." index="7"]
-autoplay = "ShootUp"
+speed_scale = 3.0
