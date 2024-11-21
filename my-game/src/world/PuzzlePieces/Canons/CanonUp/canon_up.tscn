@@ -35,7 +35,7 @@ unique_name_in_owner = true
 
 [node name="ProjectileReceiver" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 2048
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileReceiver"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283318, 0)
