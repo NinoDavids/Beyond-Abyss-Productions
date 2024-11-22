@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://u6jppeg2es0e"]
 
-[ext_resource type="Script" path="res://src/world/Hookables/RigidHookables/Lilypad/lilypad.gd" id="1_3y8jp"]
-[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_2xnye"]
+[ext_resource type="Script" path="res://src/world/Hookables/Legacy/RigidHookables/Lilypad/lilypad.gd" id="1_3y8jp"]
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/Legacy/RigidHookables/RigidHookable.tscn" id="2_2xnye"]
 [ext_resource type="Shader" path="res://src/world/Object/HookedShader.gdshader" id="2_rhjp2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k2jdr"]

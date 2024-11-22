@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b68wbgn23auq6"]
 
 [ext_resource type="PackedScene" uid="uid://cxfd2dyx42bw5" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.glb" id="1_y2e7c"]
-[ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.gd" id="2_x4o1q"]
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_model.gd" id="2_x4o1q"]
 
 [node name="CannonUpModel" instance=ExtResource("1_y2e7c")]
 script = ExtResource("2_x4o1q")
+animation_name = &"ShootUp"
 
 [node name="CannonInput4" parent="." index="0"]
 transform = Transform3D(0.651336, 0, 0, 0, -2.32936e-07, -0.651336, 0, 0.651336, -2.32936e-07, -0.971989, 1.01663, 0.0376882)
