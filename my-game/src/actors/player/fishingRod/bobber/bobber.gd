@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Floatable
 class_name Bobber
 
 var player: Player

@@ -6,6 +6,8 @@ class_name WaterPlane
 
 var material: ShaderMaterial
 var noise: Image
+var noise2: Image
+var noise3: Image
 
 @export var noise_scale: float = 10.0
 @export var wave_speed: float = 0.025
@@ -34,6 +36,9 @@ func _ready() -> void:
 func calculateWaves() -> void:
 	material = self.get_surface_override_material(0)
 	noise = material.get_shader_parameter("wave").noise.get_seamless_image(512, 512)
+	noise2 = material.get_shader_parameter("texture_normal").noise.get_seamless_image(512, 512)
+	noise3 = material.get_shader_parameter("texture_normal2").noise.get_seamless_image(512, 512)
+	
 
 	material.set_shader_parameter("noise_scale", noise_scale)
 	material.set_shader_parameter("time_scale", wave_speed)
@@ -48,8 +53,10 @@ func get_height(world_position: Vector3) -> float:
 	var uv_x: float = wrapf(world_position.x / noise_scale + time * wave_speed, 0, 1)
 	var uv_y: float = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
 
-	var pixel_pos: Vector2 = Vector2(uv_x * noise.get_width(), uv_y * noise.get_height())
-	return (global_position.y + 0.13  ) + noise.get_pixelv(pixel_pos).r * height_scale
+	var pixel_pos: Vector2 = Vector2((
+		((uv_x * noise.get_width()) + (uv_x * noise2.get_width()) + (uv_x * noise3.get_width())) / 3),
+		((uv_x * noise.get_height()) + (uv_x * noise2.get_height()) + (uv_x * noise3.get_height())) / 3)
+	return global_position.y + ((noise.get_pixelv(pixel_pos).r + noise2.get_pixelv(pixel_pos).r + noise3.get_pixelv(pixel_pos).r)) * height_scale 
 
 
 func _on_timer_timeout() -> void:

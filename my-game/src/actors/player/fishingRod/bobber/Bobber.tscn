@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpgi4juoe0aw5"]
+[gd_scene load_steps=5 format=3 uid="uid://dpgi4juoe0aw5"]
 
 [ext_resource type="Script" path="res://src/actors/player/fishingRod/bobber/bobber.gd" id="1_uhxrq"]
-[ext_resource type="PackedScene" uid="uid://c0gcfjyd2v462" path="res://src/util/floating/floating.tscn" id="2_aygwd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s6swa"]
 bounce = 0.75
@@ -20,17 +19,12 @@ physics_material_override = SubResource("PhysicsMaterial_s6swa")
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_uhxrq")
-float_force = null
-water_drag = null
-water_angular_drag = null
+float_force = 0.3
+water_drag = 1.0
+water_angular_drag = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_axwoj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_euidn")
-
-[node name="Floating" parent="." node_paths=PackedStringArray("object") instance=ExtResource("2_aygwd")]
-object = NodePath("..")
-
-[connection signal="body_entered" from="." to="Floating" method="_on_bobber_body_entered"]
