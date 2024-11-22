@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://0t3au38yglb4"]
+
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/Spring/spring_puzzle_piece.gd" id="1_malmg"]
+[ext_resource type="PackedScene" uid="uid://br3rb2i88uk6q" path="res://src/world/PuzzlePieces/Spring/Model/spring_model.tscn" id="1_x5cou"]
+[ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="3_uff1o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2c2yj"]
+size = Vector3(2, 0.3, 2.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lo1xa"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c2jjf"]
+material = SubResource("StandardMaterial3D_lo1xa")
+size = Vector2(3, 3)
+
+[node name="Spring" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_malmg")
+transition_speed = 0.0
+fall_speed = 10.0
+
+[node name="spring" parent="." instance=ExtResource("1_x5cou")]
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00112915, 0.17099, -6.10352e-05)
+shape = SubResource("BoxShape3D_2c2yj")
+
+[node name="RightProjectileFinder" parent="." instance=ExtResource("3_uff1o")]
+
+[node name="LeftProjectileFinder" parent="." instance=ExtResource("3_uff1o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="BackProjectileFinder" parent="." instance=ExtResource("3_uff1o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="FrontProjectileFinder" parent="." instance=ExtResource("3_uff1o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_c2jjf")
+
+[connection signal="spring_went_off" from="spring" to="." method="_on_spring_spring_went_off"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

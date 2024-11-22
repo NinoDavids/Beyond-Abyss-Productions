@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://y52pn7hm538m"
+path="res://.godot/imported/glass ding 1.wav-b6ccd41716cc873e19bd8d9d17516922.sample"
+
+[deps]
+
+source_file="res://src/world/Hookables/Legacy/SFX/glass ding 1.wav"
+dest_files=["res://.godot/imported/glass ding 1.wav-b6ccd41716cc873e19bd8d9d17516922.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

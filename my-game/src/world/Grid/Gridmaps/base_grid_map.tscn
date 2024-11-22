@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://602061ik5uxj"]
+
+[ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_nvo84"]
+
+[node name="BaseGridMap" type="GridMap"]
+mesh_library = ExtResource("1_nvo84")
+cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0

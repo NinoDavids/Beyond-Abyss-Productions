@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://3vcx0or1kvke"]
+
+[ext_resource type="PackedScene" uid="uid://bscb8rpiyexmf" path="res://src/world/Grid/MeshLibraries/BaseTiles/GridMapAssets.glb" id="1_ohuis"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1e8gy"]
+size = Vector3(3, 1.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17gey"]
+size = Vector3(0.789795, 1.07571, 2.31598)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7lrcj"]
+size = Vector3(1.12109, 1.26965, 0.390686)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ktomu"]
+size = Vector3(3, 1.08801, 0.944092)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6dp1"]
+size = Vector3(1.36005, 3.86176, 1.35645)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cehrt"]
+size = Vector3(1.54584, 2.09521, 0.770447)
+
+[node name="GridMapAssets" instance=ExtResource("1_ohuis")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UShapePiece1" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="UShapePiece1/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
+shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="Wall" type="CollisionShape3D" parent="UShapePiece1/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92883, 0.0378571, -0.388922)
+shape = SubResource("BoxShape3D_17gey")
+
+[node name="Pillar" type="CollisionShape3D" parent="UShapePiece1/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93945, 0.134827, -0.00674438)
+shape = SubResource("BoxShape3D_7lrcj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UShapePiece2" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="UShapePiece2/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
+shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="Wall" type="CollisionShape3D" parent="UShapePiece2/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93845, 0.038, -0.389)
+shape = SubResource("BoxShape3D_17gey")
+
+[node name="Pillar" type="CollisionShape3D" parent="UShapePiece2/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91303, 0.134827, -0.00674438)
+shape = SubResource("BoxShape3D_7lrcj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EdgePiece" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="EdgePiece/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
+shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="Wall" type="CollisionShape3D" parent="EdgePiece/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0440063, 2)
+shape = SubResource("BoxShape3D_ktomu")
+
+[node name="Pillar" type="CollisionShape3D" parent="EdgePiece/StaticBody3D" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.146455, 1.90032)
+shape = SubResource("BoxShape3D_7lrcj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NoEdgePiece" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="NoEdgePiece/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
+shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CornerPiece" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="CornerPiece/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
+shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="Wall" type="CollisionShape3D" parent="CornerPiece/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0440063, 2.02795)
+shape = SubResource("BoxShape3D_ktomu")
+
+[node name="Wall2" type="CollisionShape3D" parent="CornerPiece/StaticBody3D" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.00761, 0.0440063, -0.0475898)
+shape = SubResource("BoxShape3D_ktomu")
+
+[node name="Pillar" type="CollisionShape3D" parent="CornerPiece/StaticBody3D" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.146455, 1.90032)
+shape = SubResource("BoxShape3D_7lrcj")
+
+[node name="Pillar2" type="CollisionShape3D" parent="CornerPiece/StaticBody3D" index="4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.90563, 0.146455, -0.00329447)
+shape = SubResource("BoxShape3D_7lrcj")
+
+[node name="TallPillar" type="CollisionShape3D" parent="CornerPiece/StaticBody3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02878, 0.38443, 2.03076)
+shape = SubResource("BoxShape3D_v6dp1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OneTileBridgePiece" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="OneTileBridgePiece/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
+shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="Wall" type="CollisionShape3D" parent="OneTileBridgePiece/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137329, -0.472412, 1.92755)
+shape = SubResource("BoxShape3D_cehrt")
+
+[node name="Wall2" type="CollisionShape3D" parent="OneTileBridgePiece/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137329, -0.472412, -1.93949)
+shape = SubResource("BoxShape3D_cehrt")

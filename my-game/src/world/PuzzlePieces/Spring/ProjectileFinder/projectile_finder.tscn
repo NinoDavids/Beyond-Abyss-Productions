@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0blxklxouxrm"]
+
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.gd" id="1_3awbq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ah74l"]
+size = Vector3(1, 1.41614, 1)
+
+[node name="ProjectileFinder" type="Area3D"]
+collision_layer = 0
+collision_mask = 2048
+script = ExtResource("1_3awbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.20807, 0)
+shape = SubResource("BoxShape3D_ah74l")
+
+[node name="StartPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+
+[node name="Aim" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

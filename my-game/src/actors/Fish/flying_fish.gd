@@ -3,15 +3,8 @@ extends RigidBody3D
 
 
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-	
-
 func _physics_process(_delta: float) -> void:
+	
 	look_at(global_position + linear_velocity, Vector3.UP)
 	
 	if global_position.y < -1:
@@ -42,3 +35,7 @@ func calculateLaunchVelocity(player: Player, height: float, plane:MeshInstance3D
 
 
 	return velocityXZ + velocityY
+
+
+func _on_body_entered(body: Node) -> void:
+	print(body)

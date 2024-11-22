@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://br3rb2i88uk6q"]
+
+[ext_resource type="PackedScene" uid="uid://b04kt7h46cnak" path="res://src/world/PuzzlePieces/Spring/Model/spring.glb" id="1_h02l1"]
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/Spring/Model/spring_model.gd" id="2_vdpbe"]
+
+[node name="spring" instance=ExtResource("1_h02l1")]
+script = ExtResource("2_vdpbe")
+
+[node name="Sping" parent="." index="1"]
+transform = Transform3D(-7.40406e-09, 0.0454458, 0, -0.0454458, -7.40406e-09, 0, 0, 0, 0.0454458, 0, 0.145913, 0)
+
+[node name="AnimationPlayer" parent="." index="2"]
+speed_scale = 2.0
