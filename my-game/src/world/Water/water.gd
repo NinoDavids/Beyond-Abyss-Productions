@@ -43,6 +43,11 @@ func _on_body_entered(body: Node3D) -> void:
 		print_debug("%s hit " %body.name, "%s." %name)
 		player_hits_water(body)
 		return
+	
+	if body is Floatable:
+		print_debug('banaan')
+		body.water = self
+		body.is_floating = true
 
 func _on_timer_timeout() -> void:
 	var plane: PlaneMesh = water_plane.mesh

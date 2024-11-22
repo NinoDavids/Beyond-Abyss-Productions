@@ -48,7 +48,7 @@ shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_direction2 = Vector2(0, 1)
 shader_parameter/time_scale = 0.025
 shader_parameter/noise_scale = 10.0
-shader_parameter/height_scale = 0.25
+shader_parameter/height_scale = 0.15
 shader_parameter/color_deep = Color(1.53417e-07, 0.216495, 0.0332873, 1)
 shader_parameter/color_shallow = Color(0, 0.553252, 0.121794, 1)
 shader_parameter/beers_law = 2.0
@@ -115,7 +115,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_xwoxc")
 script = ExtResource("3_mfiff")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545878, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("BoxShape3D_lpupn")
 script = ExtResource("3_rol2f")
 
