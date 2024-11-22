@@ -27,11 +27,13 @@ func _input(event: InputEvent) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Bobber and not player_too_close:
+		var bob: Bobber = body
 		play_sfx()
 		is_hooked = true
 		bobber = body
 		place_bobber()
 		body.tree_exited.connect(remove_bobber)
+		bobber.on_hooked.emit()
 
 	if body is Player and is_hooked:
 		player_too_close = true
@@ -44,6 +46,7 @@ func place_bobber() -> void:
 ## Removes the [member bobber] from the [Hookable].
 func remove_bobber() -> void:
 	is_hooked = false
+	bobber.on_hooked.emit()
 	bobber = null
 
 func _on_body_exited(body: Node3D) -> void:

@@ -2,9 +2,11 @@ extends Node3D
 
 @onready var point: RigidBody3D = $NodeTemplate
 var bobber_mesh: MeshInstance3D
+var bobber: Bobber = get_tree().get_first_node_in_group("bobber")
 
 var nodes: Array[RigidBody3D]
 var springs: Array[Spring]
+var player: Player
 
 var length: int = 4
 @export_category("Mesh")
@@ -20,7 +22,11 @@ var meshInstance: MeshInstance3D = MeshInstance3D.new()
 @export_range(0, 10, 0.01) var max_distance: float = .1
 var max_lenght: float
 
+var distance: float
+var can_move: bool = true
+
 var retract: bool
+var hooked: bool = false
 var frozen: bool = false ## boolean to set if the nodes are frozen
 var last_update: float = Time.get_unix_time_from_system() ## Time since the nodes got interacted with a colission object
 
@@ -30,6 +36,7 @@ func _ready() -> void:
 	spawn_nodes()
 	connect_nodes()
 	print(max_lenght)
+	bobber.on_hooked.connect(on_hooked)
 	#for spring: Spring in springs:
 		#print_debug(spring._to_string())
 
@@ -42,15 +49,22 @@ func _physics_process(_delta: float) -> void:
 		springs[springs.size()-1].point_two.sleeping = true
 		springs[springs.size()-1].point_two.global_position = bobber_mesh.global_position
 
-		var bobber: Bobber = get_tree().get_first_node_in_group("bobber")
+
 		if bobber != null:
 			springs[0].point_one.sleeping = true
 			springs[0].point_one.global_position = bobber.global_position
 #
-		if retract:
-			move_max_lenght(bobber)
+
+
+
+
+		move_max_lenght(bobber)
 
 		create_rope_mesh()
+
+func on_hooked():
+	hooked = !hooked
+
 
 
 
@@ -58,13 +72,24 @@ func move_max_lenght(bobber: Bobber):
 	var point_one: Vector3 = springs[0].point_one.global_position
 	var point_two: Vector3 = springs[0].point_two.global_position
 	var length_between: float = point_one.distance_to(point_two)
-	print(length_between)
-	if length_between > .7:
+
+	if length_between > .7 and !hooked:
 		var direction: Vector3 = (point_two - point_one).normalized()
 		var pullback_speed: float = 0.2 * length_between
 		bobber.physics_material_override.friction = 0.3
 		bobber.apply_impulse(direction * pullback_speed)
 		return
+
+
+	var vel: float = (bobber.global_position - player.global_position).dot(player.get_movement())
+	length_between = bobber.global_position.distance_to(player.global_position)
+
+	if vel < -1 and hooked and length_between > 10:
+		can_move = false
+	if vel > 1 and hooked:
+		can_move = true
+
+	player.can_move = can_move
 	bobber.physics_material_override.friction = .8
 
 

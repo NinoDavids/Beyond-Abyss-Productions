@@ -3,6 +3,8 @@ class_name Bobber
 
 var player: Player
 
+signal on_hooked
+
 func _ready() -> void:
 	EventManager.anim_hookable_finished.connect(handleAnimHookableFinished)
 

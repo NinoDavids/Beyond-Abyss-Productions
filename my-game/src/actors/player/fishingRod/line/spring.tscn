@@ -23,7 +23,7 @@ material = SubResource("ShaderMaterial_vhw0v")
 
 [node name="NodeTemplate" type="RigidBody3D" parent="."]
 collision_layer = 512
-collision_mask = 6
+collision_mask = 260
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

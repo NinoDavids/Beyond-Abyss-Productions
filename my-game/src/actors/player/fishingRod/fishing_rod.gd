@@ -69,6 +69,7 @@ func create_rope() -> void:
 	spring.bobber_mesh = bobber_mesh
 	spring.lenght = spring.lenght * strenght_multiplier
 	spring.max_lenght = cast_strength * strenght_multiplier
+	spring.player = player
 	get_tree().current_scene.add_child(spring)
 	spring.global_position = current_bobber.global_position
 

@@ -20,6 +20,7 @@ const JUMP_VELOCITY: float = 4.5
 
 var current_bobber: Bobber
 var held_Item: RigidBody3D
+var can_move: bool = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -62,18 +63,30 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
-	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-		if is_on_floor():
-			play_footstep()
+	var vel: Vector3 = get_movement()
+	if can_move:
+		velocity.x = vel.x
+		velocity.z = vel.z
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func get_movement() -> Vector3:
+	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
+	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	var vel: Vector3
+
+	if direction:
+		vel.x = direction.x * SPEED
+		vel.z = direction.z * SPEED
+		if is_on_floor():
+			play_footstep()
+
+
+	return vel
 
 func respawn() -> void:
 	fishing_rod.cancel_hook()
