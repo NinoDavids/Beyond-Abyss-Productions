@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 ## If there is no collision, then it moves the parent to the position.
 func _reel_in() -> void:
 	if neighbour_cast.is_colliding(): return
-		
+	
 	var direction: Vector3 = parent.global_position.direction_to(global_position).round() * 3 ## Times three currently as the position is 1 off.
 	parent.move(direction)
 

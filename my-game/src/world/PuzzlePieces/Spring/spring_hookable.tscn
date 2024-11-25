@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5v4wpkxa6a8p"]
+
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="1_nel1d"]
+[ext_resource type="PackedScene" uid="uid://dti3ukqyiwvjk" path="res://src/world/Hookables/BaseHookable/base_hookable.tscn" id="2_oiu4l"]
+
+[node name="SpringHookable" instance=ExtResource("1_nel1d")]
+transition_speed = 0.5
+
+[node name="BaseHookable" parent="." index="8" node_paths=PackedStringArray("parent") instance=ExtResource("2_oiu4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1)
+parent = NodePath("..")
+
+[node name="BaseHookable2" parent="." index="9" node_paths=PackedStringArray("parent") instance=ExtResource("2_oiu4l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.13, -1)
+parent = NodePath("..")
+
+[node name="BaseHookable3" parent="." index="10" node_paths=PackedStringArray("parent") instance=ExtResource("2_oiu4l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0.13, 0)
+parent = NodePath("..")
+
+[node name="BaseHookable4" parent="." index="11" node_paths=PackedStringArray("parent") instance=ExtResource("2_oiu4l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0.13, 0)
+parent = NodePath("..")
