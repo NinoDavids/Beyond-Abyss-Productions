@@ -1,9 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://u6jppeg2es0e"]
+[gd_scene load_steps=10 format=3 uid="uid://u6jppeg2es0e"]
 
-[ext_resource type="Script" path="res://src/world/Hookables/RigidHookables/Lilypad/lilypad.gd" id="1_3y8jp"]
-[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/RigidHookables/RigidHookable.tscn" id="2_2xnye"]
+[ext_resource type="Script" path="res://src/world/Hookables/Legacy/RigidHookables/Lilypad/lilypad.gd" id="1_3y8jp"]
+[ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/Legacy/RigidHookables/RigidHookable.tscn" id="2_2xnye"]
+[ext_resource type="Shader" path="res://src/world/Object/HookedShader.gdshader" id="2_rhjp2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k2jdr"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_rhjp2")
+shader_parameter/onoff = false
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/clear = Color(1, 1, 1, 0)
+shader_parameter/size = 1.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wlxe"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_k2jdr")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qxmx8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1wlxe")
 height = 0.05
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wkcom"]
@@ -14,12 +30,13 @@ height = 0.05
 [sub_resource type="BoxShape3D" id="BoxShape3D_uphsm"]
 size = Vector3(1, 1.22864, 1)
 
-[node name="Lilypad" type="RigidBody3D" node_paths=PackedStringArray("hookable")]
+[node name="Lilypad" type="RigidBody3D" node_paths=PackedStringArray("hookable", "lily")]
 disable_mode = 1
 collision_layer = 4
 collision_mask = 18
 script = ExtResource("1_3y8jp")
 hookable = NodePath("RigidHookable")
+lily = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_qxmx8")

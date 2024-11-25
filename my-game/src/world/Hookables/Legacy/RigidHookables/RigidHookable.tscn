@@ -1,0 +1,40 @@
+[gd_scene load_steps=16 format=3 uid="uid://cp8eoisgr6iby"]
+
+[ext_resource type="Script" path="res://src/world/Hookables/Legacy/RigidHookables/RigidHookable.gd" id="1_jip50"]
+[ext_resource type="AudioStream" uid="uid://y52pn7hm538m" path="res://src/world/Hookables/Legacy/SFX/glass ding 1.wav" id="2_ap1dd"]
+[ext_resource type="AudioStream" uid="uid://d2bw56o8hbx8h" path="res://src/world/Hookables/Legacy/SFX/glass ding 2.wav" id="3_ed6ag"]
+[ext_resource type="AudioStream" uid="uid://b2b80k7lfp8lc" path="res://src/world/Hookables/Legacy/SFX/glass ding 3.wav" id="4_nq7hr"]
+[ext_resource type="AudioStream" uid="uid://demita747rba3" path="res://src/world/Hookables/Legacy/SFX/glass ding 4.wav" id="5_yrick"]
+[ext_resource type="AudioStream" uid="uid://4dleuhfasjti" path="res://src/world/Hookables/Legacy/SFX/glass ding 5.wav" id="6_pcggw"]
+[ext_resource type="AudioStream" uid="uid://catsv0u1aqq2r" path="res://src/world/Hookables/Legacy/SFX/glass ding 6.wav" id="7_oyx10"]
+[ext_resource type="AudioStream" uid="uid://bydn444a13fta" path="res://src/world/Hookables/Legacy/SFX/glass ding 7.wav" id="8_rd21l"]
+[ext_resource type="AudioStream" uid="uid://b1c8xnl4nw2e2" path="res://src/world/Hookables/Legacy/SFX/glass ding 8.wav" id="9_oaxiy"]
+[ext_resource type="AudioStream" uid="uid://c08af5mlhccev" path="res://src/world/Hookables/Legacy/SFX/glass ding 9.wav" id="10_1isg6"]
+[ext_resource type="AudioStream" uid="uid://bp5ko8lcfvauv" path="res://src/world/Hookables/Legacy/SFX/glass ding 10.wav" id="11_1488c"]
+[ext_resource type="AudioStream" uid="uid://bhqh1arksv5r3" path="res://src/world/Hookables/Legacy/SFX/glass ding 11.wav" id="12_yh4pn"]
+[ext_resource type="PackedScene" uid="uid://dhjt1qykkm8yw" path="res://src/effects/fire_flies.tscn" id="13_1wtxj"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_neuqq"]
+outer_radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uumtt"]
+radius = 0.75
+
+[node name="RigidHookable" type="Area3D" node_paths=PackedStringArray("audio_player")]
+collision_mask = 138
+script = ExtResource("1_jip50")
+hooked_SFX = Array[AudioStream]([ExtResource("2_ap1dd"), ExtResource("3_ed6ag"), ExtResource("4_nq7hr"), ExtResource("5_yrick"), ExtResource("6_pcggw"), ExtResource("7_oyx10"), ExtResource("8_rd21l"), ExtResource("9_oaxiy"), ExtResource("10_1isg6"), ExtResource("11_1488c"), ExtResource("12_yh4pn")])
+audio_player = NodePath("AudioStreamPlayer3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_neuqq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_uumtt")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="FireFlies" parent="." instance=ExtResource("13_1wtxj")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

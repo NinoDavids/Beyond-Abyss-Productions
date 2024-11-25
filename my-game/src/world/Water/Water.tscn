@@ -1,10 +1,68 @@
-[gd_scene load_steps=8 format=3 uid="uid://fei8w454cc0l"]
+[gd_scene load_steps=17 format=3 uid="uid://fei8w454cc0l"]
 
 [ext_resource type="Script" path="res://src/world/Water/water.gd" id="1_scf8i"]
-[ext_resource type="PackedScene" uid="uid://blg18q0fywefe" path="res://src/world/Water/WaterPlane.tscn" id="2_hiosk"]
+[ext_resource type="Shader" path="res://src/shaders/Water.gdshader" id="2_nwr60"]
+[ext_resource type="Script" path="res://src/world/Water/water_plane.gd" id="3_mfiff"]
 [ext_resource type="Script" path="res://src/world/Water/Killplane.gd" id="3_rol2f"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_a54h3"]
+resource_local_to_scene = true
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3vvr6"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_derab"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_3vvr6")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h6ule"]
+noise_type = 3
+seed = 10
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ty156"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_h6ule")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kdg77"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vqilf"]
+seamless = true
+noise = SubResource("FastNoiseLite_kdg77")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwoxc"]
+render_priority = 0
+shader = ExtResource("2_nwr60")
+shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
+shader_parameter/albedo2 = Color(0, 0.47451, 0.764706, 1)
+shader_parameter/roughness = 0.02
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.25
+shader_parameter/color_deep = Color(1.53417e-07, 0.216495, 0.0332873, 1)
+shader_parameter/color_shallow = Color(0, 0.553252, 0.121794, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/wave = SubResource("NoiseTexture2D_vqilf")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_derab")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_ty156")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpupn"]
+resource_local_to_scene = true
 size = Vector3(1, 0.1, 1)
 
 [sub_resource type="Animation" id="Animation_1x38f"]
@@ -50,7 +108,11 @@ monitorable = false
 script = ExtResource("1_scf8i")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="WaterPlane" parent="." instance=ExtResource("2_hiosk")]
+[node name="WaterPlane" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_a54h3")
+surface_material_override/0 = SubResource("ShaderMaterial_xwoxc")
+script = ExtResource("3_mfiff")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0545878, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=45 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
 [ext_resource type="PackedScene" uid="uid://dop37yjdupvy5" path="res://src/actors/player/fishingRod/FishingRod.tscn" id="2_qyi4v"]
@@ -38,6 +38,8 @@
 [ext_resource type="AudioStream" uid="uid://dwmhty7hgqr6h" path="res://src/actors/player/SFX/footstep grass 32.wav" id="33_6nibb"]
 [ext_resource type="AudioStream" uid="uid://bj26o33bvn4na" path="res://src/actors/player/SFX/footstep grass 33.wav" id="34_fagc1"]
 [ext_resource type="AudioStream" uid="uid://cjm1u68i31bdp" path="res://src/actors/player/SFX/footstep grass 34.wav" id="35_q66f2"]
+[ext_resource type="Shader" path="res://src/actors/player/ScreenShake.gdshader" id="39_xt0gt"]
+[ext_resource type="Script" path="res://src/actors/player/screen_shake_shader.gd" id="40_h1kxw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
@@ -45,6 +47,13 @@
 height = 1.93072
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6730j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml73c"]
+shader = ExtResource("39_xt0gt")
+shader_parameter/ShakeStrength = 0.0
+shader_parameter/FactorA = Vector2(100, 100)
+shader_parameter/FactorB = Vector2(1, 1)
+shader_parameter/magnitude = Vector2(0.01, 0.01)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("audio_player", "foot_step_timer") groups=["player"]]
 collision_layer = 6
@@ -79,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 32
+collision_mask = 1056
 script = ExtResource("3_2636m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
@@ -87,7 +96,7 @@ transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_6730j")
 
 [node name="RegenTimer" type="Timer" parent="Hitbox"]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="Hitbox"]
@@ -96,7 +105,17 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthShaderRect" parent="CanvasLayer" instance=ExtResource("4_hena1")]
+[node name="ScreenShakeShader" parent="CanvasLayer" node_paths=PackedStringArray("timer") instance=ExtResource("4_hena1")]
+material = SubResource("ShaderMaterial_ml73c")
+script = ExtResource("40_h1kxw")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ScreenShakeShader"]
+wait_time = 0.2
+one_shot = true
+
+[node name="HealthShaderRect" parent="CanvasLayer" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_hena1")]
+hitbox = NodePath("../../Hitbox")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -110,3 +129,4 @@ one_shot = true
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Hitbox/RegenTimer" to="Hitbox" method="_on_regen_timer_timeout"]
 [connection signal="timeout" from="Hitbox/RespawnTimer" to="Hitbox" method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/ScreenShakeShader/Timer" to="CanvasLayer/ScreenShakeShader" method="_on_timer_timeout"]

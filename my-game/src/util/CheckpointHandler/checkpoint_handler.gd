@@ -80,7 +80,7 @@ func load_object() -> void:
 		anim_hookable._ready()
 	
 	for child: Node in parent.get_children():
-		if child is Hookable:
+		if child is LegacyHookable:
 			if child.bobber != null:
 				child.remove_bobber()
 				EventManager.anim_hookable_finished.emit()

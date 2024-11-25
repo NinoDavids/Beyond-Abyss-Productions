@@ -3,12 +3,14 @@ class_name HealthShaderRect
 ## Must be placed under a canvaslayer.
 var shader: ShaderMaterial
 var transparency: float = 0.25
-
+var brightness: float = 3
 var regenerating: bool = false
 var player_died: bool = false
+@export var hitbox:Hitbox
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
 	EventManager.player_damaged.connect(handle_player_damaged)
 	EventManager.player_regenerating.connect(handle_player_regenerating)
 	EventManager.player_died.connect(handle_player_death)
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 			shader.set_shader_parameter("brightness", transparency)
 
 func handle_player_damaged() -> void:
-	transparency += 0.25
+	transparency += .25
 	shader.set_shader_parameter("alpha", transparency)
 	regenerating = false
 

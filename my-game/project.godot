@@ -35,8 +35,6 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 window/size/initial_screen=2
 
 [dotnet]
@@ -56,12 +54,11 @@ enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addon
 folder_colors={
 "res://src/Playtest 1/": "green",
 "res://src/actors/enemies/": "red",
-"res://src/actors/player/": "purple"
+"res://src/actors/player/": "purple",
+"res://src/util/": "red",
+"res://src/world/Hookables/": "teal",
+"res://src/world/PuzzlePieces/": "teal"
 }
-
-[filesystem]
-
-import/blender/enabled=false
 
 [global_group]
 
@@ -138,3 +135,6 @@ Drop={
 3d_physics/layer_7="Checkpoint"
 3d_physics/layer_8="Bobber"
 3d_physics/layer_9="Enemy"
+3d_physics/layer_12="Projectiles"
+3d_physics/size/viewport_height=1080
+3d_physics/size/viewport_width=1920

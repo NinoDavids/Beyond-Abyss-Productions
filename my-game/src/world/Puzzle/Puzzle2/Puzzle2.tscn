@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpdfu6f224blp"]
+[gd_scene load_steps=14 format=3 uid="uid://cpdfu6f224blp"]
 
 [ext_resource type="Script" path="res://src/world/Level/CheckPoint.gd" id="1_ptyva"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="4_2pt0b"]
 [ext_resource type="PackedScene" uid="uid://c3kck1vvbqqi0" path="res://src/world/Object/Lillypad.tscn" id="5_wyke7"]
-[ext_resource type="PackedScene" path="res://src/world/Object/LillypadDragable.tscn" id="6_twtqi"]
+[ext_resource type="PackedScene" uid="uid://u6jppeg2es0e" path="res://src/world/Object/LillypadDragable.tscn" id="6_twtqi"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="21_s2r2d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpxfd"]
@@ -27,6 +27,17 @@ albedo_color = Color(0.0994864, 0.308012, 0.0456467, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_14ltj"]
 points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3oauq"]
+resource_local_to_scene = true
+size = Vector2(125, 100)
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_30g8e"]
+resource_local_to_scene = true
+size = Vector3(125, 0.1, 100)
 
 [node name="Level" type="Node3D"]
 
@@ -85,7 +96,11 @@ collision_mask = 255
 plane_size = Vector2(125, 100)
 
 [node name="WaterPlane" parent="Env/Water2" index="0"]
+mesh = SubResource("QuadMesh_3oauq")
 height_scale = 0.25
+
+[node name="CollisionShape3D" parent="Env/Water2" index="1"]
+shape = SubResource("BoxShape3D_30g8e")
 
 [node name="Lilypad13" parent="Env/Water2" node_paths=PackedStringArray("water") instance=ExtResource("5_wyke7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130101, 0.13618, 48.4945)
@@ -218,10 +233,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40178, 1, -4.56002)
 collision_layer = 4
 collision_mask = 4
 
-[node name="finalRodMesh" parent="Actors/Player/Head/FishingRod" index="0"]
-transform = Transform3D(0.5, 0, 0, 0, -1.81e-06, -0.5, 0, 0.5, -1.81e-06, 0, 0.144, 0)
-
 [editable path="Env/Water2"]
-[editable path="Env/Water2/WaterPlane"]
 [editable path="Actors/Player"]
 [editable path="Actors/Player/Head/FishingRod"]
