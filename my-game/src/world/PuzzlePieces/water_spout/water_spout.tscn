@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dexajhy20l76"]
+
+[ext_resource type="PackedScene" uid="uid://dns11sr8avk34" path="res://src/world/PuzzlePieces/water_spout/model/water_spout_model.tscn" id="1_3d7kl"]
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/water_spout/water_spout.gd" id="1_dqean"]
+[ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_vvcvd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_famom"]
+size = Vector3(1, 2, 1)
+
+[node name="WaterSpout" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_dqean")
+projectile = ExtResource("2_vvcvd")
+
+[node name="WaterSpoutModel" parent="." instance=ExtResource("1_3d7kl")]
+
+[node name="SpawnPoint" type="Marker3D" parent="WaterSpoutModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32362)
+
+[node name="TargetDirection" type="Marker3D" parent="WaterSpoutModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_famom")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
