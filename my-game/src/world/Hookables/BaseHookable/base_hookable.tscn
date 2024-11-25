@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dti3ukqyiwvjk"]
 
 [ext_resource type="Script" path="res://src/world/Hookables/BaseHookable/base_hookable.gd" id="1_ga5y0"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_qcvcx"]
-outer_radius = 0.3
+[ext_resource type="PackedScene" uid="uid://crfdn1yj2cr7a" path="res://src/world/Hookables/BaseHookable/model/attachment_model.tscn" id="2_u7sk0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hstys"]
 radius = 0.75
@@ -13,8 +11,8 @@ collision_layer = 0
 collision_mask = 130
 script = ExtResource("1_ga5y0")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("TorusMesh_qcvcx")
+[node name="Attachment_model" parent="." instance=ExtResource("2_u7sk0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="DetectionCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_hstys")
