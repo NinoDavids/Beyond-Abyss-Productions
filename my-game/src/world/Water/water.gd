@@ -11,10 +11,10 @@ var collision_size: Vector3
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @export var respawnWater: bool = false : set = set_button
 @export var player:Player
-@export var shoot_height: float = 5
+@export var shoot_height: float = 5.0
 const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn")
 
-func set_button(new_value: bool) -> void:
+func set_button(_new_value: bool) -> void:
 	loadWater()
 
 func loadWater() -> void:
@@ -25,17 +25,17 @@ func loadWater() -> void:
 func _ready() -> void:
 	loadWater()
 
-func player_hits_water(player: CharacterBody3D) -> void:
-	if player.find_child("Hitbox"):
-		var hitbox: Hitbox = player.find_child("Hitbox") as Hitbox
+func player_hits_water(body: CharacterBody3D) -> void:
+	if body.find_child("Hitbox"):
+		var hitbox: Hitbox = body.find_child("Hitbox") as Hitbox
 		hitbox.take_damage(3)
 
 func raise_water(height: float) -> void:
-	var tween := get_tree().create_tween()
+	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(water_plane, "global_position", Vector3(water_plane.global_position.x, height, water_plane.global_position.z), 5)
 
-func stop_raise_water(height: float) -> void:
-	var tween := get_tree().create_tween()
+func stop_raise_water(_height: float) -> void:
+	var tween: Tween = get_tree().create_tween()
 	tween.stop()
 
 func _on_body_entered(body: Node3D) -> void:

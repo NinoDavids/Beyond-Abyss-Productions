@@ -22,8 +22,7 @@ func _process(delta: float) -> void:
 			is_regenning = false
 			count = 0
 
-func _on_body_entered(body: Node3D) -> void:
-	
+func _on_body_entered(_body: Node3D) -> void:
 	take_damage()
 	regen_timer.start()
 

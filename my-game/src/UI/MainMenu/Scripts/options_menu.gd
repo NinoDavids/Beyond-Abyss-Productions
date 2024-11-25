@@ -24,7 +24,7 @@ func _on_invert_button_toggled(toggled_on: bool) -> void:
 	ResourceSaver.save(SettingsManager.settings)
 
 
-func _on_sens_slider_drag_ended(value_changed: bool) -> void:
+func _on_sens_slider_drag_ended(_value_changed: bool) -> void:
 	SettingsManager.settings.sensitivity = sens_slider.value
 	ResourceSaver.save(SettingsManager.settings)
 
