@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://77i5vh1twgud"]
+[gd_scene load_steps=3 format=3 uid="uid://77i5vh1twgud"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdq0m"]
-albedo_color = Color(6.97896e-07, 0.42315, 0.152357, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_hbda7"]
-material = SubResource("StandardMaterial3D_jdq0m")
-top_radius = 1.0
-bottom_radius = 1.0
-height = 0.1
+[ext_resource type="PackedScene" uid="uid://j1hm5dobm0ls" path="res://src/world/PuzzlePieces/LilyPads/model/lilypad_model.tscn" id="1_dld7c"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_moi40"]
 height = 0.1
@@ -15,10 +8,10 @@ radius = 1.0
 
 [node name="Lilypad" type="CharacterBody3D"]
 collision_layer = 4
-collision_mask = 6
-
-[node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_hbda7")
+collision_mask = 0
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_moi40")
+
+[node name="LilypadModel" parent="." instance=ExtResource("1_dld7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0745688)
