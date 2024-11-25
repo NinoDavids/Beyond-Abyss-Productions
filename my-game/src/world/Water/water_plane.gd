@@ -54,10 +54,9 @@ func get_height(world_position: Vector3) -> float:
 	var uv_y: float = wrapf(world_position.z / noise_scale + time * wave_speed, 0, 1)
 
 	var pixel_pos: Vector2 = Vector2((
-		((uv_x * noise.get_width()) + (uv_x * noise2.get_width()) + (uv_x * noise3.get_width())) / 3),
-		((uv_x * noise.get_height()) + (uv_x * noise2.get_height()) + (uv_x * noise3.get_height())) / 3)
-	return global_position.y + ((noise.get_pixelv(pixel_pos).r + noise2.get_pixelv(pixel_pos).r + noise3.get_pixelv(pixel_pos).r)) * height_scale 
-
+		((uv_y * noise.get_width()) + (uv_y * noise2.get_width()) + (uv_y * noise3.get_width())) / 3),
+		((uv_x * noise.get_height()) + (uv_x * noise2.get_height()) + (uv_x* noise3.get_height())) / 3)
+	return global_position.y + ((noise.get_pixelv(pixel_pos).r + noise2.get_pixelv(pixel_pos).r + noise3.get_pixelv(pixel_pos).r) / 3) * height_scale 
 
 func _on_timer_timeout() -> void:
 	var plane: PlaneMesh = self.mesh

@@ -44,7 +44,6 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	
 	if body is Floatable:
-		print_debug('banaan')
 		body.water = self
 		body.is_floating = true
 
