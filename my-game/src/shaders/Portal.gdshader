@@ -2,7 +2,7 @@ shader_type spatial;
 
 uniform float PORTAL_RADIUS = 0.5;
 uniform vec3 PORTAL_NORMAL = vec3(0, 0, 1);
-uniform vec3 PORTAL_CENTER = vec3(0, 0, 0);
+uniform vec3 PORTAL_CENTER = vec3(0, 1.2, 0);
 uniform vec3 PORTAL_SEAM = vec3(0, 1, 0);
 uniform sampler2D INSIDE_TEXTURE: source_color, repeat_enable;
 uniform vec2 PORTAL_DIRECTION = vec2(0.1, 0.0);

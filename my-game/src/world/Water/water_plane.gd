@@ -22,7 +22,7 @@ const FLYING_FISH: PackedScene = preload("res://src/actors/Fish/flying_fish.tscn
 
 @export var calculateWavesButton: bool = false : set = set_button
 
-func set_button(new_value: bool) -> void:
+func set_button(_new_value: bool) -> void:
 	calculateWaves()
 
 # Called when the node enters the scene tree for the first time.

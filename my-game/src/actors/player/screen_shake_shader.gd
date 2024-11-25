@@ -2,7 +2,7 @@ extends ColorRect
 
 var shader: ShaderMaterial
 @export var timer: Timer
-var screen_shake = .5
+var screen_shake: float = .5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +24,8 @@ func _on_timer_timeout() -> void:
 	shader.set_shader_parameter("ShakeStrength", 0)
 
 	
-func handle_player_died():
+func handle_player_died() -> void:
 	screen_shake = 1
 
-func handle_player_regen():
+func handle_player_regen() -> void:
 	screen_shake = 1
