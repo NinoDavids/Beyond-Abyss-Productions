@@ -10,13 +10,13 @@ func _physics_process(_delta: float) -> void:
 	if global_position.y < -1:
 		queue_free()
 	
-func apply_force_direction(direction: Vector3, player: Player, plane: MeshInstance3D, height: int) -> void:
+func apply_force_direction(direction: Vector3, player: Player, plane: MeshInstance3D, height: float) -> void:
 	var random: RandomNumberGenerator = RandomNumberGenerator.new()
 	random.randomize()
-	
+	var usedHeight: int = int(height)
 	if random.randi_range(0,10) == 1:
 		linear_velocity = Vector3(0,0,0)
-		linear_velocity = calculateLaunchVelocity(player, height, plane)
+		linear_velocity = calculateLaunchVelocity(player, usedHeight, plane)
 	else:
 		linear_velocity = Vector3(0,0,0)
 		linear_velocity = direction

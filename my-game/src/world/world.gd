@@ -11,11 +11,11 @@ func _init() -> void:
 
 func _ready() -> void:
 	Steam.steamInit()
-	var isRunning = Steam.isSteamRunning()
+	var _isRunning: bool = Steam.isSteamRunning()
 	setAchievement("ACH_STARTGAME")
 	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
 
-func setAchievement(ach) -> void:
+func setAchievement(ach: String) -> void:
 	var status: Dictionary = Steam.getAchievement(ach)
 	if status["achieved"]:
 		return
@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("quitEditor")):
 		get_tree().quit();
 
-func _process(delta: float):
+func _process(delta: float) -> void:
 	time_elapsed += delta
 	var time_to_int: int = int(time_elapsed)
 
