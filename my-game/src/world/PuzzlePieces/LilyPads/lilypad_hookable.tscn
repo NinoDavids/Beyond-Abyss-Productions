@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqvbhv8w681h6"]
+
+[ext_resource type="PackedScene" uid="uid://77i5vh1twgud" path="res://src/world/PuzzlePieces/LilyPads/Lilypad.tscn" id="1_7vscj"]
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/LilyPads/lilypad_hookable.gd" id="2_6mqu8"]
+[ext_resource type="PackedScene" uid="uid://dds7y05ciredl" path="res://src/world/Hookables/BaseHookable/ToPlayerHookable/to_player_hookable.tscn" id="2_6s52n"]
+
+[node name="LilypadHookable" instance=ExtResource("1_7vscj")]
+script = ExtResource("2_6mqu8")
+fall_speed = 0.0
+
+[node name="ToPlayerHookable" parent="." index="2" node_paths=PackedStringArray("parent") instance=ExtResource("2_6s52n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0709272, 0)
+parent = NodePath("..")
