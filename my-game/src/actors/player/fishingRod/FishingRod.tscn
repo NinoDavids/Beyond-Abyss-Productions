@@ -143,6 +143,8 @@ _data = {
 
 [node name="FishingRod" type="Node3D"]
 script = ExtResource("1_nk6eq")
+cast_strength = null
+show_aim = null
 
 [node name="finalRodMesh" parent="." instance=ExtResource("3_14aso")]
 transform = Transform3D(0.5, 0, 0, 0, -1.81e-06, -0.5, 0, 0.5, -1.81e-06, 0, 0.144, 0)

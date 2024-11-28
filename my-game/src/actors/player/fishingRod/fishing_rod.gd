@@ -19,15 +19,29 @@ var current_bobber: Bobber
 
 var is_charging: bool = false
 var is_casting: bool = false
+var is_carrying: bool = false
 
 func _ready() -> void:
 	EventManager.anim_hookable_finished.connect(cancel_hook)
+	EventManager.disable_fishingrod.connect(player_is_carrying)
+	EventManager.enable_fishingrod.connect(player_is_not_carrying)
+
+
+func player_is_carrying() -> void:
+	print("I am carrying stuff")
+	is_carrying = true
+	print(is_carrying)
+
+func player_is_not_carrying() -> void:
+	print("I am not carrying stuff")
+	is_carrying = false
+	print(is_carrying)
 
 func set_active(active: bool) -> void:
 	bobber_mesh.visible = !active
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("cast_hook") and !current_bobber and !is_casting:
+	if event.is_action_pressed("cast_hook") and !current_bobber and !is_casting and !is_carrying:
 		animation_player.play("HoldBack")
 		toggle_aim()
 		is_charging = true

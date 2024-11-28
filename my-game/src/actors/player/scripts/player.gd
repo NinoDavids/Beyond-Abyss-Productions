@@ -25,6 +25,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	EventManager.player_respawned.connect(respawn)
 
+	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quitEditor"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -37,8 +39,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Drop"):
 			if held_Item:
 				held_Item.freeze = false
-				held_Item.collision_mask = 1
+				# held_Item.collision_mask = 1
 				held_Item = null
+				fishing_rod.visible = true
+				EventManager.enable_fishingrod.emit()
+
+				
 
 	if event.is_action_pressed("Pickup"):
 		if held_Item == null:
@@ -46,10 +52,14 @@ func _input(event: InputEvent) -> void:
 				var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickups")
 				for pickup: RigidBody3D in pickups:
 					if(raycast.get_collider() == pickup):
-						print("ello")
 						held_Item = raycast.get_collider()
 						held_Item.freeze = true
-						held_Item.collision_mask = 2
+						#held_Item.set_collision_mask_value(3, false)
+						#held_Item.set_collision_mask_value(3, false)
+						held_Item.set_collision_layer_value(3, false)
+						#held_Item.collision_disabled = true 
+						fishing_rod.visible = false
+						EventManager.disable_fishingrod.emit()
 
 	if held_Item:
 		held_Item.global_transform.origin = itemHolder.global_transform.origin

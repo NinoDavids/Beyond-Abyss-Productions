@@ -18,6 +18,10 @@ signal player_respawned()
 signal checkpoint_touched(point: Checkpoint)
 @warning_ignore("unused_signal")
 signal checkpoint_respawn(point: Checkpoint)
+@warning_ignore("unused_signal")
+signal disable_fishingrod()
+@warning_ignore("unused_signal")
+signal enable_fishingrod()
 
 func _ready() -> void:
 	cancel_bobber.connect(handle_cancel_bobber)
