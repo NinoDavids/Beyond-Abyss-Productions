@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n12y1hxagm7"]
+[gd_scene load_steps=19 format=3 uid="uid://n12y1hxagm7"]
 
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_08khl"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_y3247"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/Legacy/RigidHookables/Box/Box.tscn" id="5_8mvip"]
 [ext_resource type="PackedScene" uid="uid://cq0bc0gasd8u0" path="res://src/world/Hookables/Legacy/RigidHookables/Lilypad/Lilypad.tscn" id="6_qmamx"]
 [ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/Legacy/AnimationHookables/Sewer/Sewer.tscn" id="7_erdry"]
+[ext_resource type="PackedScene" uid="uid://dxbn5v6th6i4a" path="res://Puzzle1-1.tscn" id="8_egeii"]
 [ext_resource type="PackedScene" uid="uid://yssqu3rr2s75" path="res://src/world/Object/Drain/Drain.tscn" id="8_ogg5i"]
+[ext_resource type="PackedScene" uid="uid://bd118pq11ig34" path="res://Puzzle1-3.tscn" id="9_5h5ma"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
@@ -101,3 +103,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.260
 
 [node name="Drain" parent="." instance=ExtResource("8_ogg5i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 9.59211, -0.475146, -2.42007)
+
+[node name="Node3D" parent="." instance=ExtResource("8_egeii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4006, -2.49325, 0)
+
+[node name="GridMap" parent="." instance=ExtResource("9_5h5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81702, -2.67654, -18.8484)

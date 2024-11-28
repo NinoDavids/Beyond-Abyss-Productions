@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxbn5v6th6i4a"]
+
+[ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_v3ioq"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="2_jts4i"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="3_00ydm"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="4_odkdg"]
+
+[node name="Node3D" type="GridMap"]
+mesh_library = ExtResource("1_v3ioq")
+cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(1, 1, 1048580, 0, 1, 2, 65535, 1, 4, 65535, 0, 1441794, 65535, 65535, 1441794, 65535, 65534, 1441794, 65535, 65533, 1441794, 1, 0, 1048578, 1, 65535, 1048578, 1, 65534, 1048578, 1, 65533, 1048578, 1, 65532, 655364, 65535, 65532, 1441796, 0, 65532, 655362, 0, 65533, 655363, 0, 65534, 655363, 0, 65535, 655363, 0, 0, 655363)
+}
+
+[node name="SpringHookable" parent="." instance=ExtResource("3_00ydm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19844, 1.51027, -2.7356)
+
+[node name="WaterSpout" parent="." instance=ExtResource("4_odkdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19944, 1.55516, -10.97)
+
+[node name="Portal" parent="." node_paths=PackedStringArray("out_portal") instance=ExtResource("2_jts4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40838, 1.43777, 5)
+out_portal = NodePath("../Portal2")
+
+[node name="Portal2" parent="." instance=ExtResource("2_jts4i")]
+transform = Transform3D(-0.138361, 0, -0.990382, 0, 1, 0, 0.990382, 0, -0.138361, -6.24173, 5.08013, -1.60664)
