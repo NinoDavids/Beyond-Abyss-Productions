@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://chlfbt8lnh6fq"]
+[gd_scene load_steps=2 format=3 uid="uid://pmilmp0brmy"]
 
 [ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_nax7b"]
 

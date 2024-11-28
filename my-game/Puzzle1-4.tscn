@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4rkljprcndri"]
+[gd_scene load_steps=8 format=3 uid="uid://cg43hdb3syxaf"]
 
 [ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_cd64p"]
 [ext_resource type="PackedScene" uid="uid://602061ik5uxj" path="res://src/world/Grid/Gridmaps/base_grid_map.tscn" id="2_h7en6"]
@@ -23,16 +23,16 @@ data = {
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.1596, 1.22511, 16.9072)
 
 [node name="CanonCornerHookable" parent="." instance=ExtResource("5_0ordv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6535, 1.54261, 13.6124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.509, 1.59639, 16.6793)
 
 [node name="CanonCornerHookable2" parent="." instance=ExtResource("5_0ordv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.509, 1.59639, 7.81314)
 
 [node name="Spring" parent="." instance=ExtResource("4_fitdb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0814, 1.44869, 7.4575)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0814, 1.63166, 7.4575)
 
 [node name="SpringHookable" parent="." instance=ExtResource("6_6r6uv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90697, 1.4707, 4.77216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90697, 1.43985, 7.48293)
 
 [node name="Portal" parent="." instance=ExtResource("7_3pqht")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.07449, 1.48236, 7.49739)
