@@ -61,14 +61,13 @@ func _input(event: InputEvent) -> void:
 						fishing_rod.visible = false
 						EventManager.disable_fishingrod.emit()
 
-	if held_Item:
-		held_Item.global_transform.origin = itemHolder.global_transform.origin
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	if held_Item != null:
+		held_Item.global_transform.origin = itemHolder.global_transform.origin
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
