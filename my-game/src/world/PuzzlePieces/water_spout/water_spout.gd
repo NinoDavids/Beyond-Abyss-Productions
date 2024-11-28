@@ -5,6 +5,7 @@ extends BasePuzzlePiece
 @onready var shoot_timer: Timer = $ShootTimer
 @export var shot_cooldown: float = 5.0
 @export var projectile_distance: int = 3.0
+@export var active: bool = false
 
 @onready var spawn_point: Marker3D = $WaterSpoutModel/SpawnPoint
 @onready var target_direction: Marker3D = $WaterSpoutModel/TargetDirection
@@ -24,4 +25,5 @@ func shoot_projectile() -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
-	shoot_projectile()
+	if active:
+		shoot_projectile()
