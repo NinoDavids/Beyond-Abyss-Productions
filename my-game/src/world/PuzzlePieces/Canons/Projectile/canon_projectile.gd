@@ -23,8 +23,6 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	velocity.y = vertical_velocity
 
-	print_debug(transform)
-
 	look_at(global_position + direction)
 	move_and_slide()
 
