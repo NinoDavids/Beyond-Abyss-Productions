@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxtrys0yffy13"]
+
+[ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_rlmmn"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="2_0fdhu"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="3_1v3ep"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_gepkj"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="5_v40tu"]
+
+[node name="Node3D" type="GridMap"]
+mesh_library = ExtResource("1_rlmmn")
+cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(0, 1, 1441796, 0, 3, 4, 0, 2, 1441794, 1, 1, 655362, 2, 1, 655362, 3, 1, 655362, 4, 1, 655362, 5, 1, 655362, 6, 1, 655362, 7, 1, 655362, 8, 1, 655362, 9, 1, 655364, 9, 3, 1048580, 1, 3, 2, 2, 3, 2, 3, 3, 2, 4, 3, 2, 5, 3, 2, 6, 3, 2, 7, 3, 2, 8, 3, 2, 9, 2, 1048578, 1, 2, 1048579, 2, 2, 1048579, 3, 2, 1048579, 4, 2, 1048579, 5, 2, 1048579, 6, 2, 1048579, 7, 2, 1048579, 8, 2, 1048579)
+}
+
+[node name="WaterSpout" parent="." instance=ExtResource("2_0fdhu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29.3609, 1.48922, 7.558)
+
+[node name="Spring" parent="." instance=ExtResource("3_1v3ep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2, 7.52805)
+
+[node name="Spring2" parent="." instance=ExtResource("3_1v3ep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5557, 1.57347, 7.18011)
+
+[node name="Portal" parent="." instance=ExtResource("4_gepkj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.95059, 1.45191, 7.30609)
+
+[node name="SpringHookable" parent="." instance=ExtResource("5_v40tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8849, 1.6339, 7.5913)

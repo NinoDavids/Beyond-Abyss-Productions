@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cltty3ebrqesr"]
+
+[ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_cpai4"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_cpai4")
+cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(0, 1, 1441796, 0, 3, 4, 4, 1, 655364, 4, 2, 1048580, 3, 3, 1048580, 3, 1, 655362, 2, 1, 655362, 1, 1, 655362, 0, 2, 1441794, 1, 3, 2, 2, 3, 3, 2, 4, 1441797, 3, 2, 1441795, 1, 5, 655362, 0, 5, 1441796, 3, 5, 655362, 4, 5, 655362, 5, 5, 655362, 6, 5, 655364, 6, 6, 1048578, 5, 6, 1048579, 4, 6, 1048579, 0, 6, 1441794, 0, 7, 1441794, 0, 8, 1441794, 0, 9, 1441794, 0, 10, 4, 1, 10, 2, 2, 10, 2, 3, 10, 2, 3, 9, 3, 3, 8, 3, 3, 7, 3, 2, 6, 3, 1, 6, 3, 2, 8, 3, 2, 7, 3, 1, 7, 3, 1, 8, 3, 1, 9, 3, 2, 9, 3)
+}
