@@ -7,6 +7,7 @@ var direction: Vector3
 var start_position: Vector3
 var end_position: Vector3
 var vertical_velocity: float = 0.0
+var jump: bool = false
 
 func _ready() -> void:
 	start_position = global_position
@@ -15,7 +16,11 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if direction == null: return
 	
-	vertical_velocity += gravity * _delta
+	if(jump):
+		vertical_velocity += 7.5
+		jump = false
+	else:
+		vertical_velocity += gravity * _delta
 	
 	if check_distance_reached():
 		queue_free()
