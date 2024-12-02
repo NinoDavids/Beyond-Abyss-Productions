@@ -30,6 +30,7 @@ func shoot_projectile() -> void:
 
 func _on_cannon_up_model_shoot() -> void:
 	projectile_receiver.monitoring = false
+	timer.start()
 	shoot_projectile()
 
 func _on_projectile_receiver_body_entered(body: Node3D) -> void:
