@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dexajhy20l76"]
+[gd_scene load_steps=7 format=3 uid="uid://dexajhy20l76"]
 
 [ext_resource type="PackedScene" uid="uid://dns11sr8avk34" path="res://src/world/PuzzlePieces/water_spout/model/water_spout_model.tscn" id="1_3d7kl"]
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/water_spout/water_spout.gd" id="1_dqean"]
@@ -6,6 +6,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_famom"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx1yf"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ein4e"]
+material = SubResource("StandardMaterial3D_sx1yf")
+size = Vector2(3, 3)
 
 [node name="WaterSpout" type="CharacterBody3D"]
 collision_layer = 4
@@ -19,7 +27,6 @@ projectile = ExtResource("2_vvcvd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32362)
 
 [node name="TargetDirection" type="Marker3D" parent="WaterSpoutModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -30,5 +37,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_famom")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ein4e")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
