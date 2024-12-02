@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxtrys0yffy13"]
+[gd_scene load_steps=6 format=3 uid="uid://b0g8rdvxhsn8y"]
 
 [ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_rlmmn"]
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="2_0fdhu"]
@@ -28,4 +28,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5557, 1.57347, 7.18011)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.95059, 1.45191, 7.30609)
 
 [node name="SpringHookable" parent="." instance=ExtResource("5_v40tu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8849, 1.6339, 7.5913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8849, 1.6339, 4.94108)

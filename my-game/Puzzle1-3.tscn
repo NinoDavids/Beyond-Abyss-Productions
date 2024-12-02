@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd118pq11ig34"]
+[gd_scene load_steps=6 format=3 uid="uid://3pa0ouqak66b"]
 
 [ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_svvnw"]
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="2_q175l"]
@@ -19,13 +19,13 @@ data = {
 transform = Transform3D(-0.999792, 0, -0.0204016, 0, 1, 0, 0.0204016, 0, -0.999792, 19.7571, 1.66732, 14.1391)
 
 [node name="SpringHookable" parent="." instance=ExtResource("3_rxdjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6256, 1.60731, 10.5803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2817, 1.55111, 10.5803)
 
 [node name="SpringHookable2" parent="." instance=ExtResource("3_rxdjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4447, 1.60731, 4.39094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2389, 1.54298, 1.76847)
 
 [node name="CanonCornerHookable" parent="." instance=ExtResource("4_oj7h3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.7627, 1.71578, 4.64794)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.7627, 1.5004, 1.74585)
 
 [node name="Portal" parent="." instance=ExtResource("5_pxiym")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.48094, 1.48876, 4.3377)

@@ -17,6 +17,9 @@ collision_layer = 128
 collision_mask = 12
 physics_material_override = SubResource("PhysicsMaterial_s6swa")
 script = ExtResource("1_uhxrq")
+float_force = null
+water_drag = null
+water_angular_drag = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_axwoj")
