@@ -8,6 +8,9 @@ var start_position: Vector3
 var end_position: Vector3
 var vertical_velocity: float = 0.0
 var jump: bool = false
+@export var jump_velocity: float = 7.5
+@export var doGravity: bool = true
+
 
 func _ready() -> void:
 	start_position = global_position
@@ -17,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	if direction == null: return
 	
 	if(jump):
-		vertical_velocity += 7.5
+		vertical_velocity += jump_velocity
 		jump = false
 	else:
 		vertical_velocity += gravity * _delta
@@ -26,7 +29,9 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 	
 	velocity = direction * speed
-	velocity.y = vertical_velocity
+	
+	if doGravity:
+		velocity.y = vertical_velocity
 
 	look_at(global_position + direction)
 	move_and_slide()
