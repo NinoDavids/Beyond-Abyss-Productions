@@ -1,15 +1,14 @@
 class_name Portal
 extends Node3D
 
-@export var out_portal: Portal
+@export var next_water_sprout: WaterSpout
+@export var current_water_sprout: WaterSpout
 
 var used: bool = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print_debug('teleport')
-	if !used:
-		out_portal.used = true
-		body.global_position = out_portal.global_position
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	used = false
+	if next_water_sprout:
+		next_water_sprout.active = true
+		
+	if current_water_sprout:
+		current_water_sprout.active = false

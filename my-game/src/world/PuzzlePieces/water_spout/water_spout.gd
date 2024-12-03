@@ -4,7 +4,8 @@ extends BasePuzzlePiece
 @export var projectile: PackedScene
 @onready var shoot_timer: Timer = $ShootTimer
 @export var shot_cooldown: float = 5.0
-@export var projectile_distance: int = 3.0
+@export var projectile_distance: int = 3
+@export var active: bool = false
 
 @onready var spawn_point: Marker3D = $WaterSpoutModel/SpawnPoint
 @onready var target_direction: Marker3D = $WaterSpoutModel/TargetDirection
@@ -16,7 +17,7 @@ func _ready() -> void:
 
 func shoot_projectile() -> void:
 	var current_projectile: CanonProjectile = projectile.instantiate() as CanonProjectile
-	current_projectile.direction = spawn_point.global_position.direction_to(target_direction.global_position)
+	current_projectile.direction = target_direction.global_position.direction_to(spawn_point.global_position)
 	current_projectile.start_position = spawn_point.global_position
 	current_projectile.end_position = spawn_point.global_position + (current_projectile.direction * (projectile_distance * 3))
 	spawn_point.add_child(current_projectile)
@@ -24,4 +25,5 @@ func shoot_projectile() -> void:
 
 
 func _on_shoot_timer_timeout() -> void:
-	shoot_projectile()
+	if active:
+		shoot_projectile()
