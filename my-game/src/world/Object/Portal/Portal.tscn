@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3m3yxxg0wqtk"]
+[gd_scene load_steps=7 format=3 uid="uid://d3m3yxxg0wqtk"]
 
 [ext_resource type="Script" path="res://src/world/Object/Portal/portal.gd" id="1_5gii6"]
 [ext_resource type="PackedScene" uid="uid://cf763kq8l0nj4" path="res://src/world/Object/Portal/PortalShader.tscn" id="2_co3s1"]
@@ -7,6 +7,14 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wb1vm"]
 height = 0.05
 radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_heijq"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ii78m"]
+material = SubResource("StandardMaterial3D_heijq")
+size = Vector2(3, 3)
 
 [node name="Portal" type="Node3D"]
 script = ExtResource("1_5gii6")
@@ -27,6 +35,9 @@ shape = SubResource("CylinderShape3D_wb1vm")
 
 [node name="PortalShaderBack" parent="Node3D" instance=ExtResource("2_co3s1")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ii78m")
 
 [connection signal="body_entered" from="Node3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Node3D/Area3D" to="." method="_on_area_3d_body_exited"]
