@@ -19,13 +19,13 @@ data = {
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29.3609, 1.48922, 7.558)
 
 [node name="Spring" parent="." instance=ExtResource("3_1v3ep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2, 7.52805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 1.5, 7.5)
 
 [node name="Spring2" parent="." instance=ExtResource("3_1v3ep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5557, 1.57347, 7.18011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 7.5)
 
 [node name="Portal" parent="." instance=ExtResource("4_gepkj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.95059, 1.45191, 7.30609)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 1.5, 7.5)
 
 [node name="SpringHookable" parent="." instance=ExtResource("5_v40tu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8849, 1.6339, 4.94108)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 1.5, 4.5)

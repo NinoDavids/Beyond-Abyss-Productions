@@ -15,10 +15,10 @@ data = {
 }
 
 [node name="SpringHookable" parent="." instance=ExtResource("3_00ydm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38258, 1.51027, -2.7356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -4.5)
 
 [node name="WaterSpout" parent="." instance=ExtResource("4_odkdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19944, 1.55516, -10.97)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -10.5)
 
 [node name="Portal" parent="." instance=ExtResource("2_jts4i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40838, 1.43777, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 4.5)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcx12yb1ngy7q"]
 
-[ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_cpai4"]
+[ext_resource type="MeshLibrary" uid="uid://cnu1edfnetdl3" path="res://src/world/Grid/MeshLibraries/BaseTiles2/SecondGridLibrary.tres" id="1_bikmj"]
 
 [node name="GridMap" type="GridMap"]
-mesh_library = ExtResource("1_cpai4")
+mesh_library = ExtResource("1_bikmj")
 cell_size = Vector3(3, 3, 3)
 collision_layer = 4
 collision_mask = 0

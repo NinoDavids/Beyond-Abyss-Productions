@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://4rkljprcndri"]
+
+[ext_resource type="MeshLibrary" uid="uid://crxy104pyj8xv" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseGridLibrary.tres" id="1_4lovs"]
+[ext_resource type="PackedScene" uid="uid://602061ik5uxj" path="res://src/world/Grid/Gridmaps/base_grid_map.tscn" id="2_t8fqi"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_i5yfp"]
+[ext_resource type="PackedScene" uid="uid://b8rkkn221wgy1" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.tscn" id="4_wmxh7"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="5_37r1j"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="6_nwwg3"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="7_kpfam"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_4lovs")
+cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0
+
+[node name="BaseGridMap" parent="." instance=ExtResource("2_t8fqi")]
+data = {
+"cells": PackedInt32Array(0, 1, 1441796, 3, 1, 655364, 1, 1, 655362, 2, 1, 655362, 0, 2, 1441794, 1, 3, 2, 2, 3, 2, 3, 3, 1048580, 0, 3, 4, 4, 2, 5, 1, 2, 3, 2, 2, 3, 3, 2, 3, 5, 1, 1441796, 5, 3, 1441794, 5, 4, 1441794, 5, 5, 4, 7, 1, 655364, 7, 5, 1048580, 6, 1, 655362, 7, 2, 1048578, 7, 3, 1048578, 7, 4, 1048578, 6, 5, 2, 5, 2, 3, 6, 2, 3, 6, 3, 3, 6, 4, 3)
+}
+
+[node name="WaterSpout" parent="." instance=ExtResource("3_i5yfp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.5, 1.5, 16.5)
+
+[node name="CanonCornerHookable" parent="." instance=ExtResource("4_wmxh7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 1.5, 13.5)
+
+[node name="CanonCornerHookable2" parent="." instance=ExtResource("4_wmxh7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.5, 1.5, 7.5)
+
+[node name="Spring" parent="." instance=ExtResource("5_37r1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.5, 7.5)
+
+[node name="SpringHookable" parent="." instance=ExtResource("6_nwwg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 4.5)
+
+[node name="Portal" parent="." instance=ExtResource("7_kpfam")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 1.5, 7.5)
