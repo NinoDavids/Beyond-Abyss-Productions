@@ -17,5 +17,5 @@ func shoot_projectile(push_distance: int) -> void:
 	projectile.start_position = start_point.global_position
 	projectile.end_position = start_point.global_position + (projectile.direction * (push_distance * 3))
 	projectile.direction = start_point.global_position.direction_to(aim.global_position)
-	projectile.jump = true
+	projectile.jump = projectile.doGravity
 	projectile = null
