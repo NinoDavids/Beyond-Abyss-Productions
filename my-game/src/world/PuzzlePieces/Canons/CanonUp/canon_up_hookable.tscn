@@ -6,6 +6,9 @@
 [node name="CanonUpHookable" instance=ExtResource("1_6uvts")]
 transition_speed = 0.5
 
+[node name="CollisionShape3D" parent="ProjectileReceiver" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496884, 0)
+
 [node name="BaseHookable" parent="." index="7" node_paths=PackedStringArray("parent") instance=ExtResource("2_4m0pn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0.8)
 parent = NodePath("..")
