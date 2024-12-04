@@ -233,6 +233,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40178, 1, -4.56002)
 collision_layer = 4
 collision_mask = 4
 
+[node name="finalRodMesh" parent="Actors/Player/Head/FishingRod" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, -1.81e-06, -0.5, 0, 0.5, -1.81e-06, 0, 0.144, 0)
+
 [editable path="Env/Water2"]
 [editable path="Actors/Player"]
 [editable path="Actors/Player/Head/FishingRod"]
