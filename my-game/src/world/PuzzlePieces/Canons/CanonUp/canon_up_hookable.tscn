@@ -13,14 +13,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496884, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0.8)
 parent = NodePath("..")
 
+[node name="NeighbourCast" parent="BaseHookable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
 [node name="BaseHookable2" parent="." index="8" node_paths=PackedStringArray("parent") instance=ExtResource("2_4m0pn")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.65, -0.8)
 parent = NodePath("..")
+
+[node name="NeighbourCast" parent="BaseHookable2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="BaseHookable3" parent="." index="9" node_paths=PackedStringArray("parent") instance=ExtResource("2_4m0pn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0.65, 0)
 parent = NodePath("..")
 
+[node name="NeighbourCast" parent="BaseHookable3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
 [node name="BaseHookable4" parent="." index="10" node_paths=PackedStringArray("parent") instance=ExtResource("2_4m0pn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8, 0.65, 0)
 parent = NodePath("..")
+
+[node name="NeighbourCast" parent="BaseHookable4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[editable path="BaseHookable"]
+[editable path="BaseHookable2"]
+[editable path="BaseHookable3"]
+[editable path="BaseHookable4"]

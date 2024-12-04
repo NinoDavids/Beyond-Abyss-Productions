@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq2ndnibha7iq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3lif"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_td1r5"]
+size = Vector3(3, 3, 3)
+
+[node name="Boulder" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.25, 7.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_k3lif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_td1r5")
