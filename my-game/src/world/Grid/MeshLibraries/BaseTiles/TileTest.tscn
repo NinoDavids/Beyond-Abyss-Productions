@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://88cxqybfxl4o"]
+
+[ext_resource type="PackedScene" uid="uid://cy50ocpu3kdb3" path="res://src/world/Grid/MeshLibraries/BaseTiles/GridMapPieces.glb" id="1_6mjab"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GridMapPieces" parent="." instance=ExtResource("1_6mjab")]
