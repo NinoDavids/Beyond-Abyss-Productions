@@ -13,18 +13,14 @@ class_name Floatable
 
 var water: Water
 var water_height: float
-var submerged := false
-var is_floating := false
+var submerged: bool = false
+var is_floating: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lock_rotation = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_floating:
 		floating()
 
@@ -36,7 +32,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func floating() -> void:
 	submerged = false
 	water_height = water.water_plane.global_position.y
-	var depth = water.water_plane.get_height(global_position) - global_position.y
+	var depth: float = water.water_plane.get_height(global_position) - global_position.y
 	if depth > 0:
 		submerged = true
 		apply_central_force(Vector3.UP * float_force * gravity * depth)
