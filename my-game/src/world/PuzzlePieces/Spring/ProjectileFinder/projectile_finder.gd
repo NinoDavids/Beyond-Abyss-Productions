@@ -10,11 +10,14 @@ signal projectile_found(finder: ProjectileFinder)
 var is_active: bool = true
 var projectile: CanonProjectile
 
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+
 func _on_body_entered(body: Node3D) -> void:
 	if body is CanonProjectile and is_active:
 		projectile = body
 		projectile_found.emit(self)
 		if is_redirector:
+			audio_player.play()
 			shoot_projectile(distance)
 
 func shoot_projectile(push_distance: int) -> void:

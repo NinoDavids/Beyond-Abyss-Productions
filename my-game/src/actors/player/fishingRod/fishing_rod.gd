@@ -5,6 +5,11 @@ const BOBBER: PackedScene = preload("res://src/actors/player/fishingRod/bobber/B
 const SPRING: PackedScene = preload("res://src/actors/player/fishingRod/line/spring.tscn")
 var spring: Node
 
+@onready var cast_sfx: AudioStream = preload("res://src/actors/player/fishingRod/sfx/cast.mp3") as AudioStream
+@onready var reel_sfx: AudioStream = preload("res://src/actors/player/fishingRod/sfx/reel.mp3") as AudioStream
+@onready var unhook_sfx: AudioStream = preload("res://src/actors/player/fishingRod/sfx/unhook.mp3") as AudioStream
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+
 @export var player: Player
 
 var current_bobber: Bobber
@@ -34,10 +39,15 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_released("cast_hook") and !current_bobber and is_charging:
 		animation_player.play("Cast")
+		play_sfx(cast_sfx)
 		is_charging = false
 		is_casting = true
-
-	if event.is_action_pressed("cancel_hook") and !is_charging:
+	
+	if event.is_action_pressed("reel_hook") and current_bobber != null and current_bobber.is_attached:
+		play_sfx(reel_sfx)
+	
+	if event.is_action_pressed("cancel_hook") and !is_charging and current_bobber != null:
+		play_sfx(unhook_sfx)
 		cancel_hook()
 
 func cancel_hook() -> void:
@@ -111,3 +121,9 @@ func draw_aim() -> void:
 
 		DebugDraw.draw_line_relative_thickpointy(line_start, line_end-line_start, 5.0 ,color)
 		line_start = line_end
+
+func play_sfx(sfx: AudioStream) -> void:
+	audio_player.stop()
+	audio_player.stream = sfx
+	audio_player.pitch_scale = randf_range(.900, 1.200)
+	audio_player.play()

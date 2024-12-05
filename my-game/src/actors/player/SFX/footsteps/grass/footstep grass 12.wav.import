@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://nshjckdboppy"
+path="res://.godot/imported/footstep grass 12.wav-b8486b4d4a1d567516aee7e256c1765a.sample"
+
+[deps]
+
+source_file="res://src/actors/player/SFX/footsteps/grass/footstep grass 12.wav"
+dest_files=["res://.godot/imported/footstep grass 12.wav-b8486b4d4a1d567516aee7e256c1765a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

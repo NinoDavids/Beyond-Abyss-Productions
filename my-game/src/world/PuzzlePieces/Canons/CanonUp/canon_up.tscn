@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_smfvf")
 size = Vector2(3, 3)
 
 [node name="CanonUp" type="CharacterBody3D" node_paths=PackedStringArray("cannon_model")]
-collision_layer = 4
+collision_layer = 4096
 collision_mask = 6
 script = ExtResource("1_hdey1")
 projectile = ExtResource("2_6tjld")
@@ -43,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.2
 unique_name_in_owner = true
 
 [node name="ProjectileReceiver" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 0
 collision_mask = 2048
 

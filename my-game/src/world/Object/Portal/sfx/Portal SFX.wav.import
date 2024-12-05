@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bbn6w4cl8w6w7"
+path="res://.godot/imported/Portal SFX.wav-cf966e44ec43b2c51aaf843241480f70.sample"
+
+[deps]
+
+source_file="res://src/world/Object/Portal/sfx/Portal SFX.wav"
+dest_files=["res://.godot/imported/Portal SFX.wav-cf966e44ec43b2c51aaf843241480f70.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -9,6 +9,7 @@ extends BasePuzzlePiece
 var projectile: CanonProjectile
 var triggered_projectile_finder: ProjectileFinder
 var projectile_finders: Array[ProjectileFinder] = []
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 
 func _ready() -> void:
 	for child: Node in get_children():
@@ -19,6 +20,7 @@ func _ready() -> void:
 
 func _on_spring_spring_went_off() -> void:
 	triggered_projectile_finder.shoot_projectile(push_distance + 1)
+	play_sfx()
 	timer.start()
 
 func _handle_projectile_finder_projectile_found(finder: ProjectileFinder) -> void:
@@ -34,3 +36,7 @@ func toggle_projectile_finders(active: bool) -> void:
 
 func _on_timer_timeout() -> void:
 	toggle_projectile_finders(true)
+
+func play_sfx() -> void:
+	audio_player.pitch_scale = randf_range(0.900, 1.200)
+	audio_player.play()
