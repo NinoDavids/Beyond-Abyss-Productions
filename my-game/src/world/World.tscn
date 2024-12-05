@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://4c4afbkvlh1t" path="res://src/world/Hookables/Legacy/AnimationHookables/Sewer/Sewer.tscn" id="7_erdry"]
 [ext_resource type="PackedScene" uid="uid://fei8w454cc0l" path="res://src/world/Water/Water.tscn" id="8_lenu2"]
 [ext_resource type="PackedScene" uid="uid://yssqu3rr2s75" path="res://src/world/Object/Drain/Drain.tscn" id="8_ogg5i"]
-[ext_resource type="PackedScene" uid="uid://bd118pq11ig34" path="res://src/world/Puzzle/Puzzle1/Puzzle1-3.tscn" id="9_5h5ma"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)
