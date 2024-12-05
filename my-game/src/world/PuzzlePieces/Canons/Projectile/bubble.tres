@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dgmd5qoo72xy3"]
+
+[ext_resource type="Shader" path="res://src/world/PuzzlePieces/Canons/Projectile/shader_bubble.gdshader" id="1_cu60h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5tnf6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rwl0r"]
+in_3d_space = true
+seamless = true
+noise = SubResource("FastNoiseLite_5tnf6")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cu60h")
+shader_parameter/bubble_color = Color(0.548198, 0.695398, 1, 1)
+shader_parameter/height_multiplier = 0.1
+shader_parameter/noise_sample_size = 0.3
+shader_parameter/animation_speed = 0.065
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_rwl0r")
