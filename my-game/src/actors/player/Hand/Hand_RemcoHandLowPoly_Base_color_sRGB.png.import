@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dwgh0lk0nmmsh"
+path.s3tc="res://.godot/imported/Hand_RemcoHandLowPoly_Base_color_sRGB.png-17b3e1a3c672739983b90a21d0566bef.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "f33c26e61c7b36a6c0bf6f212d80b4aa"
+}
+
+[deps]
+
+source_file="res://src/actors/player/Hand/Hand_RemcoHandLowPoly_Base_color_sRGB.png"
+dest_files=["res://.godot/imported/Hand_RemcoHandLowPoly_Base_color_sRGB.png-17b3e1a3c672739983b90a21d0566bef.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -533,7 +533,7 @@ shape = SubResource("Resource_eesx2")
 transform = Transform3D(-22.1768, 0, -1.93876e-06, 0, 22.1768, 0, 1.93876e-06, 0, -22.1768, 3.04751, 4.0996, -46.8515)
 
 [node name="WaterPlane" parent="Env" node_paths=PackedStringArray("player", "timer") instance=ExtResource("20_iierl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.2923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.33667, 32.2923)
 skeleton = NodePath("../..")
 player = NodePath("../../Actors/Player")
 shoot_height = 5
@@ -542,6 +542,19 @@ fish_spawn_time = 0.1
 
 [node name="Timer" type="Timer" parent="Env/WaterPlane"]
 wait_time = 0.1
+
+[node name="Node3D" parent="Env"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.652, -1.67507, 6.91644)
+script = null
 
 [node name="Actors" type="Node" parent="."]
 
