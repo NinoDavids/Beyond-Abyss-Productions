@@ -1,11 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpbgkkprgcugi"]
+[gd_scene load_steps=10 format=3 uid="uid://dpbgkkprgcugi"]
 
 [ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_mdea0"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_l2sxp"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_vqrqh"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_3ylky"]
+[ext_resource type="PackedScene" uid="uid://b8rkkn221wgy1" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.tscn" id="5_kbctl"]
+[ext_resource type="PackedScene" uid="uid://bl27r0f1vrsg5" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left_hookable.tscn" id="6_m48oh"]
+[ext_resource type="PackedScene" uid="uid://db24j4biad4qf" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner.tscn" id="7_17rqu"]
+[ext_resource type="PackedScene" uid="uid://dv7q7omnhng6o" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left.tscn" id="8_dgm2i"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="9_jjhgy"]
 
 [node name="Puzzle5" type="GridMap"]
 mesh_library = ExtResource("1_mdea0")
 cell_size = Vector3(3, 3, 3)
 data = {
-"cells": PackedInt32Array(65532, 65532, 1441799, 65532, 65533, 7, 65533, 65533, 1441794, 65533, 65532, 1048578, 65534, 65532, 1048578, 65535, 65532, 1048578, 0, 65532, 1048578, 1, 65532, 1048578, 2, 65532, 1048578, 3, 65532, 655367, 3, 65533, 2, 2, 65533, 4, 1, 65533, 4, 0, 65533, 1441794, 65535, 65533, 1441794, 65534, 65533, 1441794, 3, 65534, 2, 2, 65534, 4, 1, 65534, 25, 1, 65535, 655362, 1, 0, 655362, 1, 1, 655386, 2, 65535, 4, 2, 0, 4, 2, 1, 4, 3, 65535, 2, 3, 0, 2, 3, 1, 2, 3, 2, 2, 2, 2, 4, 1, 2, 4, 0, 2, 1048578, 65535, 2, 1048578, 65534, 2, 1048578, 65533, 2, 1048578, 65532, 2, 1441799, 65532, 3, 7, 65533, 3, 1441794, 65534, 3, 1441794, 65535, 3, 1441794, 0, 3, 1441794, 1, 3, 1441794, 2, 3, 1441794, 3, 3, 1048583, 65532, 0, 1441804, 65533, 0, 1441825, 65534, 0, 1441794, 65535, 0, 1048588, 65534, 65535, 655370)
+"cells": PackedInt32Array(65532, 65532, 1441799, 65532, 65533, 7, 65533, 65533, 1441794, 65533, 65532, 655360, 65534, 65532, 1048578, 65535, 65532, 1048578, 0, 65532, 1048578, 1, 65532, 1048578, 2, 65532, 1048578, 3, 65532, 655367, 3, 65533, 2, 2, 65533, 4, 1, 65533, 4, 0, 65533, 655360, 65535, 65533, 1441794, 65534, 65533, 1441794, 3, 65534, 2, 2, 65534, 4, 1, 65534, 25, 1, 65535, 655362, 1, 0, 655362, 1, 1, 655386, 2, 65535, 4, 2, 0, 4, 2, 1, 4, 3, 65535, 655360, 3, 0, 2, 3, 1, 2, 3, 2, 2, 2, 2, 4, 1, 2, 4, 0, 2, 1048578, 65535, 2, 655360, 65534, 2, 1048578, 65533, 2, 1048578, 65532, 2, 1441799, 65532, 3, 7, 65533, 3, 1441794, 65534, 3, 1441794, 65535, 3, 1441794, 0, 3, 1441794, 1, 3, 1441794, 2, 3, 1441794, 3, 3, 1048583, 65532, 0, 1441804, 65533, 0, 1441825, 65534, 0, 1441794, 65535, 0, 1048588, 65534, 65535, 655370, 131069, 65532, 655360, 65536, 65533, 655360, 65539, 65535, 655360, 131071, 2, 655360)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Spring" parent="." instance=ExtResource("2_l2sxp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 1.5, -7.5)
+
+[node name="WaterSpout" parent="." instance=ExtResource("3_vqrqh")]
+transform = Transform3D(-1, 0, 2.62269e-07, 0, 1, 0, -2.62269e-07, 0, -1, 10.5, 1.5, 10.5)
+
+[node name="Portal" parent="." instance=ExtResource("4_3ylky")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.5, 1.5, -10.5)
+
+[node name="CanonCornerHookable" parent="." instance=ExtResource("5_kbctl")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 7.5, 1.5, 7.5)
+
+[node name="CanonCornerHookable3" parent="." instance=ExtResource("5_kbctl")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -10.5, 1.5, 7.5)
+
+[node name="CanonCornerHookable2" parent="." instance=ExtResource("5_kbctl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 1.5, 10.5)
+
+[node name="CanonCornerLeftHookable" parent="." instance=ExtResource("6_m48oh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 1.5, -10.5)
+
+[node name="CanonCornerLeftHookable3" parent="." instance=ExtResource("6_m48oh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 1.5, 7.5)
+
+[node name="CanonCornerLeftHookable2" parent="." instance=ExtResource("6_m48oh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1.5, 1.5)
+
+[node name="CanonCorner" parent="." instance=ExtResource("7_17rqu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.5, 1.5, 1.5)
+
+[node name="CanonCorner2" parent="." instance=ExtResource("7_17rqu")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -4.5, 1.5, 10.5)
+
+[node name="CanonCornerLeft" parent="." instance=ExtResource("8_dgm2i")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 10.5, 1.5, 7.5)
+
+[node name="CanonCornerLeft2" parent="." instance=ExtResource("8_dgm2i")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.5, 1.5, -10.5)
+
+[node name="SpringHookable" parent="." instance=ExtResource("9_jjhgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.5, 1.5)
+
+[node name="SpringHookable2" parent="." instance=ExtResource("9_jjhgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 1.5)
+
+[node name="SpringHookable3" parent="." instance=ExtResource("9_jjhgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -7.5)
+
+[node name="SpringHookable4" parent="." instance=ExtResource("9_jjhgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 1.5, -7.5)
