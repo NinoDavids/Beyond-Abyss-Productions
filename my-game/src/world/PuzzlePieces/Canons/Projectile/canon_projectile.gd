@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if doGravity:
 		velocity.y = vertical_velocity
-    
+	
   #look_at(global_position + direction)
 	move_and_slide()
 
