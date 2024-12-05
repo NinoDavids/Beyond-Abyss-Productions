@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl27r0f1vrsg5"]
+
+[ext_resource type="PackedScene" uid="uid://dv7q7omnhng6o" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left.tscn" id="1_vfsgr"]
+
+[node name="CanonCornerLeftHookable" instance=ExtResource("1_vfsgr")]

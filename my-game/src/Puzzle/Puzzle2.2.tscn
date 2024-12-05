@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://sdilfs3bo37j"]
+
+[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_5n2tc"]
+
+[node name="Puzzle5" type="GridMap"]
+mesh_library = ExtResource("1_5n2tc")
+cell_size = Vector3(3, 3, 3)
+data = {
+"cells": PackedInt32Array(1, 65535, 8, 0, 65535, 1048580, 65535, 65535, 1048584, 65535, 0, 1048580, 65535, 1, 30, 0, 1, 1048580, 1, 1, 1048606, 1, 0, 1048580, 0, 0, 1048580, 0, 65534, 5, 0, 65533, 5, 0, 65532, 655372, 65534, 0, 1441797, 65533, 0, 1441797, 65532, 0, 1441804, 3, 0, 1441797, 4, 0, 1048588, 0, 3, 5, 0, 4, 12, 65533, 3, 1048590, 3, 3, 1048590, 2, 65534, 1048589, 2, 65532, 1048590, 4, 65532, 1048590, 4, 65534, 1048590, 65534, 65532, 1048588, 65534, 65534, 13, 65532, 65532, 1441804, 65533, 65533, 655377, 65533, 65532, 1048578, 65532, 65534, 1441805, 2, 0, 1048609, 0, 2, 33)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)

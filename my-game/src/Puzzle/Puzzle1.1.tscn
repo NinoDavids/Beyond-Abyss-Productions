@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1u6pxnr1y51i"]
+
+[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_le1e8"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_t70wk"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_qjf3b"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_ormqh"]
+
+[node name="Puzzle1" type="GridMap"]
+mesh_library = ExtResource("1_le1e8")
+cell_size = Vector3(3, 3, 3)
+data = {
+"cells": PackedInt32Array(65535, 65535, 1441799, 1, 65535, 655367, 0, 0, 655364, 0, 1, 655364, 0, 2, 655364, 0, 3, 655364, 65535, 4, 7, 1, 4, 1048583, 0, 65535, 1048578, 0, 4, 1441794, 65535, 3, 655362, 65535, 2, 655362, 65535, 1, 655362, 65535, 0, 655362, 1, 0, 2, 1, 1, 2, 1, 2, 2, 1, 3, 2)
+}
+
+[node name="Spring" parent="." instance=ExtResource("2_t70wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 4.5)
+
+[node name="WaterSpout" parent="." instance=ExtResource("3_qjf3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -1.5)
+
+[node name="Portal" parent="." instance=ExtResource("4_ormqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 13.5)

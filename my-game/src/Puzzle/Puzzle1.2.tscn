@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckfd8q1ib8du3"]
+
+[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_o6rvn"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_2puyb"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_jnuxv"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_cppp3"]
+
+[node name="Puzzle2" type="GridMap"]
+mesh_library = ExtResource("1_o6rvn")
+cell_size = Vector3(3, 3, 3)
+data = {
+"cells": PackedInt32Array(65534, 65534, 1441799, 65534, 65535, 655362, 65534, 0, 7, 65535, 0, 1441794, 0, 0, 1441794, 1, 0, 1441794, 2, 0, 1441794, 3, 0, 1441794, 4, 0, 1441794, 6, 0, 1441794, 5, 0, 1441794, 7, 0, 1048583, 7, 65535, 2, 7, 65534, 655367, 6, 65534, 1048578, 5, 65534, 1048578, 4, 65534, 1048578, 3, 65534, 1048578, 2, 65534, 1048578, 1, 65534, 1048578, 0, 65534, 1048578, 65535, 65534, 1048578, 65535, 65535, 4, 0, 65535, 4, 1, 65535, 4, 2, 65535, 4, 3, 65535, 4, 4, 65535, 4, 5, 65535, 4, 6, 65535, 4)
+}
+
+[node name="Spring" parent="." instance=ExtResource("2_2puyb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 1.5, -1.5)
+
+[node name="Spring2" parent="." instance=ExtResource("2_2puyb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 1.5, -1.5)
+
+[node name="Spring3" parent="." instance=ExtResource("2_2puyb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5, 1.5, -1.5)
+
+[node name="WaterSpout" parent="." instance=ExtResource("3_jnuxv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 1.5, -1.5)
+
+[node name="Portal" parent="." instance=ExtResource("4_cppp3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.5, 1.5, -1.5)

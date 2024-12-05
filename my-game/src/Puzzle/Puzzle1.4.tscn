@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://715v0p6setri"]
+
+[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_dib4d"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_r73mq"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_fhlwf"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_vpq5m"]
+[ext_resource type="PackedScene" uid="uid://7acqin3pwv4h" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/Model/cannon_corner_left_model.tscn" id="5_rg1mf"]
+
+[node name="Puzzle4" type="GridMap"]
+mesh_library = ExtResource("1_dib4d")
+cell_size = Vector3(3, 3, 3)
+data = {
+"cells": PackedInt32Array(65534, 65534, 1441799, 65534, 65535, 655362, 65534, 0, 7, 65535, 65534, 1048578, 65535, 65535, 655364, 65535, 0, 1441794, 0, 65534, 1048578, 0, 65535, 655364, 0, 0, 1441794, 1, 65534, 655367, 1, 65535, 655364, 1, 0, 1048583, 2, 65535, 1048582, 3, 65534, 1441799, 3, 65535, 655364, 3, 0, 655362, 4, 0, 655364, 4, 65535, 655364, 4, 65534, 1048578, 5, 65534, 655367, 5, 65535, 2, 5, 0, 2, 5, 1, 2, 4, 1, 655364, 3, 1, 655362, 3, 2, 7, 4, 2, 1441794, 5, 2, 1048583)
+}
+
+[node name="Spring" parent="." instance=ExtResource("2_r73mq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 1.5, -1.5)
+
+[node name="Spring2" parent="." instance=ExtResource("2_r73mq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1.5, -1.5)
+
+[node name="WaterSpout" parent="." instance=ExtResource("3_fhlwf")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 13.5, 1.5, 7.5)
+
+[node name="Portal" parent="." instance=ExtResource("4_vpq5m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 1.5, -1.5)
+
+[node name="CannonCornerLeft" parent="." instance=ExtResource("5_rg1mf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5, 1.5, -1.5)
+
+[node name="CannonCornerLeft2" parent="." instance=ExtResource("5_rg1mf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 1.5, 7.5)
