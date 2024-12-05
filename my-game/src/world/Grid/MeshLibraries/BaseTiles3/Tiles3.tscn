@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqbj4l174f1gj"]
-
-[ext_resource type="PackedScene" uid="uid://cv0l12kivrmv5" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePiecesAssets.glb" id="1_3tua6"]
-
-[node name="PuzzlePiecesAssets" instance=ExtResource("1_3tua6")]

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://br7bubhr4bolp"]
-
-[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_rn4tf"]
-
-[node name="LeukeNaam" type="GridMap"]
-mesh_library = ExtResource("1_rn4tf")
-cell_size = Vector3(3, 3, 3)
-metadata/_editor_floor_ = Vector3(0, 1, 0)
