@@ -57,6 +57,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("PlaneMesh_j21s8")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="shoot" from="CannonUpModel" to="." method="_on_cannon_up_model_shoot"]
 [connection signal="body_entered" from="ProjectileReceiver" to="." method="_on_projectile_receiver_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
