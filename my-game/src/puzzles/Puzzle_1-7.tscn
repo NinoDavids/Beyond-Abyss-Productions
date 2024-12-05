@@ -1,0 +1,157 @@
+[gd_scene load_steps=16 format=3 uid="uid://br0jlvd5xmmf7"]
+
+[ext_resource type="PackedScene" uid="uid://602061ik5uxj" path="res://src/world/Grid/Gridmaps/base_grid_map.tscn" id="1_5dp85"]
+[ext_resource type="MeshLibrary" uid="uid://cnu1edfnetdl3" path="res://src/world/Grid/MeshLibraries/BaseTiles2/SecondGridLibrary.tres" id="2_uufkn"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_nve2y"]
+[ext_resource type="PackedScene" uid="uid://b8rkkn221wgy1" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.tscn" id="4_2l71y"]
+[ext_resource type="PackedScene" uid="uid://db24j4biad4qf" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner.tscn" id="5_dpbok"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="6_ang6w"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="7_tnsye"]
+[ext_resource type="PackedScene" uid="uid://bs325xos2dhgg" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up_hookable.tscn" id="8_33hjg"]
+[ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="9_3vror"]
+[ext_resource type="PackedScene" uid="uid://dsifbylaxtqaq" path="res://src/world/Obstacles/3_tile_wall.tscn" id="10_k3ucc"]
+[ext_resource type="PackedScene" uid="uid://cq2ndnibha7iq" path="res://src/world/Obstacles/boulder.tscn" id="11_bg5m6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x0gc2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_xhksv"]
+sky_material = SubResource("ProceduralSkyMaterial_x0gc2")
+
+[sub_resource type="Environment" id="Environment_6mkec"]
+background_mode = 2
+sky = SubResource("Sky_xhksv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8t7td"]
+resource_local_to_scene = true
+size = Vector3(3.07617, 1.41614, 1)
+
+[node name="Puzzle1-7" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6mkec")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="BaseGridMap" parent="." instance=ExtResource("1_5dp85")]
+mesh_library = ExtResource("2_uufkn")
+cell_size = Vector3(3, 1.5, 3)
+data = {
+"cells": PackedInt32Array(65532, 65532, 655374, 0, 65532, 1048590, 0, 65533, 14, 65535, 65534, 14, 65532, 65534, 1441806, 65533, 65532, 655364, 65534, 65532, 655364, 65535, 65533, 1441807, 65533, 65534, 655364, 65532, 65533, 1048580, 65535, 65532, 655375, 65534, 65534, 655375, 65534, 65535, 1048580, 65532, 0, 655374, 65532, 5, 1441806, 2, 0, 1048590, 65532, 4, 1441807, 65532, 3, 1441807, 65532, 2, 1441807, 65532, 1, 1441807, 65533, 0, 655375, 0, 0, 655375, 1, 0, 655375, 65533, 2, 655360, 65533, 3, 655360, 65533, 4, 655360, 65534, 4, 655360, 65534, 5, 15, 65533, 5, 15, 65535, 5, 15, 0, 5, 655360, 1, 5, 655360, 2, 5, 655360, 2, 4, 655360, 2, 3, 655360, 2, 2, 655360, 2, 1, 1048591, 1, 1, 655360, 0, 1, 1441792, 65534, 2, 655360, 65534, 3, 655360, 65535, 3, 655360, 0, 3, 655360, 0, 4, 655360, 1, 4, 655360, 1, 3, 655360, 1, 2, 655360, 0, 2, 655360, 65535, 4, 655360, 65536, 5, 0, 65536, 4, 0, 65536, 3, 0, 65536, 2, 0, 65535, 2, 0, 65537, 2, 0, 65538, 2, 0, 65537, 3, 0, 65539, 2, 0, 65538, 3, 0, 65539, 3, 0, 65539, 4, 0, 65537, 4, 0, 65538, 4, 0, 65537, 5, 0, 65538, 5, 0, 3, 5, 0, 3, 4, 0, 3, 3, 0, 3, 2, 0, 65539, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131073, 4, 0, 131074, 4, 0, 131072, 4, 0, 131075, 4, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131072, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 65535, 0, 655375, 65533, 1, 0, 65534, 1, 1441792)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Part3" type="Node3D" parent="BaseGridMap"]
+
+[node name="WaterSpout" parent="BaseGridMap/Part3" instance=ExtResource("3_nve2y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 0, 4.5)
+
+[node name="CanonCornerHookable" parent="BaseGridMap/Part3" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.5, 0, -7.5)
+
+[node name="CanonCornerHookable2" parent="BaseGridMap/Part3" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 0, -7.5)
+
+[node name="CanonCornerHookable3" parent="BaseGridMap/Part3" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 0, -10.5)
+
+[node name="CanonCorner" parent="BaseGridMap/Part3" instance=ExtResource("5_dpbok")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, -10.5)
+
+[node name="SpringHookable" parent="BaseGridMap/Part3" instance=ExtResource("6_ang6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -7.5)
+
+[node name="SpringHookable2" parent="BaseGridMap/Part3" instance=ExtResource("6_ang6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1.5)
+
+[node name="Portal" parent="BaseGridMap/Part3" node_paths=PackedStringArray("current_water_sprout") instance=ExtResource("7_tnsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.75, -4.5)
+current_water_sprout = NodePath("../WaterSpout")
+
+[node name="Part2" type="Node3D" parent="BaseGridMap"]
+
+[node name="WaterSpout" parent="BaseGridMap/Part2" instance=ExtResource("3_nve2y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.5, 0, 16.5)
+
+[node name="Portal" parent="BaseGridMap/Part2" node_paths=PackedStringArray("next_water_sprout", "current_water_sprout") instance=ExtResource("7_tnsye")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0.75, 13.5)
+next_water_sprout = NodePath("../../Part3/WaterSpout")
+current_water_sprout = NodePath("../WaterSpout")
+
+[node name="SpringHookable" parent="BaseGridMap/Part2" instance=ExtResource("6_ang6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 10.5)
+
+[node name="SpringHookable2" parent="BaseGridMap/Part2" instance=ExtResource("6_ang6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 7.5)
+
+[node name="CanonCornerHookable" parent="BaseGridMap/Part2" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 0, 1.5)
+
+[node name="CanonCornerHookable2" parent="BaseGridMap/Part2" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 1.5)
+
+[node name="CanonCornerHookable3" parent="BaseGridMap/Part2" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.5, 0, 13.5)
+
+[node name="Part1" type="Node3D" parent="BaseGridMap"]
+
+[node name="WaterSpout" parent="BaseGridMap/Part1" instance=ExtResource("3_nve2y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.5, 0, 16.5)
+active = true
+
+[node name="Portal" parent="BaseGridMap/Part1" node_paths=PackedStringArray("next_water_sprout", "current_water_sprout") instance=ExtResource("7_tnsye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.75, 4.5)
+next_water_sprout = NodePath("../../Part2/WaterSpout")
+current_water_sprout = NodePath("../WaterSpout")
+
+[node name="CanonCornerHookable" parent="BaseGridMap/Part1" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 1.5)
+
+[node name="CanonCornerHookable2" parent="BaseGridMap/Part1" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 0, 1.5)
+
+[node name="CanonCornerHookable3" parent="BaseGridMap/Part1" instance=ExtResource("4_2l71y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.75, 16.5)
+
+[node name="CanonCornerHookable4" parent="BaseGridMap/Part1" instance=ExtResource("4_2l71y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 3.75, 10.5)
+
+[node name="CanonCornerHookable5" parent="BaseGridMap/Part1" instance=ExtResource("4_2l71y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.75, 10.5)
+
+[node name="CanonUpHookable" parent="BaseGridMap/Part1" instance=ExtResource("8_33hjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 16.5)
+
+[node name="ProjectileFinder" parent="BaseGridMap/Part1" instance=ExtResource("9_3vror")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.5, 3.25, 16.5)
+is_redirector = true
+
+[node name="ProjectileFinder2" parent="BaseGridMap/Part1" instance=ExtResource("9_3vror")]
+transform = Transform3D(4.37114e-08, 1, 3.82137e-15, 1, -4.37114e-08, 8.74228e-08, 8.74228e-08, 0, -1, 6.5, 3.25, 1.5)
+is_redirector = true
+
+[node name="CollisionShape3D" parent="BaseGridMap/Part1/ProjectileFinder2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03809, 1.20807, 1.19209e-07)
+shape = SubResource("BoxShape3D_8t7td")
+
+[node name="3TileWall" parent="BaseGridMap" instance=ExtResource("10_k3ucc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.25, 7.5)
+
+[node name="3TileWall2" parent="BaseGridMap" instance=ExtResource("10_k3ucc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 5.25, 10.5)
+
+[node name="Boulder" parent="BaseGridMap" instance=ExtResource("11_bg5m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.25, 13.5)
+
+[node name="Boulder2" parent="BaseGridMap" instance=ExtResource("11_bg5m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5.25, 7.5)
+
+[node name="Boulder3" parent="BaseGridMap" instance=ExtResource("11_bg5m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5.25, 16.5)
+
+[editable path="BaseGridMap/Part1/ProjectileFinder2"]

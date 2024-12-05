@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _on_spring_spring_went_off() -> void:
-	triggered_projectile_finder.shoot_projectile(push_distance)
+	triggered_projectile_finder.shoot_projectile(push_distance + 1)
 	timer.start()
 
 func _handle_projectile_finder_projectile_found(finder: ProjectileFinder) -> void:

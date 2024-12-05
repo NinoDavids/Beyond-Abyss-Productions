@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.gd" id="1_3awbq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ah74l"]
+resource_local_to_scene = true
 size = Vector3(1, 1.41614, 1)
 
 [node name="ProjectileFinder" type="Area3D"]
