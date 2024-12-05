@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dus7gd1gm5gmf"]
+
+[ext_resource type="PackedScene" uid="uid://difrklnr1ocaq" path="res://src/world/Object/Portal/model/Portal_model.glb" id="1_gdwfu"]
+
+[node name="Portal_model" instance=ExtResource("1_gdwfu")]

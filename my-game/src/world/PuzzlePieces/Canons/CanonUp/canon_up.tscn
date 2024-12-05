@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_6tjld"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jxmow"]
-height = 1.7
-radius = 1.2
+height = 1.42706
+radius = 1.12795
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t808a"]
 size = Vector3(1, 0.566635, 1)
@@ -32,7 +32,7 @@ fall_speed = 10.0
 [node name="CannonUpModel" parent="." instance=ExtResource("1_l0br5")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723595, 0)
 shape = SubResource("CylinderShape3D_jxmow")
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
@@ -57,6 +57,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = SubResource("PlaneMesh_j21s8")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="shoot" from="CannonUpModel" to="." method="_on_cannon_up_model_shoot"]
 [connection signal="body_entered" from="ProjectileReceiver" to="." method="_on_projectile_receiver_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

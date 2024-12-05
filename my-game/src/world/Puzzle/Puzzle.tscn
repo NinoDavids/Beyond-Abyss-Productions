@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dflydq5ukueyo"]
+
+[ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="1_8hs62"]
+
+[node name="Puzzle" type="GridMap"]
+script = ExtResource("1_8hs62")
