@@ -6,6 +6,10 @@ var bobber: Bobber
 @onready var neighbour_cast: RayCast3D = $NeighbourCast
 var player_too_close: bool = false
 
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+
+@export var hooked_sfx: Array[AudioStream]
+
 ## The ready function will if the parent is set to null.
 func _ready() -> void:
 	assert(parent != null)
@@ -35,13 +39,18 @@ func _on_body_entered(body: Node3D) -> void:
 		if not body.is_attached:
 			bobber = body
 			bobber.set_hooked(global_position)
+			play_hooked_sfx()
 	
 	if body is Player:
 		player_too_close = true
 		if bobber != null:
 			EventManager.cancel_bobber.emit()
 
-
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
 		player_too_close = false
+
+func play_hooked_sfx() -> void:
+	audio_player.stream = hooked_sfx.pick_random()
+	audio_player.pitch_scale = randf_range(.8, 1.2)
+	audio_player.play()

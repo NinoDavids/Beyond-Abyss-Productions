@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dleu4qiu0tf88"
+path="res://.godot/imported/Footstep wood 1.mp3-256240aedd60ef82c58a88fdffeb8d0b.mp3str"
+
+[deps]
+
+source_file="res://src/actors/player/SFX/footsteps/wood/Footstep wood 1.mp3"
+dest_files=["res://.godot/imported/Footstep wood 1.mp3-256240aedd60ef82c58a88fdffeb8d0b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
