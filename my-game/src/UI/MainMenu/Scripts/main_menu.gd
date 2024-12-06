@@ -10,10 +10,10 @@ extends Control
 func _ready() -> void :
 	handeling_signals()
 
-func on_options_pressed() ->void: 
-	if(options_menu.visible):
+func on_options_pressed() ->void:
+	if options_menu.visible:
 		options_menu.visible = false
-	else:
+	if !options_menu.visible:
 		options_menu.visible = true
 		
 func on_exit_pressed() -> void:
