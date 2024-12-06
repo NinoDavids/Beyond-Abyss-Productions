@@ -5,7 +5,11 @@ extends BasePuzzlePiece
 @onready var shoot_timer: Timer = $ShootTimer
 @export var shot_cooldown: float = 5.0
 @export var projectile_distance: int = 3
-@export var active: bool = false
+@export var model: WaterSpoutModel
+@export var active: bool = false :
+	set(value):
+		active = value
+		set_model(value)
 
 @onready var spawn_point: Marker3D = $WaterSpoutModel/SpawnPoint
 @onready var target_direction: Marker3D = $WaterSpoutModel/TargetDirection
@@ -23,7 +27,14 @@ func shoot_projectile() -> void:
 	spawn_point.add_child(current_projectile)
 	audio_player.play()
 
-
 func _on_shoot_timer_timeout() -> void:
 	if active:
 		shoot_projectile()
+
+func set_model(enable: bool) -> void:
+	if enable:
+		model.animation_player.play("ChangeState")
+		model.audio_player.play()
+	else:
+		model.animation_player.play_backwards("ChangeState")
+		model.audio_player.play()

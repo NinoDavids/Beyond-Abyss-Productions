@@ -35,8 +35,8 @@ func _input(event: InputEvent) -> void:
 		get_tree().change_scene_to_packed(main_menu)
 	
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.get_sensitivity()))
-		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.get_sensitivity() * SettingsManager.get_inverted_y_float()))
+		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.settings.sensitivity))
+		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.settings.sensitivity * SettingsManager.get_inverted_y_float()))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event.is_action_pressed("Drop"):
 			if held_Item:

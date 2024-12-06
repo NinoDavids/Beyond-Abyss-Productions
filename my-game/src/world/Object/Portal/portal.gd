@@ -2,11 +2,14 @@ class_name Portal
 extends Node3D
 
 @export var puzzle: Puzzle
+var is_active: bool = true
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 @onready var bubble_enter_sfx: AudioStream = preload("res://src/world/Object/Portal/sfx/Portal SFX.wav") as AudioStream
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is CanonProjectile:
-		#puzzle.next_water_spout()
+	if body is CanonProjectile and is_active and puzzle:
+		is_active = false
+		puzzle.next_water_spout()
 		play_sfx(bubble_enter_sfx)
 		body.queue_free()
 
