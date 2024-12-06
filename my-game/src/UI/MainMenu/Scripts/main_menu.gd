@@ -14,7 +14,7 @@ func on_options_pressed() ->void:
 	if(options_menu.visible):
 		options_menu.visible = false
 	else:
-		options_menu.visible = false
+		options_menu.visible = true
 		
 func on_exit_pressed() -> void:
 	get_tree().quit() 
