@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr4117dkod61e"]
+[gd_scene load_steps=10 format=3 uid="uid://dr4117dkod61e"]
 
 [ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_gkxfk"]
 [ext_resource type="PackedScene" uid="uid://db24j4biad4qf" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner.tscn" id="2_ij3b4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="4_q3t4y"]
 [ext_resource type="PackedScene" uid="uid://b8rkkn221wgy1" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.tscn" id="5_atss6"]
 [ext_resource type="PackedScene" uid="uid://bl27r0f1vrsg5" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left_hookable.tscn" id="7_yue4n"]
+[ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="9_a5m7g"]
 
 [node name="Puzzle5" type="GridMap"]
 mesh_library = ExtResource("1_gkxfk")
@@ -70,3 +71,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 
 
 [node name="Spring2" parent="." instance=ExtResource("2_p7xod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 13.5, 10.5)
+
+[node name="ProjectileFinder" parent="." instance=ExtResource("9_a5m7g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.50055, 14.7786, 8.5)
+is_redirector = true
+
+[node name="ProjectileFinder2" parent="." instance=ExtResource("9_a5m7g")]
+transform = Transform3D(-4.37114e-08, -1, -9.31764e-22, 1, -4.37114e-08, 2.13163e-14, -2.13163e-14, 0, 1, -7.49945, 13.7786, 10.5)
+is_redirector = true
+
+[node name="ProjectileFinder3" parent="." instance=ExtResource("9_a5m7g")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.49945, 8.77863, 5.5)
+is_redirector = true
