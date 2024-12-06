@@ -92,7 +92,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.3, -0.8)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.3, -0.3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -131,7 +131,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.5708, 0, 0), Vector3(2.76809, 0, 0)]
+"values": [Vector3(1.5708, 0, 0), Vector3(2.79253, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -143,7 +143,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.144, 0), Vector3(0, 1, 1)]
+"values": [Vector3(0, 0.144, 0), Vector3(0, 0.5, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1n8c7"]
