@@ -92,7 +92,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.144, 0), Vector3(0, 0.029, -0.294)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.3, -0.3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -104,7 +104,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.5708, 0, 0), Vector3(0.354302, 0, 0)]
+"values": [Vector3(1.5708, 0, 0), Vector3(0.698132, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xhq8k"]
@@ -131,7 +131,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.5708, 0, 0), Vector3(2.76809, 0, 0)]
+"values": [Vector3(1.5708, 0, 0), Vector3(2.79253, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -143,7 +143,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.144, 0), Vector3(0, 0.344, 0.309)]
+"values": [Vector3(0, 0.144, 0), Vector3(0, 0.5, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1n8c7"]
@@ -209,7 +209,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_5icob")
 
 [node name="Hand" type="Node3D" parent="finalRodMesh"]
-transform = Transform3D(-1.32407, 0.0207118, 0.00755989, -0.0072795, 0.017941, -1.32411, -0.0208119, -1.32397, -0.0178241, 0.0733294, 0.278666, 1.10237)
+transform = Transform3D(-0.814608, 0.0268605, -1.04371, 1.04385, -0.00544015, -0.814855, -0.0208157, -1.32397, -0.0178259, 0.25665, 0.122354, 1.10237)
 
 [node name="SubstanceHand" type="MeshInstance3D" parent="finalRodMesh/Hand"]
 transform = Transform3D(2.35447, 1.05923, 2.17456e-07, -3.84713e-08, 6.15541e-07, -2.58177, -1.05923, 2.35447, 5.77134e-07, 0.0910927, -0.305327, 0.12742)
