@@ -105,3 +105,4 @@ anchors_preset = 0
 
 [connection signal="pressed" from="VBoxContainer/Start_button" to="." method="on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_button" to="." method="on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit_button" to="." method="on_exit_pressed"]
