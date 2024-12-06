@@ -10,5 +10,11 @@ func get_inverted_y_float() -> float:
 		return -1
 	return 1
 
-func get_sensitivity() -> float:
-	return settings.sensitivity
+func get_masterVolume() -> float:
+	return settings.masterVolume
+	
+func get_musicVolume() -> float:
+	return settings.musicVolume
+	
+func get_SFXVolume() -> float:
+	return settings.SFXVolume

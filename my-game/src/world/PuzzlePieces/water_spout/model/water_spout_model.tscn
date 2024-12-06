@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dns11sr8avk34"]
+[gd_scene load_steps=4 format=3 uid="uid://e2a6mg1epie4"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_nd1vr"]
-size = Vector3(1, 2, 1)
+[ext_resource type="PackedScene" uid="uid://bgrl2qsync0bw" path="res://src/world/PuzzlePieces/water_spout/model/water_spout_model.glb" id="1_pcr8m"]
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/water_spout/model/water_spout_model.gd" id="2_xct4p"]
+[ext_resource type="AudioStream" uid="uid://cvhwadeugrnf5" path="res://src/world/PuzzlePieces/water_spout/sfx/RockSliding.mp3" id="3_kfbhn"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_rc1gi"]
-top_radius = 0.25
-bottom_radius = 0.1
-height = 1.0
+[node name="water_spout_model" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_pcr8m")]
+script = ExtResource("2_xct4p")
+animation_player = NodePath("AnimationPlayer")
 
-[node name="WaterSpoutModel" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_nd1vr")
+[node name="Fish" parent="." index="0"]
+transform = Transform3D(0.37868, 0, 0, 0, -0.00422758, -0.378656, 0, 0.378656, -0.00422758, -2.89817e-05, 1.15008, -0.0278458)
 
-[node name="Pipe" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
-mesh = SubResource("CylinderMesh_rc1gi")
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("3_kfbhn")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
