@@ -102,3 +102,5 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 anchors_preset = 0
+
+[connection signal="pressed" from="VBoxContainer/Start_button" to="." method="on_start_pressed"]
