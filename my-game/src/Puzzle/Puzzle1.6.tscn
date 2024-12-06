@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dgjky7pnhv5h4" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up.tscn" id="7_nijtm"]
 [ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="8_rcfm2"]
 
-[node name="Puzzle5" type="GridMap"]
+[node name="Puzzle1_6" type="GridMap" groups=["Wood"]]
 mesh_library = ExtResource("1_blc7r")
 cell_size = Vector3(3, 3, 3)
 data = {
@@ -27,34 +27,34 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.5, 
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.5, 1.5, 7.5)
 
 [node name="Portal2" parent="." instance=ExtResource("4_vu8xt")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 19.5, 7.5, 10.5)
+transform = Transform3D(-4.37112e-08, 0, -1, 0, 1, 0, 1, 0, -4.37112e-08, 19.5, 7.5, 10.5)
 
 [node name="CanonCornerHookable" parent="." instance=ExtResource("6_7y14s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1.5, -4.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.5, 1.5, -1.5)
 
 [node name="CanonCornerHookable3" parent="." instance=ExtResource("6_7y14s")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 7.5, 4.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 7.5, 7.5)
 
 [node name="CanonCornerHookable4" parent="." instance=ExtResource("6_7y14s")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16.5, 7.5, 4.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.5, 7.5, 4.5)
 
 [node name="CanonCornerHookable2" parent="." instance=ExtResource("6_7y14s")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.5, 1.5, -4.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.5, 1.5, -4.5)
 
 [node name="CanonUp" parent="." instance=ExtResource("7_nijtm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 10.5)
 
 [node name="CanonCornerLeftHookable" parent="." instance=ExtResource("7_hv00t")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 10.5, 7.5, 10.5)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 13.5, 7.5, 7.5)
 
 [node name="CanonCornerLeftHookable2" parent="." instance=ExtResource("7_hv00t")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5, 7.5, 10.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5, 7.5, 1.5)
 
 [node name="SpringHookable" parent="." instance=ExtResource("7_10j0r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 7.5)
 
 [node name="SpringHookable2" parent="." instance=ExtResource("7_10j0r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, 4.5)
 
 [node name="ProjectileFinder" parent="." instance=ExtResource("8_rcfm2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.50055, 7.77863, 10.5)

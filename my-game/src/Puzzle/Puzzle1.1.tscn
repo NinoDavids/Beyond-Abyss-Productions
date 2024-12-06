@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1u6pxnr1y51i"]
+[gd_scene load_steps=6 format=3 uid="uid://d1u6pxnr1y51i"]
 
 [ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_le1e8"]
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_qjf3b"]
 [ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_ormqh"]
 [ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="4_rlhb3"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="5_g85dh"]
 
-[node name="Puzzle1_1" type="GridMap"]
+[node name="Puzzle1_1" type="GridMap" groups=["Wood"]]
 mesh_library = ExtResource("1_le1e8")
 cell_size = Vector3(3, 3, 3)
 data = {
@@ -16,7 +17,10 @@ data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -1.5)
 
 [node name="Portal" parent="." instance=ExtResource("4_ormqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 13.5)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5, 1.5, 13.5)
 
 [node name="SpringHookable" parent="." instance=ExtResource("4_rlhb3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, 7.5)
+
+[node name="Player" parent="." instance=ExtResource("5_g85dh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5)

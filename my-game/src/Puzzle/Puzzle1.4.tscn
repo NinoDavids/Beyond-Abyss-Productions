@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bl27r0f1vrsg5" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left_hookable.tscn" id="5_64liy"]
 [ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="5_mhebp"]
 
-[node name="Puzzle4" type="GridMap"]
+[node name="Puzzle1_4" type="GridMap" groups=["Wood"]]
 mesh_library = ExtResource("1_dib4d")
 cell_size = Vector3(3, 3, 3)
 data = {
@@ -18,16 +18,16 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 13.5, 1.5, 7.5)
 
 [node name="Portal" parent="." instance=ExtResource("4_vpq5m")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.5, 1.5, -1.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 1.5, -1.5)
 
 [node name="CanonCornerLeftHookable" parent="." instance=ExtResource("5_64liy")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5, 1.5, -1.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 1.5, -1.5)
 
 [node name="CanonCornerLeftHookable2" parent="." instance=ExtResource("5_64liy")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 16.5, 1.5, 7.5)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 10.5, 1.5, 4.5)
 
 [node name="SpringHookable" parent="." instance=ExtResource("5_mhebp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, 1.5)
 
 [node name="SpringHookable2" parent="." instance=ExtResource("5_mhebp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, -4.5)
