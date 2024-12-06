@@ -45,5 +45,8 @@ func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
 func _on_reset_settings_pressed() -> void:
 	SettingsManager.settings.inverted_y = false
 	SettingsManager.settings.sensitivity = 0.25
+	SettingsManager.settings.masterVolume = 1.0
+	SettingsManager.settings.musicVolume = 1.0
+	SettingsManager.settings.SFXVolume = 1.0
 	ResourceSaver.save(SettingsManager.settings)
 	update_buttons()

@@ -214,8 +214,9 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_y6agk")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_y6agk")
 text = "Back"
 
-[connection signal="drag_ended" from="VBoxContainer/VBoxContainer/SensSlider" to="." method="_on_sens_slider_drag_ended"]
-[connection signal="drag_ended" from="VBoxContainer/VBoxContainer2/SensSlider" to="." method="_on_sens_slider_drag_ended"]
-[connection signal="drag_ended" from="VBoxContainer/VBoxContainer3/SensSlider" to="." method="_on_sens_slider_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/VBoxContainer/SensSlider" to="." method="_on_master_slider_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/VBoxContainer2/SensSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/VBoxContainer3/SensSlider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/InvertButton" to="." method="_on_invert_button_toggled"]
 [connection signal="pressed" from="VBoxContainer/ResetSettings" to="." method="_on_reset_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit_button" to="." method="on_back_pressed"]
