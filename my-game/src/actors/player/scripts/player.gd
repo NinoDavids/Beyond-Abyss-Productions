@@ -15,8 +15,12 @@ const JUMP_VELOCITY: float = 4.5
 
 @export_group("SFX")
 @export var audio_player: AudioStreamPlayer3D
-@export var footstep_SFX: Array[AudioStream] = []
+@export var footstep_SFX_grass: Array[AudioStream] = []
+var is_grass_active: bool = false
+@export var footstep_SFX_wood: Array[AudioStream] = []
+var is_wood_active: bool = false
 @export var foot_step_timer: Timer
+@onready var ground_sfx_collider: RayCast3D = %GroundSFXCollider
 
 var current_bobber: Bobber
 var held_Item: RigidBody3D
@@ -57,7 +61,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	if ground_sfx_collider.is_colliding():
+		set_footstep_sfx(ground_sfx_collider.get_collider())
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -79,8 +86,23 @@ func respawn() -> void:
 	fishing_rod.cancel_hook()
 	print_debug("%s respawned." %name)
 
+## TODO: Should be a cleaner way of doing this...
+func set_footstep_sfx(obj: Node) -> void:
+	if obj.is_in_group("Grass"):
+		is_grass_active = true
+		is_wood_active = false
+	elif obj.is_in_group("Wood"):
+		is_grass_active = false
+		is_wood_active = true
+	else:
+		is_grass_active = false
+		is_wood_active = false
+
 func play_footstep() -> void:
-	if audio_player and footstep_SFX.size() > 0 and foot_step_timer.is_stopped():
-		audio_player.stream = footstep_SFX.pick_random()
+	if audio_player and foot_step_timer.is_stopped() and (is_grass_active or is_wood_active):
+		if is_grass_active:
+			audio_player.stream = footstep_SFX_grass.pick_random()
+		if is_wood_active:
+			audio_player.stream = footstep_SFX_wood.pick_random()
 		audio_player.play()
 		foot_step_timer.start()

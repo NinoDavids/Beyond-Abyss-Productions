@@ -1,5 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://dus7gd1gm5gmf"]
+[gd_scene load_steps=7 format=3 uid="uid://t82n7r315inv"]
 
-[ext_resource type="PackedScene" uid="uid://difrklnr1ocaq" path="res://src/world/Object/Portal/model/Portal_model.glb" id="1_gdwfu"]
+[ext_resource type="PackedScene" uid="uid://du8g72y36gsgf" path="res://src/world/Object/Portal/model/Portal_model.glb" id="1_gdwfu"]
+[ext_resource type="Texture2D" uid="uid://crt660kg0mjv7" path="res://src/world/Object/Portal/Textures/Portal_Base_color.png" id="2_okvws"]
+[ext_resource type="Texture2D" uid="uid://b54p2b3yjopd7" path="res://src/world/Object/Portal/Textures/Portal_Mixed_AO.png" id="3_iebmn"]
+[ext_resource type="Texture2D" uid="uid://biyb4ivv2im33" path="res://src/world/Object/Portal/Textures/Portal_Emissive.png" id="4_lp2lp"]
+[ext_resource type="Texture2D" uid="uid://d3flihnebivif" path="res://src/world/Object/Portal/Textures/Portal_Normal_OpenGL.png" id="5_c41bf"]
 
-[node name="Portal_model" instance=ExtResource("1_gdwfu")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wi0l"]
+albedo_texture = ExtResource("2_okvws")
+emission_enabled = true
+emission = Color(0.335938, 0.411972, 1, 1)
+emission_energy_multiplier = 9.65
+emission_operator = 1
+emission_texture = ExtResource("4_lp2lp")
+normal_enabled = true
+normal_texture = ExtResource("5_c41bf")
+ao_enabled = true
+ao_texture = ExtResource("3_iebmn")
+
+[node name="Portal1" instance=ExtResource("1_gdwfu")]
+
+[node name="cuboid_003" parent="." index="0"]
+transform = Transform3D(0.858699, 0, 0, 0, -3.75349e-08, -0.858699, 0, 0.858699, -3.75349e-08, 0.000108933, 1.98827, 0.885628)
+material_override = SubResource("StandardMaterial3D_8wi0l")

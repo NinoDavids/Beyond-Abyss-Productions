@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dexajhy20l76"]
+[gd_scene load_steps=8 format=3 uid="uid://dexajhy20l76"]
 
 [ext_resource type="PackedScene" uid="uid://dns11sr8avk34" path="res://src/world/PuzzlePieces/water_spout/model/water_spout_model.tscn" id="1_3d7kl"]
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/water_spout/water_spout.gd" id="1_dqean"]
 [ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_vvcvd"]
+[ext_resource type="AudioStream" uid="uid://djv07ubas7ejx" path="res://src/world/PuzzlePieces/water_spout/sfx/spout_pop.mp3" id="4_h1imb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_famom"]
 size = Vector3(1, 2, 1)
@@ -36,7 +37,9 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_famom")
 
-[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." groups=["Wood"]]
+stream = ExtResource("4_h1imb")
+bus = &"SFX"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_ein4e")
