@@ -14,9 +14,9 @@ func _ready() -> void:
 	update_buttons()
 
 func update_buttons() -> void:
-	masterVolume.value = SettingsManager.get_sensitivity()
-	musicVolume.value = SettingsManager.get_sensitivity()
-	SFXVolume.value = SettingsManager.get_sensitivity()
+	masterVolume.value = SettingsManager.get_masterVolume()
+	musicVolume.value = SettingsManager.get_musicVolume()
+	SFXVolume.value = SettingsManager.get_SFXVolume()
 
 	invert_button.button_pressed = SettingsManager.get_inverted_y()
 

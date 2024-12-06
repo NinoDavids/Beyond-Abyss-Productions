@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdhxuj8xu4qc0"]
+[gd_scene load_steps=7 format=3 uid="uid://cdhxuj8xu4qc0"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/main_menu.gd" id="1_emrc2"]
 [ext_resource type="Texture2D" uid="uid://brs5nbdg7sj1m" path="res://src/MainMenuLuckyTabi.png" id="2_f2qwm"]
+[ext_resource type="PackedScene" uid="uid://b4l7817cddtpo" path="res://src/Playtest 1/Level 1/level1.tscn" id="2_jjnqd"]
 [ext_resource type="PackedScene" uid="uid://b54b4r6alf0jm" path="res://src/UI/MainMenu/OptionsMenu.tscn" id="3_vrak3"]
 [ext_resource type="FontFile" uid="uid://g6eb48qjdaq4" path="res://src/chiller.ttf" id="3_w4r4x"]
 
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emrc2")
+start_level = ExtResource("2_jjnqd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
