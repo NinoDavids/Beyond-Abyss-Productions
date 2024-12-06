@@ -9,8 +9,6 @@ extends Control
 @export var resetControls: Button
 @export var back_button: Button
 
-signal exit_options_menu
-
 func _ready() -> void:
 	back_button.button_down.connect(on_back_pressed)
 	update_buttons()
@@ -23,7 +21,7 @@ func update_buttons() -> void:
 	invert_button.button_pressed = SettingsManager.get_inverted_y()
 
 func on_back_pressed() -> void: 
-	exit_options_menu.emit()
+	self.visible = false
 
 func _on_invert_button_toggled(toggled_on: bool) -> void:
 	SettingsManager.settings.inverted_y = toggled_on
