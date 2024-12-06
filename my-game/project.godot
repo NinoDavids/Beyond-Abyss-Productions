@@ -35,7 +35,12 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/size/initial_screen=2
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -70,6 +75,8 @@ enemies=""
 Pickups=""
 bobber=""
 player=""
+Grass="If an object is made of grass."
+Wood/Stone=""
 
 [input]
 
@@ -140,5 +147,6 @@ Drop={
 3d_physics/layer_8="Bobber"
 3d_physics/layer_9="Enemy"
 3d_physics/layer_12="Projectiles"
+3d_physics/layer_13="PuzzlePieces"
 3d_physics/size/viewport_height=1080
 3d_physics/size/viewport_width=1920
