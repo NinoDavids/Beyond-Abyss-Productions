@@ -5,5 +5,5 @@ extends Node3D
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	audio_player.stop()

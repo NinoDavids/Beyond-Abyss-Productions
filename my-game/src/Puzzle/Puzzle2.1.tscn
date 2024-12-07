@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr4117dkod61e"]
+[gd_scene load_steps=11 format=3 uid="uid://dr4117dkod61e"]
 
 [ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_gkxfk"]
+[ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_hbcmt"]
 [ext_resource type="PackedScene" uid="uid://db24j4biad4qf" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner.tscn" id="2_ij3b4"]
 [ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_p7xod"]
 [ext_resource type="PackedScene" uid="uid://dgjky7pnhv5h4" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up.tscn" id="3_4kf7s"]
@@ -13,16 +14,20 @@
 [node name="Puzzle2_1" type="GridMap" groups=["Wood"]]
 mesh_library = ExtResource("1_gkxfk")
 cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0
 data = {
 "cells": PackedInt32Array(65535, 65533, 1441799, 0, 65533, 1048598, 65534, 65534, 1441822, 2, 65533, 1048589, 0, 65535, 1441808, 1, 65535, 1048580, 2, 65535, 655367, 65533, 65535, 1441822, 65532, 0, 1441822, 65533, 0, 655360, 65534, 0, 655360, 0, 0, 655360, 1, 0, 655360, 2, 0, 1048580, 3, 0, 1048576, 3, 1, 1048576, 2, 1, 1048576, 1, 1, 1048576, 0, 1, 1048576, 65535, 1, 1048576, 65534, 1, 1048576, 65533, 1, 1048580, 65532, 1, 655362, 65532, 2, 655362, 65533, 2, 1048601, 65534, 2, 1048576, 65535, 2, 1048576, 0, 2, 1048576, 1, 2, 1048576, 2, 2, 1048576, 65532, 3, 12, 65534, 3, 1048576, 65535, 3, 1048576, 0, 3, 1048576, 1, 3, 1048576, 65535, 4, 1048576, 0, 4, 1048576, 131071, 4, 1048576, 65536, 4, 1048576, 131070, 3, 1048576, 131071, 3, 1048576, 65536, 3, 1048576, 65537, 3, 1048576, 131070, 2, 1048576, 131071, 2, 1048576, 65536, 2, 1048576, 65537, 2, 1048576, 65538, 2, 1048576, 131070, 1, 1048576, 131071, 1, 1048576, 65536, 1, 1048576, 65537, 1, 1048576, 65538, 1, 1048576, 65539, 1, 1048576, 65539, 0, 1048576, 65535, 65534, 1441800, 65535, 0, 655360, 65534, 65535, 2, 1, 65534, 17, 196606, 2, 655362, 196607, 1, 1048578, 131072, 1, 1048578, 131073, 1, 1048578, 196606, 1, 1441799, 131074, 1, 1048578, 131075, 0, 655371, 131075, 1, 1048583, 131074, 2, 3, 131073, 2, 4, 131072, 2, 4, 196607, 2, 4, 131073, 3, 0, 131072, 3, 0, 196607, 3, 0, 196606, 3, 0, 131072, 4, 0, 196607, 4, 0, 196609, 3, 0, 196608, 3, 0, 262143, 3, 0, 262142, 3, 0, 196608, 4, 0, 262143, 4, 0, 327678, 3, 1441804, 262145, 3, 1048588, 327679, 4, 30, 262144, 4, 3, 262144, 3, 1048578, 327679, 3, 1048578, 131069, 0, 655360, 131070, 0, 655360, 131071, 0, 655360, 65536, 0, 655360, 65537, 0, 655360, 65535, 6, 0, 131071, 6, 0, 196607, 6, 0, 262143, 6, 0, 327679, 6, 14)
 }
+script = ExtResource("2_hbcmt")
 metadata/_editor_floor_ = Vector3(0, 4, 0)
 
 [node name="WaterSpout" parent="." instance=ExtResource("4_q3t4y")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -4.5, 1.5, -4.5)
 
-[node name="Portal" parent="." instance=ExtResource("4_1wwrs")]
+[node name="Portal" parent="." node_paths=PackedStringArray("puzzle") instance=ExtResource("4_1wwrs")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -10.5, 1.5, 1.5)
+puzzle = NodePath("..")
 
 [node name="CanonCornerHookable" parent="." instance=ExtResource("5_atss6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1.5, -7.5)
