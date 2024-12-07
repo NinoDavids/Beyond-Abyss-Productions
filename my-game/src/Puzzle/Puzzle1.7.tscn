@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cu2hcxp1s0cis"]
 
-[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_omol3"]
+[ext_resource type="MeshLibrary" uid="uid://r6h3yi5k4usl" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_omol3"]
 [ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_hy7j6"]
 [ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_mirh7"]
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_8mqti"]

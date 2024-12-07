@@ -42,10 +42,10 @@ func _input(event: InputEvent) -> void:
 		play_sfx(cast_sfx)
 		is_charging = false
 		is_casting = true
-	
+
 	if event.is_action_pressed("reel_hook") and current_bobber != null and current_bobber.is_attached:
 		play_sfx(reel_sfx)
-	
+
 	if event.is_action_pressed("cancel_hook") and !is_charging and current_bobber != null:
 		play_sfx(unhook_sfx)
 		cancel_hook()
@@ -67,7 +67,7 @@ func cast_bobber() -> void:
 	current_bobber.player = player
 	get_tree().current_scene.add_child(current_bobber)
 	current_bobber.add_to_group("bobber")
-	
+
 	current_bobber.global_position = bobber_mesh.global_position ## Get the position of the rod
 	var direction: Vector3 = -player.player_camera.global_transform.basis.z ## Aims in the direction that the camera is pointing
 	direction.y += .75 ## Moves the aim a bit more upwards
