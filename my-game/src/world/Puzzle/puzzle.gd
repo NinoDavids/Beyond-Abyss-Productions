@@ -14,7 +14,7 @@ func next_water_spout() -> void:
 	if water_spouts.size() > 0:
 		water_spouts[0].active = false
 		water_spouts.remove_at(0)
-		
+
 		if water_spouts.size() > 0:
 			water_spouts[0].active = true
 		elif next_puzzle.water_spouts.size() > 0:
