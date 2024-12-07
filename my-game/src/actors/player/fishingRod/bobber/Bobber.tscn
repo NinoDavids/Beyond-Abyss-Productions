@@ -1,13 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dpgi4juoe0aw5"]
 
 [ext_resource type="Script" path="res://src/actors/player/fishingRod/bobber/bobber.gd" id="1_uhxrq"]
+[ext_resource type="PackedScene" uid="uid://bedkn3ig6usko" path="res://src/actors/player/fishingRod/bobber/model/bobber.glb" id="2_tjw1h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_s6swa"]
 bounce = 0.75
-
-[sub_resource type="SphereMesh" id="SphereMesh_axwoj"]
-radius = 0.063
-height = 0.125
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_euidn"]
 radius = 0.0638513
@@ -23,8 +20,7 @@ float_force = 0.3
 water_drag = 1.0
 water_angular_drag = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_axwoj")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_euidn")
+
+[node name="bobber" parent="." instance=ExtResource("2_tjw1h")]

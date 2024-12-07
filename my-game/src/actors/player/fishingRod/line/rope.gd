@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var point: RigidBody3D = $NodeTemplate
-var bobber_mesh: MeshInstance3D
+var bobber_mesh: Node3D
 
 var nodes: Array[RigidBody3D]
 var springs: Array[Spring]

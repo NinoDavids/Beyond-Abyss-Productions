@@ -1,17 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://dop37yjdupvy5"]
+[gd_scene load_steps=16 format=4 uid="uid://dop37yjdupvy5"]
 
 [ext_resource type="Script" path="res://src/actors/player/fishingRod/fishing_rod.gd" id="1_nk6eq"]
 [ext_resource type="Texture2D" uid="uid://dwgh0lk0nmmsh" path="res://src/actors/player/Hand/Hand_RemcoHandLowPoly_Base_color_sRGB.png" id="3_3u7cr"]
 [ext_resource type="PackedScene" uid="uid://cg3iam58uikjw" path="res://src/actors/player/fishingRod/finalModel/final_rod_mesh.tscn" id="3_14aso"]
+[ext_resource type="PackedScene" uid="uid://bedkn3ig6usko" path="res://src/actors/player/fishingRod/bobber/model/bobber.glb" id="3_ylmrv"]
 [ext_resource type="Texture2D" uid="uid://d0hrg2wqolp72" path="res://src/actors/player/Hand/Hand_RemcoHandLowPoly_Normal_OpenGL_Raw.png" id="4_dx803"]
 [ext_resource type="Texture2D" uid="uid://bglo2apso64sb" path="res://src/actors/player/Hand/Hand_Roughness.png" id="5_lrabm"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_2oo2i"]
-radius = 0.063
-height = 0.125
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5icob"]
-transparency = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnyxm"]
 albedo_texture = ExtResource("3_3u7cr")
@@ -201,12 +195,9 @@ script = ExtResource("1_nk6eq")
 [node name="finalRodMesh" parent="." instance=ExtResource("3_14aso")]
 transform = Transform3D(0.5, 0, 0, 0, -1.81e-06, -0.5, 0, 0.5, -1.81e-06, 0, 0.144, 0)
 
-[node name="BobberMesh" type="MeshInstance3D" parent="finalRodMesh"]
+[node name="BobberMesh" parent="finalRodMesh" instance=ExtResource("3_ylmrv")]
 unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, -7.23998e-06, 2, 0, -2, -7.23998e-06, 0, -5.71326e-06, -1.57739)
-mesh = SubResource("SphereMesh_2oo2i")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_5icob")
 
 [node name="Hand" type="Node3D" parent="finalRodMesh"]
 transform = Transform3D(-0.814608, 0.0268605, -1.04371, 1.04385, -0.00544015, -0.814855, -0.0208157, -1.32397, -0.0178259, 0.25665, 0.122354, 1.10237)

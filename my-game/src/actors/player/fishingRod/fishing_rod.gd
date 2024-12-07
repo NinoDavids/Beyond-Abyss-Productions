@@ -13,7 +13,7 @@ var spring: Node
 @export var player: Player
 
 var current_bobber: Bobber
-@onready var bobber_mesh: MeshInstance3D = %BobberMesh
+@onready var bobber_mesh: Node3D = %BobberMesh
 
 @export var cast_strength: float = 5.5
 @export var strenght_multiplier: float = 0.5
