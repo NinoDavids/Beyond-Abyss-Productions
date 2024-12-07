@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quitEditor"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().change_scene_to_packed(main_menu)
-	
+
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.settings.sensitivity))
 		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.settings.sensitivity * SettingsManager.get_inverted_y_float()))
@@ -61,10 +61,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+
 	if ground_sfx_collider.is_colliding():
 		set_footstep_sfx(ground_sfx_collider.get_collider())
-	
+
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY

@@ -19,7 +19,7 @@ func _ready() -> void:
 	assert(spawn_point != null)
 	assert(projectile != null)
 	assert(audio_player != null)
-	if start_shooting: 
+	if start_shooting:
 		cannon_model.start_charge_animation()
 
 func shoot_projectile() -> void:
