@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv7q7omnhng6o"]
+
+[ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/canon.gd" id="1_kq58j"]
+[ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_yh5jr"]
+[ext_resource type="PackedScene" uid="uid://7acqin3pwv4h" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/Model/cannon_corner_left_model.tscn" id="3_fmwh0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nrbp2"]
+height = 1.0
+radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_od8e8"]
+size = Vector3(1, 2.17975, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adi3k"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y631w"]
+material = SubResource("StandardMaterial3D_adi3k")
+size = Vector2(3, 3)
+
+[node name="CanonCornerLeft" type="CharacterBody3D" node_paths=PackedStringArray("cannon_model")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_kq58j")
+projectile = ExtResource("2_yh5jr")
+projectile_distance = 3
+cannon_model = NodePath("")
+transition_speed = 0.0
+fall_speed = 10.0
+
+[node name="CannonCornerLeft" parent="." instance=ExtResource("3_fmwh0")]
+
+[node name="BaseCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_nrbp2")
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+
+[node name="ProjectileReceiver" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileReceiver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08987, 0)
+shape = SubResource("BoxShape3D_od8e8")
+
+[node name="TargetDirection" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_y631w")
+
+[connection signal="body_entered" from="ProjectileReceiver" to="." method="_on_projectile_receiver_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

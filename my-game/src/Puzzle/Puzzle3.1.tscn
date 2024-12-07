@@ -1,0 +1,142 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmn1gbjndm1vy"]
+
+[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_l0qw0"]
+[ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_co2vl"]
+[ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_tgu5n"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_3cuia"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="4_8bvfj"]
+[ext_resource type="PackedScene" uid="uid://b8rkkn221wgy1" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.tscn" id="5_ru3i7"]
+[ext_resource type="PackedScene" uid="uid://bl27r0f1vrsg5" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left_hookable.tscn" id="6_7nwum"]
+[ext_resource type="PackedScene" uid="uid://db24j4biad4qf" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner.tscn" id="7_q38qj"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="9_gixeh"]
+[ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="10_fsw08"]
+[ext_resource type="PackedScene" uid="uid://dgjky7pnhv5h4" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up.tscn" id="10_gbedv"]
+
+[node name="Puzzle3_1" type="GridMap" groups=["Wood"]]
+mesh_library = ExtResource("1_l0qw0")
+cell_size = Vector3(3, 3, 3)
+collision_layer = 4
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(65535, 4, 7, 0, 4, 1441794, 1, 4, 1441794, 2, 4, 1048583, 65535, 3, 0, 0, 3, 1048576, 1, 3, 1048576, 2, 3, 2, 2, 2, 2, 2, 1, 2, 2, 0, 1048576, 2, 65535, 2, 2, 65534, 2, 2, 65533, 655367, 1, 65534, 1048576, 1, 65535, 1048576, 1, 0, 1048576, 1, 1, 1048576, 0, 1, 1048576, 0, 2, 1048576, 65535, 2, 1048576, 1, 2, 1048576, 65535, 1, 1048576, 65535, 0, 1048576, 65535, 65535, 1048576, 65535, 65534, 1048576, 65535, 65533, 1048576, 0, 65533, 1048580, 0, 65534, 1048580, 0, 65535, 1048580, 0, 0, 1048580, 65534, 2, 1441794, 65533, 2, 1441794, 65532, 2, 1441794, 65531, 2, 7, 65531, 1, 655362, 65531, 0, 655362, 65531, 65535, 655362, 65531, 65534, 655362, 65531, 65533, 1441799, 65532, 65533, 1048578, 65533, 65533, 1048578, 65533, 65534, 1048580, 65534, 65534, 1048580, 65534, 65533, 1048578, 65532, 65534, 1048580, 65532, 65535, 1048580, 65533, 65535, 1048580, 65534, 65535, 1048580, 65534, 0, 1048580, 65533, 0, 1048580, 65532, 0, 1048580, 65532, 1, 1048580, 65533, 1, 1048580, 65534, 1, 1048580, 65532, 65531, 7, 65533, 65531, 1441794, 65534, 65531, 1441794, 65535, 65531, 1441794, 0, 65531, 1048580, 2, 65528, 2, 2, 65527, 15, 2, 65526, 655367, 1, 65526, 1048581, 0, 65526, 1048581, 65535, 65526, 1048578, 65534, 65526, 1048578, 65533, 65526, 1048578, 65532, 65526, 1441799, 65532, 65527, 655362, 65532, 65528, 655362, 65532, 65529, 655362, 65532, 65530, 655362, 65533, 65530, 1048580, 65534, 65530, 1048576, 65535, 65530, 1048576, 0, 65530, 1048576, 65535, 65529, 1048580, 65534, 65529, 1048580, 65533, 65529, 1048580, 65533, 65528, 1048580, 65534, 65528, 1048580, 1, 65528, 1441799, 65535, 65527, 26, 65534, 65527, 1048580, 65533, 65527, 1048580, 0, 65532, 5, 65537, 1, 1441792, 65536, 1, 1441792, 131071, 1, 1441792, 131071, 2, 1441792, 65536, 2, 1441792, 65536, 3, 1441792, 65537, 2, 1441792, 65537, 3, 1441792, 131071, 3, 1441792, 131073, 1, 655367, 131073, 3, 1048583, 196607, 3, 7, 196607, 1, 1441799, 131072, 2, 1441796, 131072, 3, 1441794, 196607, 2, 655362, 131072, 1, 1048578, 131073, 2, 2, 65535, 65528, 2, 0, 65529, 9, 2, 65529, 2, 1, 65529, 0, 1, 65530, 0, 1, 65531, 0, 2, 65531, 0, 2, 65530, 0, 65538, 65531, 0, 65538, 65530, 0, 65537, 65531, 0, 65537, 65530, 0, 65537, 65529, 0, 131073, 65529, 655372, 131074, 65531, 1048583, 131073, 65531, 7, 131074, 65530, 1048579, 131073, 65530, 655362, 1, 65533, 1048576, 131071, 0, 1048576, 131071, 65535, 1048576, 131071, 65533, 1048576, 131071, 65534, 1048576, 65537, 0, 1048576, 65538, 0, 1048576, 65537, 65535, 1048576, 65537, 65534, 1048576, 65537, 65533, 1048576, 65536, 65530, 1048576, 131071, 65530, 1048576, 131070, 65530, 1048576)
+}
+script = ExtResource("2_tgu5n")
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Spring" parent="." instance=ExtResource("2_co2vl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.5, 1.5, -25.5)
+
+[node name="WaterSpout" parent="." instance=ExtResource("3_3cuia")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -4.5, 1.5, -7.5)
+
+[node name="Portal" parent="." node_paths=PackedStringArray("puzzle") instance=ExtResource("4_8bvfj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.5, 1.5, -4.5)
+puzzle = NodePath("..")
+
+[node name="CanonCornerHookable" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -13.5, 1.5, 7.5)
+
+[node name="CanonCornerHookable2" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -13.5, 1.5, -7.5)
+
+[node name="CanonCornerHookable6" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -7.5, 1.5, -22.5)
+
+[node name="CanonCornerHookable7" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -7.5, 1.5, -25.5)
+
+[node name="CanonCornerHookable8" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 7.5, 1.5, -28.5)
+
+[node name="CanonCornerHookable3" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, -13.5, 1.5, -4.5)
+
+[node name="CanonCornerHookable4" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 7.5, 1.5, 10.5)
+
+[node name="CanonCornerHookable5" parent="." instance=ExtResource("5_ru3i7")]
+transform = Transform3D(3.0598e-07, 0, 1, 0, 1, 0, -1, 0, 3.0598e-07, 7.5, 1.5, 13.5)
+
+[node name="CanonCornerLeftHookable" parent="." instance=ExtResource("6_7nwum")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 1.5, 4.5)
+
+[node name="CanonCornerLeftHookable2" parent="." instance=ExtResource("6_7nwum")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 1.5, 1.5, -13.5)
+
+[node name="CanonCorner" parent="." instance=ExtResource("7_q38qj")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.5, 1.5, 1.5)
+
+[node name="CanonCorner2" parent="." instance=ExtResource("7_q38qj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5, 1.5, -28.5)
+
+[node name="CanonCorner3" parent="." instance=ExtResource("7_q38qj")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 1.5, 1.5, -19.5)
+
+[node name="SpringHookable" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, -4.5)
+
+[node name="SpringHookable6" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -10.5)
+
+[node name="SpringHookable8" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, -13.5)
+
+[node name="SpringHookable9" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, -19.5)
+
+[node name="SpringHookable7" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 1.5)
+
+[node name="SpringHookable10" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7.5, -13.5)
+
+[node name="SpringHookable11" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7.5, -19.5)
+
+[node name="SpringHookable3" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.5, 7.5)
+
+[node name="SpringHookable4" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 7.5, 4.5)
+
+[node name="SpringHookable5" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 7.5, 7.5)
+
+[node name="SpringHookable2" parent="." instance=ExtResource("9_gixeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, -1.5)
+
+[node name="CanonUp" parent="." instance=ExtResource("10_gbedv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 4.5)
+
+[node name="CanonUp4" parent="." instance=ExtResource("10_gbedv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, -19.5)
+
+[node name="CanonUp2" parent="." instance=ExtResource("10_gbedv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.5, 7.5)
+
+[node name="CanonUp3" parent="." instance=ExtResource("10_gbedv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 13.5)
+
+[node name="ProjectileFinder5" parent="." instance=ExtResource("10_fsw08")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.50055, 7.77863, 12.5)
+is_redirector = true
+
+[node name="ProjectileFinder9" parent="." instance=ExtResource("10_fsw08")]
+transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 7.50055, 7.77863, -18.5)
+is_redirector = true
+
+[node name="ProjectileFinder10" parent="." instance=ExtResource("10_fsw08")]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91068e-15, 7.50055, 7.77863, -3.5)
+is_redirector = true
+
+[node name="ProjectileFinder6" parent="." instance=ExtResource("10_fsw08")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -3.49945, 7.77863, 7.5)
+is_redirector = true
+
+[node name="ProjectileFinder7" parent="." instance=ExtResource("10_fsw08")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.49945, 7.77863, 4.5)
+is_redirector = true
+
+[node name="ProjectileFinder8" parent="." instance=ExtResource("10_fsw08")]
+transform = Transform3D(-4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, 1.50055, 7.77863, -5.5)
+is_redirector = true

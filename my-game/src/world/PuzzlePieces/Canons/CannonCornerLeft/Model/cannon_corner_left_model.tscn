@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://7acqin3pwv4h"]
+
+[ext_resource type="PackedScene" uid="uid://y2hof5k83gex" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/Model/CannonCornerLeft.glb" id="1_b26ln"]
+
+[node name="CannonCornerLeft" instance=ExtResource("1_b26ln")]
