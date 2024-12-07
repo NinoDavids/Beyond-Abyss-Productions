@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bil0l1tveuq4v"]
+
+[ext_resource type="FontFile" uid="uid://g6eb48qjdaq4" path="res://src/UI/MainMenu/Art/chiller.ttf" id="1_i1gmb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00sih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrmof"]
+bg_color = Color(0.6, 0.6, 0.6, 0.184314)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ekml"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eab40"]
+bg_color = Color(0.909804, 0.819608, 0.733333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t658x"]
+bg_color = Color(0.909804, 0.819608, 0.733333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bvc1v"]
+
+[resource]
+default_font = ExtResource("1_i1gmb")
+default_font_size = 70
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 20
+Button/styles/focus = SubResource("StyleBoxEmpty_00sih")
+Button/styles/hover = SubResource("StyleBoxFlat_vrmof")
+Button/styles/normal = SubResource("StyleBoxEmpty_5ekml")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_eab40")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_t658x")
+Header/base_type = &"Label"
+Header/constants/outline_size = 10
+Header/font_sizes/font_size = 50
+Header/styles/normal = SubResource("StyleBoxLine_bvc1v")
+Label/constants/outline_size = 20
+SubHeader/base_type = &"Label"
+SubHeader/constants/outline_size = 5
+SubHeader/font_sizes/font_size = 25
