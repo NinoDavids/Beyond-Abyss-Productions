@@ -13,6 +13,7 @@ func move(direction: Vector3) -> void:
 		tween.tween_property(self, ^"global_position:x", global_position.x + direction.x, transition_speed)
 		tween.parallel().tween_property(self, ^"global_position:z", global_position.z + direction.z, transition_speed)
 		tween.chain().tween_property(self, "is_moving", false, 0.0)
+		print(transition_speed)
 
 func _physics_process(_delta: float) -> void:
 	if not is_on_floor() and not is_moving:

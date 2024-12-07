@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://vlu8dm840u3c"]
 
-[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_215mb"]
+[ext_resource type="MeshLibrary" uid="uid://r6h3yi5k4usl" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_215mb"]
 [ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_fj72j"]
 [ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="2_vvaws"]
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="3_uka32"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dgjky7pnhv5h4" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up.tscn" id="10_s7abi"]
 [ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="11_gfnar"]
 
-[node name="Puzzle2_5" type="GridMap" groups=["Wood"]]
+[node name="Puzzle2_5" type="GridMap" node_paths=PackedStringArray("water_spouts") groups=["Wood"]]
 mesh_library = ExtResource("1_215mb")
 cell_size = Vector3(3, 3, 3)
 collision_layer = 4
@@ -22,6 +22,7 @@ data = {
 "cells": PackedInt32Array(65534, 0, 655372, 65534, 1, 2, 65534, 2, 4, 65534, 3, 7, 65533, 1, 1441817, 65533, 2, 655368, 65532, 1, 1441804, 65532, 3, 1441805, 65535, 3, 1441794, 0, 3, 1048599, 0, 0, 1441799, 1, 0, 1048578, 1, 1, 4, 2, 1, 4, 2, 2, 1441794, 3, 1, 1048602, 3, 2, 1048583, 4, 1, 1048601, 5, 1, 1048581, 4, 65535, 4, 5, 65535, 1048606, 5, 65534, 1048602, 4, 65534, 0, 3, 65534, 4, 1, 65534, 1441794, 0, 65534, 1441802, 1, 65533, 1441799, 2, 65533, 1048578, 3, 65533, 1048578, 4, 65533, 655367, 6, 65534, 0, 7, 65534, 0, 9, 65534, 0, 8, 65534, 0, 8, 65533, 0, 7, 65533, 0, 7, 65535, 0, 8, 65535, 0, 9, 65535, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 8, 3, 0, 9, 3, 0, 7, 1, 0, 7, 2, 0, 6, 1, 0, 1, 2, 1441826, 4, 0, 655360, 0, 1, 16, 65535, 2, 8, 65544, 65533, 0, 65543, 65533, 0, 65544, 65534, 0, 65543, 65534, 0, 65542, 65534, 0, 65545, 65534, 0, 65545, 65535, 0, 65543, 65535, 0, 65544, 65535, 0, 65546, 0, 0, 65545, 0, 0, 65544, 0, 0, 65546, 1, 0, 65546, 2, 0, 65545, 2, 0, 65545, 1, 0, 65545, 3, 0, 65544, 3, 0, 65544, 2, 0, 65544, 1, 0, 65543, 1, 0, 65543, 2, 0, 65542, 1, 0, 131078, 65534, 1441804, 131079, 65533, 655363, 131079, 65534, 4, 131079, 65535, 30, 131080, 65533, 655390, 131080, 65534, 4, 131080, 65535, 4, 131080, 0, 1048585, 131080, 1, 4, 131080, 2, 4, 131080, 3, 30, 131081, 65534, 655367, 131081, 65535, 2, 131081, 0, 4, 131081, 1, 4, 131081, 2, 4, 131081, 3, 3, 131082, 0, 1048579, 131082, 1, 2, 131082, 2, 1048583, 131079, 1, 1048578, 131079, 2, 30, 131078, 1, 1441804, 65540, 0, 655360, 3, 65535, 16, 2, 65534, 1441818, 2, 0, 1048610, 65540, 65534, 0)
 }
 script = ExtResource("2_fj72j")
+water_spouts = [NodePath("WaterSpout"), NodePath("WaterSpout2")]
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Spring" parent="." instance=ExtResource("2_vvaws")]

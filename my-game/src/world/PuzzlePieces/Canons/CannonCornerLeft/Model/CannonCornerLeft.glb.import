@@ -35,8 +35,8 @@ _subresources={
 "animations": {
 "Shoot1": {
 "save_to_file/enabled": true,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://src/world/PuzzlePieces/Canons/CannonCornerLeft/CannonCornerLeftAnimation.res",
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://src/world/PuzzlePieces/Canons/CannonCornerLeft/Model/CannonCornerLeftAnimation.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
