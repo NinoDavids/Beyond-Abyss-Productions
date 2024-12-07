@@ -21,6 +21,7 @@ var is_grass_active: bool = false
 var is_wood_active: bool = false
 @export var foot_step_timer: Timer
 @onready var ground_sfx_collider: RayCast3D = %GroundSFXCollider
+@onready var pause_menu: InGameMenu = $CanvasLayer2/InGameMenu
 
 var current_bobber: Bobber
 var held_Item: RigidBody3D
@@ -32,7 +33,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quitEditor"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		get_tree().change_scene_to_packed(main_menu)
+		pause_menu.show()
+		get_tree().paused = !get_tree().paused
 	
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.settings.sensitivity))
