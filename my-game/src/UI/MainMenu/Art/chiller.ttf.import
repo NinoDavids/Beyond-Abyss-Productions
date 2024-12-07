@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://g6eb48qjdaq4"
-path="res://.godot/imported/chiller.ttf-397b77af9d565fe4cc4aa42f489114a1.fontdata"
+path="res://.godot/imported/chiller.ttf-5b2a5c7d4699fe95284c1b16b43493f3.fontdata"
 
 [deps]
 
-source_file="res://src/chiller.ttf"
-dest_files=["res://.godot/imported/chiller.ttf-397b77af9d565fe4cc4aa42f489114a1.fontdata"]
+source_file="res://src/UI/MainMenu/Art/chiller.ttf"
+dest_files=["res://.godot/imported/chiller.ttf-5b2a5c7d4699fe95284c1b16b43493f3.fontdata"]
 
 [params]
 
