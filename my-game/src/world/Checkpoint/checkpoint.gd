@@ -11,7 +11,7 @@ func _ready() -> void:
 	EventManager.checkpoint_touched.connect(handle_new_checkpoint)
 
 ## When [signal EventManager.checkpoint_touched] is emitted, this function gets called.
-## It checks if parameter is itself. 
+## It checks if parameter is itself.
 ## If yes, then it sets [member Checkpoint.is_active] to [code]true[/code].
 ## If no, then it checks if this checkpoint was previously active.
 ## If it was, then it removes the player from the collisionmask preventing to be active ever again.
@@ -20,7 +20,7 @@ func handle_new_checkpoint(new_checkpoint: Checkpoint) -> void:
 		if is_active:
 			set_collision_mask_value(2, false)
 		is_active = false
-	else: 
+	else:
 		is_active = true
 
 func handle_player_respawn() -> void:
@@ -29,7 +29,7 @@ func handle_player_respawn() -> void:
 		## Sets the player to look forward
 		player.head.rotation = Vector3.ZERO
 		player.rotation = Vector3.ZERO
-		
+
 		EventManager.checkpoint_respawn.emit(self)
 
 func _on_body_entered(body: Node3D) -> void:

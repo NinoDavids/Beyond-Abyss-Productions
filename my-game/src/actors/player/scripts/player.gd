@@ -63,10 +63,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
+
 	if ground_sfx_collider.is_colliding():
 		set_footstep_sfx(ground_sfx_collider.get_collider())
-	
+
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
