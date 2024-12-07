@@ -28,15 +28,15 @@ func _on_invert_button_toggled(toggled_on: bool) -> void:
 	ResourceSaver.save(SettingsManager.settings)
 
 func _on_master_slider_drag_ended(_value_changed: bool) -> void:
-	SettingsManager.settings.masterVolume = masterVolume.value
+	SettingsManager.set_masterVolume(masterVolume.value)
 	ResourceSaver.save(SettingsManager.settings)
 	
 func _on_music_slider_drag_ended(_value_changed: bool) -> void:
-	SettingsManager.settings.musicVolume = musicVolume.value
+	SettingsManager.set_musicVolume(musicVolume.value)
 	ResourceSaver.save(SettingsManager.settings)
 	
 func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
-	SettingsManager.settings.SFXVolume = SFXVolume.value
+	SettingsManager.set_SFXVolume(SFXVolume.value) 
 	ResourceSaver.save(SettingsManager.settings)
 
 
