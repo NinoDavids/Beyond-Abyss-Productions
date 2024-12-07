@@ -1,12 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdhxuj8xu4qc0"]
+[gd_scene load_steps=6 format=3 uid="uid://cdhxuj8xu4qc0"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/main_menu.gd" id="1_emrc2"]
-[ext_resource type="Texture2D" uid="uid://brs5nbdg7sj1m" path="res://src/MainMenuLuckyTabi.png" id="2_f2qwm"]
+[ext_resource type="Theme" uid="uid://bil0l1tveuq4v" path="res://src/UI/Theme.tres" id="1_obdvs"]
 [ext_resource type="PackedScene" uid="uid://b4l7817cddtpo" path="res://src/Playtest 1/Level 1/level1.tscn" id="2_jjnqd"]
 [ext_resource type="PackedScene" uid="uid://b54b4r6alf0jm" path="res://src/UI/MainMenu/OptionsMenu.tscn" id="3_vrak3"]
-[ext_resource type="FontFile" uid="uid://g6eb48qjdaq4" path="res://src/UI/MainMenu/Art/chiller.ttf" id="3_w4r4x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33xf1"]
+[ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="4_7kgkp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_obdvs")
 script = ExtResource("1_emrc2")
 start_level = ExtResource("2_jjnqd")
 
@@ -25,78 +24,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_f2qwm")
+texture = ExtResource("4_7kgkp")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 150.0
-offset_top = 275.0
-offset_right = 400.0
-offset_bottom = 733.0
+offset_left = 45.0
+offset_top = 228.0
+offset_right = 406.0
+offset_bottom = 770.0
+alignment = 1
 
 [node name="Start_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("3_w4r4x")
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 70
-theme_override_styles/focus = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_33xf1")
 text = "Start Game"
 
 [node name="Options_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("3_w4r4x")
-theme_override_font_sizes/font_size = 70
-theme_override_styles/focus = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_33xf1")
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Options"
 
 [node name="Exit_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/font = ExtResource("3_w4r4x")
-theme_override_font_sizes/font_size = 70
-theme_override_styles/focus = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_33xf1")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_33xf1")
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Quit Game"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_vrak3")]
@@ -104,6 +66,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 anchors_preset = 0
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="VBoxContainer/Start_button" to="." method="on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_button" to="." method="on_options_pressed"]
