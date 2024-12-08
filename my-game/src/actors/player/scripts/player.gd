@@ -101,10 +101,12 @@ func set_footstep_sfx(obj: Node) -> void:
 		is_wood_active = false
 
 func play_footstep() -> void:
-	if audio_player and foot_step_timer.is_stopped() and (is_grass_active or is_wood_active):
+	if audio_player and foot_step_timer.is_stopped():
 		if is_grass_active:
 			audio_player.stream = footstep_SFX_grass.pick_random()
 		if is_wood_active:
 			audio_player.stream = footstep_SFX_wood.pick_random()
+		else: ## Defaults to grass
+			audio_player.stream = footstep_SFX_grass.pick_random()
 		audio_player.play()
 		foot_step_timer.start()
