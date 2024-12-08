@@ -16,8 +16,9 @@ class_name Puzzle
 func _ready() -> void:
 	if water_spouts.size() > 0 && active:
 		water_spouts[0].active = true
-
-	checkpoint.is_active = active
+	
+	if checkpoint:
+		checkpoint.is_active = active
 
 # Called when the node enters the scene tree for the first time.
 func next_water_spout() -> void:

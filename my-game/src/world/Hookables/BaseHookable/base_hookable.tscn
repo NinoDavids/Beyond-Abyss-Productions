@@ -43,6 +43,7 @@ debug_shape_thickness = 5
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 volume_db = -10.0
 max_db = 0.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
