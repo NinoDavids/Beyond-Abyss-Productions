@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=54 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
 [ext_resource type="AudioStream" uid="uid://dleu4qiu0tf88" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 1.mp3" id="2_1rgru"]
@@ -48,6 +48,7 @@
 [ext_resource type="AudioStream" uid="uid://kmdf7twubsaw" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 6.mp3" id="41_wj83w"]
 [ext_resource type="AudioStream" uid="uid://d1sx66gc1uga1" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 7.mp3" id="42_488e1"]
 [ext_resource type="AudioStream" uid="uid://c62xqxh83y52c" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 8.mp3" id="43_hotno"]
+[ext_resource type="PackedScene" uid="uid://03v4glbu1jy" path="res://src/UI/InGameMenu/InGameMenu.tscn" id="46_fgp58"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
@@ -112,6 +113,7 @@ wait_time = 2.5
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 1
 
 [node name="ScreenShakeShader" parent="CanvasLayer" node_paths=PackedStringArray("timer") instance=ExtResource("4_hena1")]
 material = SubResource("ShaderMaterial_ml73c")
@@ -125,9 +127,15 @@ one_shot = true
 [node name="HealthShaderRect" parent="CanvasLayer" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_hena1")]
 hitbox = NodePath("../../Hitbox")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="InGameMenu" parent="CanvasLayer2" instance=ExtResource("46_fgp58")]
+visible = false
+
 [node name="FootStepAudio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-volume_db = -25.0
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="FootStepTimer" type="Timer" parent="FootStepAudio"]
