@@ -24,10 +24,11 @@ func _on_spring_spring_went_off() -> void:
 	timer.start()
 
 func _handle_projectile_finder_projectile_found(finder: ProjectileFinder) -> void:
-	triggered_projectile_finder = finder
-	spring.rotation_degrees = triggered_projectile_finder.rotation_degrees
-	spring.start_spring()
-	toggle_projectile_finders(false)
+	if not is_moving:
+		triggered_projectile_finder = finder
+		spring.rotation_degrees = triggered_projectile_finder.rotation_degrees
+		spring.start_spring()
+		toggle_projectile_finders(false)
 
 func toggle_projectile_finders(active: bool) -> void:
 	for finder: ProjectileFinder in projectile_finders:
