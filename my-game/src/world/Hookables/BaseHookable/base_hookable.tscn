@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dti3ukqyiwvjk"]
+[gd_scene load_steps=16 format=3 uid="uid://dti3ukqyiwvjk"]
 
 [ext_resource type="Script" path="res://src/world/Hookables/BaseHookable/base_hookable.gd" id="1_ga5y0"]
 [ext_resource type="AudioStream" uid="uid://y52pn7hm538m" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 1.wav" id="2_5stu6"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://c08af5mlhccev" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 9.wav" id="10_06mxu"]
 [ext_resource type="AudioStream" uid="uid://bp5ko8lcfvauv" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 10.wav" id="11_mge8v"]
 [ext_resource type="AudioStream" uid="uid://bhqh1arksv5r3" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 11.wav" id="12_uwsf0"]
+[ext_resource type="PackedScene" uid="uid://dhjt1qykkm8yw" path="res://src/effects/fire_flies.tscn" id="14_y7qt6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hstys"]
 radius = 0.75
@@ -25,6 +26,9 @@ hooked_sfx = Array[AudioStream]([ExtResource("2_5stu6"), ExtResource("3_qqyni"),
 
 [node name="Attachment_model" parent="." instance=ExtResource("2_u7sk0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="FireFlies" parent="Attachment_model" instance=ExtResource("14_y7qt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44152e-08, 0, -0.279277)
 
 [node name="DetectionCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_hstys")

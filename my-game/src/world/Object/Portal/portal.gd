@@ -5,6 +5,7 @@ extends Node3D
 var is_active: bool = true
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 @onready var bubble_enter_sfx: AudioStream = preload("res://src/world/Object/Portal/sfx/Portal SFX.wav") as AudioStream
+@onready var portal_enter_effect: CPUParticles3D = $PortalEnterEffect
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is CanonProjectile and is_active and puzzle:
@@ -12,6 +13,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		puzzle.next_water_spout()
 		play_sfx(bubble_enter_sfx)
 		body.queue_free()
+		portal_enter_effect.emitting = true
 
 func play_sfx(sfx: AudioStream) -> void:
 	audio_player.stream = sfx
