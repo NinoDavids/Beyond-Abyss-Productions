@@ -171,6 +171,7 @@ shadow_enabled = true
 
 [node name="Puzzle1_1" parent="." node_paths=PackedStringArray("next_puzzle") instance=ExtResource("1_lalg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.171607, 13.7809, 2.80757)
+active = true
 next_puzzle = NodePath("../Puzzle1_2")
 
 [node name="Checkpoint" parent="Puzzle1_1" instance=ExtResource("2_hl25l")]
@@ -193,7 +194,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12402, 2, 11.3976)
 [node name="Puzzle1_4" parent="." node_paths=PackedStringArray("bridge", "next_puzzle") instance=ExtResource("4_f14b4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.8731, 13.4629, -121.563)
 bridge = NodePath("../bridg with texture4")
-active = true
 next_puzzle = NodePath("../Puzzle1_5")
 
 [node name="Checkpoint" parent="Puzzle1_4" instance=ExtResource("2_hl25l")]
@@ -275,7 +275,6 @@ transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, -3.92613, 
 
 [node name="Puzzle3_3" parent="." instance=ExtResource("15_1fnn1")]
 transform = Transform3D(0.940964, 0, -0.338508, 0, 1, 0, 0.338508, 0, 0.940964, 11.3394, 101.905, -731.058)
-visible = false
 collision_layer = 0
 
 [node name="Checkpoint" parent="Puzzle3_3" instance=ExtResource("2_hl25l")]
