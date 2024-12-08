@@ -86,7 +86,6 @@ func _physics_process(delta: float) -> void:
 
 func respawn() -> void:
 	fishing_rod.cancel_hook()
-	print_debug("%s respawned." %name)
 
 ## TODO: Should be a cleaner way of doing this...
 func set_footstep_sfx(obj: Node) -> void:

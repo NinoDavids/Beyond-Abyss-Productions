@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://4k32vsegkcev"]
+
+[ext_resource type="PackedScene" uid="uid://lnwihtdqwdx" path="res://src/world/Bridge/bridg with texture.glb" id="1_s58p5"]
+[ext_resource type="Script" path="res://src/world/Bridge/bridge.gd" id="2_sje6h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbx54"]
+size = Vector3(3.06702, 0.604736, 0.382813)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7srpr"]
+size = Vector3(0.0824288, 0.604736, 0.956055)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dofbp"]
+size = Vector3(1.17218, 0.0935059, 0.127441)
+
+[node name="bridg with texture" instance=ExtResource("1_s58p5")]
+script = ExtResource("2_sje6h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ROOT/cuboid_153" index="0"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.69109e-11, 0, -1.69109e-11, 1, -0.390778, 0.000354038, -0.185666)
+shape = SubResource("BoxShape3D_wbx54")
+
+[node name="playerBlocker" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.75697e-11, 0, -2.75697e-11, 1, -0.716446, 0.000354038, -0.472282)
+shape = SubResource("BoxShape3D_7srpr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.39924e-11, 0, -3.39924e-11, 1, 0.556641, 0.255969, -0.442152)
+shape = SubResource("BoxShape3D_dofbp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.40492e-11, 0, -3.40492e-11, 1, -1.33517, 0.255969, -0.442152)
+shape = SubResource("BoxShape3D_dofbp")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.40776e-11, 0, -3.40776e-11, 1, 0.556641, -0.253899, -0.442152)
+shape = SubResource("BoxShape3D_dofbp")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.41345e-11, 0, -3.41345e-11, 1, -1.33517, -0.253899, -0.442152)
+shape = SubResource("BoxShape3D_dofbp")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

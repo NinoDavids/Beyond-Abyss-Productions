@@ -64,7 +64,7 @@ shader_parameter/FactorB = Vector2(1, 1)
 shader_parameter/magnitude = Vector2(0.01, 0.01)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("audio_player", "foot_step_timer") groups=["player"]]
-collision_layer = 4
+collision_layer = 2
 collision_mask = 4367
 script = ExtResource("1_v30fi")
 audio_player = NodePath("FootStepAudio")

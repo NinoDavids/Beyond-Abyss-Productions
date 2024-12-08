@@ -20,13 +20,12 @@ material = SubResource("StandardMaterial3D_adi3k")
 size = Vector2(3, 3)
 
 [node name="CanonCornerLeft" type="CharacterBody3D" node_paths=PackedStringArray("cannon_model")]
-collision_layer = 4
+collision_layer = 4096
 collision_mask = 4
 script = ExtResource("1_kq58j")
 projectile = ExtResource("2_yh5jr")
 projectile_distance = 3
-cannon_model = NodePath("")
-transition_speed = 0.0
+cannon_model = NodePath("CannonCornerLeft")
 fall_speed = 10.0
 
 [node name="CannonCornerLeft" parent="." instance=ExtResource("3_fmwh0")]
@@ -59,5 +58,6 @@ one_shot = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_y631w")
 
+[connection signal="shoot" from="CannonCornerLeft" to="." method="_on_cannon_up_model_shoot"]
 [connection signal="body_entered" from="ProjectileReceiver" to="." method="_on_projectile_receiver_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

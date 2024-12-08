@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cyddj6u1e8nwm"]
 
-[ext_resource type="MeshLibrary" uid="uid://qvajc8ubxldw" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_yc7ao"]
+[ext_resource type="MeshLibrary" uid="uid://r6h3yi5k4usl" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_yc7ao"]
 [ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_mi566"]
 [ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="2_xd64i"]
 [ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="3_cye2p"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dv7q7omnhng6o" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left.tscn" id="6_j3ns4"]
 [ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="7_4sjqg"]
 
-[node name="Puzzle2_4" type="GridMap" groups=["Wood"]]
+[node name="Puzzle2_4" type="GridMap" node_paths=PackedStringArray("water_spouts") groups=["Wood"]]
 mesh_library = ExtResource("1_yc7ao")
 cell_size = Vector3(3, 3, 3)
 collision_layer = 4
@@ -18,6 +18,7 @@ data = {
 "cells": PackedInt32Array(65533, 65533, 655372, 65533, 65534, 655362, 65534, 65534, 9, 65535, 65534, 655364, 0, 65534, 1048606, 0, 65533, 655367, 65535, 65533, 1441799, 65533, 65535, 1441795, 65534, 65535, 655364, 65534, 0, 35, 65533, 2, 655362, 65533, 3, 1441795, 65534, 2, 1048579, 65534, 3, 655364, 65534, 4, 7, 65535, 4, 1048583, 0, 2, 16, 0, 1, 655362, 0, 0, 1441808, 1, 0, 655376, 1, 1, 2, 1, 2, 1048592, 3, 65533, 655363, 3, 65534, 655364, 4, 65533, 655367, 4, 65534, 2, 4, 65535, 2, 4, 0, 1048583, 4, 2, 655367, 3, 2, 655363, 2, 3, 655394, 3, 3, 655364, 4, 3, 1048583, 3, 4, 3, 2, 4, 1441794, 1, 4, 1441802, 65533, 1, 655382, 65535, 3, 29, 65535, 65535, 655388, 3, 65535, 1441796, 2, 65534, 1441799, 2, 65535, 1441826, 3, 0, 30)
 }
 script = ExtResource("2_mi566")
+water_spouts = [NodePath("WaterSpout")]
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="WaterSpout" parent="." instance=ExtResource("2_xd64i")]

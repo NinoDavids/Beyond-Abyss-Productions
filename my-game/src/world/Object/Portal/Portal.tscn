@@ -18,6 +18,9 @@ albedo_color = Color(1, 1, 1, 0)
 material = SubResource("StandardMaterial3D_heijq")
 size = Vector2(3, 3)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2ou3"]
+size = Vector3(2.91022, 0.493652, 0.664917)
+
 [node name="Portal" type="Node3D"]
 script = ExtResource("1_5gii6")
 

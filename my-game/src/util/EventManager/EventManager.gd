@@ -15,9 +15,9 @@ signal player_died()
 @warning_ignore("unused_signal")
 signal player_respawned()
 @warning_ignore("unused_signal")
-signal checkpoint_touched(point: Checkpoint)
+signal checkpoint_touched(point: LegacyCheckpoint)
 @warning_ignore("unused_signal")
-signal checkpoint_respawn(point: Checkpoint)
+signal checkpoint_respawn(point: LegacyCheckpoint)
 
 func _ready() -> void:
 	cancel_bobber.connect(handle_cancel_bobber)

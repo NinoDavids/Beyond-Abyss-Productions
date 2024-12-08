@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b54b4r6alf0jm"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/options_menu.gd" id="1_52713"]
-[ext_resource type="Theme" uid="uid://bil0l1tveuq4v" path="res://src/UI/Theme.tres" id="1_lfplu"]
+[ext_resource type="Theme" uid="uid://bawxsikhb7i5n" path="res://src/UI/Theme.tres" id="1_lfplu"]
 [ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="3_fuchk"]
 
 [node name="OptionsMenu" type="Control" node_paths=PackedStringArray("masterVolume", "musicVolume", "SFXVolume", "invert_button", "resetControls", "back_button")]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdhxuj8xu4qc0"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/main_menu.gd" id="1_emrc2"]
-[ext_resource type="Theme" uid="uid://bil0l1tveuq4v" path="res://src/UI/Theme.tres" id="1_obdvs"]
-[ext_resource type="PackedScene" uid="uid://b4l7817cddtpo" path="res://src/Playtest 1/Level 1/level1.tscn" id="2_jjnqd"]
+[ext_resource type="Theme" uid="uid://bawxsikhb7i5n" path="res://src/UI/Theme.tres" id="1_obdvs"]
+[ext_resource type="PackedScene" uid="uid://bq2xhduit3pyx" path="res://src/Puzzle/PuzzlesCombined.tscn" id="3_fq80h"]
 [ext_resource type="PackedScene" uid="uid://b54b4r6alf0jm" path="res://src/UI/MainMenu/OptionsMenu.tscn" id="3_vrak3"]
 [ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="4_7kgkp"]
 
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_obdvs")
 script = ExtResource("1_emrc2")
-start_level = ExtResource("2_jjnqd")
+start_level = ExtResource("3_fq80h")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

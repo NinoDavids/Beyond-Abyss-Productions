@@ -6,7 +6,7 @@ class_name Floatable
 @export var float_force: float = 1.0
 @export var water_drag: float = 0.05
 @export var water_angular_drag: float = 0.05
-@export var checkpoint: Checkpoint
+@export var checkpoint: LegacyCheckpoint
 
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 #@onready var checkpoint_handler: CheckpointHandler = $CheckpointHandler
