@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://l76da1sleber" path="res://addons/godot_plush/godot_plush_sitting.glb" id="1_g8xkx"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="1_l5li0"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="2_k5ou5"]
-[ext_resource type="PackedScene" uid="uid://dymymkt8ujty8" path="res://src/world/Checkpoint/checkpoint.tscn" id="2_ouy8t"]
+[ext_resource type="PackedScene" uid="uid://dymymkt8ujty8" path="res://src/world/Checkpoint/Legacy/legacy_checkpoint.tscn" id="2_ouy8t"]
 [ext_resource type="PackedScene" uid="uid://cp8eoisgr6iby" path="res://src/world/Hookables/Legacy/RigidHookables/RigidHookable.tscn" id="2_y0es2"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="3_57p7y"]
 [ext_resource type="PackedScene" uid="uid://cdp3p86qp25ty" path="res://src/Playtest 1/Death/death.tscn" id="3_aoi4c"]

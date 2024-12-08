@@ -23,7 +23,6 @@ data = {
 }
 script = ExtResource("2_hy7j6")
 water_spouts = [NodePath("WaterSpout2"), NodePath("WaterSpout"), NodePath("WaterSpout3")]
-active = true
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Spring3" parent="." instance=ExtResource("2_mirh7")]
