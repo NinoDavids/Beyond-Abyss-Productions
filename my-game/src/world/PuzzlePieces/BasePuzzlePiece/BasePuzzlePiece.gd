@@ -17,5 +17,4 @@ func move(direction: Vector3) -> void:
 func _physics_process(_delta: float) -> void:
 	if not is_on_floor() and not is_moving:
 		velocity.y -= fall_speed
-	
-	move_and_slide()
+		move_and_slide()
