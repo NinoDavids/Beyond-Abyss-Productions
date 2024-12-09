@@ -39,7 +39,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Drop"):
 			if held_Item:
 				held_Item.freeze = false
-				# held_Item.collision_mask = 1
 				held_Item = null
 				fishing_rod.visible = true
 				EventManager.enable_fishingrod.emit()
@@ -47,6 +46,7 @@ func _input(event: InputEvent) -> void:
 				
 
 	if event.is_action_pressed("Pickup"):
+		print("Ello")
 		if held_Item == null:
 			if raycast.get_collider():
 				var pickups: Array[Node] = get_tree().get_nodes_in_group("Pickups")
