@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdhxuj8xu4qc0"]
+[gd_scene load_steps=7 format=3 uid="uid://cdhxuj8xu4qc0"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/main_menu.gd" id="1_emrc2"]
 [ext_resource type="Theme" uid="uid://bawxsikhb7i5n" path="res://src/UI/Theme.tres" id="1_obdvs"]
 [ext_resource type="PackedScene" uid="uid://bq2xhduit3pyx" path="res://src/Puzzle/PuzzlesCombined.tscn" id="3_fq80h"]
 [ext_resource type="PackedScene" uid="uid://b54b4r6alf0jm" path="res://src/UI/MainMenu/OptionsMenu.tscn" id="3_vrak3"]
 [ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="4_7kgkp"]
+[ext_resource type="PackedScene" uid="uid://dw13lwkmox6vy" path="res://src/world/audioPlayer/AudioPlayer.tscn" id="6_5gdog"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -71,6 +72,8 @@ anchors_preset = 0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="AudioPlayer" parent="." instance=ExtResource("6_5gdog")]
 
 [connection signal="pressed" from="VBoxContainer/Start_button" to="." method="on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_button" to="." method="on_options_pressed"]

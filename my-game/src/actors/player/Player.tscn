@@ -135,7 +135,7 @@ visible = false
 
 [node name="FootStepAudio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-volume_db = -10.0
+volume_db = -25.0
 bus = &"SFX"
 
 [node name="FootStepTimer" type="Timer" parent="FootStepAudio"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3m3yxxg0wqtk"]
+[gd_scene load_steps=10 format=3 uid="uid://d3m3yxxg0wqtk"]
 
 [ext_resource type="Script" path="res://src/world/Object/Portal/portal.gd" id="1_5gii6"]
 [ext_resource type="PackedScene" uid="uid://cf763kq8l0nj4" path="res://src/world/Object/Portal/PortalShader.tscn" id="2_co3s1"]
@@ -18,8 +18,8 @@ albedo_color = Color(1, 1, 1, 0)
 material = SubResource("StandardMaterial3D_heijq")
 size = Vector2(3, 3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u2ou3"]
-size = Vector3(2.91022, 0.493652, 0.664917)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gd4gw"]
+size = Vector3(2.91528, 1.39948, 0.955536)
 
 [node name="Portal" type="Node3D"]
 script = ExtResource("1_5gii6")
@@ -55,6 +55,14 @@ bus = &"SFX"
 
 [node name="PortalEnterEffect" parent="." instance=ExtResource("5_jbjs5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00598145, 0.722076, 0.00578308)
+shape = SubResource("BoxShape3D_gd4gw")
 
 [connection signal="body_entered" from="Node3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Node3D/Area3D" to="." method="_on_area_3d_body_exited"]
