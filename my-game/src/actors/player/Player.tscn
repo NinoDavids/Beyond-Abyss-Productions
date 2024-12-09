@@ -67,9 +67,9 @@ shader_parameter/magnitude = Vector2(0.01, 0.01)
 collision_layer = 2
 collision_mask = 4367
 script = ExtResource("1_v30fi")
+audio_player = NodePath("FootStepAudio")
 footstep_SFX_grass = Array[AudioStream]([ExtResource("2_bi70c"), ExtResource("3_u55q6"), ExtResource("4_te08b"), ExtResource("5_clnkb"), ExtResource("6_30eqf"), ExtResource("7_a33wo"), ExtResource("8_y75vf"), ExtResource("9_515dn"), ExtResource("10_ocukh"), ExtResource("11_oim4t"), ExtResource("12_7wb20"), ExtResource("13_olfsi"), ExtResource("14_xymgw"), ExtResource("15_6dohj"), ExtResource("16_m17ud"), ExtResource("17_er2ib"), ExtResource("18_vqjj0"), ExtResource("19_db62c"), ExtResource("20_glfbb"), ExtResource("21_cl1p2"), ExtResource("22_2husp"), ExtResource("23_ll525"), ExtResource("24_1ihwx"), ExtResource("25_7c4ve"), ExtResource("26_7yj7e"), ExtResource("27_x7bfu"), ExtResource("28_qy2pq"), ExtResource("29_d57j2"), ExtResource("30_2ttjn"), ExtResource("31_n6sey"), ExtResource("32_7838w"), ExtResource("33_wtfg3"), ExtResource("34_j0tbm"), ExtResource("35_hjwfr")])
 footstep_SFX_wood = Array[AudioStream]([ExtResource("2_1rgru"), ExtResource("37_0afae"), ExtResource("38_2r7gc"), ExtResource("39_6mffx"), ExtResource("40_jh4s5"), ExtResource("41_wj83w"), ExtResource("42_488e1"), ExtResource("43_hotno")])
-audio_player = NodePath("FootStepAudio")
 foot_step_timer = NodePath("FootStepAudio/FootStepTimer")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]

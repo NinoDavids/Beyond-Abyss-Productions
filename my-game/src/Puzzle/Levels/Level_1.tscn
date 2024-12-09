@@ -229,7 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.0306, 3.09244, -415.888)
 plane_size = Vector2(700, 1000)
 
 [node name="Player" parent="." instance=ExtResource("24_ba5kh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68467, 17.4867, 6.16563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16403, 17.4867, 12.4667)
 
 [node name="bridg with texture4" parent="." instance=ExtResource("25_w12p5")]
 transform = Transform3D(-2.32923e-07, 0, 5.32865, 0, 5.32865, 0, -5.32865, 0, -2.32923e-07, 38.0292, 15.1983, -147.588)
