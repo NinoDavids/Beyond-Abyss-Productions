@@ -58,3 +58,4 @@ func play_hooked_sfx() -> void:
 
 func place_bobber(bob: Bobber) -> void:
 	bob.reparent(self)
+	bobber.freeze = true
