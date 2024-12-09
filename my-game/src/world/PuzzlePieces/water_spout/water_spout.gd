@@ -4,7 +4,7 @@ extends BasePuzzlePiece
 @export var projectile: PackedScene
 @onready var shoot_timer: Timer = $ShootTimer
 @export var shot_cooldown: float = 5.0
-@export var projectile_distance: int = 3
+@export var projectile_distance: float = 1.5
 @export var model: WaterSpoutModel
 @export var active: bool = false :
 	set(value):

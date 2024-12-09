@@ -94,6 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, -10.5)
 [node name="ProjectileFinder2" parent="." instance=ExtResource("10_c2jii")]
 transform = Transform3D(1.31134e-07, 0, -1, 1, -4.37114e-08, 1.31134e-07, -4.37114e-08, -1, 0, 16.6997, 9.38877, -3)
 is_redirector = true
+distance = 5
 
 [node name="ProjectileFinder" parent="." instance=ExtResource("10_c2jii")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.50055, 8.63194, 10.5)
