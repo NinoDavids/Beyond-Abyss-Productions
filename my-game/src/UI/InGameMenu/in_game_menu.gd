@@ -13,7 +13,7 @@ func _on_options_button_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	get_tree().paused = false
 	self.hide()
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_exit_button_pressed() -> void:
 	get_tree().paused = false
