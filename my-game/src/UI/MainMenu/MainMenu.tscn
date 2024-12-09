@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/main_menu.gd" id="1_emrc2"]
 [ext_resource type="Theme" uid="uid://bawxsikhb7i5n" path="res://src/UI/Theme.tres" id="1_obdvs"]
-[ext_resource type="PackedScene" uid="uid://bq2xhduit3pyx" path="res://src/Puzzle/PuzzlesCombined.tscn" id="3_fq80h"]
+[ext_resource type="PackedScene" uid="uid://bjhkg0j8dhikj" path="res://src/Puzzle/Levels/Level_1.tscn" id="3_uu26b"]
 [ext_resource type="PackedScene" uid="uid://b54b4r6alf0jm" path="res://src/UI/MainMenu/OptionsMenu.tscn" id="3_vrak3"]
 [ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="4_7kgkp"]
 [ext_resource type="PackedScene" uid="uid://dw13lwkmox6vy" path="res://src/world/audioPlayer/AudioPlayer.tscn" id="6_5gdog"]
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_obdvs")
 script = ExtResource("1_emrc2")
-start_level = ExtResource("3_fq80h")
+start_level = ExtResource("3_uu26b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
