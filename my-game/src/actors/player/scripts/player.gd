@@ -64,8 +64,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if ground_sfx_collider.is_colliding():
-		set_footstep_sfx(ground_sfx_collider.get_collider())
+	set_footstep_sfx()
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -88,16 +87,19 @@ func respawn() -> void:
 	fishing_rod.cancel_hook()
 
 ## TODO: Should be a cleaner way of doing this...
-func set_footstep_sfx(obj: Node) -> void:
-	if obj.is_in_group("Grass"):
+func set_footstep_sfx() -> void:
+	if ground_sfx_collider.is_colliding():
+		var obj: Node = ground_sfx_collider.get_collider()
+		if obj.is_in_group("Wood"):
+			is_wood_active = true
+			is_grass_active = false
+		elif obj.is_in_group("Grass"):
+			is_grass_active = true
+			is_wood_active = false
+	else:
 		is_grass_active = true
 		is_wood_active = false
-	elif obj.is_in_group("Wood"):
-		is_grass_active = false
-		is_wood_active = true
-	else:
-		is_grass_active = false
-		is_wood_active = false
+
 
 func play_footstep() -> void:
 	if audio_player and foot_step_timer.is_stopped():
