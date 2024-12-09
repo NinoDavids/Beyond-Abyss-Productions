@@ -24,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.69109e-11, 0, -1.69109e-11, 1, -0.39077
 shape = SubResource("BoxShape3D_wbx54")
 
 [node name="playerBlocker" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.75697e-11, 0, -2.75697e-11, 1, -0.716446, 0.000354038, -0.472282)
+transform = Transform3D(1.00212, 0, 0, 0, 3.36156, 2.76259e-11, 0, -9.27685e-11, 1.00212, -0.716446, 0.000354038, -0.472282)
 shape = SubResource("BoxShape3D_7srpr")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="2"]

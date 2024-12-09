@@ -1,23 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://b68wbgn23auq6"]
+[gd_scene load_steps=3 format=3 uid="uid://cd3oyw6uxm2y5"]
 
 [ext_resource type="PackedScene" uid="uid://cxfd2dyx42bw5" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.glb" id="1_y2e7c"]
-[ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_model.gd" id="2_x4o1q"]
+[ext_resource type="Material" uid="uid://baswnuhagip66" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/CanonUp.tres" id="2_avlon"]
 
-[node name="CannonUpModel" instance=ExtResource("1_y2e7c")]
-script = ExtResource("2_x4o1q")
-animation_name = &"ShootUp"
+[node name="cannon_up_model" instance=ExtResource("1_y2e7c")]
 
-[node name="CannonInput4" parent="." index="0"]
-transform = Transform3D(0.651336, 0, 0, 0, -2.32936e-07, -0.651336, 0, 0.651336, -2.32936e-07, -0.971989, 1.01663, 0.0376882)
+[node name="Cannon_002" parent="." index="0"]
+transform = Transform3D(0.651334, 0, 0, 0, -2.84708e-08, -0.651335, 0, 0.651335, -2.84708e-08, 0, 1.20473, 0.0379247)
+surface_material_override/0 = ExtResource("2_avlon")
 
-[node name="CannonInput3" parent="." index="1"]
-transform = Transform3D(0.651335, 0, 0, 0, -3.10581e-07, -0.651336, 0, 0.651336, -3.10581e-07, 4.95021e-09, 1.01663, 1.00968)
+[node name="Cannon_003" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_avlon")
 
-[node name="CannonInput1" parent="." index="3"]
-transform = Transform3D(0.651336, 0, 0, 0, -2.32936e-07, -0.651336, 0, 0.651336, -2.32936e-07, -7.07365e-09, 1.01663, -0.9343)
+[node name="Cannon_005" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_avlon")
 
-[node name="Cannon" parent="." index="4"]
-transform = Transform3D(0.651334, 0, 0, 0, -2.32936e-07, -0.651335, 0, 0.651335, -2.32936e-07, -1.02419e-09, 1.20473, 0.0379247)
+[node name="Cannon_007" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_avlon")
 
-[node name="AnimationPlayer" parent="." index="7"]
-speed_scale = 3.0
+[node name="Cannon_010" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_avlon")
+
+[node name="Cannon_013" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_avlon")
