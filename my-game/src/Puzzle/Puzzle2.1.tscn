@@ -76,21 +76,22 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.5, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 13.5, 10.5)
 
 [node name="ProjectileFinder" parent="." instance=ExtResource("9_a5m7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.50055, 13.7786, 8.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.50055, 14.1811, 8.5)
 is_redirector = true
 
 [node name="ProjectileFinder2" parent="." instance=ExtResource("9_a5m7g")]
-transform = Transform3D(-4.37114e-08, -1, -9.31764e-22, 1, -4.37114e-08, 2.13163e-14, -2.13163e-14, 0, 1, -7.49945, 13.7786, 10.5)
+transform = Transform3D(-4.37114e-08, -1, -9.31764e-22, 1, -4.37114e-08, 2.13163e-14, -2.13163e-14, 0, 1, -9.50476, 13.7786, 10.5)
 is_redirector = true
+distance = 10
 
 [node name="ProjectileFinder3" parent="." instance=ExtResource("9_a5m7g")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.49945, 7.77863, 5.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.49945, 8.48163, 4.47773)
 is_redirector = true
 
 [node name="ProjectileFinder5" parent="." instance=ExtResource("9_a5m7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.50055, 7.77863, 2.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.50055, 8.46643, 2.5)
 is_redirector = true
 
 [node name="ProjectileFinder4" parent="." instance=ExtResource("9_a5m7g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.49945, 13.7786, 8.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.49945, 14.4281, 8.5)
 is_redirector = true

@@ -118,9 +118,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5, 7.5, -1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 1.5, -4.5)
 
 [node name="ProjectileFinder5" parent="." instance=ExtResource("11_gfnar")]
-transform = Transform3D(-4.37114e-08, 1, -9.31764e-22, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, 12.5006, 7.77863, -1.5)
+transform = Transform3D(-4.37114e-08, 1, -9.31764e-22, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, 11.8223, 7.77863, -1.5)
 is_redirector = true
+distance = 10
 
 [node name="ProjectileFinder6" parent="." instance=ExtResource("11_gfnar")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.5006, 7.77863, -4.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.5006, 8.59377, -4.5)
 is_redirector = true
