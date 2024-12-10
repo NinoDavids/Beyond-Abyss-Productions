@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw13lwkmox6vy"]
+
+[ext_resource type="Script" path="res://src/world/audioPlayer/audio_player.gd" id="1_mah5m"]
+[ext_resource type="AudioStream" uid="uid://bcrybjycdw2ay" path="res://src/world/audioPlayer/audio/ChillOst1.mp3" id="2_lud5f"]
+[ext_resource type="AudioStream" uid="uid://7ecgun7bfyko" path="res://src/world/audioPlayer/audio/morning-forest-ambiance.mp3" id="3_hnwms"]
+
+[node name="AudioPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_mah5m")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_lud5f")
+bus = &"Music"
+
+[node name="MusicTimer" type="Timer" parent="MusicPlayer"]
+unique_name_in_owner = true
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_hnwms")
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]
+[connection signal="timeout" from="MusicPlayer/MusicTimer" to="." method="_on_music_timer_timeout"]

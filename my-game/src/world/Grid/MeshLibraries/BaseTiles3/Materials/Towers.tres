@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cmmrn8cvgflj0"]
+
+[ext_resource type="Texture2D" uid="uid://bfqxc5hm4anxt" path="res://src/world/Grid/MeshLibraries/BaseTiles3/Materials/PuzzlePiecesAssets_Towers_Base_color_sRGB.png" id="1_oncpq"]
+[ext_resource type="Texture2D" uid="uid://3i7k6airf4gs" path="res://src/world/Grid/MeshLibraries/BaseTiles3/Materials/PuzzlePiecesAssets_Towers_Mixed_AO_Raw.png" id="2_1l531"]
+
+[resource]
+albedo_texture = ExtResource("1_oncpq")
+ao_texture = ExtResource("2_1l531")

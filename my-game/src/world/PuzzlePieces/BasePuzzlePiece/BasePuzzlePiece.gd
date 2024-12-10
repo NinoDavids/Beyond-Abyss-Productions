@@ -10,11 +10,12 @@ func move(direction: Vector3) -> void:
 	if not is_moving:
 		is_moving = true
 		var tween: Tween = get_tree().create_tween()
-		tween.tween_property(self, "global_position", global_position + direction, transition_speed)
-		tween.tween_property(self, "is_moving", false, 0.0)
+		tween.tween_property(self, ^"global_position:x", global_position.x + direction.x, transition_speed)
+		tween.parallel().tween_property(self, ^"global_position:z", global_position.z + direction.z, transition_speed)
+		tween.chain().tween_property(self, "is_moving", false, 0.0)
 
 func _physics_process(_delta: float) -> void:
-	if not is_on_floor() and not is_moving:
-		velocity.y -= fall_speed
-	
-	move_and_slide()
+	#if not is_on_floor() and not is_moving:
+		#velocity.y -= fall_speed
+		#move_and_slide()
+	pass

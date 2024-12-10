@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdhxuj8xu4qc0"]
+[gd_scene load_steps=7 format=3 uid="uid://cdhxuj8xu4qc0"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/main_menu.gd" id="1_emrc2"]
-[ext_resource type="Texture2D" uid="uid://cmu1h0ps7eq5v" path="res://src/UI/MainMenu/Art/1000_F_529976955_ixAy1MO7eYm9R2ngP0XOYmzzXhO5sWW7.jpg" id="1_toqq4"]
+[ext_resource type="Theme" uid="uid://bawxsikhb7i5n" path="res://src/UI/Theme.tres" id="1_obdvs"]
+[ext_resource type="PackedScene" uid="uid://bjhkg0j8dhikj" path="res://src/Puzzle/Levels/Level_1.tscn" id="3_uu26b"]
 [ext_resource type="PackedScene" uid="uid://b54b4r6alf0jm" path="res://src/UI/MainMenu/OptionsMenu.tscn" id="3_vrak3"]
+[ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="4_7kgkp"]
+[ext_resource type="PackedScene" uid="uid://dw13lwkmox6vy" path="res://src/world/audioPlayer/AudioPlayer.tscn" id="6_5gdog"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +14,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_obdvs")
 script = ExtResource("1_emrc2")
+start_level = ExtResource("3_uu26b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -20,63 +25,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_toqq4")
+texture = ExtResource("4_7kgkp")
+expand_mode = 3
+stretch_mode = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 60
-
-[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-text = "Lucky Tabi"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+offset_left = 45.0
+offset_top = 228.0
+offset_right = 406.0
+offset_bottom = 770.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
-
-[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Start_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Start_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(108, 32)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 70
 text = "Start Game"
 
-[node name="Options_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Options_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(108, 32)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Options"
 
-[node name="Exit_button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Exit_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Quit Game"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_vrak3")]
@@ -85,33 +68,13 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 
-[node name="PlayContainer" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -54.0
-offset_top = -50.5
-offset_right = 54.0
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="PuzzleButton" type="Button" parent="PlayContainer"]
-layout_mode = 2
-text = "Puzzles"
+[node name="AudioPlayer" parent="." instance=ExtResource("6_5gdog")]
 
-[node name="EnvButton" type="Button" parent="PlayContainer"]
-layout_mode = 2
-text = "Environment"
-
-[node name="BackButton" type="Button" parent="PlayContainer"]
-layout_mode = 2
-text = "Back"
-
-[connection signal="pressed" from="PlayContainer/PuzzleButton" to="." method="_on_puzzle_button_pressed"]
-[connection signal="pressed" from="PlayContainer/EnvButton" to="." method="_on_env_button_pressed"]
-[connection signal="pressed" from="PlayContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start_button" to="." method="on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options_button" to="." method="on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit_button" to="." method="on_exit_pressed"]

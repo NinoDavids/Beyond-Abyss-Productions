@@ -18,21 +18,20 @@ varying vec3 worldPos;
 
 void vertex() {
 	worldPos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	
+
 	float offset = TIME * wind_speed;
 	float noise_tex = texture(windNoise, vec2(worldPos.y-offset)).r;
 	noise_tex -= .5;
 	noise_tex *= wind_strength;
 	VERTEX.z += noise_tex * length(VERTEX.y) * length(VERTEX.xz);
-	
+
 }
 
 void fragment() {
-	
-	
+
+
 	vec3 noiseLevel = texture((noise), worldPos.xz/ noiseScale).rgb;
 	ALBEDO = mix(colorDark, colorLight, UV.y) * mix(colorLight, colorDark, noiseLevel.r);
-	
+
 	NORMAL = FRONT_FACING ? NORMAL : -NORMAL;
 }
-

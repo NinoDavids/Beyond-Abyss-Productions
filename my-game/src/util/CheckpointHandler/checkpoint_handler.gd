@@ -6,7 +6,7 @@ class_name CheckpointHandler
 
 
 ## This is the [Checkpoint] that this class listens to.
-@export var checkpoint: Checkpoint
+@export var checkpoint: LegacyCheckpoint
 
 @export var despawnParticles: PackedScene
 @export var respawnParticles: PackedScene
@@ -54,13 +54,13 @@ func set_parent_properties() -> void:
 
 
 ## Gets called when [signal EventManager.checkpoint_touched] gets emitted.
-func handle_checkpoint_touched(point: Checkpoint) -> void:
+func handle_checkpoint_touched(point: LegacyCheckpoint) -> void:
 	if point == checkpoint : return
 	save_object()
 
 ## Gets called when [signal EventManager.checkpoint_respawn] gets emitted.
 ## Returns the [member CheckpointHandler.parent] transform to [member CheckpointHandler.parent_original_transform].
-func handle_checkpoint_respawn(point: Checkpoint) -> void:
+func handle_checkpoint_respawn(point: LegacyCheckpoint) -> void:
 	if point != checkpoint : return
 	load_object()
 

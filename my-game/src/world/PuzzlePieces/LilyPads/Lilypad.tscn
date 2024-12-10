@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://77i5vh1twgud"]
+
+[ext_resource type="PackedScene" uid="uid://j1hm5dobm0ls" path="res://src/world/PuzzlePieces/LilyPads/model/lilypad_model.tscn" id="1_dld7c"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_moi40"]
+height = 0.1
+radius = 1.0
+
+[node name="Lilypad" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_moi40")
+
+[node name="LilypadModel" parent="." instance=ExtResource("1_dld7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0745688)

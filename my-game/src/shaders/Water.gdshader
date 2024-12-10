@@ -20,7 +20,7 @@ uniform vec4 color_shallow: source_color;
 uniform float beers_law = 2.0;
 uniform float depth_offset = -0.75;
 
-uniform float edge_scale = 0.1;
+uniform float edge_scale = 0.12;
 uniform float near = 1.0;
 uniform float far = 100.0;
 uniform vec3 edge_color: source_color;
@@ -51,39 +51,39 @@ void fragment() {
 	//Depth variables and calculations
 	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
 	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
-	
+
   	vec3 normalized_device_coordinates = vec3(SCREEN_UV * 2.0 - 1.0, depth);
 	vec4 view = INV_PROJECTION_MATRIX * vec4(normalized_device_coordinates, 1.0);
 	view.xyz /= view.w;
 	float linear_depth = -view.z;
-	
+
 	float depth_blend = exp((linear_depth + VERTEX.z + depth_offset) * -beers_law);
 	depth_blend = clamp(1.0 - depth_blend, 0.0, 1.0);
 	float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
-	
+
 	vec3 screen_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, depth_blend_power * 2.5).rgb;
 	vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend_power);
 	vec3 color = mix(screen_color * depth_color, depth_color * 0.25, depth_blend_power * 0.5);
 	float depth2 = texture(DEPTH_TEXTURE, SCREEN_UV).x;
-	
-	//Getting edge depth calc 
+
+	//Getting edge depth calc
 	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
 	float z_pos = edge(FRAGCOORD.z);
 	float z_dif = z_depth - z_pos;
-	
+
 	//Time calculations for wave movement
 	vec2 time = (TIME * wave_direction) * time_scale;
 	vec2 time2 = (TIME * wave_direction2) * time_scale;
-	
+
 	//Blend normal maps into one
 	vec3 normal_blend = mix(texture(texture_normal, world_pos.xz + time).rgb, texture(texture_normal2, world_pos.xz + time2).rgb, 0.5);
-	
+
 	//Calculate Fresnel
 	float fresnel = fresnel(5.0, NORMAL, VIEW);
 	vec3 surface_color = mix(albedo, albedo2, fresnel); //Interpolate albedo values by fresnel
-	
+
 	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
-	
+
 	ALBEDO = clamp(surface_color + depth_color_adj, vec3(0.0), vec3(1.0));
 	ROUGHNESS = roughness;
 	NORMAL_MAP = normal_blend;

@@ -1,77 +1,186 @@
-[gd_scene load_steps=2 format=3 uid="uid://b54b4r6alf0jm"]
+[gd_scene load_steps=4 format=3 uid="uid://b54b4r6alf0jm"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu/Scripts/options_menu.gd" id="1_52713"]
+[ext_resource type="Theme" uid="uid://bawxsikhb7i5n" path="res://src/UI/Theme.tres" id="1_lfplu"]
+[ext_resource type="Texture2D" uid="uid://qrhosvbo0uoj" path="res://src/UI/MainMenu/Art/BackgroundMenu.png" id="3_fuchk"]
 
-[node name="OptionsMenu" type="Control"]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("masterVolume", "musicVolume", "SFXVolume", "invert_button", "resetControls", "back_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lfplu")
 script = ExtResource("1_52713")
+masterVolume = NodePath("VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer/MasterSlider")
+musicVolume = NodePath("VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer2/MusicSlider")
+SFXVolume = NodePath("VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer3/SFXSlider")
+invert_button = NodePath("VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/InvertButton")
+resetControls = NodePath("VBoxContainer/ResetSettings")
+back_button = NodePath("VBoxContainer/exit_button")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -540.0
+offset_right = 222.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fuchk")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -312.0
+offset_right = 180.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Settings" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Options "
+text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-alignment = 1
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Invert Y Axis"
-
-[node name="InvertButton" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Sound" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 1
+theme = ExtResource("1_lfplu")
+theme_type_variation = &"Header"
+text = "Sound"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Sensitivity"
 
-[node name="SensSlider" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeader"
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 4
-max_value = 1.0
+min_value = -80.0
+max_value = 0.0
 step = 0.05
-value = 0.25
 
-[node name="ResetSettings" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Reset settings to default"
 
-[node name="exit_button" type="Button" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"SubHeader"
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
+step = 0.05
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer3"]
+layout_mode = 2
+theme_type_variation = &"SubHeader"
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
+step = 0.05
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="GameSettings" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"Header"
+text = "Game settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="InvertButton" type="CheckBox" parent="VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubHeader"
+text = "Invert Y Axis"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ResetSettings" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
-text = "Exit"
+theme_type_variation = &"SubHeader"
+text = "Reset settings to default"
 
-[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/InvertButton" to="." method="_on_invert_button_toggled"]
-[connection signal="drag_ended" from="MarginContainer/VBoxContainer/HBoxContainer2/SensSlider" to="." method="_on_sens_slider_drag_ended"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ResetSettings" to="." method="_on_reset_settings_pressed"]
+[node name="exit_button" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"SubHeader"
+text = "Back"
+
+[connection signal="drag_ended" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer/MasterSlider" to="." method="_on_master_slider_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer2/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer4/VBoxContainer3/SFXSlider" to="." method="_on_sfx_slider_drag_ended"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/InvertButton" to="." method="_on_invert_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/ResetSettings" to="." method="_on_reset_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit_button" to="." method="on_back_pressed"]

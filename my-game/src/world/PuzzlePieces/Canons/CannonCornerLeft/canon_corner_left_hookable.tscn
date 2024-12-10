@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl27r0f1vrsg5"]
+
+[ext_resource type="PackedScene" uid="uid://dv7q7omnhng6o" path="res://src/world/PuzzlePieces/Canons/CannonCornerLeft/canon_corner_left.tscn" id="1_vfsgr"]
+[ext_resource type="PackedScene" uid="uid://dti3ukqyiwvjk" path="res://src/world/Hookables/BaseHookable/base_hookable.tscn" id="2_cki6m"]
+
+[node name="CanonCornerLeftHookable" instance=ExtResource("1_vfsgr")]
+
+[node name="BaseHookable" parent="." index="8" node_paths=PackedStringArray("parent") instance=ExtResource("2_cki6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0.8)
+parent = NodePath("..")
+
+[node name="NeighbourCast" parent="BaseHookable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="BaseHookable2" parent="." index="9" node_paths=PackedStringArray("parent") instance=ExtResource("2_cki6m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.8, 0.65, 0)
+parent = NodePath("..")
+
+[node name="NeighbourCast" parent="BaseHookable2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="BaseHookable3" parent="." index="10" node_paths=PackedStringArray("parent") instance=ExtResource("2_cki6m")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.65, -0.8)
+parent = NodePath("..")
+
+[node name="NeighbourCast" parent="BaseHookable3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="BaseHookable4" parent="." index="11" node_paths=PackedStringArray("parent") instance=ExtResource("2_cki6m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8, 0.65, 0)
+parent = NodePath("..")
+
+[node name="NeighbourCast" parent="BaseHookable4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[editable path="BaseHookable"]
+[editable path="BaseHookable2"]
+[editable path="BaseHookable3"]
+[editable path="BaseHookable4"]

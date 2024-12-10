@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw5sa2kabnljk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvaxa"]
+albedo_color = Color(0.427451, 0.160784, 1, 1)
+emission_enabled = true
+emission = Color(0.427451, 0.160784, 1, 1)
+emission_energy_multiplier = 1.76
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8c4tv"]
+material = SubResource("StandardMaterial3D_rvaxa")
+radius = 0.025
+height = 0.1
+
+[node name="PortalEnterEffect" type="CPUParticles3D"]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("CapsuleMesh_8c4tv")
+particle_flag_align_y = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_min = 90.0
+angle_max = 90.0

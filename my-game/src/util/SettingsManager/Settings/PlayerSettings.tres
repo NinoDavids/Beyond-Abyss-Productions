@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SettingsData" load_steps=2 format=3 uid="uid://bp873t6kfuecr"]
+[gd_resource type="Resource" script_class="SettingsData" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://src/util/SettingsManager/Settings/SettingsData.gd" id="1_48xd4"]
 
@@ -6,3 +6,6 @@
 script = ExtResource("1_48xd4")
 inverted_y = false
 sensitivity = 0.25
+masterVolume = 1.0
+musicVolume = 1.0
+SFXVolume = 1.0

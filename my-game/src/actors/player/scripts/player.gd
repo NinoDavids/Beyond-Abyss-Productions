@@ -15,8 +15,13 @@ const JUMP_VELOCITY: float = 4.5
 
 @export_group("SFX")
 @export var audio_player: AudioStreamPlayer3D
-@export var footstep_SFX: Array[AudioStream] = []
+@export var footstep_SFX_grass: Array[AudioStream] = []
+var is_grass_active: bool = false
+@export var footstep_SFX_wood: Array[AudioStream] = []
+var is_wood_active: bool = false
 @export var foot_step_timer: Timer
+@onready var ground_sfx_collider: RayCast3D = %GroundSFXCollider
+@onready var pause_menu: InGameMenu = $CanvasLayer2/InGameMenu
 
 var current_bobber: Bobber
 var held_Item: RigidBody3D
@@ -30,11 +35,12 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quitEditor"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		get_tree().change_scene_to_packed(main_menu)
+		pause_menu.show()
+		get_tree().paused = !get_tree().paused
 	
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.get_sensitivity()))
-		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.get_sensitivity() * SettingsManager.get_inverted_y_float()))
+		rotate_y(deg_to_rad(-event.relative.x * SettingsManager.settings.sensitivity))
+		head.rotate_x(deg_to_rad(-event.relative.y * SettingsManager.settings.sensitivity * SettingsManager.get_inverted_y_float()))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event.is_action_pressed("Drop"):
 			if held_Item:
@@ -66,6 +72,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	set_footstep_sfx()
+
 	if held_Item != null:
 		held_Item.global_transform.origin = itemHolder.global_transform.origin
 	# Handle jump.
@@ -87,10 +95,29 @@ func _physics_process(delta: float) -> void:
 
 func respawn() -> void:
 	fishing_rod.cancel_hook()
-	print_debug("%s respawned." %name)
+
+## TODO: Should be a cleaner way of doing this...
+func set_footstep_sfx() -> void:
+	if ground_sfx_collider.is_colliding():
+		var obj: Node = ground_sfx_collider.get_collider()
+		if obj.is_in_group("Wood"):
+			is_wood_active = true
+			is_grass_active = false
+		elif obj.is_in_group("Grass"):
+			is_grass_active = true
+			is_wood_active = false
+	else:
+		is_grass_active = true
+		is_wood_active = false
+
 
 func play_footstep() -> void:
-	if audio_player and footstep_SFX.size() > 0 and foot_step_timer.is_stopped():
-		audio_player.stream = footstep_SFX.pick_random()
+	if audio_player and foot_step_timer.is_stopped():
+		if is_grass_active:
+			audio_player.stream = footstep_SFX_grass.pick_random()
+		if is_wood_active:
+			audio_player.stream = footstep_SFX_wood.pick_random()
+		else: ## Defaults to grass
+			audio_player.stream = footstep_SFX_grass.pick_random()
 		audio_player.play()
 		foot_step_timer.start()

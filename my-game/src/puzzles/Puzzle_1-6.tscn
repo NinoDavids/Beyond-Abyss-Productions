@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://comqf2l6okdkk"]
+
+[ext_resource type="PackedScene" uid="uid://602061ik5uxj" path="res://src/world/Grid/Gridmaps/base_grid_map.tscn" id="1_dk4b0"]
+[ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="1_vfbl4"]
+[ext_resource type="MeshLibrary" uid="uid://cnu1edfnetdl3" path="res://src/world/Grid/MeshLibraries/BaseTiles2/SecondGridLibrary.tres" id="2_fui4f"]
+[ext_resource type="PackedScene" uid="uid://b5v4wpkxa6a8p" path="res://src/world/PuzzlePieces/Spring/spring_hookable.tscn" id="3_3o6wu"]
+[ext_resource type="PackedScene" uid="uid://b8rkkn221wgy1" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.tscn" id="4_3ivvw"]
+[ext_resource type="PackedScene" uid="uid://d3m3yxxg0wqtk" path="res://src/world/Object/Portal/Portal.tscn" id="5_ngf78"]
+[ext_resource type="PackedScene" uid="uid://dexajhy20l76" path="res://src/world/PuzzlePieces/water_spout/water_spout.tscn" id="6_xjgv2"]
+[ext_resource type="PackedScene" uid="uid://bs325xos2dhgg" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up_hookable.tscn" id="7_jm4ch"]
+[ext_resource type="PackedScene" uid="uid://c0blxklxouxrm" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.tscn" id="8_1vftc"]
+[ext_resource type="PackedScene" uid="uid://dsifbylaxtqaq" path="res://src/world/Obstacles/3_tile_wall.tscn" id="8_dv0gs"]
+[ext_resource type="PackedScene" uid="uid://cq2ndnibha7iq" path="res://src/world/Obstacles/boulder.tscn" id="9_rhm05"]
+[ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="12_hybea"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03x4l"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7vu1f"]
+sky_material = SubResource("ProceduralSkyMaterial_03x4l")
+
+[sub_resource type="Environment" id="Environment_5ttnd"]
+background_mode = 2
+sky = SubResource("Sky_7vu1f")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdqx6"]
+size = Vector3(1, 3, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xao2y"]
+size = Vector3(1, 3, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3lif"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_td1r5"]
+size = Vector3(3, 3, 3)
+
+[node name="Puzzle_1-6" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5ttnd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="BaseGridMap" parent="." node_paths=PackedStringArray("water_spouts") instance=ExtResource("1_dk4b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+mesh_library = ExtResource("2_fui4f")
+cell_size = Vector3(3, 1.5, 3)
+data = {
+"cells": PackedInt32Array(65534, 65534, 655374, 65535, 65534, 655375, 0, 65534, 655375, 1, 65534, 1048590, 65534, 65535, 1441807, 65534, 0, 1441807, 65534, 1, 1441807, 65534, 2, 1441807, 65534, 3, 1441806, 65535, 3, 15, 0, 3, 15, 1, 3, 15, 1, 2, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 1048591, 0, 65535, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0, 2, 3, 0, 65538, 3, 0, 65538, 2, 0, 131074, 3, 1441806, 131074, 2, 1441807, 2, 2, 0, 2, 1, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 5, 1, 0, 5, 2, 0, 5, 3, 0, 4, 3, 0, 3, 3, 0, 3, 2, 0, 3, 1, 0, 4, 1, 0, 4, 2, 0, 65538, 1, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65541, 1, 0, 65541, 2, 0, 65541, 3, 0, 65540, 3, 0, 65539, 3, 0, 65539, 2, 0, 65540, 2, 0, 65540, 1, 0, 65539, 1, 0, 131074, 1, 1441807, 131074, 0, 655374, 131075, 0, 655375, 131076, 0, 655375, 131077, 0, 1048590, 131077, 1, 1048591, 131077, 2, 1048591, 131076, 2, 0, 131076, 3, 15, 131075, 3, 15, 131075, 2, 0, 131075, 1, 0, 131076, 1, 0, 131077, 3, 14)
+}
+script = ExtResource("1_vfbl4")
+water_spouts = [NodePath("WaterSpout2"), NodePath("WaterSpout")]
+active = true
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="SpringHookable" parent="BaseGridMap" instance=ExtResource("3_3o6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.75, 1.5)
+
+[node name="SpringHookable2" parent="BaseGridMap" instance=ExtResource("3_3o6wu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.75, 1.5)
+
+[node name="CanonCornerHookable" parent="BaseGridMap" instance=ExtResource("4_3ivvw")]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, -4.5, 0.75, -4.5)
+
+[node name="CanonCornerHookable2" parent="BaseGridMap" instance=ExtResource("4_3ivvw")]
+transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, -3.55271e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 4.5, 0.75, -4.5)
+
+[node name="Portal" parent="BaseGridMap" instance=ExtResource("5_ngf78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.75, 7.5)
+
+[node name="WaterSpout" parent="BaseGridMap" instance=ExtResource("6_xjgv2")]
+transform = Transform3D(-1, -3.82137e-15, -8.74228e-08, 3.82137e-15, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, -4.5, 0.75, 10.5)
+
+[node name="WaterSpout2" parent="BaseGridMap" instance=ExtResource("6_xjgv2")]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -1.5, 0.75, 10.5)
+
+[node name="CanonUpHookable" parent="BaseGridMap" instance=ExtResource("7_jm4ch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.813776, 10.5)
+collision_mask = 4
+
+[node name="CanonCornerHookable3" parent="BaseGridMap" instance=ExtResource("4_3ivvw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.75, 10.5)
+
+[node name="CanonCornerHookable4" parent="BaseGridMap" instance=ExtResource("4_3ivvw")]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 7.5, 3.75, 4.5)
+
+[node name="CanonCornerHookable5" parent="BaseGridMap" instance=ExtResource("4_3ivvw")]
+transform = Transform3D(-1, 3.55271e-15, 8.74228e-08, -3.55271e-15, 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 13.5, 3.75, 4.5)
+
+[node name="CanonCornerHookable6" parent="BaseGridMap" instance=ExtResource("4_3ivvw")]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 13.5, 3.75, 10.5)
+
+[node name="Portal2" parent="BaseGridMap" node_paths=PackedStringArray("puzzle") instance=ExtResource("5_ngf78")]
+transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 16.5, 3.75, 10.5)
+puzzle = NodePath("..")
+
+[node name="3TileWall" parent="BaseGridMap" instance=ExtResource("8_dv0gs")]
+
+[node name="3TileWall2" type="StaticBody3D" parent="BaseGridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 4.25, 4.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseGridMap/3TileWall2"]
+mesh = SubResource("BoxMesh_pdqx6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseGridMap/3TileWall2"]
+shape = SubResource("BoxShape3D_xao2y")
+
+[node name="Boulder" parent="BaseGridMap" instance=ExtResource("9_rhm05")]
+
+[node name="Boulder2" type="StaticBody3D" parent="BaseGridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.25, 7.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseGridMap/Boulder2"]
+mesh = SubResource("BoxMesh_k3lif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseGridMap/Boulder2"]
+shape = SubResource("BoxShape3D_td1r5")
+
+[node name="Boulder3" type="StaticBody3D" parent="BaseGridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 5.25, 1.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseGridMap/Boulder3"]
+mesh = SubResource("BoxMesh_k3lif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseGridMap/Boulder3"]
+shape = SubResource("BoxShape3D_td1r5")
+
+[node name="Boulder4" type="StaticBody3D" parent="BaseGridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 5.25, 10.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseGridMap/Boulder4"]
+mesh = SubResource("BoxMesh_k3lif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseGridMap/Boulder4"]
+shape = SubResource("BoxShape3D_td1r5")
+
+[node name="ProjectileFinder" parent="BaseGridMap" instance=ExtResource("8_1vftc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.5, 4.2765, 10.5)
+is_redirector = true
+
+[node name="Player" parent="." instance=ExtResource("12_hybea")]
+transform = Transform3D(-0.936538, 0, -0.350567, 0, 1, 0, 0.350567, 0, -0.936538, 0, 5.96039, 7.89759)

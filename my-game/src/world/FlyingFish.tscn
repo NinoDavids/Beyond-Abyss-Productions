@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/world/world.gd" id="1_ae2vt"]
 [ext_resource type="Texture2D" uid="uid://b0dfwqsu7wnmv" path="res://icon.svg" id="2_2tf2f"]
 [ext_resource type="PackedScene" uid="uid://bj01hbxy4my1a" path="res://src/actors/player/Player.tscn" id="3_xgp3h"]
-[ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/RigidHookables/Box/Box.tscn" id="4_x7brj"]
+[ext_resource type="PackedScene" uid="uid://b1m5l4s2ek260" path="res://src/world/Hookables/Legacy/RigidHookables/Box/Box.tscn" id="4_x7brj"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_p4h3f"]
 vertices = PackedVector3Array(-9.5, -0.450815, -9.5, -9.5, -0.450815, 9.5, 9.5, -0.450815, 9.5, 9.5, -0.450815, -9.5)

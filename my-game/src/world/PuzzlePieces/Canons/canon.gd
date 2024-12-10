@@ -11,13 +11,15 @@ extends BasePuzzlePiece
 @onready var timer: Timer = $Timer
 @onready var projectile_receiver: Area3D = $ProjectileReceiver
 
+
+@onready var canon_boom_sfx: AudioStream = preload("res://src/world/PuzzlePieces/Canons/sfx/Canon Boom 2.wav") as AudioStream
 @export var cannon_model: CannonModel
 
 func _ready() -> void:
 	assert(spawn_point != null)
 	assert(projectile != null)
 	assert(audio_player != null)
-	if start_shooting: 
+	if start_shooting:
 		cannon_model.start_charge_animation()
 
 func shoot_projectile() -> void:
@@ -30,11 +32,19 @@ func shoot_projectile() -> void:
 
 func _on_cannon_up_model_shoot() -> void:
 	projectile_receiver.monitoring = false
+	timer.start()
 	shoot_projectile()
+	play_boom_sfx()
+
+func play_boom_sfx() -> void:
+	audio_player.stream = canon_boom_sfx
+	audio_player.pitch_scale = randf_range(0.9, 1.1)
+	audio_player.volume_db = -10
+	audio_player.play()
 
 func _on_projectile_receiver_body_entered(body: Node3D) -> void:
 	if body is CanonProjectile:
-		body.queue_free()
+		body.absorb()
 		cannon_model.start_charge_animation()
 
 

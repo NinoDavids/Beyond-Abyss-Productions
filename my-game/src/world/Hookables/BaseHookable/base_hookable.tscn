@@ -1,9 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dti3ukqyiwvjk"]
+[gd_scene load_steps=16 format=3 uid="uid://dti3ukqyiwvjk"]
 
 [ext_resource type="Script" path="res://src/world/Hookables/BaseHookable/base_hookable.gd" id="1_ga5y0"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_qcvcx"]
-outer_radius = 0.3
+[ext_resource type="AudioStream" uid="uid://y52pn7hm538m" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 1.wav" id="2_5stu6"]
+[ext_resource type="PackedScene" uid="uid://crfdn1yj2cr7a" path="res://src/world/Hookables/BaseHookable/model/attachment_model.tscn" id="2_u7sk0"]
+[ext_resource type="AudioStream" uid="uid://d2bw56o8hbx8h" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 2.wav" id="3_qqyni"]
+[ext_resource type="AudioStream" uid="uid://b2b80k7lfp8lc" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 3.wav" id="4_gbtbg"]
+[ext_resource type="AudioStream" uid="uid://demita747rba3" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 4.wav" id="5_ckvyx"]
+[ext_resource type="AudioStream" uid="uid://4dleuhfasjti" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 5.wav" id="6_jocdh"]
+[ext_resource type="AudioStream" uid="uid://catsv0u1aqq2r" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 6.wav" id="7_q2jr2"]
+[ext_resource type="AudioStream" uid="uid://bydn444a13fta" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 7.wav" id="8_kj8u1"]
+[ext_resource type="AudioStream" uid="uid://b1c8xnl4nw2e2" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 8.wav" id="9_3rjno"]
+[ext_resource type="AudioStream" uid="uid://c08af5mlhccev" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 9.wav" id="10_06mxu"]
+[ext_resource type="AudioStream" uid="uid://bp5ko8lcfvauv" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 10.wav" id="11_mge8v"]
+[ext_resource type="AudioStream" uid="uid://bhqh1arksv5r3" path="res://src/world/Hookables/BaseHookable/sfx/glass ding 11.wav" id="12_uwsf0"]
+[ext_resource type="PackedScene" uid="uid://dhjt1qykkm8yw" path="res://src/effects/fire_flies.tscn" id="14_y7qt6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hstys"]
 radius = 0.75
@@ -12,19 +22,28 @@ radius = 0.75
 collision_layer = 0
 collision_mask = 130
 script = ExtResource("1_ga5y0")
+hooked_sfx = Array[AudioStream]([ExtResource("2_5stu6"), ExtResource("3_qqyni"), ExtResource("4_gbtbg"), ExtResource("5_ckvyx"), ExtResource("6_jocdh"), ExtResource("7_q2jr2"), ExtResource("8_kj8u1"), ExtResource("9_3rjno"), ExtResource("10_06mxu"), ExtResource("11_mge8v"), ExtResource("12_uwsf0")])
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("TorusMesh_qcvcx")
+[node name="Attachment_model" parent="." instance=ExtResource("2_u7sk0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="FireFlies" parent="Attachment_model" instance=ExtResource("14_y7qt6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44152e-08, 0, -0.279277)
 
 [node name="DetectionCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_hstys")
 
 [node name="NeighbourCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 2)
-collision_mask = 4
+collision_mask = 4100
 collide_with_areas = true
 debug_shape_custom_color = Color(0.796078, 1, 0, 1)
 debug_shape_thickness = 5
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+volume_db = -10.0
+max_db = 0.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

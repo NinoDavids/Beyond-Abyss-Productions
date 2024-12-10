@@ -1,50 +1,58 @@
-[gd_scene load_steps=45 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=54 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
+[ext_resource type="AudioStream" uid="uid://dleu4qiu0tf88" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 1.mp3" id="2_1rgru"]
+[ext_resource type="AudioStream" uid="uid://cuxorf5wyj2ku" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 1.wav" id="2_bi70c"]
 [ext_resource type="PackedScene" uid="uid://dop37yjdupvy5" path="res://src/actors/player/fishingRod/FishingRod.tscn" id="2_qyi4v"]
-[ext_resource type="AudioStream" uid="uid://cuxorf5wyj2ku" path="res://src/actors/player/SFX/footstep grass 1.wav" id="2_vkkic"]
 [ext_resource type="Script" path="res://src/actors/player/scripts/hitbox.gd" id="3_2636m"]
-[ext_resource type="AudioStream" uid="uid://cpje7c6jq0vi4" path="res://src/actors/player/SFX/footstep grass 2.wav" id="3_sjo2i"]
-[ext_resource type="AudioStream" uid="uid://bqisav810d6hd" path="res://src/actors/player/SFX/footstep grass 3.wav" id="4_fmefj"]
+[ext_resource type="AudioStream" uid="uid://cpje7c6jq0vi4" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 2.wav" id="3_u55q6"]
 [ext_resource type="PackedScene" uid="uid://b217evb28eyvu" path="res://src/shaders/HealthShader/health_shader_rect.tscn" id="4_hena1"]
-[ext_resource type="AudioStream" uid="uid://bm2s6qvbkcy72" path="res://src/actors/player/SFX/footstep grass 4.wav" id="5_n2e54"]
-[ext_resource type="AudioStream" uid="uid://3p0k4vltcho7" path="res://src/actors/player/SFX/footstep grass 5.wav" id="6_v3ua5"]
-[ext_resource type="AudioStream" uid="uid://b1djqgdvl5fqf" path="res://src/actors/player/SFX/footstep grass 6.wav" id="7_7nlwv"]
-[ext_resource type="AudioStream" uid="uid://cjrh4ojree0vw" path="res://src/actors/player/SFX/footstep grass 7.wav" id="8_7j3sp"]
-[ext_resource type="AudioStream" uid="uid://d3ch14r33facg" path="res://src/actors/player/SFX/footstep grass 8.wav" id="9_qsc6m"]
-[ext_resource type="AudioStream" uid="uid://dhv4rxebt35q4" path="res://src/actors/player/SFX/footstep grass 9.wav" id="10_g0u5v"]
-[ext_resource type="AudioStream" uid="uid://41a23jxjf2w6" path="res://src/actors/player/SFX/footstep grass 10.wav" id="11_1iwda"]
-[ext_resource type="AudioStream" uid="uid://d2273fvowctha" path="res://src/actors/player/SFX/footstep grass 11.wav" id="12_pgxth"]
-[ext_resource type="AudioStream" uid="uid://nshjckdboppy" path="res://src/actors/player/SFX/footstep grass 12.wav" id="13_h6e23"]
-[ext_resource type="AudioStream" uid="uid://bf5ois8ufngx0" path="res://src/actors/player/SFX/footstep grass 13.wav" id="14_2rfy2"]
-[ext_resource type="AudioStream" uid="uid://3md3jinebe0t" path="res://src/actors/player/SFX/footstep grass 14.wav" id="15_81we5"]
-[ext_resource type="AudioStream" uid="uid://dfqnqijvptlr5" path="res://src/actors/player/SFX/footstep grass 15.wav" id="16_ff8uh"]
-[ext_resource type="AudioStream" uid="uid://c3umcywlc1q25" path="res://src/actors/player/SFX/footstep grass 16.wav" id="17_tvclc"]
-[ext_resource type="AudioStream" uid="uid://k7tud836g6or" path="res://src/actors/player/SFX/footstep grass 17.wav" id="18_qk8mc"]
-[ext_resource type="AudioStream" uid="uid://h04ahgcumudh" path="res://src/actors/player/SFX/footstep grass 18.wav" id="19_so8r8"]
-[ext_resource type="AudioStream" uid="uid://b4bikxx7nkfa4" path="res://src/actors/player/SFX/footstep grass 19.wav" id="20_ygxvd"]
-[ext_resource type="AudioStream" uid="uid://k4dam2x3l340" path="res://src/actors/player/SFX/footstep grass 20.wav" id="21_8xpr4"]
-[ext_resource type="AudioStream" uid="uid://cqy3fc0scncpd" path="res://src/actors/player/SFX/footstep grass 21.wav" id="22_bymsm"]
-[ext_resource type="AudioStream" uid="uid://7dy4vbkwb8yh" path="res://src/actors/player/SFX/footstep grass 22.wav" id="23_275jn"]
-[ext_resource type="AudioStream" uid="uid://cosyho1q8bhrf" path="res://src/actors/player/SFX/footstep grass 23.wav" id="24_mp52q"]
-[ext_resource type="AudioStream" uid="uid://bo2dixra41c03" path="res://src/actors/player/SFX/footstep grass 24.wav" id="25_7xvt8"]
-[ext_resource type="AudioStream" uid="uid://6k5ffbq5e3lv" path="res://src/actors/player/SFX/footstep grass 25.wav" id="26_os6k7"]
-[ext_resource type="AudioStream" uid="uid://bx7p20esc3rjb" path="res://src/actors/player/SFX/footstep grass 26.wav" id="27_dylum"]
-[ext_resource type="AudioStream" uid="uid://di62wfnuwt4bs" path="res://src/actors/player/SFX/footstep grass 27.wav" id="28_7sbch"]
-[ext_resource type="AudioStream" uid="uid://bwfy0d3y6rjjw" path="res://src/actors/player/SFX/footstep grass 28.wav" id="29_8msjn"]
-[ext_resource type="AudioStream" uid="uid://by87d4s2d4xhk" path="res://src/actors/player/SFX/footstep grass 29.wav" id="30_0w1b2"]
-[ext_resource type="AudioStream" uid="uid://seetmhh1scvd" path="res://src/actors/player/SFX/footstep grass 30.wav" id="31_gli0r"]
-[ext_resource type="AudioStream" uid="uid://d1vo456x0r5ua" path="res://src/actors/player/SFX/footstep grass 31.wav" id="32_2snm6"]
-[ext_resource type="AudioStream" uid="uid://dwmhty7hgqr6h" path="res://src/actors/player/SFX/footstep grass 32.wav" id="33_6nibb"]
-[ext_resource type="AudioStream" uid="uid://bj26o33bvn4na" path="res://src/actors/player/SFX/footstep grass 33.wav" id="34_fagc1"]
-[ext_resource type="AudioStream" uid="uid://cjm1u68i31bdp" path="res://src/actors/player/SFX/footstep grass 34.wav" id="35_q66f2"]
+[ext_resource type="AudioStream" uid="uid://bqisav810d6hd" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 3.wav" id="4_te08b"]
+[ext_resource type="AudioStream" uid="uid://bm2s6qvbkcy72" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 4.wav" id="5_clnkb"]
+[ext_resource type="AudioStream" uid="uid://3p0k4vltcho7" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 5.wav" id="6_30eqf"]
+[ext_resource type="AudioStream" uid="uid://b1djqgdvl5fqf" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 6.wav" id="7_a33wo"]
+[ext_resource type="AudioStream" uid="uid://cjrh4ojree0vw" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 7.wav" id="8_y75vf"]
+[ext_resource type="AudioStream" uid="uid://d3ch14r33facg" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 8.wav" id="9_515dn"]
+[ext_resource type="AudioStream" uid="uid://dhv4rxebt35q4" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 9.wav" id="10_ocukh"]
+[ext_resource type="AudioStream" uid="uid://41a23jxjf2w6" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 10.wav" id="11_oim4t"]
+[ext_resource type="AudioStream" uid="uid://d2273fvowctha" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 11.wav" id="12_7wb20"]
+[ext_resource type="AudioStream" uid="uid://nshjckdboppy" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 12.wav" id="13_olfsi"]
+[ext_resource type="AudioStream" uid="uid://bf5ois8ufngx0" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 13.wav" id="14_xymgw"]
+[ext_resource type="AudioStream" uid="uid://3md3jinebe0t" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 14.wav" id="15_6dohj"]
+[ext_resource type="AudioStream" uid="uid://dfqnqijvptlr5" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 15.wav" id="16_m17ud"]
+[ext_resource type="AudioStream" uid="uid://c3umcywlc1q25" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 16.wav" id="17_er2ib"]
+[ext_resource type="AudioStream" uid="uid://k7tud836g6or" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 17.wav" id="18_vqjj0"]
+[ext_resource type="AudioStream" uid="uid://h04ahgcumudh" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 18.wav" id="19_db62c"]
+[ext_resource type="AudioStream" uid="uid://b4bikxx7nkfa4" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 19.wav" id="20_glfbb"]
+[ext_resource type="AudioStream" uid="uid://k4dam2x3l340" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 20.wav" id="21_cl1p2"]
+[ext_resource type="AudioStream" uid="uid://cqy3fc0scncpd" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 21.wav" id="22_2husp"]
+[ext_resource type="AudioStream" uid="uid://7dy4vbkwb8yh" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 22.wav" id="23_ll525"]
+[ext_resource type="AudioStream" uid="uid://cosyho1q8bhrf" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 23.wav" id="24_1ihwx"]
+[ext_resource type="AudioStream" uid="uid://bo2dixra41c03" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 24.wav" id="25_7c4ve"]
+[ext_resource type="AudioStream" uid="uid://6k5ffbq5e3lv" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 25.wav" id="26_7yj7e"]
+[ext_resource type="AudioStream" uid="uid://bx7p20esc3rjb" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 26.wav" id="27_x7bfu"]
+[ext_resource type="AudioStream" uid="uid://di62wfnuwt4bs" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 27.wav" id="28_qy2pq"]
+[ext_resource type="AudioStream" uid="uid://bwfy0d3y6rjjw" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 28.wav" id="29_d57j2"]
+[ext_resource type="AudioStream" uid="uid://by87d4s2d4xhk" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 29.wav" id="30_2ttjn"]
+[ext_resource type="AudioStream" uid="uid://seetmhh1scvd" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 30.wav" id="31_n6sey"]
+[ext_resource type="AudioStream" uid="uid://d1vo456x0r5ua" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 31.wav" id="32_7838w"]
+[ext_resource type="AudioStream" uid="uid://dwmhty7hgqr6h" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 32.wav" id="33_wtfg3"]
+[ext_resource type="AudioStream" uid="uid://bj26o33bvn4na" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 33.wav" id="34_j0tbm"]
+[ext_resource type="AudioStream" uid="uid://cjm1u68i31bdp" path="res://src/actors/player/SFX/footsteps/grass/footstep grass 34.wav" id="35_hjwfr"]
+[ext_resource type="AudioStream" uid="uid://ckbqhmhyj5fqw" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 2.mp3" id="37_0afae"]
+[ext_resource type="AudioStream" uid="uid://b0bwckc1msbc2" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 3.mp3" id="38_2r7gc"]
+[ext_resource type="AudioStream" uid="uid://8on3xtt1n8p4" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 4.mp3" id="39_6mffx"]
 [ext_resource type="Shader" path="res://src/actors/player/ScreenShake.gdshader" id="39_xt0gt"]
 [ext_resource type="Script" path="res://src/actors/player/screen_shake_shader.gd" id="40_h1kxw"]
+[ext_resource type="AudioStream" uid="uid://cbusp5esieo56" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 5.mp3" id="40_jh4s5"]
+[ext_resource type="AudioStream" uid="uid://kmdf7twubsaw" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 6.mp3" id="41_wj83w"]
+[ext_resource type="AudioStream" uid="uid://d1sx66gc1uga1" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 7.mp3" id="42_488e1"]
+[ext_resource type="AudioStream" uid="uid://c62xqxh83y52c" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 8.mp3" id="43_hotno"]
+[ext_resource type="PackedScene" uid="uid://03v4glbu1jy" path="res://src/UI/InGameMenu/InGameMenu.tscn" id="46_fgp58"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_7lrbt"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5s7t8"]
-height = 1.93072
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxc2m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6730j"]
 
@@ -56,19 +64,20 @@ shader_parameter/FactorB = Vector2(1, 1)
 shader_parameter/magnitude = Vector2(0.01, 0.01)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("audio_player", "foot_step_timer") groups=["player"]]
-collision_layer = 6
-collision_mask = 271
+collision_layer = 2
+collision_mask = 4367
 script = ExtResource("1_v30fi")
-audio_player = NodePath("AudioStreamPlayer3D")
-footstep_SFX = Array[AudioStream]([ExtResource("2_vkkic"), ExtResource("3_sjo2i"), ExtResource("4_fmefj"), ExtResource("5_n2e54"), ExtResource("6_v3ua5"), ExtResource("7_7nlwv"), ExtResource("8_7j3sp"), ExtResource("9_qsc6m"), ExtResource("10_g0u5v"), ExtResource("11_1iwda"), ExtResource("12_pgxth"), ExtResource("13_h6e23"), ExtResource("14_2rfy2"), ExtResource("15_81we5"), ExtResource("16_ff8uh"), ExtResource("17_tvclc"), ExtResource("18_qk8mc"), ExtResource("19_so8r8"), ExtResource("20_ygxvd"), ExtResource("21_8xpr4"), ExtResource("22_bymsm"), ExtResource("23_275jn"), ExtResource("24_mp52q"), ExtResource("25_7xvt8"), ExtResource("26_os6k7"), ExtResource("27_dylum"), ExtResource("28_7sbch"), ExtResource("29_8msjn"), ExtResource("30_0w1b2"), ExtResource("31_gli0r"), ExtResource("32_2snm6"), ExtResource("33_6nibb"), ExtResource("34_fagc1"), ExtResource("35_q66f2")])
-foot_step_timer = NodePath("AudioStreamPlayer3D/FootStepTimer")
+audio_player = NodePath("FootStepAudio")
+footstep_SFX_grass = Array[AudioStream]([ExtResource("2_bi70c"), ExtResource("3_u55q6"), ExtResource("4_te08b"), ExtResource("5_clnkb"), ExtResource("6_30eqf"), ExtResource("7_a33wo"), ExtResource("8_y75vf"), ExtResource("9_515dn"), ExtResource("10_ocukh"), ExtResource("11_oim4t"), ExtResource("12_7wb20"), ExtResource("13_olfsi"), ExtResource("14_xymgw"), ExtResource("15_6dohj"), ExtResource("16_m17ud"), ExtResource("17_er2ib"), ExtResource("18_vqjj0"), ExtResource("19_db62c"), ExtResource("20_glfbb"), ExtResource("21_cl1p2"), ExtResource("22_2husp"), ExtResource("23_ll525"), ExtResource("24_1ihwx"), ExtResource("25_7c4ve"), ExtResource("26_7yj7e"), ExtResource("27_x7bfu"), ExtResource("28_qy2pq"), ExtResource("29_d57j2"), ExtResource("30_2ttjn"), ExtResource("31_n6sey"), ExtResource("32_7838w"), ExtResource("33_wtfg3"), ExtResource("34_j0tbm"), ExtResource("35_hjwfr")])
+footstep_SFX_wood = Array[AudioStream]([ExtResource("2_1rgru"), ExtResource("37_0afae"), ExtResource("38_2r7gc"), ExtResource("39_6mffx"), ExtResource("40_jh4s5"), ExtResource("41_wj83w"), ExtResource("42_488e1"), ExtResource("43_hotno")])
+foot_step_timer = NodePath("FootStepAudio/FootStepTimer")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_7lrbt")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0200601, 0)
-shape = SubResource("CylinderShape3D_5s7t8")
+shape = SubResource("CapsuleShape3D_xxc2m")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -80,7 +89,7 @@ transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114
 collision_mask = 4
 
 [node name="FishingRod" parent="Head" node_paths=PackedStringArray("player") instance=ExtResource("2_qyi4v")]
-transform = Transform3D(0.999861, -0.0157161, 0.00549692, 0.0135107, 0.958803, 0.283751, -0.00972992, -0.283638, 0.958882, 0.433085, -0.168784, -0.7146)
+transform = Transform3D(0.999861, -0.0157161, 0.00549692, 0.0135107, 0.958803, 0.283751, -0.00972992, -0.283638, 0.958882, 0.6, 0, -1)
 player = NodePath("../..")
 
 [node name="ItemHolder" type="Node3D" parent="Head"]
@@ -104,6 +113,7 @@ wait_time = 2.5
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 1
 
 [node name="ScreenShakeShader" parent="CanvasLayer" node_paths=PackedStringArray("timer") instance=ExtResource("4_hena1")]
 material = SubResource("ShaderMaterial_ml73c")
@@ -117,13 +127,24 @@ one_shot = true
 [node name="HealthShaderRect" parent="CanvasLayer" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_hena1")]
 hitbox = NodePath("../../Hitbox")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-volume_db = -10.0
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 2
 
-[node name="FootStepTimer" type="Timer" parent="AudioStreamPlayer3D"]
+[node name="InGameMenu" parent="CanvasLayer2" instance=ExtResource("46_fgp58")]
+visible = false
+
+[node name="FootStepAudio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="FootStepTimer" type="Timer" parent="FootStepAudio"]
 wait_time = 0.5
 one_shot = true
+
+[node name="GroundSFXCollider" type="RayCast3D" parent="FootStepAudio"]
+unique_name_in_owner = true
+collision_mask = 4100
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

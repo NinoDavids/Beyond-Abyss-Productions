@@ -1,30 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf763kq8l0nj4"]
+[gd_scene load_steps=3 format=3 uid="uid://cf763kq8l0nj4"]
 
-[ext_resource type="Shader" path="res://src/shaders/Portal.gdshader" id="1_ofi7q"]
+[ext_resource type="Material" uid="uid://bhorq3rhqwink" path="res://src/world/Object/Portal/PortalShader.tres" id="3_i1kuu"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_5d8g8"]
-center_offset = Vector3(0, 1.2, 0)
-orientation = 2
+[sub_resource type="CylinderMesh" id="CylinderMesh_k0vf3"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
 
-[sub_resource type="Gradient" id="Gradient_uxgwd"]
-colors = PackedColorArray(0, 0, 0.027451, 1, 0.619608, 0.368627, 1, 1)
+[node name="Node3D" type="Node3D"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ty0v7"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xetxh"]
-color_ramp = SubResource("Gradient_uxgwd")
-noise = SubResource("FastNoiseLite_ty0v7")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0tdc"]
-render_priority = 0
-shader = ExtResource("1_ofi7q")
-shader_parameter/PORTAL_RADIUS = 1.0
-shader_parameter/PORTAL_NORMAL = Vector3(0, 0, 1)
-shader_parameter/PORTAL_CENTER = Vector3(0, 1.2, 0)
-shader_parameter/PORTAL_SEAM = Vector3(0, 1, 0)
-shader_parameter/PORTAL_DIRECTION = Vector2(0.1, 0)
-shader_parameter/INSIDE_TEXTURE = SubResource("NoiseTexture2D_xetxh")
-
-[node name="PortalShader" type="MeshInstance3D"]
-mesh = SubResource("PlaneMesh_5d8g8")
-surface_material_override/0 = SubResource("ShaderMaterial_r0tdc")
+[node name="PortalShader" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_k0vf3")
+surface_material_override/0 = ExtResource("3_i1kuu")

@@ -11,10 +11,9 @@ config_version=5
 [application]
 
 config/name="Lucky Tabi"
-run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
+run/main_scene="res://src/world/Levels/Level1/Level1.tscn"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://misc/Logo/Banner.png"
 boot_splash/fullsize=false
@@ -35,7 +34,11 @@ gdscript/warnings/inferred_declaration=1
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/initial_screen=2
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -60,12 +63,18 @@ folder_colors={
 "res://src/world/PuzzlePieces/": "teal"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 enemies=""
 Pickups=""
 bobber=""
 player=""
+Grass="If an object is made of grass."
+Wood/Stone=""
 
 [input]
 
@@ -136,5 +145,6 @@ Drop={
 3d_physics/layer_8="Bobber"
 3d_physics/layer_9="Enemy"
 3d_physics/layer_12="Projectiles"
+3d_physics/layer_13="PuzzlePieces"
 3d_physics/size/viewport_height=1080
 3d_physics/size/viewport_width=1920
