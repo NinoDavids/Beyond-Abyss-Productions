@@ -15,7 +15,7 @@ func move(direction: Vector3) -> void:
 		tween.chain().tween_property(self, "is_moving", false, 0.0)
 
 func _physics_process(_delta: float) -> void:
-	if not is_on_floor() and not is_moving:
-		velocity.y -= fall_speed
-	
-	move_and_slide()
+	#if not is_on_floor() and not is_moving:
+		#velocity.y -= fall_speed
+		#move_and_slide()
+	pass

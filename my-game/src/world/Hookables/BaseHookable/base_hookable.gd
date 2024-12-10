@@ -15,9 +15,9 @@ func _ready() -> void:
 	assert(parent != null)
 
 ## The Physics Process function checks if the hookable has a bobber, if it does it sets it to the hookables global position.
-func _physics_process(_delta: float) -> void:
-	if bobber != null:
-		bobber.set_hooked(global_position)
+#func _physics_process(_delta: float) -> void:
+	#if bobber != null:
+		#bobber.set_hooked(global_position)
 
 ## Registers the "reel_hook" action. If this action is called [b]and[/b] the hookable has a bobber,[/br]
 ## Then the _reel_in() function is called.
@@ -39,6 +39,7 @@ func _on_body_entered(body: Node3D) -> void:
 		if not body.is_attached:
 			bobber = body
 			bobber.set_hooked(global_position)
+			place_bobber(body)
 			play_hooked_sfx()
 	
 	if body is Player:
@@ -54,3 +55,7 @@ func play_hooked_sfx() -> void:
 	audio_player.stream = hooked_sfx.pick_random()
 	audio_player.pitch_scale = randf_range(.8, 1.2)
 	audio_player.play()
+
+func place_bobber(bob: Bobber) -> void:
+	bob.reparent(self)
+	bobber.freeze = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdy86r3ir0xsl"]
+
+[ext_resource type="Script" path="res://src/util/LevelTransition/level_transition.gd" id="1_3mbxg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dsin8"]
+size = Vector3(75.4939, 23.4259, 1)
+
+[node name="LevelTransition" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4444, 0, -41.7556)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3mbxg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.549438, 11.213, 0)
+shape = SubResource("BoxShape3D_dsin8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
