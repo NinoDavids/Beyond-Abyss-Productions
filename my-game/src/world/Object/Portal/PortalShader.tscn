@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf763kq8l0nj4"]
+[gd_scene load_steps=4 format=3 uid="uid://cf763kq8l0nj4"]
 
+[ext_resource type="Script" path="res://src/world/Object/Portal/portal_shader.gd" id="1_hptxw"]
 [ext_resource type="Material" uid="uid://bhorq3rhqwink" path="res://src/world/Object/Portal/PortalShader.tres" id="3_i1kuu"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_k0vf3"]
+lightmap_size_hint = Vector2i(33, 14)
 top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_hptxw")
 
 [node name="PortalShader" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_k0vf3")
 surface_material_override/0 = ExtResource("3_i1kuu")
+
+[connection signal="property_list_changed" from="PortalShader" to="." method="_on_portal_shader_property_list_changed"]

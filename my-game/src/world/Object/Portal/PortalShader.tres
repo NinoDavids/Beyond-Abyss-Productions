@@ -8,10 +8,12 @@ colors = PackedColorArray(0, 0, 0.027451, 1, 0.619608, 0.368627, 1, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ty0v7"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xetxh"]
+seamless = true
 color_ramp = SubResource("Gradient_uxgwd")
 noise = SubResource("FastNoiseLite_ty0v7")
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_hcv4y")
 shader_parameter/PORTAL_RADIUS = 0.9

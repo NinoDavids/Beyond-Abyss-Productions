@@ -22,6 +22,7 @@ size = Vector2(3, 3)
 size = Vector3(2.91528, 1.39948, 0.955536)
 
 [node name="Portal" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_5gii6")
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -36,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 
 shape = SubResource("CylinderShape3D_wb1vm")
 
 [node name="PortalShaderBack" parent="Node3D" instance=ExtResource("2_co3s1")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.02023, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02023, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_ii78m")
