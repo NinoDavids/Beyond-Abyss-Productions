@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsifbylaxtqaq"]
+[gd_scene load_steps=4 format=3 uid="uid://dsifbylaxtqaq"]
+
+[ext_resource type="ArrayOccluder3D" uid="uid://br2uceaybxxtr" path="res://src/world/Obstacles/3_tile_wall.occ" id="1_ivyxw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdqx6"]
 size = Vector3(1, 3, 9)
@@ -16,3 +18,6 @@ mesh = SubResource("BoxMesh_pdqx6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xao2y")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("1_ivyxw")

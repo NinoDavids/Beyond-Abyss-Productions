@@ -1,6 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://3vcx0or1kvke"]
+[gd_scene load_steps=14 format=3 uid="uid://3vcx0or1kvke"]
 
 [ext_resource type="PackedScene" uid="uid://bscb8rpiyexmf" path="res://src/world/Grid/MeshLibraries/BaseTiles/GridMapAssets.glb" id="1_ohuis"]
+[ext_resource type="ArrayOccluder3D" uid="uid://c2xgheuh5fnfn" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseTiles.occ" id="2_k7skd"]
+[ext_resource type="ArrayOccluder3D" uid="uid://dqphktg3ra7s8" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseTiles2.occ" id="3_g31f0"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bho48o1gcp2xp" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseTiles3.occ" id="4_6fgf4"]
+[ext_resource type="ArrayOccluder3D" uid="uid://dqh08m476a3i" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseTiles4.occ" id="5_7ocli"]
+[ext_resource type="ArrayOccluder3D" uid="uid://blyo45x1645au" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseTiles5.occ" id="6_kdf1j"]
+[ext_resource type="ArrayOccluder3D" uid="uid://y7solpuqv6bs" path="res://src/world/Grid/MeshLibraries/BaseTiles/BaseTiles6.occ" id="7_s3bkx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1e8gy"]
 size = Vector3(3, 1.5, 3)
@@ -38,6 +44,9 @@ shape = SubResource("BoxShape3D_17gey")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93945, 0.134827, -0.00674438)
 shape = SubResource("BoxShape3D_7lrcj")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="UShapePiece1" index="1"]
+occluder = ExtResource("2_k7skd")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="UShapePiece2" index="0"]
 collision_layer = 4
 collision_mask = 0
@@ -53,6 +62,9 @@ shape = SubResource("BoxShape3D_17gey")
 [node name="Pillar" type="CollisionShape3D" parent="UShapePiece2/StaticBody3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91303, 0.134827, -0.00674438)
 shape = SubResource("BoxShape3D_7lrcj")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="UShapePiece2" index="1"]
+occluder = ExtResource("3_g31f0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="EdgePiece" index="0"]
 collision_layer = 4
@@ -70,6 +82,9 @@ shape = SubResource("BoxShape3D_ktomu")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.146455, 1.90032)
 shape = SubResource("BoxShape3D_7lrcj")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="EdgePiece" index="1"]
+occluder = ExtResource("4_6fgf4")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="NoEdgePiece" index="0"]
 collision_layer = 4
 collision_mask = 0
@@ -77,6 +92,9 @@ collision_mask = 0
 [node name="Ground" type="CollisionShape3D" parent="NoEdgePiece/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0187988, -0.783325, 0)
 shape = SubResource("BoxShape3D_1e8gy")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="NoEdgePiece" index="1"]
+occluder = ExtResource("5_7ocli")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CornerPiece" index="0"]
 collision_layer = 4
@@ -106,6 +124,9 @@ shape = SubResource("BoxShape3D_7lrcj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02878, 0.38443, 2.03076)
 shape = SubResource("BoxShape3D_v6dp1")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="CornerPiece" index="1"]
+occluder = ExtResource("6_kdf1j")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="OneTileBridgePiece" index="0"]
 collision_layer = 4
 collision_mask = 0
@@ -121,3 +142,6 @@ shape = SubResource("BoxShape3D_cehrt")
 [node name="Wall2" type="CollisionShape3D" parent="OneTileBridgePiece/StaticBody3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137329, -0.472412, -1.93949)
 shape = SubResource("BoxShape3D_cehrt")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="OneTileBridgePiece" index="1"]
+occluder = ExtResource("7_s3bkx")

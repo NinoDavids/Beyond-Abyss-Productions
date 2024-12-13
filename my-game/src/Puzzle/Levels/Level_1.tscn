@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://bjhkg0j8dhikj"]
 
-[ext_resource type="PackedScene" uid="uid://d1u6pxnr1y51i" path="res://src/Puzzle/Puzzle1.1.tscn" id="1_30bfh"]
+[ext_resource type="PackedScene" uid="uid://chothxmqcuanl" path="res://src/Puzzle/Puzzle1.1.tscn" id="1_30bfh"]
 [ext_resource type="PackedScene" uid="uid://deyayuruovgus" path="res://src/world/Checkpoint/checkpoint.tscn" id="2_bsyk8"]
 [ext_resource type="PackedScene" uid="uid://ckfd8q1ib8du3" path="res://src/Puzzle/Puzzle1.2.tscn" id="3_xthky"]
 [ext_resource type="PackedScene" uid="uid://bv8o2wv2gmfjc" path="res://src/Puzzle/Puzzle1.3.tscn" id="4_i4hev"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://dvg4q6iix7ctp"]
+[gd_scene load_steps=12 format=4 uid="uid://dvg4q6iix7ctp"]
 
 [ext_resource type="Texture2D" uid="uid://pyra7sx8mo2b" path="res://src/world/Foliage/Shaders/Leave_alpha_2 copy.png" id="2_0gru1"]
 [ext_resource type="Shader" path="res://src/world/Foliage/Shaders/FoliageCode.gdshader" id="2_ym53r"]
+[ext_resource type="ArrayOccluder3D" uid="uid://brxi6176xtk1n" path="res://src/world/Foliage/Trees/tree_long.occ" id="3_0ff8o"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_x6jp1"]
 frequency = 0.002
@@ -96,7 +97,11 @@ shadow_mesh = SubResource("ArrayMesh_3fd4y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0255601, 0, 0.00704336)
 
 [node name="Mball_037" type="MeshInstance3D" parent="."]
+lod_bias = 0.1
 mesh = SubResource("ArrayMesh_470tb")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_s2i0a")
 surface_material_override/1 = SubResource("StandardMaterial3D_1yasc")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("3_0ff8o")

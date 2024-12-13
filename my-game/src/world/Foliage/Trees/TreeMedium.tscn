@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1b42r3hlo8b7"]
+[gd_scene load_steps=12 format=3 uid="uid://c1b42r3hlo8b7"]
 
 [ext_resource type="PackedScene" uid="uid://docuahtosofmh" path="res://src/world/Foliage/Trees/Tree2.glb" id="1_6l8em"]
 [ext_resource type="Shader" path="res://src/world/Foliage/Shaders/FoliageCode.gdshader" id="2_li1v3"]
 [ext_resource type="Texture2D" uid="uid://cs3fyvjhyps05" path="res://src/world/Foliage/Shaders/sprite_0048.png" id="3_m08j4"]
+[ext_resource type="ArrayOccluder3D" uid="uid://6xuhdabg6huc" path="res://src/world/Foliage/Trees/TreeMedium.occ" id="4_727mw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_02dwk"]
 frequency = 0.0109
@@ -52,6 +53,10 @@ shader_parameter/windDirection = Vector3(1, 1, 1)
 [node name="Tree2" instance=ExtResource("1_6l8em")]
 
 [node name="Mball_034_001_002" parent="." index="0"]
+lod_bias = 0.2
 surface_material_override/0 = SubResource("ShaderMaterial_mkla7")
 surface_material_override/1 = SubResource("StandardMaterial3D_eqq5u")
 surface_material_override/2 = SubResource("ShaderMaterial_vbnpw")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = ExtResource("4_727mw")

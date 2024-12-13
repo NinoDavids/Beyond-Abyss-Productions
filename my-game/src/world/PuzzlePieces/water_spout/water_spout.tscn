@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dexajhy20l76"]
+[gd_scene load_steps=9 format=3 uid="uid://dexajhy20l76"]
 
 [ext_resource type="PackedScene" uid="uid://e2a6mg1epie4" path="res://src/world/PuzzlePieces/water_spout/model/water_spout_model.tscn" id="1_3d7kl"]
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/water_spout/water_spout.gd" id="1_dqean"]
 [ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_vvcvd"]
 [ext_resource type="AudioStream" uid="uid://djv07ubas7ejx" path="res://src/world/PuzzlePieces/water_spout/sfx/spout_pop.mp3" id="4_h1imb"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bottfayduussr" path="res://src/world/PuzzlePieces/water_spout/water_spout.occ" id="5_n7h8k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_famom"]
 size = Vector3(1.41852, 0.940918, 1.42822)
@@ -45,5 +46,8 @@ bus = &"SFX"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_ein4e")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("5_n7h8k")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
