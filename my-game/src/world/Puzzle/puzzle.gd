@@ -1,7 +1,7 @@
 extends GridMap
 class_name Puzzle
 
-@export var checkpoint: Checkpoint
+@onready var checkpoint: Checkpoint = $Checkpoint
 
 @export var bridge: Bridge
 
