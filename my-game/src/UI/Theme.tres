@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bawxsikhb7i5n"]
-
-[ext_resource type="FontFile" uid="uid://g6eb48qjdaq4" path="res://src/UI/MainMenu/Art/chiller.ttf" id="1_i1gmb"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bawxsikhb7i5n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00sih"]
 
@@ -28,7 +26,6 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_bvc1v"]
 
 [resource]
-default_font = ExtResource("1_i1gmb")
 default_font_size = 70
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 20
