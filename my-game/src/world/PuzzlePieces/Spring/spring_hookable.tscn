@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5v4wpkxa6a8p"]
+[gd_scene load_steps=4 format=3 uid="uid://b5v4wpkxa6a8p"]
 
 [ext_resource type="PackedScene" uid="uid://0t3au38yglb4" path="res://src/world/PuzzlePieces/Spring/spring.tscn" id="1_nel1d"]
 [ext_resource type="PackedScene" uid="uid://dti3ukqyiwvjk" path="res://src/world/Hookables/BaseHookable/base_hookable.tscn" id="2_oiu4l"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bmehcsdn05ca3" path="res://src/world/PuzzlePieces/Spring/spring_hookable.occ" id="3_amr5x"]
 
 [node name="SpringHookable" instance=ExtResource("1_nel1d")]
 transition_speed = 0.5
@@ -21,3 +22,6 @@ parent = NodePath("..")
 [node name="BaseHookable4" parent="." index="11" node_paths=PackedStringArray("parent") instance=ExtResource("2_oiu4l")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0.13, 0)
 parent = NodePath("..")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="13"]
+occluder = ExtResource("3_amr5x")

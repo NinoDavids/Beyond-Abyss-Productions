@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4k32vsegkcev"]
+[gd_scene load_steps=7 format=3 uid="uid://4k32vsegkcev"]
 
 [ext_resource type="PackedScene" uid="uid://lnwihtdqwdx" path="res://src/world/Bridge/bridg with texture.glb" id="1_s58p5"]
 [ext_resource type="Script" path="res://src/world/Bridge/bridge.gd" id="2_sje6h"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bv2h4rno4jei4" path="res://src/world/Bridge/Bridge.occ" id="3_no8wn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbx54"]
 size = Vector3(3.06702, 0.604736, 0.382813)
@@ -42,5 +43,8 @@ shape = SubResource("BoxShape3D_dofbp")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="ROOT/cuboid_153/StaticBody3D" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 3.41345e-11, 0, -3.41345e-11, 1, -1.33517, -0.253899, -0.442152)
 shape = SubResource("BoxShape3D_dofbp")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="2"]
+occluder = ExtResource("3_no8wn")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

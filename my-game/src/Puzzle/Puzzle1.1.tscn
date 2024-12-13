@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1u6pxnr1y51i"]
+[gd_scene load_steps=6 format=3 uid="uid://chothxmqcuanl"]
 
 [ext_resource type="MeshLibrary" uid="uid://r6h3yi5k4usl" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_le1e8"]
 [ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_mikla"]

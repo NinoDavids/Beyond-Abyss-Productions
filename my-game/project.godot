@@ -39,6 +39,7 @@ window/size/viewport_height=1080
 window/size/initial_screen=2
 window/size/resizable=false
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -148,3 +149,7 @@ Drop={
 3d_physics/layer_13="PuzzlePieces"
 3d_physics/size/viewport_height=1080
 3d_physics/size/viewport_width=1920
+
+[rendering]
+
+occlusion_culling/use_occlusion_culling=true

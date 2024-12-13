@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgjky7pnhv5h4"]
+[gd_scene load_steps=9 format=3 uid="uid://dgjky7pnhv5h4"]
 
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/canon.gd" id="1_hdey1"]
-[ext_resource type="PackedScene" uid="uid://b68wbgn23auq6" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.tscn" id="1_l0br5"]
+[ext_resource type="PackedScene" uid="uid://cd3oyw6uxm2y5" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.tscn" id="1_l0br5"]
 [ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_6tjld"]
+[ext_resource type="ArrayOccluder3D" uid="uid://ckdsnd1nli7ao" path="res://src/world/PuzzlePieces/Canons/CanonUp/canon_up.occ" id="4_3bqdw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jxmow"]
 height = 1.42706
@@ -59,6 +60,9 @@ mesh = SubResource("PlaneMesh_j21s8")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("4_3bqdw")
 
 [connection signal="shoot" from="CannonUpModel" to="." method="_on_cannon_up_model_shoot"]
 [connection signal="body_entered" from="ProjectileReceiver" to="." method="_on_projectile_receiver_body_entered"]

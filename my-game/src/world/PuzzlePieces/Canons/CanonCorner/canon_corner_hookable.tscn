@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8rkkn221wgy1"]
+[gd_scene load_steps=4 format=3 uid="uid://b8rkkn221wgy1"]
 
 [ext_resource type="PackedScene" uid="uid://db24j4biad4qf" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner.tscn" id="1_nnesw"]
 [ext_resource type="PackedScene" uid="uid://dti3ukqyiwvjk" path="res://src/world/Hookables/BaseHookable/base_hookable.tscn" id="2_iouel"]
+[ext_resource type="ArrayOccluder3D" uid="uid://birnvadnu28ho" path="res://src/world/PuzzlePieces/Canons/CanonCorner/canon_corner_hookable.occ" id="3_pi63j"]
 
 [node name="CanonCornerHookable" instance=ExtResource("1_nnesw")]
 transition_speed = 0.5
@@ -33,6 +34,9 @@ parent = NodePath("..")
 
 [node name="NeighbourCast" parent="BaseHookable4" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="12"]
+occluder = ExtResource("3_pi63j")
 
 [editable path="BaseHookable"]
 [editable path="BaseHookable2"]
