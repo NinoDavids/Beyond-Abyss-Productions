@@ -48,6 +48,8 @@ project/assembly_name="My Game"
 [editor]
 
 movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Productions/my-game/movie.png"
+movie_writer/vsync/vsync_mode=1
+movie_writer/use_occlusion_culling=false
 
 [editor_plugins]
 

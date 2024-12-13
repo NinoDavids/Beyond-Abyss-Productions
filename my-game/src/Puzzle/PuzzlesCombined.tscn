@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ckfd8q1ib8du3" path="res://src/Puzzle/Puzzle1.2.tscn" id="2_qnxd4"]
 [ext_resource type="PackedScene" uid="uid://bv8o2wv2gmfjc" path="res://src/Puzzle/Puzzle1.3.tscn" id="3_2a15b"]
 [ext_resource type="PackedScene" uid="uid://715v0p6setri" path="res://src/Puzzle/Puzzle1.4.tscn" id="4_f14b4"]
-[ext_resource type="PackedScene" uid="uid://dg47tywoy3mdb" path="res://src/Puzzle/Puzzle1.5.tscn" id="5_hj6wq"]
+[ext_resource type="PackedScene" uid="uid://b1bswsrkx73ee" path="res://src/Puzzle/Puzzle1.5.tscn" id="5_hj6wq"]
 [ext_resource type="PackedScene" uid="uid://dhcikl2riv3l1" path="res://src/Puzzle/Puzzle1.6.tscn" id="6_cy7w2"]
 [ext_resource type="PackedScene" uid="uid://cu2hcxp1s0cis" path="res://src/Puzzle/Puzzle1.7.tscn" id="7_tgkfv"]
 [ext_resource type="PackedScene" uid="uid://dr4117dkod61e" path="res://src/Puzzle/Puzzle2.1.tscn" id="8_mpf5x"]

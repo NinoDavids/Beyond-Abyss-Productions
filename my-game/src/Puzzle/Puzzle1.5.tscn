@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg47tywoy3mdb"]
+[gd_scene load_steps=8 format=3 uid="uid://b1bswsrkx73ee"]
 
 [ext_resource type="MeshLibrary" uid="uid://r6h3yi5k4usl" path="res://src/world/Grid/MeshLibraries/BaseTiles3/PuzzlePieces.tres" id="1_hsonm"]
 [ext_resource type="Script" path="res://src/world/Puzzle/puzzle.gd" id="2_s8op3"]

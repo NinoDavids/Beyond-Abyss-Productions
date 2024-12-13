@@ -85,7 +85,7 @@ shape = SubResource("CapsuleShape3D_xxc2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
-far = 2000.0
+far = 1500.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/PlayerCamera"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, -0.5)
@@ -150,7 +150,7 @@ unique_name_in_owner = true
 collision_mask = 4100
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, 50, 1)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 0, 15, 1)
 occluder = SubResource("QuadOccluder3D_j5rfj")
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
