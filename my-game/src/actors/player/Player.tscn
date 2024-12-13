@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bj01hbxy4my1a"]
+[gd_scene load_steps=55 format=3 uid="uid://bj01hbxy4my1a"]
 
 [ext_resource type="Script" path="res://src/actors/player/scripts/player.gd" id="1_v30fi"]
 [ext_resource type="AudioStream" uid="uid://dleu4qiu0tf88" path="res://src/actors/player/SFX/footsteps/wood/Footstep wood 1.mp3" id="2_1rgru"]
@@ -63,6 +63,8 @@ shader_parameter/FactorA = Vector2(100, 100)
 shader_parameter/FactorB = Vector2(1, 1)
 shader_parameter/magnitude = Vector2(0.01, 0.01)
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_j5rfj"]
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("audio_player", "foot_step_timer") groups=["player"]]
 collision_layer = 2
 collision_mask = 4367
@@ -83,6 +85,7 @@ shape = SubResource("CapsuleShape3D_xxc2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
+far = 2000.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/PlayerCamera"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, -0.5)
@@ -145,6 +148,10 @@ one_shot = true
 [node name="GroundSFXCollider" type="RayCast3D" parent="FootStepAudio"]
 unique_name_in_owner = true
 collision_mask = 4100
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 1, 0, 50, 1)
+occluder = SubResource("QuadOccluder3D_j5rfj")
 
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
