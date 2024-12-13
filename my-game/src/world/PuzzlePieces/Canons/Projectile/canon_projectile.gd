@@ -1,14 +1,15 @@
 class_name CanonProjectile
 extends CharacterBody3D
 
-@export var speed: float = 1.0
-@export var gravity: float = -9.8
+@export var speed: float = 2.0
+@export var gravity: float = -6.8
 var direction: Vector3
 var start_position: Vector3
 var end_position: Vector3
 var vertical_velocity: float = 0.0
 var jump: bool = false
-@export var jump_velocity: float = 7.5
+
+@export var jump_velocity: float = 6.0
 @export var doGravity: bool = true
 @onready var thump_sfx: AudioStream = preload("res://src/world/PuzzlePieces/Canons/Projectile/sfx/thump.mp3") as AudioStream
 @onready var pop_sfx: AudioStream = preload("res://src/world/PuzzlePieces/Canons/Projectile/sfx/pop.mp3") as AudioStream
@@ -19,6 +20,9 @@ func _ready() -> void:
 	end_position = start_position + direction.normalized() * start_position.distance_to(end_position)
 
 func _physics_process(_delta: float) -> void:
+	if position.y > 0.9:
+		position.y = 0.75
+		velocity.y = 0.0
 	if direction == null: return
 	
 	if(jump):

@@ -6,6 +6,6 @@
 script = ExtResource("1_48xd4")
 inverted_y = false
 sensitivity = 0.25
-masterVolume = 1.0
+masterVolume = -62.8
 musicVolume = 1.0
 SFXVolume = 1.0

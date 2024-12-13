@@ -10,4 +10,4 @@ func start_charge_animation() -> void:
 	animation_player.play(animation_name)
 
 func _shoot() -> void:
-	shoot.emit()
+	shoot.emit() 

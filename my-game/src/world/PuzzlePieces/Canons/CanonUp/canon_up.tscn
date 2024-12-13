@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgjky7pnhv5h4"]
 
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/canon.gd" id="1_hdey1"]
-[ext_resource type="PackedScene" uid="uid://b68wbgn23auq6" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.tscn" id="1_l0br5"]
+[ext_resource type="PackedScene" uid="uid://cd3oyw6uxm2y5" path="res://src/world/PuzzlePieces/Canons/CanonUp/Model/cannon_up_model.tscn" id="1_l0br5"]
 [ext_resource type="PackedScene" uid="uid://dr5pw4okii6t6" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.tscn" id="2_6tjld"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jxmow"]
