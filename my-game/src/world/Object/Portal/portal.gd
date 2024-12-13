@@ -7,7 +7,7 @@ var is_active: bool = true
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 @onready var bubble_enter_sfx: AudioStream = preload("res://src/world/Object/Portal/sfx/Portal SFX.wav") as AudioStream
 @onready var portal_enter_effect: CPUParticles3D = $PortalEnterEffect
-@onready var portal = $Node3D/PortalShaderBack
+@onready var portal: Node3D = $Node3D/PortalShaderBack
 
 func _ready() -> void:
 	portal.is_front_direction = is_front_direction

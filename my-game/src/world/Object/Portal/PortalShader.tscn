@@ -16,5 +16,3 @@ script = ExtResource("1_hptxw")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_k0vf3")
 surface_material_override/0 = ExtResource("3_i1kuu")
-
-[connection signal="property_list_changed" from="PortalShader" to="." method="_on_portal_shader_property_list_changed"]

@@ -5,8 +5,8 @@ var is_front_direction: bool:
 		is_front_direction = value
 		load_portal()
 
-@onready var shader = $PortalShader
-@onready var material = shader.get_surface_override_material(0)
+@onready var shader: MeshInstance3D = $PortalShader
+@onready var material: ShaderMaterial = shader.get_surface_override_material(0)
 
 func _ready() -> void:
 	load_portal()
