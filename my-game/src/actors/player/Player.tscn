@@ -85,6 +85,7 @@ shape = SubResource("CapsuleShape3D_xxc2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
+current = true
 far = 1500.0
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/PlayerCamera"]

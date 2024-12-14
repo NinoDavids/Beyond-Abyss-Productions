@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addons]
+
+proton_scatter/max_physics_queries_per_frame=400
+
 [application]
 
 config/name="Lucky Tabi"
@@ -20,6 +24,7 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://misc/Logo/Logo.png"
 boot_splash/minimum_display_time=100
+config/quality/use_taa=true
 
 [autoload]
 
@@ -48,8 +53,8 @@ project/assembly_name="My Game"
 [editor]
 
 movie_writer/movie_file="C:/Users/wow_r/Documents/GitHub/Beyond-Abyss-Productions/my-game/movie.png"
-movie_writer/vsync/vsync_mode=1
-movie_writer/use_occlusion_culling=false
+movie_writer/vsync/vsync_mode=0
+movie_writer/use_occlusion_culling=true
 
 [editor_plugins]
 
@@ -154,4 +159,6 @@ Drop={
 
 [rendering]
 
+viewport/hdr_2d=true
+anti_aliasing/quality/use_taa=true
 occlusion_culling/use_occlusion_culling=true

@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://budket2wa2ccu"]
+[gd_scene load_steps=12 format=3 uid="uid://budket2wa2ccu"]
 
 [ext_resource type="PackedScene" uid="uid://bnj64sgl848w7" path="res://src/world/Foliage/grass/grass.glb" id="1_uqfsc"]
 [ext_resource type="Shader" path="res://src/world/Foliage/grass/grass.gdshader" id="2_od1cq"]
+[ext_resource type="Script" path="res://src/world/Foliage/grass/grass.gd" id="2_uc1vm"]
+[ext_resource type="Texture2D" uid="uid://c5m8l87i01axo" path="res://src/world/Foliage/grass/grass.png" id="3_8xw0j"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_iexbs"]
 
@@ -27,7 +29,22 @@ shader_parameter/wind_speed = 0.1
 shader_parameter/wind_strength = 0.62
 shader_parameter/windNoise = SubResource("NoiseTexture2D_cj5vb")
 
-[node name="grass" instance=ExtResource("1_uqfsc")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmda7"]
+transparency = 1
+albedo_texture = ExtResource("3_8xw0j")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5cldm"]
+material = SubResource("StandardMaterial3D_lmda7")
+
+[node name="grass" node_paths=PackedStringArray("billBoard", "model") instance=ExtResource("1_uqfsc")]
+script = ExtResource("2_uc1vm")
+billBoard = NodePath("MeshInstance3D")
+model = NodePath("Plane_012")
 
 [node name="Plane_012" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_i4t50")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25, 0)
+material_override = SubResource("StandardMaterial3D_lmda7")
+mesh = SubResource("QuadMesh_5cldm")
