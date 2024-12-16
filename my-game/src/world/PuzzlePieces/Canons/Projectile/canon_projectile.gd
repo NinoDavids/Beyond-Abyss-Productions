@@ -1,6 +1,13 @@
 class_name CanonProjectile
 extends CharacterBody3D
 
+@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+@onready var droplet_particles: CPUParticles3D = $DropletParticles
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var area_3d: Area3D = $Area3D
+@onready var explode_particles: CPUParticles3D = $ExplodeParticles
+
+
 @export var speed: float = 1.0
 @export var gravity: float = -9.8
 var direction: Vector3
@@ -27,7 +34,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		vertical_velocity += gravity * _delta
 	
-	if check_distance_reached() and visible:
+	if check_distance_reached() and mesh_instance_3d.visible:
+		explode_particles.emitting = true
 		play_sfx(pop_sfx)
 	
 	velocity = direction * speed
@@ -50,7 +58,7 @@ func absorb() -> void:
 	play_sfx(thump_sfx)
 
 func play_sfx(sfx: AudioStream) -> void:
-	visible = false
+	turn_invisible()
 	audio_player.stream = sfx
 	audio_player.pitch_scale = randf_range(0.8, 1.2)
 	audio_player.play()
@@ -61,3 +69,9 @@ func play_sfx(sfx: AudioStream) -> void:
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	play_sfx(pop_sfx)
+
+func turn_invisible() -> void:
+	mesh_instance_3d.visible = false
+	droplet_particles.emitting = false
+	collision_shape_3d.disabled = true
+	area_3d.visible = false

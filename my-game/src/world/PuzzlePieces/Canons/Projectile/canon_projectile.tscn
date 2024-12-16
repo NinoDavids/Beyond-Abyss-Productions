@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dr5pw4okii6t6"]
+[gd_scene load_steps=12 format=3 uid="uid://dr5pw4okii6t6"]
 
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/Canons/Projectile/canon_projectile.gd" id="1_j735c"]
 [ext_resource type="Material" uid="uid://dgmd5qoo72xy3" path="res://src/world/PuzzlePieces/Canons/Projectile/bubble.tres" id="2_2qf41"]
 [ext_resource type="Shader" path="res://src/world/PuzzlePieces/Canons/Projectile/shader_bubble.gdshader" id="3_3q8jq"]
+[ext_resource type="PackedScene" uid="uid://s4p0p77l6478" path="res://src/effects/explode_particles.tscn" id="4_n1vlr"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5v8mk"]
 material = ExtResource("2_2qf41")
@@ -18,12 +19,18 @@ shader_parameter/noise_sample_size = 0.1
 shader_parameter/animation_speed = 0.1
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_yfp7k")
 
-[sub_resource type="SphereMesh" id="SphereMesh_y63h0"]
+[sub_resource type="SphereMesh" id="SphereMesh_1au13"]
+material = ExtResource("2_2qf41")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vb5w6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cjfw5"]
 radius = 0.063
+
+[sub_resource type="SphereMesh" id="SphereMesh_77ojp"]
+material = ExtResource("2_2qf41")
+radius = 0.05
+height = 0.1
 
 [node name="CanonProjectile" type="CharacterBody3D"]
 collision_layer = 2048
@@ -35,12 +42,12 @@ doGravity = false
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_5v8mk")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="DropletParticles" type="CPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_rkwe7")
 amount = 16
 lifetime = 2.0
 lifetime_randomness = 0.4
-mesh = SubResource("SphereMesh_y63h0")
+mesh = SubResource("SphereMesh_1au13")
 emission_shape = 1
 emission_sphere_radius = 0.6
 emission_colors = PackedColorArray(0.0784314, 0.0235294, 0.541176, 1)
@@ -67,5 +74,9 @@ shape = SubResource("SphereShape3D_cjfw5")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
+
+[node name="ExplodeParticles" parent="." instance=ExtResource("4_n1vlr")]
+mesh = SubResource("SphereMesh_77ojp")
+scale_amount_min = 0.5
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
