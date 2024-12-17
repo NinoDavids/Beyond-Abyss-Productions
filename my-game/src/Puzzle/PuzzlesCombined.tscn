@@ -42,9 +42,11 @@ glow_enabled = true
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.672803, 0.906363, 0.962836, 1)
-fog_density = 0.622
+fog_density = 0.6
+fog_sky_affect = 0.25
 fog_depth_begin = 150.0
 fog_depth_end = 250.0
+adjustment_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_opraw"]
 offsets = PackedFloat32Array(0.2, 1)
