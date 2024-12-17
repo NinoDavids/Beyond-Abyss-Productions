@@ -10,5 +10,5 @@ func _physics_process(delta: float) -> void:
 	velocity = newVelocity
 	move_and_slide()
 
-func update_target_location(target):
+func update_target_location(target) -> void:
 	navAgent.set_target_position(target)

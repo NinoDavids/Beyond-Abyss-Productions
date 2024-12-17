@@ -1,50 +1,37 @@
-[gd_scene load_steps=12 format=3 uid="uid://budket2wa2ccu"]
+[gd_scene load_steps=9 format=3 uid="uid://budket2wa2ccu"]
 
 [ext_resource type="PackedScene" uid="uid://bnj64sgl848w7" path="res://src/world/Foliage/grass/grass.glb" id="1_uqfsc"]
 [ext_resource type="Shader" path="res://src/world/Foliage/grass/grass.gdshader" id="2_od1cq"]
 [ext_resource type="Script" path="res://src/world/Foliage/grass/grass.gd" id="2_uc1vm"]
-[ext_resource type="Texture2D" uid="uid://c5m8l87i01axo" path="res://src/world/Foliage/grass/grass.png" id="3_8xw0j"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_iexbs"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g5p2q"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ubmxa"]
-noise = SubResource("FastNoiseLite_iexbs")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_duldp"]
+noise = SubResource("FastNoiseLite_g5p2q")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ov7kv"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6jy68"]
 frequency = 0.0075
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cj5vb"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s4ypu"]
 seamless = true
-noise = SubResource("FastNoiseLite_ov7kv")
+noise = SubResource("FastNoiseLite_6jy68")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4t50"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmsyo"]
 render_priority = 0
 shader = ExtResource("2_od1cq")
 shader_parameter/colorLight = Color(0.336, 0.84, 0, 1)
 shader_parameter/colorDark = Color(0.38, 0.38, 0.38, 1)
 shader_parameter/noiseScale = 20.0
-shader_parameter/noise = SubResource("NoiseTexture2D_ubmxa")
+shader_parameter/noise = SubResource("NoiseTexture2D_duldp")
 shader_parameter/wind_speed = 0.1
 shader_parameter/wind_strength = 0.62
-shader_parameter/windNoise = SubResource("NoiseTexture2D_cj5vb")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmda7"]
-transparency = 1
-albedo_texture = ExtResource("3_8xw0j")
-
-[sub_resource type="QuadMesh" id="QuadMesh_5cldm"]
-material = SubResource("StandardMaterial3D_lmda7")
+shader_parameter/windNoise = SubResource("NoiseTexture2D_s4ypu")
 
 [node name="grass" node_paths=PackedStringArray("billBoard", "model") instance=ExtResource("1_uqfsc")]
 script = ExtResource("2_uc1vm")
-billBoard = NodePath("MeshInstance3D")
+billBoard = NodePath("")
 model = NodePath("Plane_012")
 
 [node name="Plane_012" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_i4t50")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25, 0)
-material_override = SubResource("StandardMaterial3D_lmda7")
-mesh = SubResource("QuadMesh_5cldm")
+surface_material_override/0 = SubResource("ShaderMaterial_rmsyo")
