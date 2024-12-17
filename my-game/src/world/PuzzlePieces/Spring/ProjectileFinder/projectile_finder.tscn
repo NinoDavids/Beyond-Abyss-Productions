@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0blxklxouxrm"]
 
 [ext_resource type="Script" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/projectile_finder.gd" id="1_3awbq"]
-[ext_resource type="AudioStream" uid="uid://dyj7tvdut4ntx" path="res://src/world/PuzzlePieces/Spring/ProjectileFinder/sfx/wind.mp3" id="2_nut5o"]
+[ext_resource type="AudioStream" uid="uid://dyj7tvdut4ntx" path="res://src/world/PuzzlePieces/Redirector/sfx/wind.mp3" id="2_nut5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ah74l"]
 resource_local_to_scene = true

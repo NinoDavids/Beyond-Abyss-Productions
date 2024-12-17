@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://rwhtpqcfiga"]
+
+[ext_resource type="Shader" path="res://src/world/PuzzlePieces/Redirector/wind/wind.gdshader" id="1_g6bjk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7f61k"]
+render_priority = 0
+shader = ExtResource("1_g6bjk")
+shader_parameter/time_scale = 2.0
+shader_parameter/side_to_side = 0.0
+shader_parameter/pivot = 1.0
+shader_parameter/wave = 8.44
+shader_parameter/twist = 10.285
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yvl7p"]
+material = SubResource("ShaderMaterial_7f61k")
+radius = 0.25
+height = 0.5
+
+[node name="Wind" type="MeshInstance3D"]
+mesh = SubResource("CapsuleMesh_yvl7p")
