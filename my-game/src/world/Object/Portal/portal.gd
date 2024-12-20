@@ -19,6 +19,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		play_sfx(bubble_enter_sfx)
 		body.queue_free()
 		portal_enter_effect.emitting = true
+		portal.close_portal()
 
 func play_sfx(sfx: AudioStream) -> void:
 	audio_player.stream = sfx
