@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf763kq8l0nj4"]
+[gd_scene load_steps=7 format=3 uid="uid://cf763kq8l0nj4"]
 
 [ext_resource type="Script" path="res://src/world/Object/Portal/portal_shader.gd" id="1_hptxw"]
 [ext_resource type="Material" uid="uid://bhorq3rhqwink" path="res://src/world/Object/Portal/PortalShader.tres" id="3_i1kuu"]
@@ -9,6 +9,32 @@ top_radius = 1.0
 bottom_radius = 1.0
 height = 0.1
 
+[sub_resource type="Animation" id="Animation_3ie32"]
+resource_name = "close_portal"
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalShader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_8w3y8"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortalShader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wxpp1"]
+_data = {
+"RESET": SubResource("Animation_8w3y8"),
+"close_portal": SubResource("Animation_3ie32")
+}
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_hptxw")
 
@@ -16,3 +42,10 @@ script = ExtResource("1_hptxw")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CylinderMesh_k0vf3")
 surface_material_override/0 = ExtResource("3_i1kuu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wxpp1")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
